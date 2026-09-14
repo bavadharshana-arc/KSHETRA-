@@ -1,0 +1,1501 @@
+case_id,case_name,parcel_count,litigation_cases,compensation_pending_pct,acquisition_stage,ownership_disputes,document_issues,previous_delays_months,notification_age_months,delayed
+CASE-0001,Thoothukudi Port Rail Spur Phase 1 (Sec 7),74,0,7.3,Compensation Disbursement,9,4,0.0,21.0,0
+CASE-0002,Madurai Logistics Park Phase 3 (Sec 4),18,0,83.3,Award Inquiry (Sec 3G/23),0,1,1.4,22.4,0
+CASE-0003,Erode Agri-Logistics Zone Phase 2 (Sec 2),74,0,1.9,Possession (Sec 3E/38),2,6,4.2,36.9,0
+CASE-0004,Thoothukudi Port Rail Spur Phase 1 (Sec 4),19,0,70.9,SIA & Objection (Sec 3C/15),0,2,0.0,1.0,0
+CASE-0005,Thoothukudi Port Rail Spur Phase 1 (Sec 4),92,1,45.0,Award Inquiry (Sec 3G/23),7,11,0.0,17.8,1
+CASE-0006,Vellore Urban Peripheral Phase 1 (Sec 1),26,0,78.0,SIA & Objection (Sec 3C/15),0,0,4.5,12.7,0
+CASE-0007,Coimbatore Ring Road Sec Phase 2 (Sec 4),36,0,79.6,Notification (Sec 3A/11),3,1,2.2,5.5,0
+CASE-0008,Tiruchirappalli Freight Link Phase 1 (Sec 3),88,0,43.3,Award Inquiry (Sec 3G/23),9,3,4.3,25.8,1
+CASE-0009,Hosur IT Expressway Phase 1 (Sec 3),36,2,91.6,SIA & Objection (Sec 3C/15),5,6,0.0,3.6,1
+CASE-0010,Salem Bypass Extension Phase 3 (Sec 3),33,1,82.4,Award Inquiry (Sec 3G/23),1,2,0.0,17.2,0
+CASE-0011,Salem Bypass Extension Phase 2 (Sec 5),270,1,44.1,Award Inquiry (Sec 3G/23),30,39,1.7,22.5,1
+CASE-0012,Tirunelveli Solar Park Access Phase 1 (Sec 4),60,4,72.3,Declaration (Sec 3D/19),1,0,0.0,12.9,1
+CASE-0013,Hosur IT Expressway Phase 3 (Sec 4),29,1,23.4,Compensation Disbursement,0,4,0.0,20.0,0
+CASE-0014,Hosur IT Expressway Phase 2 (Sec 5),33,1,77.1,Declaration (Sec 3D/19),0,3,1.1,15.5,0
+CASE-0015,Hosur IT Expressway Phase 1 (Sec 4),202,11,32.2,Award Inquiry (Sec 3G/23),7,38,9.6,30.4,1
+CASE-0016,Vellore Urban Peripheral Phase 1 (Sec 5),27,2,81.7,SIA & Objection (Sec 3C/15),5,6,5.4,14.0,1
+CASE-0017,Vellore Urban Peripheral Phase 3 (Sec 4),219,3,79.1,Declaration (Sec 3D/19),14,17,1.2,15.8,0
+CASE-0018,Tiruchirappalli Freight Link Phase 3 (Sec 5),123,3,71.0,Declaration (Sec 3D/19),3,12,0.0,13.6,1
+CASE-0019,Salem Bypass Extension Phase 1 (Sec 1),229,1,97.0,SIA & Objection (Sec 3C/15),12,7,2.7,11.6,1
+CASE-0020,Tirunelveli Solar Park Access Phase 2 (Sec 4),46,0,62.0,Award Inquiry (Sec 3G/23),1,0,5.8,28.4,1
+CASE-0021,Hosur IT Expressway Phase 3 (Sec 1),57,2,18.2,Compensation Disbursement,4,5,2.3,29.0,0
+CASE-0022,Salem Bypass Extension Phase 3 (Sec 5),31,1,71.5,Award Inquiry (Sec 3G/23),1,3,3.7,27.3,1
+CASE-0023,Madurai Logistics Park Phase 3 (Sec 6),270,6,59.5,Award Inquiry (Sec 3G/23),12,17,2.2,23.3,1
+CASE-0024,Tiruchirappalli Freight Link Phase 1 (Sec 3),62,1,12.0,Compensation Disbursement,2,1,0.0,25.6,0
+CASE-0025,Salem Bypass Extension Phase 2 (Sec 4),104,0,13.3,Compensation Disbursement,0,5,1.1,27.5,0
+CASE-0026,Vellore Urban Peripheral Phase 1 (Sec 7),64,0,88.2,Notification (Sec 3A/11),2,0,5.8,9.4,0
+CASE-0027,Tiruchirappalli Freight Link Phase 1 (Sec 1),21,0,97.9,SIA & Objection (Sec 3C/15),1,0,0.0,6.1,0
+CASE-0028,Tirunelveli Solar Park Access Phase 2 (Sec 3),29,1,17.1,Compensation Disbursement,0,2,5.8,35.9,0
+CASE-0029,Vellore Urban Peripheral Phase 1 (Sec 1),56,0,58.8,Award Inquiry (Sec 3G/23),4,4,1.7,22.1,0
+CASE-0030,SIPCOT Industrial Corridor Phase 1 (Sec 5),89,3,71.4,Award Inquiry (Sec 3G/23),16,0,11.3,31.9,1
+CASE-0031,Hosur IT Expressway Phase 3 (Sec 7),29,0,94.8,Notification (Sec 3A/11),1,1,6.0,10.8,1
+CASE-0032,Erode Agri-Logistics Zone Phase 2 (Sec 6),55,0,70.5,Declaration (Sec 3D/19),3,4,2.0,16.9,0
+CASE-0033,Tirunelveli Solar Park Access Phase 1 (Sec 6),23,0,23.1,Possession (Sec 3E/38),1,0,0.0,29.4,0
+CASE-0034,Salem Bypass Extension Phase 3 (Sec 3),24,0,79.4,Declaration (Sec 3D/19),2,2,0.1,14.1,0
+CASE-0035,Salem Bypass Extension Phase 1 (Sec 5),69,1,66.2,Declaration (Sec 3D/19),11,0,0.0,9.0,0
+CASE-0036,Tirunelveli Solar Park Access Phase 2 (Sec 1),27,0,5.2,Compensation Disbursement,1,3,1.3,28.5,0
+CASE-0037,Coimbatore Ring Road Sec Phase 1 (Sec 7),41,0,56.7,Award Inquiry (Sec 3G/23),5,10,1.3,22.3,1
+CASE-0038,Coimbatore Ring Road Sec Phase 1 (Sec 1),24,1,82.6,SIA & Objection (Sec 3C/15),3,2,3.9,12.3,1
+CASE-0039,Coimbatore Ring Road Sec Phase 2 (Sec 3),21,0,98.7,SIA & Objection (Sec 3C/15),4,1,0.0,6.8,0
+CASE-0040,Coimbatore Ring Road Sec Phase 1 (Sec 2),42,0,65.1,Declaration (Sec 3D/19),0,6,2.4,16.9,0
+CASE-0041,Salem Bypass Extension Phase 3 (Sec 5),137,1,68.3,Award Inquiry (Sec 3G/23),9,6,0.0,14.6,1
+CASE-0042,Tirunelveli Solar Park Access Phase 2 (Sec 7),70,3,35.0,Declaration (Sec 3D/19),13,3,8.4,26.3,1
+CASE-0043,Thoothukudi Port Rail Spur Phase 1 (Sec 1),22,0,88.4,SIA & Objection (Sec 3C/15),3,2,6.9,17.7,1
+CASE-0044,Vellore Urban Peripheral Phase 3 (Sec 4),48,0,99.9,Notification (Sec 3A/11),4,3,0.0,1.0,0
+CASE-0045,Madurai Logistics Park Phase 3 (Sec 6),104,2,36.0,Award Inquiry (Sec 3G/23),3,6,0.6,20.6,0
+CASE-0046,Hosur IT Expressway Phase 1 (Sec 1),154,6,76.9,Notification (Sec 3A/11),4,22,3.6,7.2,1
+CASE-0047,Thoothukudi Port Rail Spur Phase 3 (Sec 2),130,0,34.6,Compensation Disbursement,14,9,2.4,29.0,0
+CASE-0048,SIPCOT Industrial Corridor Phase 2 (Sec 4),95,1,83.4,SIA & Objection (Sec 3C/15),7,1,1.9,10.4,0
+CASE-0049,Coimbatore Ring Road Sec Phase 1 (Sec 4),54,1,31.7,Declaration (Sec 3D/19),2,5,2.4,18.1,0
+CASE-0050,Vellore Urban Peripheral Phase 2 (Sec 7),65,0,65.8,Declaration (Sec 3D/19),11,7,1.1,16.0,0
+CASE-0051,Hosur IT Expressway Phase 1 (Sec 2),39,0,57.8,Compensation Disbursement,1,3,4.3,33.6,1
+CASE-0052,Erode Agri-Logistics Zone Phase 2 (Sec 4),64,0,98.1,Notification (Sec 3A/11),0,10,5.5,11.7,1
+CASE-0053,Tirunelveli Solar Park Access Phase 2 (Sec 4),41,0,55.0,Compensation Disbursement,2,4,0.0,25.0,0
+CASE-0054,Tiruchirappalli Freight Link Phase 1 (Sec 1),20,0,31.6,Declaration (Sec 3D/19),1,4,10.6,27.9,1
+CASE-0055,Coimbatore Ring Road Sec Phase 2 (Sec 7),50,1,21.8,Possession (Sec 3E/38),3,8,1.7,34.7,0
+CASE-0056,Vellore Urban Peripheral Phase 2 (Sec 7),47,0,88.5,Notification (Sec 3A/11),2,1,3.1,8.1,0
+CASE-0057,Salem Bypass Extension Phase 1 (Sec 6),17,0,85.2,Notification (Sec 3A/11),3,1,3.1,7.9,0
+CASE-0058,Erode Agri-Logistics Zone Phase 1 (Sec 2),15,0,61.2,Possession (Sec 3E/38),1,5,2.0,34.3,0
+CASE-0059,Erode Agri-Logistics Zone Phase 3 (Sec 2),33,2,93.0,Notification (Sec 3A/11),2,2,0.0,2.2,0
+CASE-0060,SIPCOT Industrial Corridor Phase 2 (Sec 3),108,2,9.5,Compensation Disbursement,4,2,6.0,34.5,1
+CASE-0061,Tiruchirappalli Freight Link Phase 1 (Sec 5),46,1,78.5,SIA & Objection (Sec 3C/15),8,5,0.0,6.3,0
+CASE-0062,Madurai Logistics Park Phase 2 (Sec 4),48,2,65.6,Award Inquiry (Sec 3G/23),4,2,2.4,22.8,1
+CASE-0063,Tirunelveli Solar Park Access Phase 2 (Sec 1),164,2,9.8,Compensation Disbursement,5,35,3.9,32.5,1
+CASE-0064,Coimbatore Ring Road Sec Phase 3 (Sec 7),48,3,59.7,Award Inquiry (Sec 3G/23),1,1,4.0,26.6,1
+CASE-0065,Tiruchirappalli Freight Link Phase 2 (Sec 3),40,2,81.0,Declaration (Sec 3D/19),4,1,0.0,13.2,1
+CASE-0066,Thoothukudi Port Rail Spur Phase 3 (Sec 6),185,3,12.9,Possession (Sec 3E/38),6,12,0.2,32.2,0
+CASE-0067,Tiruchirappalli Freight Link Phase 1 (Sec 4),188,4,75.2,SIA & Objection (Sec 3C/15),2,5,4.6,13.5,1
+CASE-0068,Madurai Logistics Park Phase 3 (Sec 1),86,1,51.8,Compensation Disbursement,4,10,0.0,22.4,0
+CASE-0069,Tirunelveli Solar Park Access Phase 3 (Sec 1),27,0,66.0,Declaration (Sec 3D/19),1,2,3.4,19.0,0
+CASE-0070,Madurai Logistics Park Phase 3 (Sec 3),129,1,55.0,Declaration (Sec 3D/19),15,11,0.1,14.2,0
+CASE-0071,SIPCOT Industrial Corridor Phase 3 (Sec 5),25,1,65.0,Declaration (Sec 3D/19),2,6,9.8,24.8,1
+CASE-0072,Salem Bypass Extension Phase 3 (Sec 5),101,1,92.9,Notification (Sec 3A/11),2,4,0.0,1.4,0
+CASE-0073,Erode Agri-Logistics Zone Phase 2 (Sec 7),238,3,80.1,Notification (Sec 3A/11),20,8,5.2,12.4,1
+CASE-0074,Tirunelveli Solar Park Access Phase 2 (Sec 7),45,0,86.7,Notification (Sec 3A/11),2,1,2.3,5.7,0
+CASE-0075,Thoothukudi Port Rail Spur Phase 3 (Sec 6),35,1,55.1,Compensation Disbursement,0,3,3.3,30.8,0
+CASE-0076,Hosur IT Expressway Phase 3 (Sec 1),29,1,84.1,SIA & Objection (Sec 3C/15),1,4,5.2,13.9,1
+CASE-0077,Madurai Logistics Park Phase 1 (Sec 2),53,2,74.3,Declaration (Sec 3D/19),6,1,7.5,23.3,1
+CASE-0078,Madurai Logistics Park Phase 1 (Sec 7),18,0,93.6,Notification (Sec 3A/11),0,2,1.5,4.9,0
+CASE-0079,Tiruchirappalli Freight Link Phase 3 (Sec 6),102,3,70.7,Compensation Disbursement,8,4,7.9,36.1,1
+CASE-0080,Tirunelveli Solar Park Access Phase 1 (Sec 4),26,0,1.6,Compensation Disbursement,0,0,4.1,30.8,0
+CASE-0081,SIPCOT Industrial Corridor Phase 2 (Sec 2),42,1,82.1,Award Inquiry (Sec 3G/23),7,5,0.0,17.5,1
+CASE-0082,Vellore Urban Peripheral Phase 1 (Sec 1),97,0,76.5,Notification (Sec 3A/11),3,9,0.0,2.4,0
+CASE-0083,Erode Agri-Logistics Zone Phase 2 (Sec 3),66,0,43.1,Award Inquiry (Sec 3G/23),1,3,4.9,25.5,0
+CASE-0084,Vellore Urban Peripheral Phase 2 (Sec 4),16,0,15.9,Compensation Disbursement,1,0,0.0,21.8,0
+CASE-0085,Tirunelveli Solar Park Access Phase 2 (Sec 2),68,1,56.7,Declaration (Sec 3D/19),11,4,2.0,16.1,0
+CASE-0086,Hosur IT Expressway Phase 1 (Sec 6),26,0,55.3,Award Inquiry (Sec 3G/23),0,1,0.0,17.2,0
+CASE-0087,Hosur IT Expressway Phase 2 (Sec 6),41,1,16.9,Compensation Disbursement,2,5,2.0,29.6,0
+CASE-0088,Thoothukudi Port Rail Spur Phase 2 (Sec 1),326,0,39.3,Award Inquiry (Sec 3G/23),26,56,2.7,25.3,0
+CASE-0089,Coimbatore Ring Road Sec Phase 2 (Sec 6),46,0,83.5,SIA & Objection (Sec 3C/15),0,4,7.6,17.7,1
+CASE-0090,Tirunelveli Solar Park Access Phase 2 (Sec 5),21,0,84.7,Declaration (Sec 3D/19),0,0,2.3,17.0,0
+CASE-0091,Coimbatore Ring Road Sec Phase 1 (Sec 7),33,0,54.5,Award Inquiry (Sec 3G/23),0,0,0.0,16.4,0
+CASE-0092,Vellore Urban Peripheral Phase 1 (Sec 3),61,0,79.9,SIA & Objection (Sec 3C/15),1,6,0.0,1.0,0
+CASE-0093,Madurai Logistics Park Phase 1 (Sec 4),62,0,85.2,SIA & Objection (Sec 3C/15),2,3,1.9,10.9,0
+CASE-0094,Madurai Logistics Park Phase 3 (Sec 5),26,1,21.8,Possession (Sec 3E/38),3,1,2.7,37.2,0
+CASE-0095,Hosur IT Expressway Phase 3 (Sec 7),105,0,33.7,Declaration (Sec 3D/19),8,10,3.0,17.3,0
+CASE-0096,Salem Bypass Extension Phase 1 (Sec 6),53,0,62.5,Declaration (Sec 3D/19),5,1,0.2,14.2,0
+CASE-0097,Madurai Logistics Park Phase 3 (Sec 1),39,0,33.9,Declaration (Sec 3D/19),0,7,0.2,14.3,0
+CASE-0098,Tiruchirappalli Freight Link Phase 1 (Sec 2),71,0,3.3,Compensation Disbursement,0,5,2.4,29.3,0
+CASE-0099,Tiruchirappalli Freight Link Phase 2 (Sec 4),21,0,67.3,Declaration (Sec 3D/19),0,3,3.3,18.5,0
+CASE-0100,SIPCOT Industrial Corridor Phase 3 (Sec 1),24,0,80.0,Award Inquiry (Sec 3G/23),1,3,0.1,20.1,0
+CASE-0101,Tiruchirappalli Freight Link Phase 1 (Sec 6),23,0,56.0,Compensation Disbursement,4,3,0.0,23.6,1
+CASE-0102,Madurai Logistics Park Phase 3 (Sec 7),121,1,59.0,Award Inquiry (Sec 3G/23),10,16,0.0,16.6,1
+CASE-0103,Coimbatore Ring Road Sec Phase 1 (Sec 3),220,3,84.6,SIA & Objection (Sec 3C/15),14,20,5.6,18.4,1
+CASE-0104,Tiruchirappalli Freight Link Phase 3 (Sec 3),79,1,52.1,Declaration (Sec 3D/19),3,12,0.2,14.2,0
+CASE-0105,Thoothukudi Port Rail Spur Phase 3 (Sec 6),57,2,94.7,SIA & Objection (Sec 3C/15),3,3,4.5,13.5,1
+CASE-0106,SIPCOT Industrial Corridor Phase 1 (Sec 3),35,0,41.1,Compensation Disbursement,3,4,0.2,26.2,0
+CASE-0107,Salem Bypass Extension Phase 3 (Sec 3),145,6,81.9,Award Inquiry (Sec 3G/23),5,7,0.0,19.4,1
+CASE-0108,Madurai Logistics Park Phase 1 (Sec 2),59,1,89.4,Notification (Sec 3A/11),1,9,7.8,12.4,1
+CASE-0109,Coimbatore Ring Road Sec Phase 1 (Sec 7),101,0,97.3,Notification (Sec 3A/11),1,1,2.9,7.7,0
+CASE-0110,Erode Agri-Logistics Zone Phase 3 (Sec 1),41,0,45.4,Compensation Disbursement,1,2,0.6,26.9,0
+CASE-0111,Hosur IT Expressway Phase 1 (Sec 7),88,2,55.3,Compensation Disbursement,1,3,6.8,34.6,1
+CASE-0112,Thoothukudi Port Rail Spur Phase 2 (Sec 1),113,1,30.4,Award Inquiry (Sec 3G/23),1,5,0.0,12.8,0
+CASE-0113,Tiruchirappalli Freight Link Phase 1 (Sec 2),108,5,73.3,SIA & Objection (Sec 3C/15),8,3,3.7,12.6,1
+CASE-0114,Tirunelveli Solar Park Access Phase 3 (Sec 2),31,1,73.0,Declaration (Sec 3D/19),5,1,0.0,13.3,0
+CASE-0115,Hosur IT Expressway Phase 2 (Sec 4),184,2,32.5,Declaration (Sec 3D/19),12,18,6.1,20.4,1
+CASE-0116,SIPCOT Industrial Corridor Phase 1 (Sec 6),210,4,12.9,Possession (Sec 3E/38),20,12,4.7,38.2,1
+CASE-0117,Thoothukudi Port Rail Spur Phase 2 (Sec 5),113,1,72.4,Declaration (Sec 3D/19),4,14,1.3,15.6,0
+CASE-0118,Vellore Urban Peripheral Phase 1 (Sec 7),37,1,89.2,Notification (Sec 3A/11),4,1,0.1,3.1,1
+CASE-0119,Erode Agri-Logistics Zone Phase 2 (Sec 6),96,1,71.3,SIA & Objection (Sec 3C/15),5,10,3.1,11.3,0
+CASE-0120,SIPCOT Industrial Corridor Phase 3 (Sec 1),68,1,92.9,Notification (Sec 3A/11),2,1,1.6,5.9,0
+CASE-0121,Thoothukudi Port Rail Spur Phase 1 (Sec 1),26,1,51.8,Declaration (Sec 3D/19),2,3,1.7,16.3,0
+CASE-0122,Erode Agri-Logistics Zone Phase 1 (Sec 4),78,2,78.3,Award Inquiry (Sec 3G/23),6,3,2.8,24.0,1
+CASE-0123,Hosur IT Expressway Phase 2 (Sec 3),20,0,60.1,Declaration (Sec 3D/19),0,1,4.0,21.4,0
+CASE-0124,Vellore Urban Peripheral Phase 1 (Sec 2),50,0,64.3,Award Inquiry (Sec 3G/23),1,1,0.0,19.9,0
+CASE-0125,Coimbatore Ring Road Sec Phase 2 (Sec 5),232,4,83.5,Notification (Sec 3A/11),15,14,2.6,7.3,1
+CASE-0126,Salem Bypass Extension Phase 2 (Sec 4),77,1,66.0,Award Inquiry (Sec 3G/23),5,5,6.1,30.3,1
+CASE-0127,Hosur IT Expressway Phase 3 (Sec 7),15,0,57.8,Compensation Disbursement,1,3,5.5,33.4,1
+CASE-0128,Tirunelveli Solar Park Access Phase 3 (Sec 6),110,1,82.6,SIA & Objection (Sec 3C/15),5,5,11.4,21.4,1
+CASE-0129,Tiruchirappalli Freight Link Phase 3 (Sec 2),38,0,90.6,Notification (Sec 3A/11),3,0,5.5,9.4,0
+CASE-0130,Madurai Logistics Park Phase 1 (Sec 1),33,0,75.8,SIA & Objection (Sec 3C/15),0,3,0.5,8.7,0
+CASE-0131,Tiruchirappalli Freight Link Phase 1 (Sec 2),42,0,22.0,Possession (Sec 3E/38),5,2,4.1,36.9,0
+CASE-0132,Erode Agri-Logistics Zone Phase 3 (Sec 6),33,0,87.3,Notification (Sec 3A/11),3,2,5.7,10.7,1
+CASE-0133,Thoothukudi Port Rail Spur Phase 2 (Sec 1),47,0,86.1,SIA & Objection (Sec 3C/15),3,1,3.2,11.9,0
+CASE-0134,Vellore Urban Peripheral Phase 3 (Sec 4),116,1,72.2,SIA & Objection (Sec 3C/15),12,14,3.1,11.9,1
+CASE-0135,SIPCOT Industrial Corridor Phase 1 (Sec 3),53,1,73.1,Notification (Sec 3A/11),2,0,0.2,3.4,0
+CASE-0136,Vellore Urban Peripheral Phase 2 (Sec 2),105,1,14.5,Compensation Disbursement,1,10,2.7,29.0,0
+CASE-0137,Tiruchirappalli Freight Link Phase 3 (Sec 1),30,1,79.7,SIA & Objection (Sec 3C/15),2,1,7.1,17.0,1
+CASE-0138,Erode Agri-Logistics Zone Phase 2 (Sec 5),127,2,77.2,Award Inquiry (Sec 3G/23),1,25,1.9,22.4,1
+CASE-0139,Tirunelveli Solar Park Access Phase 3 (Sec 5),86,2,80.4,Declaration (Sec 3D/19),4,2,0.0,13.9,0
+CASE-0140,Thoothukudi Port Rail Spur Phase 3 (Sec 3),196,2,83.3,Notification (Sec 3A/11),15,26,4.1,8.8,1
+CASE-0141,Erode Agri-Logistics Zone Phase 2 (Sec 1),208,5,31.4,Declaration (Sec 3D/19),5,23,0.0,12.2,1
+CASE-0142,Tirunelveli Solar Park Access Phase 2 (Sec 4),64,1,68.8,Possession (Sec 3E/38),1,8,2.9,35.7,1
+CASE-0143,Tirunelveli Solar Park Access Phase 3 (Sec 1),16,0,6.7,Possession (Sec 3E/38),0,0,0.0,29.5,0
+CASE-0144,Tirunelveli Solar Park Access Phase 3 (Sec 6),31,1,84.1,Award Inquiry (Sec 3G/23),1,3,0.0,19.7,1
+CASE-0145,Hosur IT Expressway Phase 2 (Sec 1),42,2,73.5,SIA & Objection (Sec 3C/15),3,4,8.2,18.3,1
+CASE-0146,Thoothukudi Port Rail Spur Phase 3 (Sec 1),166,9,43.9,Declaration (Sec 3D/19),10,12,5.2,20.1,1
+CASE-0147,Hosur IT Expressway Phase 2 (Sec 4),31,1,41.4,Award Inquiry (Sec 3G/23),0,7,0.0,19.0,1
+CASE-0148,Thoothukudi Port Rail Spur Phase 1 (Sec 1),93,4,68.4,Compensation Disbursement,0,6,0.0,22.3,1
+CASE-0149,Salem Bypass Extension Phase 1 (Sec 6),28,1,10.8,Possession (Sec 3E/38),1,1,1.3,33.6,0
+CASE-0150,Hosur IT Expressway Phase 3 (Sec 2),190,5,54.4,Award Inquiry (Sec 3G/23),2,3,4.5,28.4,1
+CASE-0151,Tirunelveli Solar Park Access Phase 1 (Sec 7),196,1,50.8,Possession (Sec 3E/38),4,27,3.4,35.7,1
+CASE-0152,Thoothukudi Port Rail Spur Phase 3 (Sec 2),170,2,4.1,Possession (Sec 3E/38),2,3,2.0,34.9,0
+CASE-0153,Thoothukudi Port Rail Spur Phase 3 (Sec 2),149,4,95.9,Notification (Sec 3A/11),11,21,7.0,12.0,1
+CASE-0154,Tirunelveli Solar Park Access Phase 3 (Sec 5),50,0,96.9,SIA & Objection (Sec 3C/15),0,6,1.9,11.6,0
+CASE-0155,Salem Bypass Extension Phase 1 (Sec 6),20,0,85.9,SIA & Objection (Sec 3C/15),3,0,3.2,11.9,0
+CASE-0156,SIPCOT Industrial Corridor Phase 2 (Sec 6),77,2,79.5,Award Inquiry (Sec 3G/23),2,1,0.0,16.4,1
+CASE-0157,SIPCOT Industrial Corridor Phase 1 (Sec 6),84,0,42.1,Award Inquiry (Sec 3G/23),5,4,6.2,26.7,1
+CASE-0158,Vellore Urban Peripheral Phase 3 (Sec 6),64,2,14.3,Compensation Disbursement,4,8,1.7,28.7,1
+CASE-0159,Hosur IT Expressway Phase 2 (Sec 6),24,0,54.3,Declaration (Sec 3D/19),0,1,0.0,3.5,0
+CASE-0160,Erode Agri-Logistics Zone Phase 2 (Sec 7),18,0,68.6,Compensation Disbursement,1,3,0.0,22.6,0
+CASE-0161,Erode Agri-Logistics Zone Phase 1 (Sec 4),66,1,39.5,Possession (Sec 3E/38),1,5,0.4,32.4,0
+CASE-0162,SIPCOT Industrial Corridor Phase 1 (Sec 5),58,1,83.7,Award Inquiry (Sec 3G/23),3,5,0.0,16.1,1
+CASE-0163,SIPCOT Industrial Corridor Phase 2 (Sec 4),37,0,74.0,Possession (Sec 3E/38),6,2,4.7,40.3,1
+CASE-0164,Madurai Logistics Park Phase 1 (Sec 5),37,1,35.7,Compensation Disbursement,0,4,2.8,29.2,0
+CASE-0165,Madurai Logistics Park Phase 3 (Sec 2),202,0,58.0,Possession (Sec 3E/38),17,31,1.4,34.5,0
+CASE-0166,SIPCOT Industrial Corridor Phase 3 (Sec 4),87,3,19.6,Compensation Disbursement,3,13,24.1,55.1,1
+CASE-0167,Salem Bypass Extension Phase 1 (Sec 4),71,1,65.5,Award Inquiry (Sec 3G/23),0,4,0.4,20.4,0
+CASE-0168,Salem Bypass Extension Phase 1 (Sec 7),67,0,83.9,SIA & Objection (Sec 3C/15),13,2,0.0,5.0,0
+CASE-0169,Erode Agri-Logistics Zone Phase 1 (Sec 7),58,2,93.9,SIA & Objection (Sec 3C/15),2,3,3.8,13.2,1
+CASE-0170,Madurai Logistics Park Phase 2 (Sec 2),57,1,91.9,Notification (Sec 3A/11),4,4,5.1,9.7,1
+CASE-0171,Tirunelveli Solar Park Access Phase 3 (Sec 3),383,17,15.4,Possession (Sec 3E/38),0,17,0.9,33.2,1
+CASE-0172,Thoothukudi Port Rail Spur Phase 1 (Sec 2),24,0,7.4,Compensation Disbursement,2,4,0.0,23.2,0
+CASE-0173,Vellore Urban Peripheral Phase 2 (Sec 4),25,0,85.5,SIA & Objection (Sec 3C/15),1,3,1.6,10.3,0
+CASE-0174,Hosur IT Expressway Phase 2 (Sec 1),25,1,12.6,Possession (Sec 3E/38),0,4,0.0,31.4,0
+CASE-0175,Tiruchirappalli Freight Link Phase 2 (Sec 1),15,1,70.8,Declaration (Sec 3D/19),1,1,3.3,19.8,0
+CASE-0176,Madurai Logistics Park Phase 2 (Sec 4),61,1,82.0,Declaration (Sec 3D/19),5,3,1.5,16.8,0
+CASE-0177,Tirunelveli Solar Park Access Phase 1 (Sec 1),283,6,44.9,Possession (Sec 3E/38),36,42,1.5,34.0,1
+CASE-0178,Coimbatore Ring Road Sec Phase 3 (Sec 1),135,4,64.0,Award Inquiry (Sec 3G/23),9,13,3.9,24.9,1
+CASE-0179,Tiruchirappalli Freight Link Phase 2 (Sec 4),47,0,31.4,Award Inquiry (Sec 3G/23),2,8,7.4,28.9,1
+CASE-0180,Erode Agri-Logistics Zone Phase 3 (Sec 2),93,2,73.1,Notification (Sec 3A/11),3,7,0.0,2.4,0
+CASE-0181,Madurai Logistics Park Phase 3 (Sec 5),21,0,39.9,Declaration (Sec 3D/19),0,2,8.4,25.1,1
+CASE-0182,Coimbatore Ring Road Sec Phase 3 (Sec 2),67,1,98.0,SIA & Objection (Sec 3C/15),5,2,9.2,19.4,1
+CASE-0183,Erode Agri-Logistics Zone Phase 1 (Sec 2),24,0,79.9,SIA & Objection (Sec 3C/15),0,4,0.0,5.4,0
+CASE-0184,Erode Agri-Logistics Zone Phase 3 (Sec 6),25,0,73.3,Declaration (Sec 3D/19),2,2,0.0,13.1,0
+CASE-0185,Madurai Logistics Park Phase 2 (Sec 4),58,3,67.5,Award Inquiry (Sec 3G/23),3,0,1.5,22.8,1
+CASE-0186,Tiruchirappalli Freight Link Phase 3 (Sec 7),94,3,83.8,Notification (Sec 3A/11),7,15,7.1,12.2,1
+CASE-0187,SIPCOT Industrial Corridor Phase 3 (Sec 6),56,1,37.3,Declaration (Sec 3D/19),2,2,0.4,14.5,0
+CASE-0188,SIPCOT Industrial Corridor Phase 1 (Sec 5),44,0,4.9,Possession (Sec 3E/38),2,2,0.0,30.8,0
+CASE-0189,Erode Agri-Logistics Zone Phase 3 (Sec 2),85,2,21.9,Possession (Sec 3E/38),0,1,11.9,46.3,1
+CASE-0190,Coimbatore Ring Road Sec Phase 3 (Sec 3),95,2,0.8,Compensation Disbursement,7,11,5.9,33.4,1
+CASE-0191,Thoothukudi Port Rail Spur Phase 2 (Sec 6),156,4,13.4,Compensation Disbursement,13,11,4.1,30.9,1
+CASE-0192,Tirunelveli Solar Park Access Phase 2 (Sec 3),23,1,80.0,Award Inquiry (Sec 3G/23),0,1,1.8,22.0,0
+CASE-0193,Coimbatore Ring Road Sec Phase 2 (Sec 5),66,1,82.6,Declaration (Sec 3D/19),1,5,0.3,14.5,0
+CASE-0194,SIPCOT Industrial Corridor Phase 1 (Sec 7),206,1,49.6,Declaration (Sec 3D/19),10,5,2.1,16.7,0
+CASE-0195,SIPCOT Industrial Corridor Phase 1 (Sec 6),51,3,87.3,SIA & Objection (Sec 3C/15),0,3,0.0,1.8,1
+CASE-0196,Hosur IT Expressway Phase 2 (Sec 1),25,0,75.9,Notification (Sec 3A/11),1,2,0.0,1.4,0
+CASE-0197,Salem Bypass Extension Phase 1 (Sec 7),60,1,86.6,Notification (Sec 3A/11),0,8,3.6,6.9,0
+CASE-0198,Tirunelveli Solar Park Access Phase 3 (Sec 3),137,6,71.2,Declaration (Sec 3D/19),1,7,2.1,17.3,1
+CASE-0199,SIPCOT Industrial Corridor Phase 1 (Sec 2),51,2,64.6,Possession (Sec 3E/38),0,1,3.5,36.5,0
+CASE-0200,Tiruchirappalli Freight Link Phase 1 (Sec 4),40,1,89.1,Notification (Sec 3A/11),1,3,2.9,6.9,0
+CASE-0201,Hosur IT Expressway Phase 1 (Sec 1),141,5,80.7,Award Inquiry (Sec 3G/23),5,18,18.5,42.4,1
+CASE-0202,Tirunelveli Solar Park Access Phase 1 (Sec 3),16,0,33.8,Declaration (Sec 3D/19),1,1,0.0,7.6,0
+CASE-0203,Vellore Urban Peripheral Phase 1 (Sec 2),17,0,34.8,Compensation Disbursement,1,0,2.2,29.2,0
+CASE-0204,Vellore Urban Peripheral Phase 2 (Sec 2),23,0,50.2,Award Inquiry (Sec 3G/23),0,0,0.0,15.1,0
+CASE-0205,Coimbatore Ring Road Sec Phase 2 (Sec 2),74,1,8.6,Compensation Disbursement,1,5,0.0,24.8,0
+CASE-0206,Coimbatore Ring Road Sec Phase 1 (Sec 5),20,1,71.8,Award Inquiry (Sec 3G/23),2,1,3.4,23.7,0
+CASE-0207,SIPCOT Industrial Corridor Phase 1 (Sec 6),31,0,54.5,Declaration (Sec 3D/19),2,2,0.0,11.2,0
+CASE-0208,Vellore Urban Peripheral Phase 1 (Sec 6),78,1,47.1,Award Inquiry (Sec 3G/23),2,11,0.0,15.1,0
+CASE-0209,Erode Agri-Logistics Zone Phase 2 (Sec 4),18,0,7.3,Possession (Sec 3E/38),1,3,2.3,35.8,0
+CASE-0210,Erode Agri-Logistics Zone Phase 1 (Sec 3),71,0,97.3,Notification (Sec 3A/11),1,17,1.1,4.5,0
+CASE-0211,SIPCOT Industrial Corridor Phase 2 (Sec 4),106,3,63.8,Declaration (Sec 3D/19),7,10,11.7,28.7,1
+CASE-0212,SIPCOT Industrial Corridor Phase 3 (Sec 5),15,0,89.1,SIA & Objection (Sec 3C/15),0,1,0.0,3.2,0
+CASE-0213,Salem Bypass Extension Phase 1 (Sec 2),55,1,78.4,Notification (Sec 3A/11),3,8,0.0,1.0,0
+CASE-0214,Madurai Logistics Park Phase 1 (Sec 1),126,2,63.6,Award Inquiry (Sec 3G/23),9,16,0.0,19.9,1
+CASE-0215,SIPCOT Industrial Corridor Phase 3 (Sec 1),146,3,70.9,SIA & Objection (Sec 3C/15),4,15,1.4,9.6,1
+CASE-0216,Madurai Logistics Park Phase 1 (Sec 4),28,0,66.3,Award Inquiry (Sec 3G/23),0,0,5.9,26.4,1
+CASE-0217,Vellore Urban Peripheral Phase 3 (Sec 1),236,8,99.5,SIA & Objection (Sec 3C/15),18,7,0.0,7.7,1
+CASE-0218,Madurai Logistics Park Phase 3 (Sec 7),15,1,78.3,Declaration (Sec 3D/19),0,2,1.2,15.9,0
+CASE-0219,SIPCOT Industrial Corridor Phase 2 (Sec 3),94,1,30.5,Declaration (Sec 3D/19),7,3,3.3,18.1,0
+CASE-0220,Erode Agri-Logistics Zone Phase 2 (Sec 7),143,4,70.8,Notification (Sec 3A/11),9,14,5.7,11.1,1
+CASE-0221,Tiruchirappalli Freight Link Phase 1 (Sec 7),40,0,59.1,Declaration (Sec 3D/19),3,3,0.0,12.8,0
+CASE-0222,Hosur IT Expressway Phase 1 (Sec 6),37,0,65.4,Declaration (Sec 3D/19),1,3,3.2,17.8,0
+CASE-0223,Erode Agri-Logistics Zone Phase 3 (Sec 2),24,2,5.6,Possession (Sec 3E/38),0,1,6.4,43.9,1
+CASE-0224,Madurai Logistics Park Phase 3 (Sec 7),109,2,94.5,SIA & Objection (Sec 3C/15),4,11,5.8,15.3,1
+CASE-0225,Erode Agri-Logistics Zone Phase 1 (Sec 6),22,0,31.4,Award Inquiry (Sec 3G/23),1,1,0.0,12.5,0
+CASE-0226,Coimbatore Ring Road Sec Phase 1 (Sec 5),21,0,31.5,Declaration (Sec 3D/19),3,0,1.9,17.0,0
+CASE-0227,Tirunelveli Solar Park Access Phase 3 (Sec 5),29,0,71.1,Award Inquiry (Sec 3G/23),3,2,4.5,28.6,1
+CASE-0228,Salem Bypass Extension Phase 1 (Sec 1),17,0,75.8,Declaration (Sec 3D/19),0,3,0.0,12.6,0
+CASE-0229,Hosur IT Expressway Phase 3 (Sec 5),37,0,16.9,Possession (Sec 3E/38),3,5,2.1,34.3,0
+CASE-0230,Vellore Urban Peripheral Phase 3 (Sec 1),61,0,39.5,Declaration (Sec 3D/19),0,4,0.0,11.5,0
+CASE-0231,Madurai Logistics Park Phase 1 (Sec 7),26,3,42.1,Possession (Sec 3E/38),1,1,5.3,40.6,1
+CASE-0232,Coimbatore Ring Road Sec Phase 2 (Sec 1),97,0,78.0,SIA & Objection (Sec 3C/15),2,24,10.6,25.8,1
+CASE-0233,Salem Bypass Extension Phase 1 (Sec 4),79,1,0.5,Compensation Disbursement,1,4,1.3,28.4,0
+CASE-0234,Coimbatore Ring Road Sec Phase 2 (Sec 5),53,1,15.8,Compensation Disbursement,8,5,3.7,30.8,0
+CASE-0235,Tirunelveli Solar Park Access Phase 2 (Sec 4),32,1,10.6,Compensation Disbursement,1,1,0.0,22.8,0
+CASE-0236,Madurai Logistics Park Phase 1 (Sec 7),46,0,43.1,Possession (Sec 3E/38),2,1,1.7,34.5,0
+CASE-0237,Coimbatore Ring Road Sec Phase 2 (Sec 2),72,0,39.1,Award Inquiry (Sec 3G/23),3,8,1.2,22.0,0
+CASE-0238,Madurai Logistics Park Phase 2 (Sec 2),46,1,85.3,Notification (Sec 3A/11),6,1,0.0,1.0,0
+CASE-0239,Tirunelveli Solar Park Access Phase 3 (Sec 6),90,0,4.0,Compensation Disbursement,9,8,0.0,24.5,0
+CASE-0240,Erode Agri-Logistics Zone Phase 2 (Sec 1),24,1,61.2,Award Inquiry (Sec 3G/23),0,1,0.0,19.7,1
+CASE-0241,Thoothukudi Port Rail Spur Phase 2 (Sec 6),224,0,84.6,Notification (Sec 3A/11),10,27,8.3,12.8,1
+CASE-0242,Madurai Logistics Park Phase 1 (Sec 5),75,1,70.0,SIA & Objection (Sec 3C/15),0,4,3.2,13.0,0
+CASE-0243,Vellore Urban Peripheral Phase 2 (Sec 7),78,1,73.2,Notification (Sec 3A/11),1,2,2.9,6.4,0
+CASE-0244,Salem Bypass Extension Phase 3 (Sec 1),43,1,60.7,Declaration (Sec 3D/19),3,8,2.1,16.9,0
+CASE-0245,Salem Bypass Extension Phase 3 (Sec 3),67,2,70.8,Declaration (Sec 3D/19),1,1,0.2,14.3,0
+CASE-0246,Erode Agri-Logistics Zone Phase 3 (Sec 3),23,0,30.2,Possession (Sec 3E/38),1,1,3.9,39.4,0
+CASE-0247,SIPCOT Industrial Corridor Phase 2 (Sec 7),72,0,99.8,Notification (Sec 3A/11),7,0,0.0,1.7,0
+CASE-0248,Madurai Logistics Park Phase 1 (Sec 7),28,0,85.8,Notification (Sec 3A/11),0,2,1.1,4.5,0
+CASE-0249,Madurai Logistics Park Phase 1 (Sec 2),73,0,72.2,SIA & Objection (Sec 3C/15),2,7,1.1,9.8,0
+CASE-0250,Thoothukudi Port Rail Spur Phase 3 (Sec 5),83,1,17.7,Possession (Sec 3E/38),1,1,0.0,26.8,0
+CASE-0251,Hosur IT Expressway Phase 2 (Sec 6),113,3,11.6,Possession (Sec 3E/38),15,12,5.1,41.4,1
+CASE-0252,Tirunelveli Solar Park Access Phase 2 (Sec 7),17,2,64.2,Declaration (Sec 3D/19),6,2,9.8,25.5,1
+CASE-0253,Salem Bypass Extension Phase 3 (Sec 6),128,3,93.5,SIA & Objection (Sec 3C/15),2,16,3.3,13.1,1
+CASE-0254,Tirunelveli Solar Park Access Phase 3 (Sec 3),26,0,34.2,Award Inquiry (Sec 3G/23),3,1,2.3,23.5,0
+CASE-0255,Tirunelveli Solar Park Access Phase 2 (Sec 1),49,0,6.8,Possession (Sec 3E/38),0,5,2.8,37.3,0
+CASE-0256,Thoothukudi Port Rail Spur Phase 3 (Sec 3),179,5,63.0,Award Inquiry (Sec 3G/23),13,17,21.3,43.6,1
+CASE-0257,Vellore Urban Peripheral Phase 3 (Sec 3),100,3,16.5,Possession (Sec 3E/38),8,11,10.2,42.9,1
+CASE-0258,Tiruchirappalli Freight Link Phase 1 (Sec 5),18,1,56.6,Possession (Sec 3E/38),2,1,1.0,33.2,1
+CASE-0259,Erode Agri-Logistics Zone Phase 1 (Sec 4),77,4,76.9,Notification (Sec 3A/11),19,0,8.7,13.5,1
+CASE-0260,SIPCOT Industrial Corridor Phase 2 (Sec 1),90,2,87.8,SIA & Objection (Sec 3C/15),3,9,0.0,5.4,0
+CASE-0261,Coimbatore Ring Road Sec Phase 1 (Sec 3),243,2,76.3,Declaration (Sec 3D/19),9,13,3.9,18.1,0
+CASE-0262,Vellore Urban Peripheral Phase 3 (Sec 7),68,0,95.8,SIA & Objection (Sec 3C/15),7,3,2.6,11.9,0
+CASE-0263,Vellore Urban Peripheral Phase 2 (Sec 3),15,0,30.4,Possession (Sec 3E/38),0,2,0.1,32.1,0
+CASE-0264,Salem Bypass Extension Phase 3 (Sec 6),216,1,69.7,Compensation Disbursement,3,7,1.7,28.5,1
+CASE-0265,Tiruchirappalli Freight Link Phase 2 (Sec 2),41,0,58.6,Declaration (Sec 3D/19),2,2,3.9,20.6,0
+CASE-0266,Tiruchirappalli Freight Link Phase 3 (Sec 7),108,0,20.2,Compensation Disbursement,6,11,0.0,25.7,0
+CASE-0267,SIPCOT Industrial Corridor Phase 3 (Sec 1),207,2,11.0,Possession (Sec 3E/38),35,21,0.0,29.3,1
+CASE-0268,Thoothukudi Port Rail Spur Phase 2 (Sec 6),37,0,89.0,Notification (Sec 3A/11),4,0,0.0,1.1,0
+CASE-0269,Tiruchirappalli Freight Link Phase 2 (Sec 1),144,1,94.3,SIA & Objection (Sec 3C/15),2,1,3.0,12.6,0
+CASE-0270,Thoothukudi Port Rail Spur Phase 3 (Sec 4),48,1,96.7,SIA & Objection (Sec 3C/15),0,1,0.0,6.6,0
+CASE-0271,Tirunelveli Solar Park Access Phase 1 (Sec 5),122,2,24.8,Possession (Sec 3E/38),4,13,1.7,35.1,0
+CASE-0272,Thoothukudi Port Rail Spur Phase 3 (Sec 4),132,2,39.1,Declaration (Sec 3D/19),15,2,2.3,16.9,0
+CASE-0273,Erode Agri-Logistics Zone Phase 1 (Sec 5),72,0,90.7,SIA & Objection (Sec 3C/15),6,5,2.5,12.6,0
+CASE-0274,Thoothukudi Port Rail Spur Phase 1 (Sec 3),21,0,85.3,Notification (Sec 3A/11),1,0,2.8,6.2,0
+CASE-0275,Erode Agri-Logistics Zone Phase 1 (Sec 3),57,2,64.1,Award Inquiry (Sec 3G/23),2,5,0.0,16.8,0
+CASE-0276,Tiruchirappalli Freight Link Phase 2 (Sec 4),189,2,85.1,SIA & Objection (Sec 3C/15),0,17,2.8,11.0,1
+CASE-0277,Tiruchirappalli Freight Link Phase 2 (Sec 3),28,1,81.2,Declaration (Sec 3D/19),3,1,0.0,10.5,0
+CASE-0278,Tiruchirappalli Freight Link Phase 3 (Sec 2),120,5,94.4,Notification (Sec 3A/11),0,9,5.8,13.6,1
+CASE-0279,SIPCOT Industrial Corridor Phase 3 (Sec 5),46,2,78.5,Award Inquiry (Sec 3G/23),3,0,0.0,13.5,1
+CASE-0280,Coimbatore Ring Road Sec Phase 1 (Sec 3),15,0,66.3,Declaration (Sec 3D/19),0,0,3.6,19.4,0
+CASE-0281,Tiruchirappalli Freight Link Phase 2 (Sec 1),52,2,43.2,Declaration (Sec 3D/19),3,2,0.0,9.7,1
+CASE-0282,Madurai Logistics Park Phase 2 (Sec 1),32,0,31.6,Compensation Disbursement,5,3,4.2,31.1,0
+CASE-0283,Coimbatore Ring Road Sec Phase 3 (Sec 3),75,0,16.6,Compensation Disbursement,2,5,7.2,35.7,0
+CASE-0284,Vellore Urban Peripheral Phase 3 (Sec 4),118,2,11.3,Compensation Disbursement,8,1,0.0,17.9,0
+CASE-0285,Thoothukudi Port Rail Spur Phase 1 (Sec 4),249,1,92.7,Notification (Sec 3A/11),9,50,6.5,12.0,1
+CASE-0286,Erode Agri-Logistics Zone Phase 3 (Sec 5),17,1,53.3,Compensation Disbursement,0,2,2.5,29.7,1
+CASE-0287,Tirunelveli Solar Park Access Phase 2 (Sec 3),57,0,82.0,Declaration (Sec 3D/19),8,3,1.0,15.8,0
+CASE-0288,SIPCOT Industrial Corridor Phase 2 (Sec 1),106,1,69.1,Award Inquiry (Sec 3G/23),4,7,0.0,15.0,0
+CASE-0289,Tirunelveli Solar Park Access Phase 1 (Sec 5),42,0,6.4,Compensation Disbursement,1,3,0.0,18.5,0
+CASE-0290,Thoothukudi Port Rail Spur Phase 3 (Sec 7),31,0,96.2,SIA & Objection (Sec 3C/15),4,5,3.6,12.0,0
+CASE-0291,Hosur IT Expressway Phase 1 (Sec 1),173,3,66.9,Possession (Sec 3E/38),10,30,11.5,46.4,1
+CASE-0292,Hosur IT Expressway Phase 2 (Sec 6),144,3,34.4,Award Inquiry (Sec 3G/23),0,4,0.0,18.5,0
+CASE-0293,Erode Agri-Logistics Zone Phase 1 (Sec 2),81,0,21.1,Possession (Sec 3E/38),2,7,2.6,34.8,0
+CASE-0294,Erode Agri-Logistics Zone Phase 2 (Sec 3),58,1,80.9,Notification (Sec 3A/11),2,5,0.0,1.8,0
+CASE-0295,Salem Bypass Extension Phase 1 (Sec 6),75,0,97.7,SIA & Objection (Sec 3C/15),0,8,9.2,18.8,1
+CASE-0296,Tiruchirappalli Freight Link Phase 2 (Sec 7),61,0,78.1,Declaration (Sec 3D/19),0,12,3.8,20.5,0
+CASE-0297,SIPCOT Industrial Corridor Phase 3 (Sec 5),100,2,93.3,SIA & Objection (Sec 3C/15),16,10,0.0,6.1,1
+CASE-0298,Coimbatore Ring Road Sec Phase 3 (Sec 7),257,2,99.1,Notification (Sec 3A/11),35,15,6.1,10.6,1
+CASE-0299,Erode Agri-Logistics Zone Phase 3 (Sec 5),128,2,78.6,SIA & Objection (Sec 3C/15),2,20,0.1,8.1,0
+CASE-0300,Salem Bypass Extension Phase 3 (Sec 3),31,0,96.1,SIA & Objection (Sec 3C/15),2,4,1.5,9.9,0
+CASE-0301,Madurai Logistics Park Phase 2 (Sec 1),76,1,32.4,Compensation Disbursement,1,2,2.2,30.4,0
+CASE-0302,Salem Bypass Extension Phase 2 (Sec 1),220,6,19.2,Compensation Disbursement,6,30,1.8,27.9,1
+CASE-0303,Erode Agri-Logistics Zone Phase 1 (Sec 2),40,4,21.9,Compensation Disbursement,3,0,8.0,38.6,1
+CASE-0304,Vellore Urban Peripheral Phase 2 (Sec 5),113,3,71.7,Notification (Sec 3A/11),1,15,13.5,17.8,1
+CASE-0305,Salem Bypass Extension Phase 2 (Sec 6),190,6,93.6,SIA & Objection (Sec 3C/15),0,13,4.0,14.9,1
+CASE-0306,Vellore Urban Peripheral Phase 3 (Sec 7),41,0,65.8,Award Inquiry (Sec 3G/23),1,1,1.2,21.6,0
+CASE-0307,Coimbatore Ring Road Sec Phase 1 (Sec 7),17,2,72.8,Award Inquiry (Sec 3G/23),0,0,0.0,18.3,1
+CASE-0308,Salem Bypass Extension Phase 1 (Sec 4),86,1,59.0,Award Inquiry (Sec 3G/23),4,12,2.9,23.2,1
+CASE-0309,Salem Bypass Extension Phase 1 (Sec 5),18,0,98.1,Notification (Sec 3A/11),3,2,0.0,1.6,0
+CASE-0310,Erode Agri-Logistics Zone Phase 1 (Sec 4),21,0,38.0,Award Inquiry (Sec 3G/23),3,2,0.0,19.2,0
+CASE-0311,Madurai Logistics Park Phase 2 (Sec 4),15,1,37.4,Possession (Sec 3E/38),1,0,0.0,31.3,0
+CASE-0312,Vellore Urban Peripheral Phase 2 (Sec 1),15,0,99.5,Notification (Sec 3A/11),0,2,5.0,8.6,1
+CASE-0313,Madurai Logistics Park Phase 1 (Sec 5),60,0,42.1,Award Inquiry (Sec 3G/23),2,2,0.9,21.2,1
+CASE-0314,SIPCOT Industrial Corridor Phase 1 (Sec 3),140,1,84.4,Notification (Sec 3A/11),1,5,0.0,1.0,0
+CASE-0315,Coimbatore Ring Road Sec Phase 1 (Sec 7),69,0,4.0,Possession (Sec 3E/38),5,11,0.9,33.0,0
+CASE-0316,Vellore Urban Peripheral Phase 2 (Sec 3),19,1,37.5,Declaration (Sec 3D/19),2,1,3.0,18.9,0
+CASE-0317,Erode Agri-Logistics Zone Phase 2 (Sec 2),37,2,23.6,Possession (Sec 3E/38),5,2,0.0,31.0,0
+CASE-0318,Madurai Logistics Park Phase 1 (Sec 6),162,6,54.6,Declaration (Sec 3D/19),13,4,7.7,23.1,1
+CASE-0319,Tiruchirappalli Freight Link Phase 1 (Sec 7),27,1,49.8,Award Inquiry (Sec 3G/23),2,2,4.2,25.5,0
+CASE-0320,Erode Agri-Logistics Zone Phase 2 (Sec 1),25,3,70.8,SIA & Objection (Sec 3C/15),2,5,10.9,27.5,1
+CASE-0321,Madurai Logistics Park Phase 2 (Sec 5),80,2,19.8,Possession (Sec 3E/38),5,14,4.2,37.9,0
+CASE-0322,Coimbatore Ring Road Sec Phase 2 (Sec 1),79,0,16.8,Possession (Sec 3E/38),7,7,0.9,33.7,0
+CASE-0323,Tirunelveli Solar Park Access Phase 2 (Sec 6),54,3,44.9,Award Inquiry (Sec 3G/23),3,0,2.2,24.1,1
+CASE-0324,Thoothukudi Port Rail Spur Phase 1 (Sec 1),17,0,77.7,SIA & Objection (Sec 3C/15),2,2,0.0,5.5,0
+CASE-0325,Salem Bypass Extension Phase 2 (Sec 7),49,2,32.9,Declaration (Sec 3D/19),3,7,4.4,19.3,1
+CASE-0326,Tiruchirappalli Freight Link Phase 2 (Sec 3),174,2,84.5,SIA & Objection (Sec 3C/15),5,33,0.9,9.8,1
+CASE-0327,Vellore Urban Peripheral Phase 3 (Sec 6),37,0,45.8,Declaration (Sec 3D/19),1,2,1.9,16.5,0
+CASE-0328,Madurai Logistics Park Phase 2 (Sec 6),95,0,61.5,Award Inquiry (Sec 3G/23),3,6,0.0,17.9,0
+CASE-0329,Salem Bypass Extension Phase 1 (Sec 1),44,0,58.6,Declaration (Sec 3D/19),0,8,0.0,11.5,0
+CASE-0330,Erode Agri-Logistics Zone Phase 3 (Sec 4),92,0,96.9,Notification (Sec 3A/11),12,13,8.1,11.8,1
+CASE-0331,Salem Bypass Extension Phase 2 (Sec 3),37,1,88.9,SIA & Objection (Sec 3C/15),6,1,2.5,10.9,0
+CASE-0332,Coimbatore Ring Road Sec Phase 3 (Sec 1),85,2,84.9,SIA & Objection (Sec 3C/15),5,1,0.0,7.9,0
+CASE-0333,Erode Agri-Logistics Zone Phase 3 (Sec 4),74,2,97.1,SIA & Objection (Sec 3C/15),3,3,3.7,14.6,1
+CASE-0334,Erode Agri-Logistics Zone Phase 1 (Sec 4),241,4,44.9,Declaration (Sec 3D/19),8,4,0.4,14.6,0
+CASE-0335,Erode Agri-Logistics Zone Phase 2 (Sec 3),38,2,73.2,Declaration (Sec 3D/19),1,2,4.2,20.0,1
+CASE-0336,SIPCOT Industrial Corridor Phase 3 (Sec 1),114,2,58.4,Declaration (Sec 3D/19),21,2,0.0,13.4,0
+CASE-0337,Coimbatore Ring Road Sec Phase 2 (Sec 1),77,0,12.3,Compensation Disbursement,0,5,3.6,31.8,0
+CASE-0338,Vellore Urban Peripheral Phase 3 (Sec 6),21,1,83.9,Award Inquiry (Sec 3G/23),3,2,0.8,21.2,0
+CASE-0339,Madurai Logistics Park Phase 3 (Sec 3),18,0,98.8,Notification (Sec 3A/11),0,0,1.5,4.7,0
+CASE-0340,Madurai Logistics Park Phase 3 (Sec 3),19,0,40.9,Award Inquiry (Sec 3G/23),1,1,5.3,26.4,1
+CASE-0341,Tirunelveli Solar Park Access Phase 1 (Sec 5),165,3,71.8,Possession (Sec 3E/38),0,2,12.0,56.0,1
+CASE-0342,Hosur IT Expressway Phase 3 (Sec 5),191,4,96.5,Notification (Sec 3A/11),14,15,21.4,26.4,1
+CASE-0343,Thoothukudi Port Rail Spur Phase 1 (Sec 4),217,6,96.6,SIA & Objection (Sec 3C/15),6,12,0.6,9.0,1
+CASE-0344,Tirunelveli Solar Park Access Phase 1 (Sec 6),84,2,16.4,Compensation Disbursement,3,5,0.0,23.7,0
+CASE-0345,Hosur IT Expressway Phase 1 (Sec 3),213,1,93.9,SIA & Objection (Sec 3C/15),5,9,0.0,7.0,0
+CASE-0346,Madurai Logistics Park Phase 2 (Sec 4),84,1,53.3,Award Inquiry (Sec 3G/23),5,5,1.2,21.8,1
+CASE-0347,Tirunelveli Solar Park Access Phase 2 (Sec 4),61,0,74.0,Compensation Disbursement,5,6,0.0,23.3,1
+CASE-0348,Erode Agri-Logistics Zone Phase 3 (Sec 5),66,1,82.4,Declaration (Sec 3D/19),8,11,3.0,18.5,1
+CASE-0349,Madurai Logistics Park Phase 3 (Sec 5),67,1,39.7,Declaration (Sec 3D/19),1,0,0.0,11.0,0
+CASE-0350,Madurai Logistics Park Phase 2 (Sec 6),75,0,95.0,SIA & Objection (Sec 3C/15),10,9,3.1,11.8,0
+CASE-0351,Madurai Logistics Park Phase 2 (Sec 3),63,2,24.6,Compensation Disbursement,2,0,0.0,23.8,0
+CASE-0352,Tirunelveli Solar Park Access Phase 1 (Sec 5),26,0,92.1,SIA & Objection (Sec 3C/15),3,0,0.4,8.6,0
+CASE-0353,Hosur IT Expressway Phase 2 (Sec 4),33,0,74.9,SIA & Objection (Sec 3C/15),0,3,0.5,8.7,0
+CASE-0354,Madurai Logistics Park Phase 3 (Sec 7),100,2,52.8,Declaration (Sec 3D/19),6,2,2.9,17.3,0
+CASE-0355,Hosur IT Expressway Phase 1 (Sec 2),29,1,81.7,Notification (Sec 3A/11),2,0,0.4,3.6,0
+CASE-0356,Salem Bypass Extension Phase 1 (Sec 3),97,1,55.9,Declaration (Sec 3D/19),6,6,0.5,14.6,0
+CASE-0357,Thoothukudi Port Rail Spur Phase 1 (Sec 3),22,0,80.4,Award Inquiry (Sec 3G/23),2,2,0.0,18.6,0
+CASE-0358,Erode Agri-Logistics Zone Phase 3 (Sec 7),125,4,85.8,Notification (Sec 3A/11),13,3,3.2,6.5,1
+CASE-0359,SIPCOT Industrial Corridor Phase 2 (Sec 3),148,1,76.6,Declaration (Sec 3D/19),6,12,3.1,18.0,0
+CASE-0360,SIPCOT Industrial Corridor Phase 3 (Sec 2),29,1,78.3,Notification (Sec 3A/11),0,3,8.9,14.9,1
+CASE-0361,Coimbatore Ring Road Sec Phase 3 (Sec 6),40,2,78.2,SIA & Objection (Sec 3C/15),5,1,2.0,10.6,0
+CASE-0362,Vellore Urban Peripheral Phase 2 (Sec 5),41,2,39.1,Award Inquiry (Sec 3G/23),3,6,0.0,18.1,1
+CASE-0363,Vellore Urban Peripheral Phase 3 (Sec 2),64,0,59.3,Award Inquiry (Sec 3G/23),0,2,5.4,29.8,1
+CASE-0364,Thoothukudi Port Rail Spur Phase 1 (Sec 7),95,3,85.5,SIA & Objection (Sec 3C/15),5,9,0.0,6.5,1
+CASE-0365,Coimbatore Ring Road Sec Phase 2 (Sec 6),37,2,67.6,Possession (Sec 3E/38),4,3,2.1,35.9,1
+CASE-0366,Salem Bypass Extension Phase 1 (Sec 5),56,1,72.6,SIA & Objection (Sec 3C/15),3,4,0.6,9.0,0
+CASE-0367,Tirunelveli Solar Park Access Phase 2 (Sec 4),23,0,89.3,Notification (Sec 3A/11),1,4,3.1,7.5,0
+CASE-0368,Salem Bypass Extension Phase 3 (Sec 5),160,6,10.5,Possession (Sec 3E/38),8,7,3.1,36.0,1
+CASE-0369,Erode Agri-Logistics Zone Phase 2 (Sec 2),81,1,6.6,Compensation Disbursement,9,1,0.0,20.8,0
+CASE-0370,SIPCOT Industrial Corridor Phase 3 (Sec 5),118,0,98.0,SIA & Objection (Sec 3C/15),17,5,6.5,17.1,1
+CASE-0371,Tiruchirappalli Freight Link Phase 3 (Sec 3),170,2,79.0,Award Inquiry (Sec 3G/23),1,13,10.1,34.9,1
+CASE-0372,Erode Agri-Logistics Zone Phase 3 (Sec 3),31,0,54.0,Compensation Disbursement,1,2,3.6,32.1,1
+CASE-0373,Madurai Logistics Park Phase 2 (Sec 4),311,4,45.3,Declaration (Sec 3D/19),6,26,20.2,39.6,1
+CASE-0374,Vellore Urban Peripheral Phase 2 (Sec 1),76,1,52.7,Compensation Disbursement,5,8,1.3,27.8,1
+CASE-0375,Tiruchirappalli Freight Link Phase 1 (Sec 7),35,1,48.6,Declaration (Sec 3D/19),0,3,6.3,24.6,1
+CASE-0376,Salem Bypass Extension Phase 3 (Sec 3),46,2,41.1,Award Inquiry (Sec 3G/23),5,4,4.0,24.5,1
+CASE-0377,Tirunelveli Solar Park Access Phase 2 (Sec 1),22,1,89.6,SIA & Objection (Sec 3C/15),1,2,2.1,10.8,0
+CASE-0378,Thoothukudi Port Rail Spur Phase 3 (Sec 5),66,3,59.4,Declaration (Sec 3D/19),0,2,0.0,10.1,0
+CASE-0379,Vellore Urban Peripheral Phase 2 (Sec 1),18,1,89.8,Notification (Sec 3A/11),0,0,8.8,16.4,1
+CASE-0380,Tiruchirappalli Freight Link Phase 2 (Sec 6),96,1,46.8,Declaration (Sec 3D/19),13,5,0.0,9.4,0
+CASE-0381,SIPCOT Industrial Corridor Phase 2 (Sec 4),96,2,73.2,SIA & Objection (Sec 3C/15),9,0,0.0,4.1,0
+CASE-0382,SIPCOT Industrial Corridor Phase 3 (Sec 4),42,0,86.0,Notification (Sec 3A/11),3,3,0.0,3.0,0
+CASE-0383,Salem Bypass Extension Phase 1 (Sec 3),81,0,74.7,SIA & Objection (Sec 3C/15),1,4,2.3,10.5,0
+CASE-0384,Salem Bypass Extension Phase 3 (Sec 3),111,1,65.1,Award Inquiry (Sec 3G/23),1,0,3.2,23.8,1
+CASE-0385,Erode Agri-Logistics Zone Phase 2 (Sec 2),72,0,50.9,Award Inquiry (Sec 3G/23),11,2,0.1,20.1,1
+CASE-0386,Salem Bypass Extension Phase 2 (Sec 2),213,1,97.4,Notification (Sec 3A/11),6,19,5.9,13.4,1
+CASE-0387,Tiruchirappalli Freight Link Phase 2 (Sec 7),111,3,78.0,Award Inquiry (Sec 3G/23),3,8,0.0,19.7,1
+CASE-0388,Madurai Logistics Park Phase 1 (Sec 2),86,0,87.7,Notification (Sec 3A/11),3,7,1.1,4.5,0
+CASE-0389,Tirunelveli Solar Park Access Phase 2 (Sec 2),180,5,53.4,Award Inquiry (Sec 3G/23),5,11,0.0,18.8,1
+CASE-0390,Thoothukudi Port Rail Spur Phase 2 (Sec 7),16,1,70.9,Declaration (Sec 3D/19),1,1,0.0,10.9,0
+CASE-0391,Salem Bypass Extension Phase 3 (Sec 5),87,5,72.8,Declaration (Sec 3D/19),7,16,1.1,15.5,1
+CASE-0392,Tirunelveli Solar Park Access Phase 1 (Sec 2),23,0,78.0,SIA & Objection (Sec 3C/15),1,0,0.0,6.2,0
+CASE-0393,Vellore Urban Peripheral Phase 3 (Sec 4),22,1,80.2,SIA & Objection (Sec 3C/15),0,2,0.0,3.5,0
+CASE-0394,Madurai Logistics Park Phase 3 (Sec 7),34,0,77.8,Declaration (Sec 3D/19),1,0,0.7,14.8,0
+CASE-0395,Madurai Logistics Park Phase 1 (Sec 6),246,3,15.1,Compensation Disbursement,16,38,1.5,27.8,1
+CASE-0396,Vellore Urban Peripheral Phase 2 (Sec 3),49,3,59.9,Compensation Disbursement,3,3,5.0,33.5,1
+CASE-0397,Hosur IT Expressway Phase 3 (Sec 5),110,2,78.4,SIA & Objection (Sec 3C/15),24,4,5.1,15.6,1
+CASE-0398,Tirunelveli Solar Park Access Phase 2 (Sec 3),100,2,80.0,Award Inquiry (Sec 3G/23),1,2,0.0,18.7,1
+CASE-0399,Vellore Urban Peripheral Phase 2 (Sec 2),206,3,81.6,SIA & Objection (Sec 3C/15),10,34,16.6,25.9,1
+CASE-0400,Thoothukudi Port Rail Spur Phase 1 (Sec 6),18,0,18.5,Possession (Sec 3E/38),2,0,0.7,33.0,0
+CASE-0401,Salem Bypass Extension Phase 3 (Sec 6),15,0,15.4,Compensation Disbursement,0,0,0.8,27.2,0
+CASE-0402,Salem Bypass Extension Phase 3 (Sec 6),40,0,63.4,Award Inquiry (Sec 3G/23),10,1,1.8,23.1,1
+CASE-0403,Vellore Urban Peripheral Phase 2 (Sec 1),18,1,31.9,Declaration (Sec 3D/19),1,3,1.8,17.5,0
+CASE-0404,Tiruchirappalli Freight Link Phase 1 (Sec 5),151,5,11.2,Possession (Sec 3E/38),18,7,7.1,41.9,1
+CASE-0405,Thoothukudi Port Rail Spur Phase 1 (Sec 2),25,1,89.7,SIA & Objection (Sec 3C/15),2,7,0.0,4.2,0
+CASE-0406,Tiruchirappalli Freight Link Phase 2 (Sec 1),107,0,48.6,Declaration (Sec 3D/19),3,13,4.8,19.1,0
+CASE-0407,SIPCOT Industrial Corridor Phase 3 (Sec 1),80,1,56.8,Award Inquiry (Sec 3G/23),12,6,5.0,29.0,1
+CASE-0408,Tirunelveli Solar Park Access Phase 3 (Sec 7),56,2,97.0,Notification (Sec 3A/11),4,4,0.2,3.3,0
+CASE-0409,Thoothukudi Port Rail Spur Phase 2 (Sec 4),62,1,54.5,Declaration (Sec 3D/19),5,6,0.3,14.4,0
+CASE-0410,Salem Bypass Extension Phase 3 (Sec 6),59,1,39.5,Award Inquiry (Sec 3G/23),1,4,1.4,21.9,0
+CASE-0411,Hosur IT Expressway Phase 1 (Sec 3),99,6,51.1,Award Inquiry (Sec 3G/23),0,5,8.2,32.2,1
+CASE-0412,Madurai Logistics Park Phase 2 (Sec 4),111,2,34.6,Award Inquiry (Sec 3G/23),25,5,0.7,20.8,1
+CASE-0413,Salem Bypass Extension Phase 1 (Sec 1),21,1,50.5,Possession (Sec 3E/38),2,3,0.8,33.1,0
+CASE-0414,SIPCOT Industrial Corridor Phase 2 (Sec 6),63,0,77.1,Notification (Sec 3A/11),3,3,3.0,6.3,0
+CASE-0415,Coimbatore Ring Road Sec Phase 1 (Sec 1),18,0,17.8,Possession (Sec 3E/38),1,0,0.0,30.4,0
+CASE-0416,Vellore Urban Peripheral Phase 2 (Sec 6),43,0,75.2,Declaration (Sec 3D/19),2,2,3.0,19.5,0
+CASE-0417,Tiruchirappalli Freight Link Phase 2 (Sec 2),26,1,14.8,Compensation Disbursement,2,1,0.7,27.3,0
+CASE-0418,Coimbatore Ring Road Sec Phase 1 (Sec 3),34,1,38.7,Award Inquiry (Sec 3G/23),0,2,0.4,20.7,0
+CASE-0419,Tiruchirappalli Freight Link Phase 3 (Sec 2),145,1,80.4,Notification (Sec 3A/11),2,8,1.0,4.6,0
+CASE-0420,SIPCOT Industrial Corridor Phase 1 (Sec 4),20,0,81.8,Notification (Sec 3A/11),2,2,3.1,6.8,0
+CASE-0421,Vellore Urban Peripheral Phase 2 (Sec 2),36,0,39.9,Award Inquiry (Sec 3G/23),3,2,2.1,22.3,0
+CASE-0422,Tirunelveli Solar Park Access Phase 1 (Sec 3),55,1,70.8,SIA & Objection (Sec 3C/15),0,9,1.4,10.4,0
+CASE-0423,Madurai Logistics Park Phase 2 (Sec 3),63,0,83.3,Notification (Sec 3A/11),8,2,1.4,5.1,0
+CASE-0424,Tirunelveli Solar Park Access Phase 1 (Sec 4),31,2,30.1,Compensation Disbursement,5,2,0.0,24.5,1
+CASE-0425,SIPCOT Industrial Corridor Phase 1 (Sec 4),40,1,70.3,SIA & Objection (Sec 3C/15),0,0,0.0,7.0,0
+CASE-0426,SIPCOT Industrial Corridor Phase 1 (Sec 7),186,8,64.4,Declaration (Sec 3D/19),9,18,0.0,14.0,1
+CASE-0427,Tiruchirappalli Freight Link Phase 1 (Sec 3),28,0,81.9,SIA & Objection (Sec 3C/15),1,2,2.7,11.1,0
+CASE-0428,Thoothukudi Port Rail Spur Phase 2 (Sec 4),83,1,51.4,Possession (Sec 3E/38),3,9,2.1,34.8,1
+CASE-0429,Hosur IT Expressway Phase 3 (Sec 4),65,2,76.7,SIA & Objection (Sec 3C/15),4,3,0.0,7.8,0
+CASE-0430,SIPCOT Industrial Corridor Phase 3 (Sec 7),15,0,71.0,Award Inquiry (Sec 3G/23),3,2,0.0,18.4,1
+CASE-0431,Hosur IT Expressway Phase 3 (Sec 7),99,1,75.0,SIA & Objection (Sec 3C/15),6,8,1.9,10.1,0
+CASE-0432,Salem Bypass Extension Phase 3 (Sec 1),75,2,85.5,Notification (Sec 3A/11),10,0,2.4,7.1,1
+CASE-0433,Erode Agri-Logistics Zone Phase 2 (Sec 4),25,0,62.9,Award Inquiry (Sec 3G/23),0,1,0.0,18.3,1
+CASE-0434,Hosur IT Expressway Phase 3 (Sec 4),35,1,47.0,Possession (Sec 3E/38),2,3,7.1,41.8,1
+CASE-0435,Erode Agri-Logistics Zone Phase 2 (Sec 6),108,0,91.0,SIA & Objection (Sec 3C/15),11,3,2.7,11.0,0
+CASE-0436,Coimbatore Ring Road Sec Phase 2 (Sec 3),23,0,51.2,Possession (Sec 3E/38),0,3,1.5,34.1,0
+CASE-0437,SIPCOT Industrial Corridor Phase 3 (Sec 7),195,1,2.1,Possession (Sec 3E/38),11,17,3.7,37.1,0
+CASE-0438,Coimbatore Ring Road Sec Phase 2 (Sec 2),72,1,75.1,Award Inquiry (Sec 3G/23),9,4,0.0,13.6,1
+CASE-0439,Salem Bypass Extension Phase 1 (Sec 1),24,2,64.1,Declaration (Sec 3D/19),1,3,0.0,13.3,0
+CASE-0440,Coimbatore Ring Road Sec Phase 2 (Sec 7),73,0,79.7,Award Inquiry (Sec 3G/23),3,6,2.9,25.0,0
+CASE-0441,Vellore Urban Peripheral Phase 3 (Sec 7),41,0,85.7,SIA & Objection (Sec 3C/15),0,2,5.1,16.0,0
+CASE-0442,Erode Agri-Logistics Zone Phase 2 (Sec 6),98,0,87.1,Notification (Sec 3A/11),3,18,3.9,9.9,1
+CASE-0443,Madurai Logistics Park Phase 3 (Sec 1),73,4,81.9,Notification (Sec 3A/11),2,9,4.4,7.9,1
+CASE-0444,SIPCOT Industrial Corridor Phase 1 (Sec 2),161,1,85.9,Notification (Sec 3A/11),10,7,0.0,2.6,0
+CASE-0445,Tirunelveli Solar Park Access Phase 1 (Sec 2),39,1,45.0,Declaration (Sec 3D/19),1,7,0.0,8.6,0
+CASE-0446,Hosur IT Expressway Phase 1 (Sec 7),64,1,60.8,Declaration (Sec 3D/19),3,2,0.0,8.8,0
+CASE-0447,Thoothukudi Port Rail Spur Phase 1 (Sec 4),41,0,78.8,Notification (Sec 3A/11),0,2,6.1,11.2,1
+CASE-0448,Erode Agri-Logistics Zone Phase 1 (Sec 4),50,1,72.7,Possession (Sec 3E/38),2,3,5.7,38.4,1
+CASE-0449,Erode Agri-Logistics Zone Phase 3 (Sec 2),292,5,47.9,Award Inquiry (Sec 3G/23),0,16,3.7,26.1,1
+CASE-0450,Tirunelveli Solar Park Access Phase 2 (Sec 6),31,0,64.9,Award Inquiry (Sec 3G/23),4,2,0.0,17.5,0
+CASE-0451,Tirunelveli Solar Park Access Phase 3 (Sec 7),178,3,54.1,Declaration (Sec 3D/19),19,3,13.9,41.5,1
+CASE-0452,Tiruchirappalli Freight Link Phase 1 (Sec 4),85,1,44.7,Award Inquiry (Sec 3G/23),2,11,2.8,23.0,1
+CASE-0453,Salem Bypass Extension Phase 1 (Sec 7),68,0,56.8,Compensation Disbursement,1,3,1.2,27.8,0
+CASE-0454,Thoothukudi Port Rail Spur Phase 3 (Sec 7),16,1,14.1,Possession (Sec 3E/38),1,0,1.5,34.8,0
+CASE-0455,Madurai Logistics Park Phase 3 (Sec 6),25,1,95.0,Notification (Sec 3A/11),0,2,2.7,7.2,0
+CASE-0456,Coimbatore Ring Road Sec Phase 2 (Sec 4),23,0,61.8,Declaration (Sec 3D/19),2,2,0.0,11.5,0
+CASE-0457,Hosur IT Expressway Phase 1 (Sec 1),80,1,57.1,Award Inquiry (Sec 3G/23),1,6,2.8,23.3,1
+CASE-0458,Vellore Urban Peripheral Phase 1 (Sec 5),47,0,48.9,Compensation Disbursement,3,3,1.7,28.8,1
+CASE-0459,Coimbatore Ring Road Sec Phase 2 (Sec 2),51,2,0.3,Compensation Disbursement,3,2,1.3,27.9,1
+CASE-0460,SIPCOT Industrial Corridor Phase 3 (Sec 7),35,2,14.5,Compensation Disbursement,4,7,0.5,26.6,1
+CASE-0461,Salem Bypass Extension Phase 2 (Sec 3),130,0,73.2,Declaration (Sec 3D/19),4,5,4.2,18.7,0
+CASE-0462,Coimbatore Ring Road Sec Phase 3 (Sec 3),67,2,47.6,Award Inquiry (Sec 3G/23),0,4,0.0,17.7,0
+CASE-0463,Salem Bypass Extension Phase 1 (Sec 7),82,2,96.7,SIA & Objection (Sec 3C/15),9,7,0.7,8.9,0
+CASE-0464,SIPCOT Industrial Corridor Phase 1 (Sec 2),37,1,4.0,Possession (Sec 3E/38),10,1,5.9,38.6,1
+CASE-0465,Tiruchirappalli Freight Link Phase 3 (Sec 3),27,1,35.2,Declaration (Sec 3D/19),1,2,1.2,16.0,0
+CASE-0466,Madurai Logistics Park Phase 2 (Sec 2),60,2,55.4,Possession (Sec 3E/38),7,2,2.9,35.6,1
+CASE-0467,Hosur IT Expressway Phase 1 (Sec 1),147,2,94.3,SIA & Objection (Sec 3C/15),7,6,1.7,10.1,0
+CASE-0468,Thoothukudi Port Rail Spur Phase 3 (Sec 7),61,0,61.6,Compensation Disbursement,1,6,0.9,27.4,0
+CASE-0469,Vellore Urban Peripheral Phase 1 (Sec 3),17,1,97.9,Notification (Sec 3A/11),1,0,0.3,3.5,1
+CASE-0470,Erode Agri-Logistics Zone Phase 3 (Sec 3),16,1,53.6,Award Inquiry (Sec 3G/23),0,2,5.1,26.1,0
+CASE-0471,Salem Bypass Extension Phase 2 (Sec 3),38,4,39.0,Declaration (Sec 3D/19),3,1,5.0,22.3,1
+CASE-0472,Erode Agri-Logistics Zone Phase 3 (Sec 1),36,0,11.7,Compensation Disbursement,0,2,5.1,32.8,0
+CASE-0473,Thoothukudi Port Rail Spur Phase 3 (Sec 6),209,6,54.7,Award Inquiry (Sec 3G/23),5,37,0.0,18.5,1
+CASE-0474,SIPCOT Industrial Corridor Phase 1 (Sec 2),131,5,61.8,Compensation Disbursement,20,3,5.0,33.1,1
+CASE-0475,Salem Bypass Extension Phase 3 (Sec 5),232,0,49.0,Compensation Disbursement,7,16,2.9,29.7,0
+CASE-0476,SIPCOT Industrial Corridor Phase 2 (Sec 3),56,0,89.7,SIA & Objection (Sec 3C/15),0,3,3.3,11.6,0
+CASE-0477,SIPCOT Industrial Corridor Phase 3 (Sec 7),37,1,70.6,Compensation Disbursement,4,0,5.6,31.9,1
+CASE-0478,Vellore Urban Peripheral Phase 3 (Sec 7),64,3,55.7,Declaration (Sec 3D/19),2,3,5.1,21.2,1
+CASE-0479,SIPCOT Industrial Corridor Phase 2 (Sec 1),27,0,73.6,SIA & Objection (Sec 3C/15),1,0,3.7,12.5,0
+CASE-0480,Thoothukudi Port Rail Spur Phase 3 (Sec 3),100,0,2.6,Possession (Sec 3E/38),11,17,1.4,34.4,0
+CASE-0481,Thoothukudi Port Rail Spur Phase 2 (Sec 3),124,3,21.1,Compensation Disbursement,8,9,0.0,24.5,0
+CASE-0482,Coimbatore Ring Road Sec Phase 3 (Sec 5),39,0,6.9,Compensation Disbursement,0,2,4.6,32.5,0
+CASE-0483,Hosur IT Expressway Phase 1 (Sec 4),98,0,2.1,Possession (Sec 3E/38),3,15,2.1,34.6,0
+CASE-0484,Madurai Logistics Park Phase 1 (Sec 3),126,1,9.4,Possession (Sec 3E/38),8,5,2.3,36.5,0
+CASE-0485,Madurai Logistics Park Phase 2 (Sec 7),78,2,83.1,SIA & Objection (Sec 3C/15),1,5,0.0,4.1,0
+CASE-0486,Erode Agri-Logistics Zone Phase 2 (Sec 5),23,0,83.2,SIA & Objection (Sec 3C/15),1,1,0.5,8.6,0
+CASE-0487,Salem Bypass Extension Phase 3 (Sec 1),30,0,82.2,Notification (Sec 3A/11),0,7,3.6,7.5,0
+CASE-0488,Coimbatore Ring Road Sec Phase 2 (Sec 1),239,12,63.9,Declaration (Sec 3D/19),24,12,0.0,13.0,1
+CASE-0489,Coimbatore Ring Road Sec Phase 2 (Sec 5),54,2,98.4,SIA & Objection (Sec 3C/15),2,5,0.0,1.7,1
+CASE-0490,SIPCOT Industrial Corridor Phase 1 (Sec 6),67,0,17.9,Compensation Disbursement,1,9,0.0,24.9,0
+CASE-0491,Thoothukudi Port Rail Spur Phase 1 (Sec 2),18,3,84.8,SIA & Objection (Sec 3C/15),1,1,7.2,16.1,1
+CASE-0492,Tiruchirappalli Freight Link Phase 2 (Sec 7),29,1,80.0,Notification (Sec 3A/11),4,3,1.6,4.8,0
+CASE-0493,Tirunelveli Solar Park Access Phase 3 (Sec 1),30,0,76.1,Award Inquiry (Sec 3G/23),0,0,2.4,24.1,1
+CASE-0494,SIPCOT Industrial Corridor Phase 3 (Sec 3),155,7,76.2,Notification (Sec 3A/11),19,39,3.0,6.2,1
+CASE-0495,Tiruchirappalli Freight Link Phase 3 (Sec 4),60,0,87.6,SIA & Objection (Sec 3C/15),2,0,3.8,14.7,1
+CASE-0496,Tirunelveli Solar Park Access Phase 2 (Sec 3),173,5,89.7,Notification (Sec 3A/11),16,10,1.2,5.1,1
+CASE-0497,Salem Bypass Extension Phase 3 (Sec 6),216,5,77.8,Declaration (Sec 3D/19),6,11,1.3,15.4,1
+CASE-0498,SIPCOT Industrial Corridor Phase 3 (Sec 6),165,3,42.7,Declaration (Sec 3D/19),13,17,4.3,19.8,0
+CASE-0499,Salem Bypass Extension Phase 3 (Sec 7),35,0,55.2,Declaration (Sec 3D/19),1,4,1.6,15.8,0
+CASE-0500,Salem Bypass Extension Phase 3 (Sec 2),83,0,50.7,Compensation Disbursement,3,5,2.3,30.5,0
+CASE-0501,Tiruchirappalli Freight Link Phase 2 (Sec 4),38,0,8.3,Compensation Disbursement,0,2,5.4,34.5,1
+CASE-0502,Vellore Urban Peripheral Phase 3 (Sec 7),54,1,88.8,Notification (Sec 3A/11),3,4,3.7,8.9,0
+CASE-0503,Thoothukudi Port Rail Spur Phase 1 (Sec 7),194,1,83.9,Award Inquiry (Sec 3G/23),10,12,3.2,23.7,1
+CASE-0504,Hosur IT Expressway Phase 3 (Sec 6),28,0,90.4,SIA & Objection (Sec 3C/15),1,4,0.0,5.4,0
+CASE-0505,Tirunelveli Solar Park Access Phase 3 (Sec 4),50,0,16.5,Compensation Disbursement,4,3,1.9,29.4,0
+CASE-0506,Tirunelveli Solar Park Access Phase 3 (Sec 7),44,0,84.9,Notification (Sec 3A/11),0,3,0.0,1.0,0
+CASE-0507,Thoothukudi Port Rail Spur Phase 2 (Sec 7),83,1,18.0,Compensation Disbursement,8,4,6.2,32.9,1
+CASE-0508,Tirunelveli Solar Park Access Phase 3 (Sec 4),32,1,99.8,SIA & Objection (Sec 3C/15),1,0,0.0,8.0,0
+CASE-0509,Salem Bypass Extension Phase 1 (Sec 7),20,1,63.2,Award Inquiry (Sec 3G/23),0,3,0.5,20.9,1
+CASE-0510,Tiruchirappalli Freight Link Phase 1 (Sec 5),85,0,17.4,Compensation Disbursement,2,8,3.8,31.0,0
+CASE-0511,SIPCOT Industrial Corridor Phase 2 (Sec 4),58,2,72.5,Notification (Sec 3A/11),2,2,2.7,6.6,0
+CASE-0512,SIPCOT Industrial Corridor Phase 1 (Sec 1),101,0,60.0,Declaration (Sec 3D/19),3,5,2.1,17.1,0
+CASE-0513,Tirunelveli Solar Park Access Phase 2 (Sec 7),45,0,79.0,Notification (Sec 3A/11),2,2,2.9,6.1,0
+CASE-0514,Coimbatore Ring Road Sec Phase 3 (Sec 7),76,1,58.7,Award Inquiry (Sec 3G/23),5,7,4.5,25.6,1
+CASE-0515,Salem Bypass Extension Phase 2 (Sec 5),58,1,35.5,Award Inquiry (Sec 3G/23),1,8,1.9,22.5,0
+CASE-0516,SIPCOT Industrial Corridor Phase 1 (Sec 5),21,1,82.0,Notification (Sec 3A/11),0,0,0.0,1.0,0
+CASE-0517,Madurai Logistics Park Phase 1 (Sec 4),32,2,83.5,Declaration (Sec 3D/19),7,1,4.7,19.1,1
+CASE-0518,Erode Agri-Logistics Zone Phase 3 (Sec 3),113,0,36.3,Declaration (Sec 3D/19),10,18,3.3,18.6,0
+CASE-0519,Erode Agri-Logistics Zone Phase 3 (Sec 2),105,0,78.5,Notification (Sec 3A/11),0,11,1.6,4.8,0
+CASE-0520,Vellore Urban Peripheral Phase 2 (Sec 1),86,1,30.7,Award Inquiry (Sec 3G/23),9,10,0.9,21.3,0
+CASE-0521,SIPCOT Industrial Corridor Phase 1 (Sec 1),116,0,0.8,Possession (Sec 3E/38),5,6,2.4,35.1,0
+CASE-0522,Salem Bypass Extension Phase 3 (Sec 7),250,2,70.0,Award Inquiry (Sec 3G/23),14,36,0.0,18.8,1
+CASE-0523,Coimbatore Ring Road Sec Phase 3 (Sec 4),53,0,93.7,Notification (Sec 3A/11),6,10,1.3,4.7,0
+CASE-0524,SIPCOT Industrial Corridor Phase 2 (Sec 2),151,6,73.4,SIA & Objection (Sec 3C/15),15,19,0.2,8.2,1
+CASE-0525,Thoothukudi Port Rail Spur Phase 2 (Sec 5),50,0,81.0,Declaration (Sec 3D/19),3,1,3.0,18.1,0
+CASE-0526,Thoothukudi Port Rail Spur Phase 3 (Sec 4),50,0,44.9,Award Inquiry (Sec 3G/23),3,1,0.9,21.0,0
+CASE-0527,Thoothukudi Port Rail Spur Phase 2 (Sec 3),154,2,49.3,Compensation Disbursement,29,13,4.4,34.5,1
+CASE-0528,Erode Agri-Logistics Zone Phase 1 (Sec 7),120,0,97.3,Notification (Sec 3A/11),17,9,0.0,1.0,0
+CASE-0529,SIPCOT Industrial Corridor Phase 2 (Sec 7),93,1,32.5,Award Inquiry (Sec 3G/23),1,7,5.5,28.9,1
+CASE-0530,Hosur IT Expressway Phase 1 (Sec 7),22,0,95.0,Notification (Sec 3A/11),4,5,1.8,5.2,0
+CASE-0531,Tirunelveli Solar Park Access Phase 1 (Sec 6),46,2,72.4,SIA & Objection (Sec 3C/15),6,3,0.0,5.1,0
+CASE-0532,SIPCOT Industrial Corridor Phase 3 (Sec 2),103,1,76.0,Notification (Sec 3A/11),8,12,0.0,1.6,0
+CASE-0533,Tiruchirappalli Freight Link Phase 2 (Sec 7),51,3,42.9,Declaration (Sec 3D/19),3,10,23.6,39.3,1
+CASE-0534,Madurai Logistics Park Phase 2 (Sec 6),48,0,77.5,SIA & Objection (Sec 3C/15),0,5,0.0,3.2,0
+CASE-0535,Madurai Logistics Park Phase 3 (Sec 3),222,5,13.3,Compensation Disbursement,29,28,0.7,27.1,1
+CASE-0536,Erode Agri-Logistics Zone Phase 2 (Sec 2),172,4,36.9,Award Inquiry (Sec 3G/23),4,11,0.0,19.5,0
+CASE-0537,Vellore Urban Peripheral Phase 1 (Sec 2),89,1,75.8,Award Inquiry (Sec 3G/23),2,14,0.0,19.3,1
+CASE-0538,Tiruchirappalli Freight Link Phase 1 (Sec 1),69,1,74.7,Award Inquiry (Sec 3G/23),14,2,3.9,24.4,1
+CASE-0539,Thoothukudi Port Rail Spur Phase 1 (Sec 2),16,0,79.9,SIA & Objection (Sec 3C/15),2,0,1.2,10.2,0
+CASE-0540,Tiruchirappalli Freight Link Phase 1 (Sec 4),27,0,96.4,Notification (Sec 3A/11),3,1,0.0,2.8,0
+CASE-0541,Madurai Logistics Park Phase 1 (Sec 7),100,1,81.8,SIA & Objection (Sec 3C/15),3,5,0.0,8.0,0
+CASE-0542,Coimbatore Ring Road Sec Phase 2 (Sec 5),106,2,13.2,Possession (Sec 3E/38),5,6,5.6,39.3,1
+CASE-0543,Vellore Urban Peripheral Phase 3 (Sec 2),16,0,44.6,Declaration (Sec 3D/19),2,2,1.4,16.4,0
+CASE-0544,Hosur IT Expressway Phase 3 (Sec 1),48,3,73.7,Notification (Sec 3A/11),2,5,0.0,2.6,0
+CASE-0545,Tirunelveli Solar Park Access Phase 3 (Sec 1),35,0,84.1,SIA & Objection (Sec 3C/15),3,0,5.3,16.4,1
+CASE-0546,Coimbatore Ring Road Sec Phase 2 (Sec 3),31,1,10.1,Possession (Sec 3E/38),6,1,0.8,33.1,0
+CASE-0547,Tirunelveli Solar Park Access Phase 2 (Sec 3),97,2,75.2,Declaration (Sec 3D/19),6,8,0.0,7.2,0
+CASE-0548,Erode Agri-Logistics Zone Phase 3 (Sec 5),29,0,73.3,SIA & Objection (Sec 3C/15),2,0,1.6,9.9,0
+CASE-0549,Tiruchirappalli Freight Link Phase 3 (Sec 1),139,4,81.4,Notification (Sec 3A/11),7,14,0.6,3.8,1
+CASE-0550,Coimbatore Ring Road Sec Phase 3 (Sec 2),239,3,71.7,Award Inquiry (Sec 3G/23),30,13,0.0,13.8,1
+CASE-0551,Thoothukudi Port Rail Spur Phase 3 (Sec 1),36,1,75.1,Notification (Sec 3A/11),2,2,0.0,2.9,0
+CASE-0552,Erode Agri-Logistics Zone Phase 2 (Sec 3),122,2,79.8,Declaration (Sec 3D/19),2,10,0.0,10.5,0
+CASE-0553,Coimbatore Ring Road Sec Phase 2 (Sec 1),31,4,16.3,Compensation Disbursement,2,0,0.0,25.0,1
+CASE-0554,SIPCOT Industrial Corridor Phase 1 (Sec 4),20,0,75.7,SIA & Objection (Sec 3C/15),1,0,0.0,6.3,0
+CASE-0555,Salem Bypass Extension Phase 2 (Sec 2),32,0,99.3,SIA & Objection (Sec 3C/15),1,3,0.0,3.6,0
+CASE-0556,Coimbatore Ring Road Sec Phase 3 (Sec 5),234,3,99.2,Notification (Sec 3A/11),6,28,0.0,1.0,1
+CASE-0557,Hosur IT Expressway Phase 3 (Sec 2),20,0,53.4,Declaration (Sec 3D/19),0,2,0.5,14.8,0
+CASE-0558,Hosur IT Expressway Phase 2 (Sec 5),127,4,79.7,Notification (Sec 3A/11),7,8,6.6,15.7,1
+CASE-0559,Tirunelveli Solar Park Access Phase 3 (Sec 5),154,0,46.1,Award Inquiry (Sec 3G/23),0,33,4.7,25.4,0
+CASE-0560,SIPCOT Industrial Corridor Phase 2 (Sec 1),45,0,81.4,Notification (Sec 3A/11),5,7,2.0,6.1,0
+CASE-0561,Hosur IT Expressway Phase 3 (Sec 6),33,0,77.2,Notification (Sec 3A/11),4,1,0.0,2.3,0
+CASE-0562,Salem Bypass Extension Phase 3 (Sec 7),244,6,0.2,Compensation Disbursement,17,8,2.0,29.1,1
+CASE-0563,Tirunelveli Solar Park Access Phase 1 (Sec 7),45,0,9.7,Possession (Sec 3E/38),5,6,2.2,34.4,1
+CASE-0564,Madurai Logistics Park Phase 2 (Sec 5),101,1,12.2,Possession (Sec 3E/38),11,6,0.0,27.7,0
+CASE-0565,Vellore Urban Peripheral Phase 1 (Sec 3),15,0,76.0,Notification (Sec 3A/11),1,0,4.0,8.3,0
+CASE-0566,Hosur IT Expressway Phase 2 (Sec 1),286,10,45.5,Declaration (Sec 3D/19),5,39,1.3,15.5,1
+CASE-0567,Tirunelveli Solar Park Access Phase 1 (Sec 2),23,0,75.6,SIA & Objection (Sec 3C/15),0,0,0.0,4.8,0
+CASE-0568,Hosur IT Expressway Phase 2 (Sec 6),40,0,79.3,SIA & Objection (Sec 3C/15),2,4,0.0,3.2,0
+CASE-0569,Tiruchirappalli Freight Link Phase 2 (Sec 4),100,1,16.8,Possession (Sec 3E/38),13,8,3.3,36.1,0
+CASE-0570,Coimbatore Ring Road Sec Phase 1 (Sec 2),39,0,53.8,Declaration (Sec 3D/19),6,3,2.9,17.9,0
+CASE-0571,Madurai Logistics Park Phase 3 (Sec 4),79,0,83.7,SIA & Objection (Sec 3C/15),6,9,4.8,14.1,1
+CASE-0572,Madurai Logistics Park Phase 1 (Sec 5),18,0,70.1,Notification (Sec 3A/11),0,1,0.0,1.0,0
+CASE-0573,Coimbatore Ring Road Sec Phase 2 (Sec 7),71,2,6.9,Compensation Disbursement,7,4,0.3,26.4,0
+CASE-0574,Tirunelveli Solar Park Access Phase 3 (Sec 3),97,0,82.2,Declaration (Sec 3D/19),2,8,4.4,21.2,1
+CASE-0575,Thoothukudi Port Rail Spur Phase 1 (Sec 1),53,0,40.0,Award Inquiry (Sec 3G/23),0,4,0.0,18.9,0
+CASE-0576,Tirunelveli Solar Park Access Phase 3 (Sec 6),32,0,74.1,SIA & Objection (Sec 3C/15),0,4,0.0,1.6,0
+CASE-0577,Hosur IT Expressway Phase 3 (Sec 7),38,2,82.8,SIA & Objection (Sec 3C/15),1,1,0.0,2.0,0
+CASE-0578,Hosur IT Expressway Phase 2 (Sec 4),16,1,73.2,Declaration (Sec 3D/19),2,0,1.4,16.5,0
+CASE-0579,SIPCOT Industrial Corridor Phase 1 (Sec 1),85,0,99.5,SIA & Objection (Sec 3C/15),11,2,0.0,6.7,0
+CASE-0580,Thoothukudi Port Rail Spur Phase 1 (Sec 4),163,2,84.8,SIA & Objection (Sec 3C/15),2,10,2.4,11.8,1
+CASE-0581,Erode Agri-Logistics Zone Phase 1 (Sec 7),94,1,73.0,Compensation Disbursement,4,5,0.1,26.1,0
+CASE-0582,Hosur IT Expressway Phase 1 (Sec 6),142,3,81.4,Notification (Sec 3A/11),8,9,8.9,14.8,1
+CASE-0583,SIPCOT Industrial Corridor Phase 3 (Sec 3),172,2,31.2,Possession (Sec 3E/38),2,16,1.8,34.0,0
+CASE-0584,Vellore Urban Peripheral Phase 1 (Sec 3),19,1,89.1,SIA & Objection (Sec 3C/15),0,4,0.0,5.6,0
+CASE-0585,Salem Bypass Extension Phase 2 (Sec 1),146,2,86.0,SIA & Objection (Sec 3C/15),9,21,0.0,7.2,1
+CASE-0586,Tiruchirappalli Freight Link Phase 1 (Sec 5),107,1,4.5,Compensation Disbursement,14,8,0.0,25.5,0
+CASE-0587,Thoothukudi Port Rail Spur Phase 2 (Sec 5),43,0,53.1,Compensation Disbursement,2,3,2.6,29.0,1
+CASE-0588,Coimbatore Ring Road Sec Phase 1 (Sec 7),46,2,88.1,SIA & Objection (Sec 3C/15),1,8,1.5,9.8,0
+CASE-0589,Coimbatore Ring Road Sec Phase 2 (Sec 3),105,0,84.5,SIA & Objection (Sec 3C/15),2,7,0.0,6.9,0
+CASE-0590,Madurai Logistics Park Phase 1 (Sec 7),65,1,73.3,Notification (Sec 3A/11),2,5,4.8,8.8,0
+CASE-0591,Tiruchirappalli Freight Link Phase 3 (Sec 2),26,1,48.0,Possession (Sec 3E/38),5,0,5.8,40.6,1
+CASE-0592,Tirunelveli Solar Park Access Phase 1 (Sec 2),24,1,36.9,Declaration (Sec 3D/19),1,4,9.2,23.8,1
+CASE-0593,Thoothukudi Port Rail Spur Phase 3 (Sec 6),63,0,67.2,Compensation Disbursement,0,5,4.2,33.4,0
+CASE-0594,Salem Bypass Extension Phase 1 (Sec 6),48,1,87.4,Notification (Sec 3A/11),2,0,4.3,7.8,1
+CASE-0595,Tiruchirappalli Freight Link Phase 1 (Sec 2),65,1,42.6,Declaration (Sec 3D/19),6,2,2.9,17.8,0
+CASE-0596,Tiruchirappalli Freight Link Phase 2 (Sec 6),19,0,96.7,Notification (Sec 3A/11),0,0,2.6,6.6,0
+CASE-0597,Coimbatore Ring Road Sec Phase 2 (Sec 5),51,1,67.6,Compensation Disbursement,2,1,8.0,36.4,1
+CASE-0598,Tiruchirappalli Freight Link Phase 3 (Sec 6),30,1,36.3,Award Inquiry (Sec 3G/23),2,0,3.7,26.0,0
+CASE-0599,SIPCOT Industrial Corridor Phase 3 (Sec 2),17,0,59.6,Award Inquiry (Sec 3G/23),2,1,4.2,28.0,1
+CASE-0600,Tiruchirappalli Freight Link Phase 1 (Sec 3),16,0,67.1,Award Inquiry (Sec 3G/23),0,1,0.0,18.1,1
+CASE-0601,Thoothukudi Port Rail Spur Phase 3 (Sec 6),16,0,42.2,Award Inquiry (Sec 3G/23),1,2,1.2,21.9,1
+CASE-0602,Salem Bypass Extension Phase 1 (Sec 5),54,1,51.2,Declaration (Sec 3D/19),4,2,5.6,24.2,1
+CASE-0603,Hosur IT Expressway Phase 1 (Sec 3),33,2,7.9,Compensation Disbursement,1,2,0.0,20.2,0
+CASE-0604,Salem Bypass Extension Phase 2 (Sec 1),83,0,37.7,Compensation Disbursement,13,2,0.0,24.9,0
+CASE-0605,Salem Bypass Extension Phase 3 (Sec 1),28,0,80.5,Award Inquiry (Sec 3G/23),3,2,7.5,34.5,1
+CASE-0606,Tirunelveli Solar Park Access Phase 1 (Sec 7),49,0,11.8,Compensation Disbursement,1,7,0.0,17.3,0
+CASE-0607,Salem Bypass Extension Phase 2 (Sec 1),44,0,75.4,Notification (Sec 3A/11),2,5,0.3,3.5,0
+CASE-0608,Tirunelveli Solar Park Access Phase 2 (Sec 4),67,0,86.7,SIA & Objection (Sec 3C/15),11,7,0.0,6.6,0
+CASE-0609,Salem Bypass Extension Phase 3 (Sec 4),30,2,99.5,Notification (Sec 3A/11),2,3,0.0,1.0,0
+CASE-0610,Hosur IT Expressway Phase 3 (Sec 3),126,8,79.0,SIA & Objection (Sec 3C/15),6,3,0.0,6.8,1
+CASE-0611,Tiruchirappalli Freight Link Phase 3 (Sec 1),57,2,18.0,Possession (Sec 3E/38),0,7,0.8,33.0,0
+CASE-0612,Vellore Urban Peripheral Phase 1 (Sec 3),173,3,2.4,Compensation Disbursement,32,7,4.5,31.1,1
+CASE-0613,Madurai Logistics Park Phase 3 (Sec 3),67,7,63.6,Declaration (Sec 3D/19),0,5,4.5,21.0,1
+CASE-0614,Coimbatore Ring Road Sec Phase 1 (Sec 2),86,3,49.6,Award Inquiry (Sec 3G/23),1,5,0.2,20.3,1
+CASE-0615,Salem Bypass Extension Phase 1 (Sec 6),252,5,59.8,Declaration (Sec 3D/19),0,19,0.0,11.6,1
+CASE-0616,Erode Agri-Logistics Zone Phase 1 (Sec 4),16,0,23.4,Compensation Disbursement,1,3,2.3,30.4,0
+CASE-0617,Madurai Logistics Park Phase 1 (Sec 7),41,0,58.2,Declaration (Sec 3D/19),0,3,0.0,11.1,0
+CASE-0618,SIPCOT Industrial Corridor Phase 1 (Sec 7),135,1,96.7,Notification (Sec 3A/11),27,8,1.3,5.2,0
+CASE-0619,Tiruchirappalli Freight Link Phase 1 (Sec 5),128,3,86.7,Notification (Sec 3A/11),3,7,0.0,1.6,0
+CASE-0620,Tirunelveli Solar Park Access Phase 3 (Sec 3),48,0,87.9,Notification (Sec 3A/11),9,4,2.4,5.6,0
+CASE-0621,Salem Bypass Extension Phase 3 (Sec 4),163,4,70.9,Possession (Sec 3E/38),15,21,4.2,37.0,1
+CASE-0622,Thoothukudi Port Rail Spur Phase 1 (Sec 4),20,0,48.2,Award Inquiry (Sec 3G/23),0,1,0.0,16.9,0
+CASE-0623,Madurai Logistics Park Phase 1 (Sec 5),67,1,96.8,SIA & Objection (Sec 3C/15),6,7,5.1,14.0,0
+CASE-0624,Tiruchirappalli Freight Link Phase 2 (Sec 1),37,2,23.0,Compensation Disbursement,4,2,4.6,32.1,1
+CASE-0625,SIPCOT Industrial Corridor Phase 3 (Sec 3),202,3,81.1,Declaration (Sec 3D/19),23,14,3.9,20.7,1
+CASE-0626,Madurai Logistics Park Phase 1 (Sec 7),54,2,76.2,Notification (Sec 3A/11),7,9,1.7,5.7,0
+CASE-0627,Thoothukudi Port Rail Spur Phase 3 (Sec 2),95,0,60.4,Award Inquiry (Sec 3G/23),10,13,4.5,25.6,1
+CASE-0628,Coimbatore Ring Road Sec Phase 2 (Sec 1),270,6,6.3,Possession (Sec 3E/38),11,12,0.1,32.1,1
+CASE-0629,SIPCOT Industrial Corridor Phase 1 (Sec 4),33,2,94.5,SIA & Objection (Sec 3C/15),1,5,0.0,5.3,0
+CASE-0630,Erode Agri-Logistics Zone Phase 3 (Sec 3),47,1,19.6,Possession (Sec 3E/38),1,0,0.0,30.4,0
+CASE-0631,Tirunelveli Solar Park Access Phase 2 (Sec 3),15,0,62.8,Declaration (Sec 3D/19),0,1,0.0,10.2,0
+CASE-0632,Salem Bypass Extension Phase 2 (Sec 4),102,0,44.1,Declaration (Sec 3D/19),4,3,2.8,18.2,0
+CASE-0633,Erode Agri-Logistics Zone Phase 2 (Sec 4),88,0,78.9,Award Inquiry (Sec 3G/23),12,9,1.8,22.5,0
+CASE-0634,Erode Agri-Logistics Zone Phase 1 (Sec 4),27,1,90.5,Notification (Sec 3A/11),6,0,6.8,15.4,1
+CASE-0635,Vellore Urban Peripheral Phase 3 (Sec 3),42,2,73.4,SIA & Objection (Sec 3C/15),1,2,0.0,5.0,0
+CASE-0636,Vellore Urban Peripheral Phase 2 (Sec 3),100,4,39.3,Award Inquiry (Sec 3G/23),6,4,4.4,27.5,1
+CASE-0637,Hosur IT Expressway Phase 3 (Sec 5),80,2,3.5,Possession (Sec 3E/38),3,1,4.1,38.0,0
+CASE-0638,Tirunelveli Solar Park Access Phase 1 (Sec 4),251,1,81.4,SIA & Objection (Sec 3C/15),24,19,1.0,9.2,0
+CASE-0639,Salem Bypass Extension Phase 1 (Sec 5),24,0,64.4,Declaration (Sec 3D/19),1,2,2.5,17.8,0
+CASE-0640,Salem Bypass Extension Phase 2 (Sec 7),33,2,79.9,SIA & Objection (Sec 3C/15),4,3,0.0,2.4,0
+CASE-0641,SIPCOT Industrial Corridor Phase 2 (Sec 2),48,0,93.2,Notification (Sec 3A/11),1,2,0.0,2.7,0
+CASE-0642,Vellore Urban Peripheral Phase 3 (Sec 2),30,2,82.1,Notification (Sec 3A/11),1,1,0.0,1.0,0
+CASE-0643,Hosur IT Expressway Phase 2 (Sec 6),137,3,79.0,Award Inquiry (Sec 3G/23),7,1,4.7,26.2,1
+CASE-0644,Hosur IT Expressway Phase 3 (Sec 2),118,3,74.9,Notification (Sec 3A/11),21,4,0.0,1.8,0
+CASE-0645,Coimbatore Ring Road Sec Phase 3 (Sec 7),148,4,79.5,Declaration (Sec 3D/19),2,27,8.5,27.0,1
+CASE-0646,Tirunelveli Solar Park Access Phase 2 (Sec 2),18,0,77.4,SIA & Objection (Sec 3C/15),3,1,0.0,5.1,0
+CASE-0647,Coimbatore Ring Road Sec Phase 1 (Sec 6),204,5,42.6,Award Inquiry (Sec 3G/23),5,9,0.0,12.9,1
+CASE-0648,Thoothukudi Port Rail Spur Phase 1 (Sec 4),15,0,7.7,Compensation Disbursement,0,3,3.2,30.0,0
+CASE-0649,Hosur IT Expressway Phase 3 (Sec 2),24,1,94.6,Notification (Sec 3A/11),0,1,3.2,9.3,0
+CASE-0650,Tiruchirappalli Freight Link Phase 2 (Sec 2),18,3,66.9,Award Inquiry (Sec 3G/23),2,1,0.5,20.6,1
+CASE-0651,Vellore Urban Peripheral Phase 2 (Sec 5),88,2,41.0,Possession (Sec 3E/38),6,4,0.0,28.3,1
+CASE-0652,Tiruchirappalli Freight Link Phase 2 (Sec 1),142,2,5.0,Compensation Disbursement,12,16,3.1,30.8,1
+CASE-0653,Erode Agri-Logistics Zone Phase 3 (Sec 6),100,1,78.2,Declaration (Sec 3D/19),1,2,4.4,22.3,0
+CASE-0654,Vellore Urban Peripheral Phase 3 (Sec 5),103,2,76.9,SIA & Objection (Sec 3C/15),9,10,5.4,14.4,1
+CASE-0655,Vellore Urban Peripheral Phase 2 (Sec 7),79,1,62.7,Declaration (Sec 3D/19),1,5,0.1,14.2,0
+CASE-0656,Thoothukudi Port Rail Spur Phase 3 (Sec 4),94,0,4.4,Compensation Disbursement,12,22,6.8,34.1,1
+CASE-0657,Madurai Logistics Park Phase 1 (Sec 4),279,3,41.1,Declaration (Sec 3D/19),42,42,1.6,16.9,1
+CASE-0658,Hosur IT Expressway Phase 2 (Sec 5),23,0,83.1,Declaration (Sec 3D/19),0,4,0.8,15.4,0
+CASE-0659,Thoothukudi Port Rail Spur Phase 2 (Sec 6),15,0,82.6,Award Inquiry (Sec 3G/23),2,1,0.0,17.4,0
+CASE-0660,Tiruchirappalli Freight Link Phase 1 (Sec 1),20,0,42.1,Declaration (Sec 3D/19),2,2,0.0,12.1,0
+CASE-0661,Erode Agri-Logistics Zone Phase 2 (Sec 2),21,3,70.1,Award Inquiry (Sec 3G/23),0,0,0.2,20.4,1
+CASE-0662,Tirunelveli Solar Park Access Phase 3 (Sec 6),27,1,23.8,Compensation Disbursement,0,1,1.6,28.0,0
+CASE-0663,Hosur IT Expressway Phase 1 (Sec 6),44,1,44.3,Declaration (Sec 3D/19),3,2,5.6,21.2,0
+CASE-0664,Salem Bypass Extension Phase 2 (Sec 5),115,4,92.8,Notification (Sec 3A/11),12,22,4.4,9.3,1
+CASE-0665,Erode Agri-Logistics Zone Phase 1 (Sec 7),21,0,84.8,Declaration (Sec 3D/19),2,1,6.3,22.2,0
+CASE-0666,Tiruchirappalli Freight Link Phase 1 (Sec 6),31,0,88.8,Notification (Sec 3A/11),1,0,0.0,1.0,0
+CASE-0667,SIPCOT Industrial Corridor Phase 1 (Sec 3),83,0,61.5,Declaration (Sec 3D/19),4,6,1.0,16.0,0
+CASE-0668,Vellore Urban Peripheral Phase 2 (Sec 3),71,3,21.1,Possession (Sec 3E/38),6,2,6.6,42.5,1
+CASE-0669,Vellore Urban Peripheral Phase 2 (Sec 4),27,2,81.8,SIA & Objection (Sec 3C/15),5,8,5.4,15.0,1
+CASE-0670,Erode Agri-Logistics Zone Phase 3 (Sec 7),72,3,91.5,SIA & Objection (Sec 3C/15),1,2,5.3,15.3,1
+CASE-0671,Erode Agri-Logistics Zone Phase 3 (Sec 3),89,1,44.4,Award Inquiry (Sec 3G/23),12,5,8.9,29.7,1
+CASE-0672,Tiruchirappalli Freight Link Phase 3 (Sec 1),136,1,53.6,Award Inquiry (Sec 3G/23),3,9,2.2,22.6,0
+CASE-0673,Thoothukudi Port Rail Spur Phase 3 (Sec 5),170,2,53.8,Compensation Disbursement,3,33,3.9,30.3,1
+CASE-0674,Coimbatore Ring Road Sec Phase 1 (Sec 2),71,0,63.1,Award Inquiry (Sec 3G/23),1,5,0.0,17.4,0
+CASE-0675,Vellore Urban Peripheral Phase 2 (Sec 3),61,0,8.6,Compensation Disbursement,1,2,0.8,26.9,0
+CASE-0676,Tiruchirappalli Freight Link Phase 3 (Sec 4),168,1,62.5,Award Inquiry (Sec 3G/23),4,1,0.0,18.5,0
+CASE-0677,SIPCOT Industrial Corridor Phase 2 (Sec 3),98,1,31.5,Compensation Disbursement,7,0,2.9,29.1,0
+CASE-0678,Erode Agri-Logistics Zone Phase 2 (Sec 7),152,4,61.6,Declaration (Sec 3D/19),5,13,23.9,42.3,1
+CASE-0679,Salem Bypass Extension Phase 3 (Sec 5),84,5,94.6,SIA & Objection (Sec 3C/15),7,12,6.3,19.7,1
+CASE-0680,SIPCOT Industrial Corridor Phase 3 (Sec 3),18,1,70.9,Declaration (Sec 3D/19),2,0,0.0,12.4,0
+CASE-0681,Thoothukudi Port Rail Spur Phase 2 (Sec 4),29,0,77.0,Declaration (Sec 3D/19),3,3,1.9,17.0,0
+CASE-0682,Madurai Logistics Park Phase 3 (Sec 6),172,6,7.4,Possession (Sec 3E/38),5,4,14.3,48.2,1
+CASE-0683,Thoothukudi Port Rail Spur Phase 1 (Sec 2),33,0,46.5,Award Inquiry (Sec 3G/23),1,0,1.6,21.8,0
+CASE-0684,Vellore Urban Peripheral Phase 2 (Sec 3),262,8,81.4,Notification (Sec 3A/11),8,22,15.6,22.8,1
+CASE-0685,Tiruchirappalli Freight Link Phase 3 (Sec 7),20,0,60.9,Award Inquiry (Sec 3G/23),0,1,2.5,22.9,0
+CASE-0686,Vellore Urban Peripheral Phase 1 (Sec 6),15,0,70.5,SIA & Objection (Sec 3C/15),2,1,6.4,16.0,1
+CASE-0687,Salem Bypass Extension Phase 1 (Sec 5),218,5,77.5,Notification (Sec 3A/11),3,31,0.0,1.0,1
+CASE-0688,Erode Agri-Logistics Zone Phase 3 (Sec 7),31,0,91.6,SIA & Objection (Sec 3C/15),0,5,2.3,10.7,0
+CASE-0689,Tiruchirappalli Freight Link Phase 3 (Sec 6),80,2,62.4,Award Inquiry (Sec 3G/23),6,9,0.0,17.3,1
+CASE-0690,Vellore Urban Peripheral Phase 2 (Sec 7),247,3,40.8,Award Inquiry (Sec 3G/23),6,13,13.6,47.1,1
+CASE-0691,Tirunelveli Solar Park Access Phase 1 (Sec 1),54,0,71.3,Declaration (Sec 3D/19),4,1,0.0,4.8,0
+CASE-0692,Salem Bypass Extension Phase 3 (Sec 7),32,1,17.6,Compensation Disbursement,2,4,2.2,28.5,0
+CASE-0693,Thoothukudi Port Rail Spur Phase 2 (Sec 7),67,0,40.9,Award Inquiry (Sec 3G/23),2,2,0.2,20.3,0
+CASE-0694,Vellore Urban Peripheral Phase 2 (Sec 3),107,3,9.5,Compensation Disbursement,13,5,4.5,33.5,1
+CASE-0695,Thoothukudi Port Rail Spur Phase 2 (Sec 4),78,1,75.6,Declaration (Sec 3D/19),9,10,3.5,20.4,0
+CASE-0696,Madurai Logistics Park Phase 2 (Sec 2),36,1,93.6,Notification (Sec 3A/11),3,5,1.2,4.9,1
+CASE-0697,SIPCOT Industrial Corridor Phase 3 (Sec 5),29,0,18.0,Possession (Sec 3E/38),0,5,6.8,40.0,0
+CASE-0698,Erode Agri-Logistics Zone Phase 1 (Sec 3),69,1,69.7,Award Inquiry (Sec 3G/23),0,2,2.7,24.4,0
+CASE-0699,Erode Agri-Logistics Zone Phase 2 (Sec 7),30,0,24.4,Compensation Disbursement,2,0,0.2,26.3,0
+CASE-0700,Vellore Urban Peripheral Phase 1 (Sec 6),22,0,83.7,Declaration (Sec 3D/19),7,2,0.0,5.0,0
+CASE-0701,Coimbatore Ring Road Sec Phase 1 (Sec 5),36,2,3.5,Possession (Sec 3E/38),4,0,1.0,33.9,0
+CASE-0702,SIPCOT Industrial Corridor Phase 1 (Sec 7),39,1,93.4,Notification (Sec 3A/11),3,0,3.7,8.5,0
+CASE-0703,Vellore Urban Peripheral Phase 3 (Sec 4),158,4,67.5,Declaration (Sec 3D/19),17,20,1.5,16.0,1
+CASE-0704,Tirunelveli Solar Park Access Phase 3 (Sec 4),21,1,79.9,Declaration (Sec 3D/19),0,4,0.3,14.3,0
+CASE-0705,Vellore Urban Peripheral Phase 1 (Sec 3),80,2,85.9,SIA & Objection (Sec 3C/15),2,1,0.0,6.5,0
+CASE-0706,Coimbatore Ring Road Sec Phase 3 (Sec 5),33,0,14.5,Possession (Sec 3E/38),2,5,7.5,39.9,1
+CASE-0707,Coimbatore Ring Road Sec Phase 2 (Sec 2),19,0,91.2,Notification (Sec 3A/11),0,0,0.0,1.0,0
+CASE-0708,Erode Agri-Logistics Zone Phase 1 (Sec 6),137,1,57.4,Compensation Disbursement,7,15,2.2,29.7,1
+CASE-0709,Erode Agri-Logistics Zone Phase 2 (Sec 2),29,0,6.6,Possession (Sec 3E/38),1,0,0.2,32.3,0
+CASE-0710,Salem Bypass Extension Phase 3 (Sec 4),42,0,31.0,Award Inquiry (Sec 3G/23),6,3,2.1,22.8,0
+CASE-0711,Salem Bypass Extension Phase 1 (Sec 6),30,1,55.6,Compensation Disbursement,5,1,0.2,26.2,1
+CASE-0712,Tirunelveli Solar Park Access Phase 3 (Sec 4),26,1,37.5,Declaration (Sec 3D/19),0,2,1.2,16.3,0
+CASE-0713,Erode Agri-Logistics Zone Phase 2 (Sec 7),42,2,71.6,Notification (Sec 3A/11),2,8,4.3,10.3,1
+CASE-0714,Vellore Urban Peripheral Phase 2 (Sec 7),98,3,44.2,Award Inquiry (Sec 3G/23),10,10,3.5,23.8,1
+CASE-0715,Hosur IT Expressway Phase 1 (Sec 5),28,2,97.3,SIA & Objection (Sec 3C/15),3,1,0.6,8.7,1
+CASE-0716,Vellore Urban Peripheral Phase 3 (Sec 4),177,1,65.8,Award Inquiry (Sec 3G/23),4,16,0.0,13.2,0
+CASE-0717,Vellore Urban Peripheral Phase 2 (Sec 1),32,0,62.2,Compensation Disbursement,2,0,0.0,20.1,0
+CASE-0718,Coimbatore Ring Road Sec Phase 2 (Sec 2),142,0,68.4,Possession (Sec 3E/38),9,19,0.1,32.1,0
+CASE-0719,Madurai Logistics Park Phase 3 (Sec 4),70,2,2.2,Possession (Sec 3E/38),0,5,3.6,37.5,0
+CASE-0720,Thoothukudi Port Rail Spur Phase 2 (Sec 1),182,6,33.9,Award Inquiry (Sec 3G/23),4,9,9.6,37.4,1
+CASE-0721,Madurai Logistics Park Phase 1 (Sec 1),44,0,50.4,Award Inquiry (Sec 3G/23),2,2,5.1,26.4,1
+CASE-0722,Hosur IT Expressway Phase 3 (Sec 6),158,7,17.5,Compensation Disbursement,1,1,0.0,24.9,1
+CASE-0723,Thoothukudi Port Rail Spur Phase 1 (Sec 1),27,0,4.7,Compensation Disbursement,0,3,5.5,35.0,1
+CASE-0724,Tirunelveli Solar Park Access Phase 1 (Sec 7),96,2,69.3,Declaration (Sec 3D/19),2,5,0.0,13.4,0
+CASE-0725,Hosur IT Expressway Phase 3 (Sec 7),54,3,21.2,Possession (Sec 3E/38),0,7,6.7,40.4,1
+CASE-0726,Tiruchirappalli Freight Link Phase 3 (Sec 5),57,2,68.4,Award Inquiry (Sec 3G/23),4,4,0.6,20.6,1
+CASE-0727,SIPCOT Industrial Corridor Phase 3 (Sec 6),23,2,10.8,Possession (Sec 3E/38),0,2,12.4,45.2,1
+CASE-0728,Madurai Logistics Park Phase 1 (Sec 5),71,0,91.7,Notification (Sec 3A/11),10,7,0.0,2.6,0
+CASE-0729,Vellore Urban Peripheral Phase 2 (Sec 6),15,0,57.3,Award Inquiry (Sec 3G/23),0,0,0.0,19.1,0
+CASE-0730,Vellore Urban Peripheral Phase 2 (Sec 6),101,1,41.2,Award Inquiry (Sec 3G/23),5,9,4.4,25.8,1
+CASE-0731,Tirunelveli Solar Park Access Phase 1 (Sec 1),91,4,64.8,Declaration (Sec 3D/19),5,10,17.0,37.9,1
+CASE-0732,Thoothukudi Port Rail Spur Phase 1 (Sec 3),53,3,68.6,Award Inquiry (Sec 3G/23),9,3,2.4,24.4,1
+CASE-0733,Salem Bypass Extension Phase 3 (Sec 4),21,0,81.0,Declaration (Sec 3D/19),0,1,0.3,14.4,0
+CASE-0734,Coimbatore Ring Road Sec Phase 3 (Sec 2),68,0,72.7,Notification (Sec 3A/11),0,8,5.8,10.9,0
+CASE-0735,Tirunelveli Solar Park Access Phase 2 (Sec 5),61,0,86.6,Notification (Sec 3A/11),5,2,0.9,4.7,0
+CASE-0736,Vellore Urban Peripheral Phase 3 (Sec 5),20,0,48.8,Possession (Sec 3E/38),0,1,0.0,29.7,0
+CASE-0737,Salem Bypass Extension Phase 2 (Sec 1),40,0,7.4,Compensation Disbursement,3,2,7.2,33.6,1
+CASE-0738,Coimbatore Ring Road Sec Phase 2 (Sec 5),56,3,39.3,Award Inquiry (Sec 3G/23),4,3,0.0,14.9,1
+CASE-0739,Vellore Urban Peripheral Phase 3 (Sec 2),18,0,93.3,Notification (Sec 3A/11),0,0,1.9,6.2,0
+CASE-0740,Madurai Logistics Park Phase 1 (Sec 7),26,0,72.7,Compensation Disbursement,0,0,0.1,26.2,0
+CASE-0741,Salem Bypass Extension Phase 1 (Sec 1),130,2,82.8,SIA & Objection (Sec 3C/15),13,6,5.5,14.5,1
+CASE-0742,Thoothukudi Port Rail Spur Phase 1 (Sec 6),175,4,47.4,Award Inquiry (Sec 3G/23),6,13,11.6,38.8,1
+CASE-0743,Hosur IT Expressway Phase 2 (Sec 1),45,0,79.2,Notification (Sec 3A/11),1,0,1.3,5.2,0
+CASE-0744,Tirunelveli Solar Park Access Phase 2 (Sec 4),25,0,2.2,Possession (Sec 3E/38),1,2,5.1,38.8,0
+CASE-0745,Salem Bypass Extension Phase 3 (Sec 6),121,2,75.0,Declaration (Sec 3D/19),16,9,2.7,17.1,0
+CASE-0746,Tirunelveli Solar Park Access Phase 2 (Sec 2),229,6,16.3,Compensation Disbursement,24,32,4.0,30.8,1
+CASE-0747,Tiruchirappalli Freight Link Phase 1 (Sec 1),54,0,50.1,Award Inquiry (Sec 3G/23),4,2,3.2,25.2,1
+CASE-0748,Tirunelveli Solar Park Access Phase 1 (Sec 5),93,1,93.2,Notification (Sec 3A/11),15,8,3.3,7.9,0
+CASE-0749,Thoothukudi Port Rail Spur Phase 2 (Sec 6),75,1,95.0,SIA & Objection (Sec 3C/15),3,3,8.5,17.8,1
+CASE-0750,Tirunelveli Solar Park Access Phase 2 (Sec 1),46,1,95.3,Notification (Sec 3A/11),0,4,0.0,3.0,0
+CASE-0751,Erode Agri-Logistics Zone Phase 2 (Sec 2),75,1,78.5,Notification (Sec 3A/11),5,9,2.4,5.7,0
+CASE-0752,Madurai Logistics Park Phase 3 (Sec 5),24,0,32.5,Award Inquiry (Sec 3G/23),2,4,3.9,24.8,0
+CASE-0753,Thoothukudi Port Rail Spur Phase 1 (Sec 5),55,3,6.9,Possession (Sec 3E/38),4,7,9.3,45.2,1
+CASE-0754,Coimbatore Ring Road Sec Phase 3 (Sec 4),359,1,43.3,Award Inquiry (Sec 3G/23),8,14,2.3,24.6,0
+CASE-0755,Salem Bypass Extension Phase 2 (Sec 6),209,1,83.4,SIA & Objection (Sec 3C/15),16,11,0.0,6.2,0
+CASE-0756,Tirunelveli Solar Park Access Phase 1 (Sec 4),51,3,1.8,Possession (Sec 3E/38),10,5,12.9,53.1,1
+CASE-0757,Tiruchirappalli Freight Link Phase 1 (Sec 4),24,0,18.2,Possession (Sec 3E/38),0,2,0.0,30.5,0
+CASE-0758,Tirunelveli Solar Park Access Phase 3 (Sec 6),68,6,2.3,Possession (Sec 3E/38),3,0,0.0,30.6,1
+CASE-0759,Coimbatore Ring Road Sec Phase 3 (Sec 1),58,0,1.6,Compensation Disbursement,5,1,0.0,24.9,0
+CASE-0760,Salem Bypass Extension Phase 1 (Sec 6),82,0,65.4,Award Inquiry (Sec 3G/23),0,6,0.7,20.7,0
+CASE-0761,Hosur IT Expressway Phase 3 (Sec 2),22,0,46.3,Award Inquiry (Sec 3G/23),2,4,0.7,21.1,0
+CASE-0762,Salem Bypass Extension Phase 3 (Sec 7),167,1,74.8,Award Inquiry (Sec 3G/23),17,20,0.2,20.3,1
+CASE-0763,Coimbatore Ring Road Sec Phase 2 (Sec 7),141,3,82.3,SIA & Objection (Sec 3C/15),4,10,0.0,1.7,1
+CASE-0764,Coimbatore Ring Road Sec Phase 3 (Sec 5),57,0,75.2,Notification (Sec 3A/11),6,14,0.0,1.0,0
+CASE-0765,Salem Bypass Extension Phase 2 (Sec 4),15,0,86.6,Notification (Sec 3A/11),2,0,0.0,1.0,0
+CASE-0766,SIPCOT Industrial Corridor Phase 2 (Sec 7),48,2,73.5,SIA & Objection (Sec 3C/15),0,2,1.6,11.0,0
+CASE-0767,Tiruchirappalli Freight Link Phase 3 (Sec 7),53,0,34.8,Possession (Sec 3E/38),1,0,7.6,40.3,1
+CASE-0768,Madurai Logistics Park Phase 1 (Sec 2),38,0,75.3,SIA & Objection (Sec 3C/15),4,7,2.6,12.3,0
+CASE-0769,Coimbatore Ring Road Sec Phase 1 (Sec 2),104,0,23.5,Compensation Disbursement,5,13,0.0,21.7,0
+CASE-0770,Tiruchirappalli Freight Link Phase 2 (Sec 1),89,0,40.9,Award Inquiry (Sec 3G/23),9,10,1.2,21.9,0
+CASE-0771,Vellore Urban Peripheral Phase 2 (Sec 3),23,1,44.9,Award Inquiry (Sec 3G/23),0,2,0.0,12.4,1
+CASE-0772,Tiruchirappalli Freight Link Phase 1 (Sec 3),289,6,57.9,Award Inquiry (Sec 3G/23),22,15,3.6,25.8,1
+CASE-0773,Coimbatore Ring Road Sec Phase 1 (Sec 3),44,1,89.5,Notification (Sec 3A/11),1,6,4.2,10.0,1
+CASE-0774,Hosur IT Expressway Phase 1 (Sec 5),119,1,66.1,Award Inquiry (Sec 3G/23),3,10,0.0,19.0,0
+CASE-0775,Tiruchirappalli Freight Link Phase 3 (Sec 3),47,2,99.9,SIA & Objection (Sec 3C/15),5,4,6.4,15.7,1
+CASE-0776,Thoothukudi Port Rail Spur Phase 3 (Sec 5),80,2,70.8,Notification (Sec 3A/11),6,5,1.4,4.9,0
+CASE-0777,Erode Agri-Logistics Zone Phase 2 (Sec 2),46,0,74.0,Notification (Sec 3A/11),1,3,4.6,9.9,1
+CASE-0778,Madurai Logistics Park Phase 1 (Sec 6),49,0,1.6,Possession (Sec 3E/38),1,3,4.5,39.8,0
+CASE-0779,Vellore Urban Peripheral Phase 1 (Sec 6),17,0,96.5,SIA & Objection (Sec 3C/15),0,4,6.9,15.8,1
+CASE-0780,Coimbatore Ring Road Sec Phase 1 (Sec 3),166,3,0.5,Compensation Disbursement,2,22,3.6,32.3,1
+CASE-0781,SIPCOT Industrial Corridor Phase 2 (Sec 2),167,4,96.5,SIA & Objection (Sec 3C/15),1,9,0.0,1.0,1
+CASE-0782,Tiruchirappalli Freight Link Phase 2 (Sec 4),51,1,93.2,SIA & Objection (Sec 3C/15),2,0,0.0,7.7,0
+CASE-0783,SIPCOT Industrial Corridor Phase 2 (Sec 1),158,3,37.4,Award Inquiry (Sec 3G/23),13,12,0.0,19.8,0
+CASE-0784,Tirunelveli Solar Park Access Phase 3 (Sec 7),68,1,36.6,Declaration (Sec 3D/19),19,2,0.0,7.8,0
+CASE-0785,Tiruchirappalli Freight Link Phase 3 (Sec 1),72,2,8.6,Possession (Sec 3E/38),7,9,2.1,35.5,1
+CASE-0786,Madurai Logistics Park Phase 2 (Sec 3),26,0,89.8,Notification (Sec 3A/11),4,3,1.2,4.7,0
+CASE-0787,Madurai Logistics Park Phase 3 (Sec 4),43,0,72.2,SIA & Objection (Sec 3C/15),3,6,4.9,14.5,0
+CASE-0788,Vellore Urban Peripheral Phase 2 (Sec 5),32,0,84.0,Notification (Sec 3A/11),4,2,0.8,4.4,0
+CASE-0789,Thoothukudi Port Rail Spur Phase 3 (Sec 4),93,4,40.1,Declaration (Sec 3D/19),5,12,3.0,18.7,1
+CASE-0790,Erode Agri-Logistics Zone Phase 1 (Sec 7),80,2,53.7,Award Inquiry (Sec 3G/23),5,3,1.5,21.8,0
+CASE-0791,Thoothukudi Port Rail Spur Phase 3 (Sec 3),45,1,32.6,Award Inquiry (Sec 3G/23),2,2,0.0,16.2,0
+CASE-0792,Salem Bypass Extension Phase 1 (Sec 7),58,0,61.8,Award Inquiry (Sec 3G/23),3,7,0.3,20.5,1
+CASE-0793,Tiruchirappalli Freight Link Phase 1 (Sec 4),47,0,68.5,Declaration (Sec 3D/19),0,2,0.0,9.4,0
+CASE-0794,Salem Bypass Extension Phase 1 (Sec 1),47,1,83.0,Declaration (Sec 3D/19),6,1,7.6,23.7,1
+CASE-0795,Salem Bypass Extension Phase 2 (Sec 3),51,1,90.6,SIA & Objection (Sec 3C/15),8,4,0.0,7.4,0
+CASE-0796,Vellore Urban Peripheral Phase 2 (Sec 7),90,1,76.6,SIA & Objection (Sec 3C/15),3,2,4.0,14.9,0
+CASE-0797,Salem Bypass Extension Phase 3 (Sec 6),110,0,85.3,SIA & Objection (Sec 3C/15),4,0,0.9,9.0,0
+CASE-0798,Tiruchirappalli Freight Link Phase 2 (Sec 3),28,0,5.4,Possession (Sec 3E/38),1,3,1.0,33.6,0
+CASE-0799,Madurai Logistics Park Phase 1 (Sec 6),71,0,2.1,Compensation Disbursement,3,4,1.7,29.0,0
+CASE-0800,Thoothukudi Port Rail Spur Phase 3 (Sec 5),51,0,68.0,Declaration (Sec 3D/19),6,4,2.4,18.8,0
+CASE-0801,Hosur IT Expressway Phase 2 (Sec 1),28,0,12.7,Possession (Sec 3E/38),5,0,0.0,31.2,0
+CASE-0802,SIPCOT Industrial Corridor Phase 1 (Sec 1),100,2,54.0,Award Inquiry (Sec 3G/23),14,10,7.2,28.3,1
+CASE-0803,SIPCOT Industrial Corridor Phase 1 (Sec 4),32,0,60.4,Award Inquiry (Sec 3G/23),6,0,0.0,16.9,0
+CASE-0804,SIPCOT Industrial Corridor Phase 2 (Sec 3),141,3,90.5,SIA & Objection (Sec 3C/15),8,9,5.2,16.0,1
+CASE-0805,Thoothukudi Port Rail Spur Phase 1 (Sec 5),26,1,81.8,Notification (Sec 3A/11),0,3,4.4,8.5,0
+CASE-0806,Tiruchirappalli Freight Link Phase 2 (Sec 1),40,0,94.4,SIA & Objection (Sec 3C/15),1,5,0.0,7.9,0
+CASE-0807,Tiruchirappalli Freight Link Phase 2 (Sec 4),105,1,74.3,SIA & Objection (Sec 3C/15),14,5,7.7,20.7,1
+CASE-0808,Hosur IT Expressway Phase 3 (Sec 2),23,0,90.1,SIA & Objection (Sec 3C/15),3,0,0.0,6.9,0
+CASE-0809,Hosur IT Expressway Phase 1 (Sec 7),20,0,22.1,Compensation Disbursement,0,4,0.0,23.5,0
+CASE-0810,Coimbatore Ring Road Sec Phase 3 (Sec 3),23,1,98.5,SIA & Objection (Sec 3C/15),0,2,6.3,14.8,1
+CASE-0811,Madurai Logistics Park Phase 3 (Sec 1),39,0,5.8,Compensation Disbursement,2,4,2.3,30.3,0
+CASE-0812,Tiruchirappalli Freight Link Phase 1 (Sec 3),38,3,77.0,SIA & Objection (Sec 3C/15),5,1,17.4,32.0,1
+CASE-0813,Vellore Urban Peripheral Phase 2 (Sec 5),17,0,73.1,Award Inquiry (Sec 3G/23),1,1,0.0,19.3,0
+CASE-0814,Madurai Logistics Park Phase 3 (Sec 7),21,0,75.3,Award Inquiry (Sec 3G/23),3,0,0.7,21.2,1
+CASE-0815,Vellore Urban Peripheral Phase 1 (Sec 7),142,3,41.5,Compensation Disbursement,6,2,2.7,29.1,1
+CASE-0816,Hosur IT Expressway Phase 1 (Sec 7),93,4,52.2,Award Inquiry (Sec 3G/23),2,5,5.3,28.4,1
+CASE-0817,Coimbatore Ring Road Sec Phase 3 (Sec 1),144,7,95.0,SIA & Objection (Sec 3C/15),8,6,0.0,6.0,1
+CASE-0818,Coimbatore Ring Road Sec Phase 2 (Sec 5),46,0,54.1,Declaration (Sec 3D/19),3,6,0.0,5.9,0
+CASE-0819,Thoothukudi Port Rail Spur Phase 3 (Sec 7),56,0,36.3,Award Inquiry (Sec 3G/23),3,1,0.0,15.0,0
+CASE-0820,SIPCOT Industrial Corridor Phase 2 (Sec 6),281,5,76.9,SIA & Objection (Sec 3C/15),17,22,0.0,6.4,1
+CASE-0821,Thoothukudi Port Rail Spur Phase 3 (Sec 1),71,1,80.8,SIA & Objection (Sec 3C/15),3,6,0.0,7.1,0
+CASE-0822,Erode Agri-Logistics Zone Phase 3 (Sec 7),98,2,88.3,SIA & Objection (Sec 3C/15),3,5,0.5,8.6,1
+CASE-0823,Erode Agri-Logistics Zone Phase 2 (Sec 4),26,0,13.6,Compensation Disbursement,1,3,3.5,32.2,1
+CASE-0824,Vellore Urban Peripheral Phase 2 (Sec 2),19,0,76.5,Declaration (Sec 3D/19),1,2,4.9,21.5,1
+CASE-0825,Coimbatore Ring Road Sec Phase 3 (Sec 4),21,0,77.6,SIA & Objection (Sec 3C/15),2,3,1.2,9.3,0
+CASE-0826,Hosur IT Expressway Phase 1 (Sec 6),38,2,35.8,Declaration (Sec 3D/19),5,3,0.5,14.9,0
+CASE-0827,Tirunelveli Solar Park Access Phase 2 (Sec 6),81,1,10.1,Compensation Disbursement,1,10,10.3,38.1,1
+CASE-0828,Erode Agri-Logistics Zone Phase 3 (Sec 3),52,1,17.3,Possession (Sec 3E/38),1,2,3.0,37.4,0
+CASE-0829,Vellore Urban Peripheral Phase 1 (Sec 5),62,2,36.6,Compensation Disbursement,9,2,3.6,30.4,0
+CASE-0830,Coimbatore Ring Road Sec Phase 2 (Sec 2),170,2,12.6,Compensation Disbursement,29,7,0.0,25.4,0
+CASE-0831,SIPCOT Industrial Corridor Phase 1 (Sec 3),152,2,92.6,Notification (Sec 3A/11),1,1,2.6,6.1,0
+CASE-0832,Thoothukudi Port Rail Spur Phase 3 (Sec 1),78,0,59.9,Declaration (Sec 3D/19),1,6,0.0,11.1,0
+CASE-0833,Hosur IT Expressway Phase 1 (Sec 6),66,4,10.9,Compensation Disbursement,0,9,6.6,36.8,1
+CASE-0834,Thoothukudi Port Rail Spur Phase 3 (Sec 4),134,2,44.3,Declaration (Sec 3D/19),11,34,1.9,17.6,1
+CASE-0835,Tiruchirappalli Freight Link Phase 1 (Sec 7),165,1,11.2,Compensation Disbursement,4,11,2.3,29.5,0
+CASE-0836,Madurai Logistics Park Phase 3 (Sec 5),77,2,96.1,Notification (Sec 3A/11),6,4,4.4,10.4,1
+CASE-0837,Vellore Urban Peripheral Phase 2 (Sec 2),173,3,92.4,Notification (Sec 3A/11),14,4,1.4,4.6,1
+CASE-0838,Madurai Logistics Park Phase 2 (Sec 4),145,3,78.9,Notification (Sec 3A/11),3,16,0.0,1.0,0
+CASE-0839,Salem Bypass Extension Phase 3 (Sec 4),17,1,77.9,Award Inquiry (Sec 3G/23),0,0,3.5,23.9,1
+CASE-0840,Coimbatore Ring Road Sec Phase 3 (Sec 4),15,1,43.5,Award Inquiry (Sec 3G/23),2,1,3.7,24.1,1
+CASE-0841,Tiruchirappalli Freight Link Phase 2 (Sec 3),66,0,18.8,Possession (Sec 3E/38),2,4,1.2,34.3,0
+CASE-0842,Hosur IT Expressway Phase 2 (Sec 4),32,2,71.4,Award Inquiry (Sec 3G/23),1,2,0.0,18.9,1
+CASE-0843,Thoothukudi Port Rail Spur Phase 2 (Sec 2),28,0,12.1,Possession (Sec 3E/38),3,3,3.3,36.0,0
+CASE-0844,Tirunelveli Solar Park Access Phase 3 (Sec 1),248,6,81.6,Notification (Sec 3A/11),5,18,6.6,14.9,1
+CASE-0845,Hosur IT Expressway Phase 3 (Sec 4),95,2,44.7,Declaration (Sec 3D/19),16,2,1.4,16.5,0
+CASE-0846,Hosur IT Expressway Phase 2 (Sec 4),15,0,86.1,SIA & Objection (Sec 3C/15),0,2,6.1,19.9,1
+CASE-0847,Tiruchirappalli Freight Link Phase 3 (Sec 7),147,3,63.2,Award Inquiry (Sec 3G/23),3,22,11.2,32.1,1
+CASE-0848,Vellore Urban Peripheral Phase 2 (Sec 3),348,7,88.8,Notification (Sec 3A/11),55,20,5.5,11.7,1
+CASE-0849,Tiruchirappalli Freight Link Phase 3 (Sec 1),118,3,72.6,Declaration (Sec 3D/19),4,10,9.8,28.5,1
+CASE-0850,Vellore Urban Peripheral Phase 3 (Sec 7),90,1,74.5,Possession (Sec 3E/38),7,11,0.2,32.4,1
+CASE-0851,SIPCOT Industrial Corridor Phase 2 (Sec 4),134,0,96.2,Notification (Sec 3A/11),4,5,0.0,1.0,0
+CASE-0852,Madurai Logistics Park Phase 3 (Sec 2),23,0,76.3,SIA & Objection (Sec 3C/15),4,4,1.1,9.6,0
+CASE-0853,Coimbatore Ring Road Sec Phase 2 (Sec 7),138,3,20.9,Compensation Disbursement,15,15,3.3,30.8,1
+CASE-0854,Thoothukudi Port Rail Spur Phase 1 (Sec 3),55,1,89.3,SIA & Objection (Sec 3C/15),1,12,3.1,12.0,0
+CASE-0855,Madurai Logistics Park Phase 1 (Sec 4),59,1,70.9,Declaration (Sec 3D/19),2,4,0.0,10.7,0
+CASE-0856,Salem Bypass Extension Phase 2 (Sec 7),26,0,94.8,SIA & Objection (Sec 3C/15),0,0,0.0,6.8,0
+CASE-0857,Salem Bypass Extension Phase 2 (Sec 7),76,1,5.8,Possession (Sec 3E/38),3,8,3.3,36.9,1
+CASE-0858,Vellore Urban Peripheral Phase 2 (Sec 6),31,0,87.0,SIA & Objection (Sec 3C/15),0,1,2.6,11.4,0
+CASE-0859,Erode Agri-Logistics Zone Phase 2 (Sec 7),68,0,39.5,Compensation Disbursement,8,1,0.0,18.7,0
+CASE-0860,Thoothukudi Port Rail Spur Phase 2 (Sec 7),71,2,21.8,Compensation Disbursement,3,4,0.6,26.9,0
+CASE-0861,Hosur IT Expressway Phase 1 (Sec 1),100,4,23.0,Compensation Disbursement,4,5,1.8,28.7,0
+CASE-0862,Thoothukudi Port Rail Spur Phase 3 (Sec 4),174,6,80.8,Declaration (Sec 3D/19),2,2,0.8,15.6,1
+CASE-0863,Salem Bypass Extension Phase 1 (Sec 5),27,0,99.8,SIA & Objection (Sec 3C/15),3,0,0.9,9.6,0
+CASE-0864,Salem Bypass Extension Phase 3 (Sec 6),77,1,30.1,Possession (Sec 3E/38),1,11,0.1,32.1,0
+CASE-0865,Vellore Urban Peripheral Phase 2 (Sec 3),108,0,78.2,Declaration (Sec 3D/19),8,9,9.0,24.5,0
+CASE-0866,Tirunelveli Solar Park Access Phase 1 (Sec 5),60,2,83.4,Declaration (Sec 3D/19),12,2,3.1,17.7,0
+CASE-0867,Erode Agri-Logistics Zone Phase 1 (Sec 1),87,0,93.1,SIA & Objection (Sec 3C/15),12,6,2.0,10.4,0
+CASE-0868,Madurai Logistics Park Phase 2 (Sec 5),28,1,71.6,Compensation Disbursement,3,3,0.0,17.2,0
+CASE-0869,Thoothukudi Port Rail Spur Phase 1 (Sec 5),20,1,62.9,Possession (Sec 3E/38),1,3,3.1,35.4,1
+CASE-0870,Vellore Urban Peripheral Phase 2 (Sec 1),153,2,92.5,Notification (Sec 3A/11),6,8,0.0,1.0,0
+CASE-0871,Hosur IT Expressway Phase 1 (Sec 6),294,9,91.9,SIA & Objection (Sec 3C/15),4,7,3.0,13.4,1
+CASE-0872,Hosur IT Expressway Phase 3 (Sec 7),62,2,1.2,Possession (Sec 3E/38),8,9,0.0,25.4,0
+CASE-0873,Vellore Urban Peripheral Phase 3 (Sec 7),27,0,89.7,SIA & Objection (Sec 3C/15),0,2,1.6,10.4,0
+CASE-0874,Tirunelveli Solar Park Access Phase 2 (Sec 7),166,1,47.1,Declaration (Sec 3D/19),18,10,0.0,13.3,0
+CASE-0875,Salem Bypass Extension Phase 1 (Sec 1),73,4,68.9,Declaration (Sec 3D/19),5,3,5.3,21.1,1
+CASE-0876,Tiruchirappalli Freight Link Phase 3 (Sec 6),109,1,89.4,Notification (Sec 3A/11),12,5,4.8,9.2,1
+CASE-0877,SIPCOT Industrial Corridor Phase 3 (Sec 4),73,1,99.2,Notification (Sec 3A/11),1,9,10.1,14.9,1
+CASE-0878,Coimbatore Ring Road Sec Phase 3 (Sec 4),31,1,0.5,Compensation Disbursement,1,3,4.1,33.0,0
+CASE-0879,Vellore Urban Peripheral Phase 1 (Sec 7),317,4,39.9,Declaration (Sec 3D/19),8,35,13.3,29.0,1
+CASE-0880,Madurai Logistics Park Phase 1 (Sec 2),141,1,1.4,Possession (Sec 3E/38),10,10,1.8,34.1,0
+CASE-0881,Coimbatore Ring Road Sec Phase 1 (Sec 1),52,1,63.6,Compensation Disbursement,6,0,3.4,30.7,1
+CASE-0882,Tiruchirappalli Freight Link Phase 1 (Sec 2),42,0,1.9,Compensation Disbursement,2,1,3.2,29.4,0
+CASE-0883,Thoothukudi Port Rail Spur Phase 3 (Sec 7),158,2,85.4,Notification (Sec 3A/11),1,4,1.0,4.6,1
+CASE-0884,Salem Bypass Extension Phase 3 (Sec 5),71,3,83.8,SIA & Objection (Sec 3C/15),2,10,3.6,11.9,1
+CASE-0885,SIPCOT Industrial Corridor Phase 3 (Sec 7),70,0,83.3,Award Inquiry (Sec 3G/23),5,1,1.5,21.7,0
+CASE-0886,SIPCOT Industrial Corridor Phase 2 (Sec 5),67,3,40.5,Declaration (Sec 3D/19),2,5,3.1,18.8,0
+CASE-0887,Tiruchirappalli Freight Link Phase 2 (Sec 5),179,3,80.1,SIA & Objection (Sec 3C/15),17,25,0.1,8.1,0
+CASE-0888,SIPCOT Industrial Corridor Phase 3 (Sec 4),22,0,51.2,Declaration (Sec 3D/19),4,2,1.4,15.9,0
+CASE-0889,Thoothukudi Port Rail Spur Phase 2 (Sec 1),163,4,10.9,Compensation Disbursement,10,7,0.8,27.3,1
+CASE-0890,Erode Agri-Logistics Zone Phase 2 (Sec 6),45,0,64.7,Declaration (Sec 3D/19),2,1,4.2,20.0,0
+CASE-0891,Thoothukudi Port Rail Spur Phase 1 (Sec 5),65,0,39.0,Declaration (Sec 3D/19),0,7,1.7,16.4,0
+CASE-0892,Thoothukudi Port Rail Spur Phase 1 (Sec 1),188,4,72.5,Notification (Sec 3A/11),12,7,4.4,11.3,1
+CASE-0893,Tirunelveli Solar Park Access Phase 2 (Sec 2),19,0,49.3,Award Inquiry (Sec 3G/23),0,2,2.7,23.5,0
+CASE-0894,Tiruchirappalli Freight Link Phase 1 (Sec 2),50,0,70.9,Notification (Sec 3A/11),2,3,3.6,7.1,0
+CASE-0895,Madurai Logistics Park Phase 1 (Sec 1),500,8,94.1,SIA & Objection (Sec 3C/15),37,49,0.0,7.9,1
+CASE-0896,Vellore Urban Peripheral Phase 3 (Sec 6),57,4,31.6,Possession (Sec 3E/38),2,2,6.5,41.9,1
+CASE-0897,Salem Bypass Extension Phase 3 (Sec 5),32,1,0.4,Compensation Disbursement,0,0,1.4,27.6,0
+CASE-0898,Erode Agri-Logistics Zone Phase 1 (Sec 5),211,7,18.9,Possession (Sec 3E/38),4,17,11.6,44.7,1
+CASE-0899,Thoothukudi Port Rail Spur Phase 1 (Sec 7),188,1,95.7,SIA & Objection (Sec 3C/15),13,11,1.2,9.6,0
+CASE-0900,Madurai Logistics Park Phase 3 (Sec 1),15,0,24.8,Possession (Sec 3E/38),0,0,3.9,38.8,0
+CASE-0901,Madurai Logistics Park Phase 2 (Sec 4),21,0,42.2,Award Inquiry (Sec 3G/23),2,2,3.3,24.7,0
+CASE-0902,Salem Bypass Extension Phase 1 (Sec 4),69,1,70.5,Notification (Sec 3A/11),1,8,0.0,1.0,0
+CASE-0903,Hosur IT Expressway Phase 2 (Sec 5),38,0,71.5,Award Inquiry (Sec 3G/23),1,4,0.0,18.3,1
+CASE-0904,Hosur IT Expressway Phase 2 (Sec 4),50,3,12.0,Compensation Disbursement,1,4,14.1,42.1,1
+CASE-0905,Tirunelveli Solar Park Access Phase 3 (Sec 7),29,1,69.6,Award Inquiry (Sec 3G/23),1,1,1.4,22.0,1
+CASE-0906,Tiruchirappalli Freight Link Phase 1 (Sec 7),159,5,0.7,Compensation Disbursement,18,11,5.3,36.2,1
+CASE-0907,Tirunelveli Solar Park Access Phase 3 (Sec 4),85,0,57.3,Declaration (Sec 3D/19),12,6,0.0,10.9,0
+CASE-0908,Tiruchirappalli Freight Link Phase 2 (Sec 5),61,2,74.6,SIA & Objection (Sec 3C/15),9,2,0.4,8.5,0
+CASE-0909,SIPCOT Industrial Corridor Phase 3 (Sec 5),21,0,85.3,Notification (Sec 3A/11),0,0,2.8,6.8,0
+CASE-0910,Salem Bypass Extension Phase 1 (Sec 6),85,0,76.5,SIA & Objection (Sec 3C/15),13,11,8.0,17.1,1
+CASE-0911,Coimbatore Ring Road Sec Phase 2 (Sec 6),42,1,75.9,Notification (Sec 3A/11),0,6,2.0,5.8,0
+CASE-0912,Coimbatore Ring Road Sec Phase 1 (Sec 6),397,14,17.7,Compensation Disbursement,21,25,7.2,37.1,1
+CASE-0913,Coimbatore Ring Road Sec Phase 1 (Sec 5),96,2,98.5,Notification (Sec 3A/11),12,3,2.3,5.5,0
+CASE-0914,SIPCOT Industrial Corridor Phase 1 (Sec 7),296,7,8.2,Compensation Disbursement,12,11,0.0,22.6,1
+CASE-0915,SIPCOT Industrial Corridor Phase 3 (Sec 6),87,1,61.6,Declaration (Sec 3D/19),2,7,1.5,15.7,0
+CASE-0916,Thoothukudi Port Rail Spur Phase 1 (Sec 1),37,1,43.6,Declaration (Sec 3D/19),0,2,3.7,18.2,0
+CASE-0917,Tiruchirappalli Freight Link Phase 1 (Sec 1),55,0,75.5,Notification (Sec 3A/11),9,4,0.0,1.0,0
+CASE-0918,Salem Bypass Extension Phase 3 (Sec 2),32,0,67.2,Award Inquiry (Sec 3G/23),0,0,5.5,27.1,1
+CASE-0919,Erode Agri-Logistics Zone Phase 3 (Sec 1),98,7,36.2,Award Inquiry (Sec 3G/23),7,10,2.5,23.2,1
+CASE-0920,Thoothukudi Port Rail Spur Phase 1 (Sec 1),66,2,36.4,Award Inquiry (Sec 3G/23),2,5,0.2,20.3,0
+CASE-0921,Hosur IT Expressway Phase 1 (Sec 2),44,1,79.3,SIA & Objection (Sec 3C/15),7,2,0.0,7.1,0
+CASE-0922,Tirunelveli Solar Park Access Phase 1 (Sec 1),37,0,87.9,SIA & Objection (Sec 3C/15),3,3,3.0,13.6,0
+CASE-0923,Tirunelveli Solar Park Access Phase 3 (Sec 4),51,0,2.8,Compensation Disbursement,2,1,5.8,32.9,0
+CASE-0924,Madurai Logistics Park Phase 2 (Sec 4),184,5,76.7,SIA & Objection (Sec 3C/15),5,15,2.2,11.9,1
+CASE-0925,Vellore Urban Peripheral Phase 1 (Sec 3),20,0,1.2,Compensation Disbursement,0,5,7.2,34.0,1
+CASE-0926,Erode Agri-Logistics Zone Phase 3 (Sec 3),168,1,57.5,Declaration (Sec 3D/19),15,14,0.0,11.0,0
+CASE-0927,Tiruchirappalli Freight Link Phase 1 (Sec 5),135,1,12.5,Possession (Sec 3E/38),2,13,0.0,29.2,0
+CASE-0928,Tirunelveli Solar Park Access Phase 1 (Sec 7),47,3,70.4,Notification (Sec 3A/11),5,5,0.0,1.6,1
+CASE-0929,Madurai Logistics Park Phase 3 (Sec 5),133,0,15.2,Possession (Sec 3E/38),3,13,0.0,27.3,0
+CASE-0930,Tiruchirappalli Freight Link Phase 1 (Sec 1),138,2,75.7,Award Inquiry (Sec 3G/23),7,9,0.0,19.7,1
+CASE-0931,Erode Agri-Logistics Zone Phase 3 (Sec 5),55,1,2.0,Compensation Disbursement,4,1,0.0,26.0,0
+CASE-0932,Madurai Logistics Park Phase 3 (Sec 2),15,0,97.7,Notification (Sec 3A/11),0,0,5.7,11.8,1
+CASE-0933,SIPCOT Industrial Corridor Phase 3 (Sec 3),193,0,89.8,SIA & Objection (Sec 3C/15),3,23,0.0,5.5,0
+CASE-0934,Vellore Urban Peripheral Phase 2 (Sec 3),170,1,58.1,Declaration (Sec 3D/19),4,11,0.0,12.7,0
+CASE-0935,Coimbatore Ring Road Sec Phase 2 (Sec 2),65,1,34.4,Award Inquiry (Sec 3G/23),2,4,2.3,22.7,0
+CASE-0936,Madurai Logistics Park Phase 2 (Sec 4),81,0,37.7,Declaration (Sec 3D/19),6,1,0.3,14.6,0
+CASE-0937,Tirunelveli Solar Park Access Phase 1 (Sec 4),67,0,94.5,Notification (Sec 3A/11),2,4,3.1,8.6,0
+CASE-0938,Vellore Urban Peripheral Phase 3 (Sec 3),126,1,79.1,Declaration (Sec 3D/19),7,3,0.0,7.1,0
+CASE-0939,Tirunelveli Solar Park Access Phase 1 (Sec 4),25,0,96.6,SIA & Objection (Sec 3C/15),0,3,0.6,8.8,0
+CASE-0940,Erode Agri-Logistics Zone Phase 3 (Sec 6),20,0,59.2,Award Inquiry (Sec 3G/23),0,1,0.0,16.1,0
+CASE-0941,Salem Bypass Extension Phase 2 (Sec 2),85,2,85.8,SIA & Objection (Sec 3C/15),8,16,3.6,14.9,1
+CASE-0942,Hosur IT Expressway Phase 1 (Sec 5),84,3,11.5,Compensation Disbursement,5,4,1.9,29.1,1
+CASE-0943,Erode Agri-Logistics Zone Phase 1 (Sec 2),159,1,79.3,Award Inquiry (Sec 3G/23),9,27,0.0,18.2,0
+CASE-0944,Coimbatore Ring Road Sec Phase 1 (Sec 6),64,3,75.1,Declaration (Sec 3D/19),4,0,22.3,49.2,1
+CASE-0945,Vellore Urban Peripheral Phase 2 (Sec 7),100,0,21.4,Possession (Sec 3E/38),3,2,4.7,38.6,0
+CASE-0946,Hosur IT Expressway Phase 2 (Sec 1),340,10,5.0,Possession (Sec 3E/38),15,51,3.8,38.1,1
+CASE-0947,SIPCOT Industrial Corridor Phase 1 (Sec 7),174,4,57.2,Declaration (Sec 3D/19),27,9,2.3,18.2,1
+CASE-0948,Salem Bypass Extension Phase 3 (Sec 1),67,0,67.9,Declaration (Sec 3D/19),1,3,1.1,15.6,0
+CASE-0949,SIPCOT Industrial Corridor Phase 1 (Sec 1),16,0,83.1,Declaration (Sec 3D/19),1,2,1.1,15.4,0
+CASE-0950,Hosur IT Expressway Phase 3 (Sec 4),79,2,91.4,Notification (Sec 3A/11),9,10,5.8,9.3,1
+CASE-0951,Salem Bypass Extension Phase 1 (Sec 5),49,0,12.9,Compensation Disbursement,0,9,0.0,25.7,0
+CASE-0952,SIPCOT Industrial Corridor Phase 3 (Sec 6),340,3,7.5,Possession (Sec 3E/38),7,33,3.0,35.4,1
+CASE-0953,Hosur IT Expressway Phase 1 (Sec 5),253,1,87.0,Notification (Sec 3A/11),18,9,1.4,5.1,0
+CASE-0954,Vellore Urban Peripheral Phase 1 (Sec 7),161,6,57.8,Declaration (Sec 3D/19),3,15,5.3,19.8,1
+CASE-0955,Tirunelveli Solar Park Access Phase 1 (Sec 5),17,0,90.2,SIA & Objection (Sec 3C/15),0,1,0.0,7.5,0
+CASE-0956,Tiruchirappalli Freight Link Phase 3 (Sec 4),54,1,79.8,SIA & Objection (Sec 3C/15),4,1,5.9,14.8,0
+CASE-0957,Hosur IT Expressway Phase 3 (Sec 2),419,5,0.9,Possession (Sec 3E/38),6,39,3.0,37.7,1
+CASE-0958,Tirunelveli Solar Park Access Phase 3 (Sec 5),74,1,4.0,Compensation Disbursement,3,3,0.0,24.1,0
+CASE-0959,Tirunelveli Solar Park Access Phase 3 (Sec 5),130,1,68.3,Compensation Disbursement,9,8,0.0,25.3,0
+CASE-0960,SIPCOT Industrial Corridor Phase 3 (Sec 4),42,2,51.3,Award Inquiry (Sec 3G/23),1,3,4.9,28.2,1
+CASE-0961,SIPCOT Industrial Corridor Phase 2 (Sec 5),91,0,20.8,Possession (Sec 3E/38),0,1,10.2,48.7,1
+CASE-0962,Erode Agri-Logistics Zone Phase 2 (Sec 3),130,0,3.9,Compensation Disbursement,15,1,2.3,29.2,0
+CASE-0963,Erode Agri-Logistics Zone Phase 3 (Sec 3),44,0,58.7,Declaration (Sec 3D/19),3,4,3.2,17.7,0
+CASE-0964,Coimbatore Ring Road Sec Phase 3 (Sec 1),35,0,52.5,Award Inquiry (Sec 3G/23),1,1,0.0,14.4,1
+CASE-0965,Tiruchirappalli Freight Link Phase 2 (Sec 6),173,2,93.2,Notification (Sec 3A/11),7,31,2.6,7.4,1
+CASE-0966,Salem Bypass Extension Phase 3 (Sec 4),50,1,99.9,SIA & Objection (Sec 3C/15),3,5,0.6,9.0,0
+CASE-0967,Coimbatore Ring Road Sec Phase 3 (Sec 6),29,0,70.0,Declaration (Sec 3D/19),0,2,3.1,19.7,0
+CASE-0968,Erode Agri-Logistics Zone Phase 2 (Sec 3),15,0,53.6,Declaration (Sec 3D/19),3,2,2.7,17.8,0
+CASE-0969,Thoothukudi Port Rail Spur Phase 2 (Sec 5),55,0,70.1,SIA & Objection (Sec 3C/15),2,8,6.6,16.8,0
+CASE-0970,Tiruchirappalli Freight Link Phase 2 (Sec 3),38,0,6.9,Possession (Sec 3E/38),3,0,4.3,36.7,0
+CASE-0971,Madurai Logistics Park Phase 3 (Sec 7),235,5,94.1,Notification (Sec 3A/11),26,23,6.3,11.3,1
+CASE-0972,Hosur IT Expressway Phase 1 (Sec 6),65,3,81.3,Notification (Sec 3A/11),6,4,4.6,11.6,1
+CASE-0973,Vellore Urban Peripheral Phase 3 (Sec 1),20,1,24.0,Possession (Sec 3E/38),1,3,7.8,41.0,1
+CASE-0974,Tirunelveli Solar Park Access Phase 3 (Sec 4),98,2,10.0,Compensation Disbursement,10,12,0.0,21.5,1
+CASE-0975,Coimbatore Ring Road Sec Phase 3 (Sec 5),36,0,85.1,SIA & Objection (Sec 3C/15),4,0,0.0,7.7,0
+CASE-0976,Madurai Logistics Park Phase 3 (Sec 1),41,2,33.8,Award Inquiry (Sec 3G/23),3,5,0.0,15.6,0
+CASE-0977,Tirunelveli Solar Park Access Phase 3 (Sec 6),49,1,41.8,Declaration (Sec 3D/19),5,8,2.7,17.7,0
+CASE-0978,Salem Bypass Extension Phase 1 (Sec 4),49,1,1.5,Compensation Disbursement,1,3,8.0,35.8,1
+CASE-0979,SIPCOT Industrial Corridor Phase 1 (Sec 5),82,1,1.7,Compensation Disbursement,11,6,2.3,29.9,0
+CASE-0980,Tirunelveli Solar Park Access Phase 2 (Sec 4),146,6,35.8,Declaration (Sec 3D/19),0,6,11.3,31.4,1
+CASE-0981,Tiruchirappalli Freight Link Phase 1 (Sec 3),64,7,46.5,Declaration (Sec 3D/19),3,15,1.3,15.5,1
+CASE-0982,Madurai Logistics Park Phase 1 (Sec 6),20,0,21.0,Compensation Disbursement,2,0,1.2,27.7,0
+CASE-0983,Thoothukudi Port Rail Spur Phase 1 (Sec 5),48,0,70.3,Notification (Sec 3A/11),2,6,0.1,3.1,0
+CASE-0984,Erode Agri-Logistics Zone Phase 2 (Sec 5),92,4,24.9,Possession (Sec 3E/38),10,4,12.0,49.9,1
+CASE-0985,Salem Bypass Extension Phase 2 (Sec 6),244,0,79.2,SIA & Objection (Sec 3C/15),23,9,1.5,9.9,0
+CASE-0986,Tirunelveli Solar Park Access Phase 1 (Sec 1),41,0,67.1,Award Inquiry (Sec 3G/23),1,0,4.3,25.2,0
+CASE-0987,Tirunelveli Solar Park Access Phase 3 (Sec 4),43,0,39.7,Award Inquiry (Sec 3G/23),2,4,0.1,20.1,0
+CASE-0988,Salem Bypass Extension Phase 1 (Sec 6),131,3,57.7,Declaration (Sec 3D/19),9,14,2.2,18.2,0
+CASE-0989,Erode Agri-Logistics Zone Phase 1 (Sec 3),68,1,31.9,Declaration (Sec 3D/19),4,6,0.0,10.7,0
+CASE-0990,Coimbatore Ring Road Sec Phase 2 (Sec 7),30,0,69.0,Declaration (Sec 3D/19),2,3,2.5,17.3,0
+CASE-0991,Coimbatore Ring Road Sec Phase 1 (Sec 3),49,1,77.7,Notification (Sec 3A/11),7,5,0.0,2.8,0
+CASE-0992,Vellore Urban Peripheral Phase 1 (Sec 5),155,1,36.2,Award Inquiry (Sec 3G/23),12,25,6.7,27.3,1
+CASE-0993,Hosur IT Expressway Phase 3 (Sec 7),51,2,90.0,SIA & Objection (Sec 3C/15),1,4,0.0,8.0,0
+CASE-0994,Vellore Urban Peripheral Phase 1 (Sec 5),218,9,76.7,SIA & Objection (Sec 3C/15),4,25,0.0,6.3,1
+CASE-0995,Thoothukudi Port Rail Spur Phase 3 (Sec 7),17,0,46.7,Declaration (Sec 3D/19),4,1,5.4,21.1,0
+CASE-0996,SIPCOT Industrial Corridor Phase 1 (Sec 2),29,0,90.1,SIA & Objection (Sec 3C/15),0,2,0.0,4.5,0
+CASE-0997,Hosur IT Expressway Phase 2 (Sec 1),81,0,37.9,Award Inquiry (Sec 3G/23),5,9,5.3,29.9,1
+CASE-0998,Erode Agri-Logistics Zone Phase 3 (Sec 6),327,6,8.0,Compensation Disbursement,17,42,0.0,25.5,1
+CASE-0999,Hosur IT Expressway Phase 3 (Sec 6),42,1,86.6,SIA & Objection (Sec 3C/15),2,2,0.9,9.0,0
+CASE-1000,SIPCOT Industrial Corridor Phase 2 (Sec 2),15,0,8.9,Possession (Sec 3E/38),3,2,1.7,34.3,1
+CASE-1001,Hosur IT Expressway Phase 2 (Sec 3),25,0,53.1,Declaration (Sec 3D/19),1,4,2.7,18.5,0
+CASE-1002,Tirunelveli Solar Park Access Phase 2 (Sec 1),57,1,75.9,SIA & Objection (Sec 3C/15),1,8,7.6,17.3,1
+CASE-1003,Erode Agri-Logistics Zone Phase 2 (Sec 7),66,1,74.8,Notification (Sec 3A/11),1,3,1.9,6.4,0
+CASE-1004,Erode Agri-Logistics Zone Phase 3 (Sec 5),27,0,22.1,Possession (Sec 3E/38),1,0,2.3,35.3,0
+CASE-1005,SIPCOT Industrial Corridor Phase 2 (Sec 1),18,0,95.4,SIA & Objection (Sec 3C/15),0,5,7.5,19.1,1
+CASE-1006,Salem Bypass Extension Phase 2 (Sec 6),40,3,72.0,Notification (Sec 3A/11),1,6,0.0,2.6,0
+CASE-1007,Tiruchirappalli Freight Link Phase 3 (Sec 5),21,0,6.6,Possession (Sec 3E/38),0,4,3.5,36.0,0
+CASE-1008,Thoothukudi Port Rail Spur Phase 3 (Sec 1),63,0,47.1,Award Inquiry (Sec 3G/23),5,7,9.1,29.9,1
+CASE-1009,Salem Bypass Extension Phase 2 (Sec 4),437,6,45.1,Declaration (Sec 3D/19),32,39,0.0,9.7,1
+CASE-1010,Tirunelveli Solar Park Access Phase 1 (Sec 7),140,2,57.7,Award Inquiry (Sec 3G/23),15,9,0.0,14.1,0
+CASE-1011,Hosur IT Expressway Phase 1 (Sec 1),59,1,81.5,Notification (Sec 3A/11),1,2,4.2,7.7,1
+CASE-1012,Tiruchirappalli Freight Link Phase 3 (Sec 3),136,0,44.7,Declaration (Sec 3D/19),6,20,3.1,17.9,0
+CASE-1013,Madurai Logistics Park Phase 3 (Sec 5),78,5,67.2,Declaration (Sec 3D/19),13,7,0.0,7.9,1
+CASE-1014,Vellore Urban Peripheral Phase 3 (Sec 2),59,1,52.0,Compensation Disbursement,3,1,0.0,22.7,0
+CASE-1015,SIPCOT Industrial Corridor Phase 2 (Sec 2),57,3,2.4,Possession (Sec 3E/38),3,8,0.0,29.2,0
+CASE-1016,SIPCOT Industrial Corridor Phase 2 (Sec 2),152,1,83.1,Award Inquiry (Sec 3G/23),12,8,0.5,20.5,0
+CASE-1017,Salem Bypass Extension Phase 2 (Sec 5),81,0,74.0,Possession (Sec 3E/38),6,3,0.0,31.4,0
+CASE-1018,Erode Agri-Logistics Zone Phase 1 (Sec 4),106,2,81.5,Award Inquiry (Sec 3G/23),7,6,3.7,26.4,1
+CASE-1019,Vellore Urban Peripheral Phase 3 (Sec 7),56,1,81.4,Declaration (Sec 3D/19),5,4,4.2,19.4,1
+CASE-1020,Madurai Logistics Park Phase 1 (Sec 7),101,0,81.4,SIA & Objection (Sec 3C/15),3,9,2.9,11.9,0
+CASE-1021,Coimbatore Ring Road Sec Phase 2 (Sec 4),71,2,61.4,Compensation Disbursement,0,6,4.0,31.1,1
+CASE-1022,Erode Agri-Logistics Zone Phase 2 (Sec 5),214,6,43.3,Award Inquiry (Sec 3G/23),2,1,0.8,21.0,1
+CASE-1023,Tiruchirappalli Freight Link Phase 2 (Sec 1),18,0,81.2,Notification (Sec 3A/11),2,1,0.0,1.0,0
+CASE-1024,Erode Agri-Logistics Zone Phase 3 (Sec 7),339,7,79.6,Notification (Sec 3A/11),20,16,5.2,8.9,1
+CASE-1025,Vellore Urban Peripheral Phase 3 (Sec 4),15,0,72.2,SIA & Objection (Sec 3C/15),1,0,1.2,9.8,0
+CASE-1026,Madurai Logistics Park Phase 3 (Sec 2),50,1,51.8,Award Inquiry (Sec 3G/23),8,4,3.7,26.2,1
+CASE-1027,Vellore Urban Peripheral Phase 3 (Sec 3),100,1,78.1,Declaration (Sec 3D/19),8,13,0.0,12.2,0
+CASE-1028,Coimbatore Ring Road Sec Phase 1 (Sec 2),43,1,74.9,Declaration (Sec 3D/19),4,5,7.3,25.0,1
+CASE-1029,SIPCOT Industrial Corridor Phase 2 (Sec 7),73,1,1.4,Possession (Sec 3E/38),4,8,0.0,27.1,0
+CASE-1030,SIPCOT Industrial Corridor Phase 2 (Sec 5),20,1,51.5,Possession (Sec 3E/38),4,2,3.6,37.9,1
+CASE-1031,Salem Bypass Extension Phase 1 (Sec 6),29,0,39.0,Award Inquiry (Sec 3G/23),3,2,0.0,18.1,0
+CASE-1032,Coimbatore Ring Road Sec Phase 3 (Sec 2),61,0,19.9,Possession (Sec 3E/38),6,0,0.9,33.3,0
+CASE-1033,Tirunelveli Solar Park Access Phase 3 (Sec 5),50,0,0.4,Compensation Disbursement,5,11,6.7,33.2,1
+CASE-1034,Tirunelveli Solar Park Access Phase 2 (Sec 3),32,1,1.2,Possession (Sec 3E/38),6,5,1.9,35.2,0
+CASE-1035,Tirunelveli Solar Park Access Phase 3 (Sec 1),54,1,5.6,Compensation Disbursement,0,8,1.7,29.4,0
+CASE-1036,Erode Agri-Logistics Zone Phase 2 (Sec 6),152,3,16.8,Possession (Sec 3E/38),5,13,1.1,34.1,1
+CASE-1037,Salem Bypass Extension Phase 3 (Sec 2),16,0,20.2,Possession (Sec 3E/38),0,3,3.4,37.8,0
+CASE-1038,Tiruchirappalli Freight Link Phase 1 (Sec 4),25,1,0.3,Possession (Sec 3E/38),2,0,0.0,31.0,0
+CASE-1039,SIPCOT Industrial Corridor Phase 1 (Sec 1),29,0,91.9,SIA & Objection (Sec 3C/15),0,3,3.7,12.0,0
+CASE-1040,Vellore Urban Peripheral Phase 2 (Sec 1),126,2,60.9,Declaration (Sec 3D/19),1,24,6.6,22.9,1
+CASE-1041,SIPCOT Industrial Corridor Phase 2 (Sec 5),76,1,32.1,Award Inquiry (Sec 3G/23),2,8,1.6,21.8,0
+CASE-1042,Hosur IT Expressway Phase 3 (Sec 3),24,1,80.0,Award Inquiry (Sec 3G/23),1,7,3.6,25.2,1
+CASE-1043,Tiruchirappalli Freight Link Phase 3 (Sec 2),132,1,82.1,Notification (Sec 3A/11),5,9,4.8,8.4,1
+CASE-1044,Madurai Logistics Park Phase 3 (Sec 3),51,1,82.3,Notification (Sec 3A/11),4,5,0.0,2.9,0
+CASE-1045,SIPCOT Industrial Corridor Phase 2 (Sec 3),21,0,36.0,Declaration (Sec 3D/19),0,2,2.5,18.2,0
+CASE-1046,Erode Agri-Logistics Zone Phase 3 (Sec 5),205,2,75.4,Declaration (Sec 3D/19),14,36,3.0,17.4,1
+CASE-1047,Erode Agri-Logistics Zone Phase 2 (Sec 1),42,2,88.8,SIA & Objection (Sec 3C/15),2,6,0.0,6.4,1
+CASE-1048,Tiruchirappalli Freight Link Phase 1 (Sec 7),51,0,83.2,Notification (Sec 3A/11),3,4,4.7,11.7,1
+CASE-1049,Erode Agri-Logistics Zone Phase 3 (Sec 6),17,1,23.6,Compensation Disbursement,2,1,1.6,28.2,0
+CASE-1050,Tiruchirappalli Freight Link Phase 3 (Sec 7),88,2,45.2,Declaration (Sec 3D/19),2,7,4.6,19.1,0
+CASE-1051,Tiruchirappalli Freight Link Phase 1 (Sec 4),19,0,92.8,Notification (Sec 3A/11),3,1,0.1,3.2,0
+CASE-1052,Coimbatore Ring Road Sec Phase 3 (Sec 2),32,0,2.0,Possession (Sec 3E/38),0,1,1.2,33.8,0
+CASE-1053,Hosur IT Expressway Phase 1 (Sec 7),118,0,82.1,Award Inquiry (Sec 3G/23),7,8,6.5,26.9,1
+CASE-1054,Erode Agri-Logistics Zone Phase 3 (Sec 7),97,1,51.1,Award Inquiry (Sec 3G/23),3,7,0.8,21.3,1
+CASE-1055,Tiruchirappalli Freight Link Phase 2 (Sec 2),41,2,36.1,Declaration (Sec 3D/19),5,4,2.6,17.1,0
+CASE-1056,Madurai Logistics Park Phase 1 (Sec 1),17,0,38.0,Declaration (Sec 3D/19),2,0,7.4,22.6,1
+CASE-1057,Thoothukudi Port Rail Spur Phase 1 (Sec 3),19,1,51.5,Declaration (Sec 3D/19),2,0,0.0,12.9,0
+CASE-1058,Thoothukudi Port Rail Spur Phase 3 (Sec 7),16,0,70.7,Declaration (Sec 3D/19),1,1,0.0,10.2,0
+CASE-1059,Tiruchirappalli Freight Link Phase 3 (Sec 1),34,2,75.7,Award Inquiry (Sec 3G/23),2,0,2.0,22.6,1
+CASE-1060,Salem Bypass Extension Phase 2 (Sec 1),169,3,77.0,SIA & Objection (Sec 3C/15),6,7,3.6,12.1,0
+CASE-1061,Vellore Urban Peripheral Phase 2 (Sec 3),40,0,99.6,Notification (Sec 3A/11),6,1,0.9,4.6,0
+CASE-1062,Madurai Logistics Park Phase 3 (Sec 4),65,1,51.8,Award Inquiry (Sec 3G/23),5,2,4.7,26.4,1
+CASE-1063,Coimbatore Ring Road Sec Phase 3 (Sec 7),33,1,97.2,SIA & Objection (Sec 3C/15),5,2,4.6,13.6,0
+CASE-1064,Hosur IT Expressway Phase 3 (Sec 5),81,0,0.1,Possession (Sec 3E/38),2,4,2.0,34.8,0
+CASE-1065,SIPCOT Industrial Corridor Phase 3 (Sec 6),148,4,68.6,Declaration (Sec 3D/19),3,13,0.0,11.3,0
+CASE-1066,Coimbatore Ring Road Sec Phase 2 (Sec 3),90,0,7.1,Compensation Disbursement,6,14,0.5,26.7,0
+CASE-1067,Coimbatore Ring Road Sec Phase 2 (Sec 1),80,0,89.7,Notification (Sec 3A/11),8,5,2.1,6.2,0
+CASE-1068,Tiruchirappalli Freight Link Phase 3 (Sec 6),61,3,64.4,Declaration (Sec 3D/19),7,4,2.6,17.8,1
+CASE-1069,Tirunelveli Solar Park Access Phase 3 (Sec 5),60,0,35.5,Declaration (Sec 3D/19),5,6,0.0,11.3,0
+CASE-1070,SIPCOT Industrial Corridor Phase 2 (Sec 6),86,1,65.2,Award Inquiry (Sec 3G/23),10,4,1.6,22.5,1
+CASE-1071,SIPCOT Industrial Corridor Phase 2 (Sec 7),29,1,74.6,Notification (Sec 3A/11),1,4,0.0,1.0,0
+CASE-1072,Erode Agri-Logistics Zone Phase 3 (Sec 6),43,1,91.1,Notification (Sec 3A/11),1,4,6.0,13.4,1
+CASE-1073,Hosur IT Expressway Phase 3 (Sec 7),38,2,80.9,Award Inquiry (Sec 3G/23),6,1,0.0,19.5,1
+CASE-1074,Salem Bypass Extension Phase 1 (Sec 6),51,0,62.7,Compensation Disbursement,6,0,3.9,30.3,1
+CASE-1075,Madurai Logistics Park Phase 3 (Sec 7),75,2,32.2,Award Inquiry (Sec 3G/23),5,7,3.0,23.3,0
+CASE-1076,Tirunelveli Solar Park Access Phase 3 (Sec 2),44,0,21.2,Compensation Disbursement,1,4,5.0,32.8,1
+CASE-1077,Thoothukudi Port Rail Spur Phase 1 (Sec 3),34,1,95.5,Notification (Sec 3A/11),1,1,2.3,7.0,0
+CASE-1078,Coimbatore Ring Road Sec Phase 3 (Sec 4),23,0,73.0,Award Inquiry (Sec 3G/23),0,0,4.4,27.6,1
+CASE-1079,Vellore Urban Peripheral Phase 2 (Sec 5),19,0,36.6,Declaration (Sec 3D/19),2,2,0.1,14.2,0
+CASE-1080,Salem Bypass Extension Phase 3 (Sec 5),37,1,11.6,Compensation Disbursement,1,3,0.0,25.1,0
+CASE-1081,Coimbatore Ring Road Sec Phase 2 (Sec 1),120,1,73.9,Notification (Sec 3A/11),7,15,0.0,2.9,0
+CASE-1082,Coimbatore Ring Road Sec Phase 2 (Sec 2),32,0,53.7,Award Inquiry (Sec 3G/23),0,4,3.1,25.1,1
+CASE-1083,Coimbatore Ring Road Sec Phase 2 (Sec 4),20,0,53.3,Compensation Disbursement,1,2,1.9,29.5,1
+CASE-1084,Coimbatore Ring Road Sec Phase 3 (Sec 4),20,1,85.1,Notification (Sec 3A/11),1,0,0.0,1.0,0
+CASE-1085,Coimbatore Ring Road Sec Phase 2 (Sec 3),243,3,71.5,SIA & Objection (Sec 3C/15),13,27,2.2,11.5,0
+CASE-1086,Tirunelveli Solar Park Access Phase 2 (Sec 2),117,1,47.9,Award Inquiry (Sec 3G/23),6,19,3.4,24.6,0
+CASE-1087,Madurai Logistics Park Phase 1 (Sec 2),105,2,12.2,Possession (Sec 3E/38),2,3,1.9,35.5,0
+CASE-1088,Hosur IT Expressway Phase 2 (Sec 6),218,2,12.6,Possession (Sec 3E/38),9,13,1.6,35.0,0
+CASE-1089,Erode Agri-Logistics Zone Phase 2 (Sec 3),68,2,44.2,Award Inquiry (Sec 3G/23),2,1,0.0,15.7,1
+CASE-1090,Madurai Logistics Park Phase 2 (Sec 2),164,1,81.7,Award Inquiry (Sec 3G/23),8,10,0.0,20.0,1
+CASE-1091,Tiruchirappalli Freight Link Phase 2 (Sec 1),49,0,6.2,Possession (Sec 3E/38),3,5,0.0,30.6,0
+CASE-1092,SIPCOT Industrial Corridor Phase 2 (Sec 2),54,1,99.2,Notification (Sec 3A/11),1,6,0.0,1.0,0
+CASE-1093,Vellore Urban Peripheral Phase 3 (Sec 6),270,10,23.7,Compensation Disbursement,3,22,0.8,27.2,1
+CASE-1094,Madurai Logistics Park Phase 2 (Sec 3),48,1,58.4,Award Inquiry (Sec 3G/23),1,4,0.9,21.4,1
+CASE-1095,Madurai Logistics Park Phase 2 (Sec 3),38,2,9.4,Compensation Disbursement,2,2,2.3,28.9,1
+CASE-1096,Salem Bypass Extension Phase 2 (Sec 5),120,1,67.1,Award Inquiry (Sec 3G/23),5,0,0.0,19.7,1
+CASE-1097,Salem Bypass Extension Phase 1 (Sec 2),38,0,91.7,Notification (Sec 3A/11),3,4,4.2,7.5,0
+CASE-1098,SIPCOT Industrial Corridor Phase 3 (Sec 5),20,0,22.1,Compensation Disbursement,1,2,2.1,29.7,0
+CASE-1099,SIPCOT Industrial Corridor Phase 3 (Sec 1),214,4,98.6,SIA & Objection (Sec 3C/15),6,21,0.2,8.3,1
+CASE-1100,Tirunelveli Solar Park Access Phase 1 (Sec 1),18,0,89.7,Notification (Sec 3A/11),1,0,4.6,8.3,0
+CASE-1101,Vellore Urban Peripheral Phase 3 (Sec 2),50,1,37.5,Award Inquiry (Sec 3G/23),1,4,2.5,23.1,0
+CASE-1102,Madurai Logistics Park Phase 1 (Sec 5),133,6,73.7,Declaration (Sec 3D/19),19,5,3.3,20.4,1
+CASE-1103,Coimbatore Ring Road Sec Phase 3 (Sec 4),18,1,39.3,Award Inquiry (Sec 3G/23),4,1,1.7,22.2,0
+CASE-1104,Coimbatore Ring Road Sec Phase 1 (Sec 6),226,0,0.8,Compensation Disbursement,29,26,2.4,28.6,0
+CASE-1105,Tirunelveli Solar Park Access Phase 1 (Sec 3),41,1,99.2,Notification (Sec 3A/11),4,3,0.8,3.9,0
+CASE-1106,Coimbatore Ring Road Sec Phase 3 (Sec 7),47,0,74.0,Notification (Sec 3A/11),4,0,3.3,7.2,0
+CASE-1107,Coimbatore Ring Road Sec Phase 2 (Sec 6),42,0,49.0,Declaration (Sec 3D/19),4,3,6.4,24.1,0
+CASE-1108,Tiruchirappalli Freight Link Phase 2 (Sec 5),76,0,13.3,Possession (Sec 3E/38),3,6,1.8,34.9,0
+CASE-1109,Salem Bypass Extension Phase 1 (Sec 1),69,0,43.0,Award Inquiry (Sec 3G/23),10,10,4.8,28.4,1
+CASE-1110,Tirunelveli Solar Park Access Phase 3 (Sec 3),103,1,36.4,Declaration (Sec 3D/19),8,3,8.6,24.0,1
+CASE-1111,Salem Bypass Extension Phase 1 (Sec 1),96,0,51.3,Declaration (Sec 3D/19),1,10,0.0,11.0,0
+CASE-1112,Thoothukudi Port Rail Spur Phase 3 (Sec 7),19,0,77.4,Notification (Sec 3A/11),1,0,0.0,3.0,0
+CASE-1113,Thoothukudi Port Rail Spur Phase 2 (Sec 1),42,1,46.3,Award Inquiry (Sec 3G/23),0,1,0.0,18.7,1
+CASE-1114,Vellore Urban Peripheral Phase 2 (Sec 1),85,1,62.4,Award Inquiry (Sec 3G/23),5,11,6.2,26.6,1
+CASE-1115,Coimbatore Ring Road Sec Phase 2 (Sec 2),36,0,76.2,Notification (Sec 3A/11),0,2,4.0,10.5,0
+CASE-1116,Thoothukudi Port Rail Spur Phase 2 (Sec 6),63,0,15.6,Compensation Disbursement,3,2,0.0,20.4,0
+CASE-1117,Salem Bypass Extension Phase 1 (Sec 1),185,7,78.0,Notification (Sec 3A/11),14,12,6.8,15.1,1
+CASE-1118,Erode Agri-Logistics Zone Phase 3 (Sec 3),39,0,64.5,Declaration (Sec 3D/19),4,1,1.9,16.2,0
+CASE-1119,Tirunelveli Solar Park Access Phase 3 (Sec 1),99,4,16.4,Possession (Sec 3E/38),9,1,9.4,44.3,1
+CASE-1120,Vellore Urban Peripheral Phase 1 (Sec 5),117,1,4.2,Possession (Sec 3E/38),8,16,11.3,47.5,1
+CASE-1121,SIPCOT Industrial Corridor Phase 3 (Sec 5),35,0,36.6,Compensation Disbursement,2,2,5.7,34.1,0
+CASE-1122,Tirunelveli Solar Park Access Phase 3 (Sec 4),22,1,70.3,Compensation Disbursement,1,1,4.5,31.3,1
+CASE-1123,SIPCOT Industrial Corridor Phase 2 (Sec 3),28,1,58.7,Declaration (Sec 3D/19),2,1,0.0,14.0,0
+CASE-1124,Coimbatore Ring Road Sec Phase 3 (Sec 6),71,0,97.7,SIA & Objection (Sec 3C/15),3,2,2.8,11.3,0
+CASE-1125,Erode Agri-Logistics Zone Phase 3 (Sec 7),47,2,20.3,Possession (Sec 3E/38),1,2,1.1,33.9,0
+CASE-1126,SIPCOT Industrial Corridor Phase 3 (Sec 6),41,0,10.7,Possession (Sec 3E/38),2,4,0.0,27.5,0
+CASE-1127,Erode Agri-Logistics Zone Phase 3 (Sec 7),167,6,56.1,Declaration (Sec 3D/19),33,24,3.6,20.0,1
+CASE-1128,Tirunelveli Solar Park Access Phase 2 (Sec 7),15,0,58.1,Declaration (Sec 3D/19),0,1,0.0,13.3,0
+CASE-1129,SIPCOT Industrial Corridor Phase 1 (Sec 3),63,0,14.4,Compensation Disbursement,5,4,0.8,27.3,0
+CASE-1130,Thoothukudi Port Rail Spur Phase 2 (Sec 3),22,0,21.1,Compensation Disbursement,0,1,2.0,28.9,0
+CASE-1131,Vellore Urban Peripheral Phase 2 (Sec 6),18,0,35.8,Award Inquiry (Sec 3G/23),3,1,0.7,21.3,0
+CASE-1132,Salem Bypass Extension Phase 2 (Sec 3),16,0,38.1,Award Inquiry (Sec 3G/23),0,1,0.0,18.1,0
+CASE-1133,SIPCOT Industrial Corridor Phase 1 (Sec 1),19,0,12.8,Compensation Disbursement,1,0,1.1,27.4,0
+CASE-1134,Madurai Logistics Park Phase 2 (Sec 1),159,1,24.6,Compensation Disbursement,8,6,6.8,33.9,1
+CASE-1135,Madurai Logistics Park Phase 1 (Sec 6),81,1,50.4,Award Inquiry (Sec 3G/23),1,10,5.4,30.3,1
+CASE-1136,SIPCOT Industrial Corridor Phase 3 (Sec 4),41,1,33.9,Declaration (Sec 3D/19),5,1,0.0,12.2,0
+CASE-1137,SIPCOT Industrial Corridor Phase 3 (Sec 2),60,2,3.4,Possession (Sec 3E/38),5,0,1.0,33.5,1
+CASE-1138,Madurai Logistics Park Phase 3 (Sec 1),36,1,73.1,Award Inquiry (Sec 3G/23),1,5,0.0,19.2,1
+CASE-1139,Tirunelveli Solar Park Access Phase 2 (Sec 3),20,0,16.7,Possession (Sec 3E/38),4,1,3.8,37.5,0
+CASE-1140,Vellore Urban Peripheral Phase 2 (Sec 4),60,1,75.8,Award Inquiry (Sec 3G/23),4,1,1.3,22.2,1
+CASE-1141,Erode Agri-Logistics Zone Phase 1 (Sec 4),61,0,38.3,Possession (Sec 3E/38),5,12,0.0,30.8,0
+CASE-1142,SIPCOT Industrial Corridor Phase 2 (Sec 2),17,0,70.7,Award Inquiry (Sec 3G/23),0,0,5.3,28.5,1
+CASE-1143,Salem Bypass Extension Phase 1 (Sec 2),63,2,76.8,Declaration (Sec 3D/19),0,10,0.9,15.3,0
+CASE-1144,SIPCOT Industrial Corridor Phase 2 (Sec 5),123,7,79.4,Award Inquiry (Sec 3G/23),9,6,2.3,24.6,1
+CASE-1145,Erode Agri-Logistics Zone Phase 3 (Sec 4),61,2,83.6,Notification (Sec 3A/11),0,1,0.0,1.2,0
+CASE-1146,Salem Bypass Extension Phase 1 (Sec 4),31,0,9.7,Compensation Disbursement,3,1,1.4,28.0,0
+CASE-1147,Tirunelveli Solar Park Access Phase 3 (Sec 4),62,2,86.9,SIA & Objection (Sec 3C/15),3,8,3.3,12.5,1
+CASE-1148,Erode Agri-Logistics Zone Phase 3 (Sec 6),90,0,87.8,SIA & Objection (Sec 3C/15),13,1,0.1,8.2,0
+CASE-1149,SIPCOT Industrial Corridor Phase 1 (Sec 3),132,1,22.2,Possession (Sec 3E/38),9,13,0.0,29.8,1
+CASE-1150,Tiruchirappalli Freight Link Phase 3 (Sec 2),133,3,87.2,SIA & Objection (Sec 3C/15),4,18,0.0,6.9,1
+CASE-1151,Tirunelveli Solar Park Access Phase 2 (Sec 6),132,4,92.5,Notification (Sec 3A/11),6,5,7.7,11.8,1
+CASE-1152,Tirunelveli Solar Park Access Phase 2 (Sec 5),38,0,40.6,Award Inquiry (Sec 3G/23),1,0,0.0,19.4,1
+CASE-1153,Thoothukudi Port Rail Spur Phase 3 (Sec 1),60,0,16.6,Compensation Disbursement,8,9,0.0,17.9,0
+CASE-1154,Erode Agri-Logistics Zone Phase 3 (Sec 7),39,0,80.7,Notification (Sec 3A/11),12,6,2.7,6.3,1
+CASE-1155,Vellore Urban Peripheral Phase 2 (Sec 2),247,0,75.5,Award Inquiry (Sec 3G/23),16,35,0.0,18.3,0
+CASE-1156,Tiruchirappalli Freight Link Phase 3 (Sec 7),65,0,38.7,Award Inquiry (Sec 3G/23),1,12,0.0,17.1,0
+CASE-1157,Hosur IT Expressway Phase 1 (Sec 4),173,4,42.2,Declaration (Sec 3D/19),7,7,14.8,35.6,1
+CASE-1158,Vellore Urban Peripheral Phase 2 (Sec 4),43,2,24.2,Possession (Sec 3E/38),5,2,5.1,37.4,1
+CASE-1159,SIPCOT Industrial Corridor Phase 1 (Sec 2),42,0,70.0,Declaration (Sec 3D/19),2,1,0.0,12.3,0
+CASE-1160,Hosur IT Expressway Phase 3 (Sec 3),129,3,72.6,SIA & Objection (Sec 3C/15),15,9,5.0,16.0,1
+CASE-1161,Salem Bypass Extension Phase 1 (Sec 7),203,8,65.2,Declaration (Sec 3D/19),15,16,4.4,19.2,1
+CASE-1162,Coimbatore Ring Road Sec Phase 2 (Sec 7),96,6,61.4,Award Inquiry (Sec 3G/23),1,14,0.0,17.3,1
+CASE-1163,Coimbatore Ring Road Sec Phase 3 (Sec 3),28,0,60.1,Award Inquiry (Sec 3G/23),4,0,4.3,25.6,1
+CASE-1164,Vellore Urban Peripheral Phase 3 (Sec 1),32,1,65.6,Award Inquiry (Sec 3G/23),0,4,8.3,30.5,1
+CASE-1165,Madurai Logistics Park Phase 1 (Sec 6),125,0,62.3,Award Inquiry (Sec 3G/23),4,13,1.3,22.2,0
+CASE-1166,Hosur IT Expressway Phase 3 (Sec 7),46,0,20.5,Compensation Disbursement,0,5,0.0,21.1,0
+CASE-1167,SIPCOT Industrial Corridor Phase 1 (Sec 4),102,3,89.6,SIA & Objection (Sec 3C/15),4,7,11.4,21.4,1
+CASE-1168,Coimbatore Ring Road Sec Phase 1 (Sec 7),18,1,55.9,Award Inquiry (Sec 3G/23),0,4,0.0,18.3,0
+CASE-1169,Thoothukudi Port Rail Spur Phase 1 (Sec 2),68,3,22.5,Possession (Sec 3E/38),4,2,0.0,24.2,1
+CASE-1170,SIPCOT Industrial Corridor Phase 3 (Sec 2),243,8,79.7,SIA & Objection (Sec 3C/15),9,19,8.5,19.6,1
+CASE-1171,Coimbatore Ring Road Sec Phase 3 (Sec 4),32,0,89.2,Notification (Sec 3A/11),0,2,0.7,4.1,0
+CASE-1172,SIPCOT Industrial Corridor Phase 3 (Sec 3),269,5,50.2,Award Inquiry (Sec 3G/23),29,13,3.2,25.1,1
+CASE-1173,Salem Bypass Extension Phase 3 (Sec 6),65,2,85.3,SIA & Objection (Sec 3C/15),2,1,0.0,7.1,0
+CASE-1174,Tirunelveli Solar Park Access Phase 3 (Sec 5),30,1,1.2,Compensation Disbursement,3,2,5.2,33.5,1
+CASE-1175,Salem Bypass Extension Phase 2 (Sec 2),21,0,84.4,SIA & Objection (Sec 3C/15),0,0,1.3,9.9,0
+CASE-1176,SIPCOT Industrial Corridor Phase 2 (Sec 7),20,1,32.4,Award Inquiry (Sec 3G/23),0,1,0.0,16.6,0
+CASE-1177,SIPCOT Industrial Corridor Phase 3 (Sec 3),57,1,51.5,Declaration (Sec 3D/19),1,4,3.0,19.9,0
+CASE-1178,SIPCOT Industrial Corridor Phase 3 (Sec 3),30,0,33.3,Award Inquiry (Sec 3G/23),4,3,4.1,28.0,1
+CASE-1179,Tirunelveli Solar Park Access Phase 2 (Sec 7),42,0,49.0,Declaration (Sec 3D/19),2,2,5.5,21.8,0
+CASE-1180,SIPCOT Industrial Corridor Phase 1 (Sec 6),169,0,89.6,SIA & Objection (Sec 3C/15),3,28,0.0,3.6,0
+CASE-1181,Salem Bypass Extension Phase 1 (Sec 4),26,0,79.1,Declaration (Sec 3D/19),0,0,6.2,21.0,1
+CASE-1182,Vellore Urban Peripheral Phase 2 (Sec 7),190,1,58.3,Declaration (Sec 3D/19),15,14,5.8,21.8,1
+CASE-1183,Madurai Logistics Park Phase 1 (Sec 3),95,2,37.6,Compensation Disbursement,1,3,0.0,23.4,0
+CASE-1184,Hosur IT Expressway Phase 3 (Sec 6),71,0,88.1,Notification (Sec 3A/11),1,2,0.0,2.5,0
+CASE-1185,Vellore Urban Peripheral Phase 1 (Sec 7),26,1,44.5,Declaration (Sec 3D/19),4,3,9.5,25.9,1
+CASE-1186,Salem Bypass Extension Phase 3 (Sec 1),136,2,76.7,Declaration (Sec 3D/19),2,3,0.0,10.2,0
+CASE-1187,Hosur IT Expressway Phase 1 (Sec 3),71,2,47.2,Award Inquiry (Sec 3G/23),7,8,0.0,19.1,1
+CASE-1188,Tirunelveli Solar Park Access Phase 1 (Sec 6),45,3,7.5,Compensation Disbursement,6,5,0.0,21.6,1
+CASE-1189,Salem Bypass Extension Phase 3 (Sec 3),15,0,36.0,Award Inquiry (Sec 3G/23),3,1,7.6,31.4,1
+CASE-1190,Hosur IT Expressway Phase 1 (Sec 4),80,1,76.8,Award Inquiry (Sec 3G/23),13,6,0.0,19.4,1
+CASE-1191,Tiruchirappalli Freight Link Phase 2 (Sec 1),93,1,77.9,Award Inquiry (Sec 3G/23),5,0,6.3,30.1,1
+CASE-1192,Thoothukudi Port Rail Spur Phase 3 (Sec 7),154,1,22.6,Compensation Disbursement,13,3,0.3,26.6,0
+CASE-1193,Madurai Logistics Park Phase 2 (Sec 6),70,0,0.1,Possession (Sec 3E/38),0,3,0.0,31.9,0
+CASE-1194,Vellore Urban Peripheral Phase 2 (Sec 5),81,2,36.2,Possession (Sec 3E/38),2,2,11.7,52.7,1
+CASE-1195,Tirunelveli Solar Park Access Phase 1 (Sec 1),20,0,3.4,Compensation Disbursement,0,0,1.0,27.5,0
+CASE-1196,SIPCOT Industrial Corridor Phase 3 (Sec 4),120,0,73.1,Declaration (Sec 3D/19),3,16,2.6,17.0,0
+CASE-1197,Madurai Logistics Park Phase 2 (Sec 5),70,1,12.4,Compensation Disbursement,2,6,6.0,36.0,1
+CASE-1198,Tirunelveli Solar Park Access Phase 2 (Sec 1),170,5,52.8,Declaration (Sec 3D/19),5,10,9.4,30.2,1
+CASE-1199,Thoothukudi Port Rail Spur Phase 2 (Sec 3),219,3,97.8,SIA & Objection (Sec 3C/15),12,6,8.5,18.6,1
+CASE-1200,Tiruchirappalli Freight Link Phase 3 (Sec 4),35,0,48.0,Declaration (Sec 3D/19),0,0,1.3,16.0,0
+CASE-1201,Hosur IT Expressway Phase 1 (Sec 6),120,2,96.6,SIA & Objection (Sec 3C/15),4,13,0.6,9.0,1
+CASE-1202,Thoothukudi Port Rail Spur Phase 2 (Sec 6),44,2,96.4,SIA & Objection (Sec 3C/15),3,4,1.5,10.0,0
+CASE-1203,Tirunelveli Solar Park Access Phase 1 (Sec 1),22,0,51.4,Declaration (Sec 3D/19),3,1,0.3,14.4,0
+CASE-1204,Hosur IT Expressway Phase 2 (Sec 7),32,0,58.1,Award Inquiry (Sec 3G/23),1,1,0.0,17.0,1
+CASE-1205,Madurai Logistics Park Phase 1 (Sec 1),37,0,81.6,Notification (Sec 3A/11),5,2,0.5,3.9,0
+CASE-1206,Hosur IT Expressway Phase 3 (Sec 4),34,1,46.7,Declaration (Sec 3D/19),4,2,0.0,9.5,0
+CASE-1207,Vellore Urban Peripheral Phase 2 (Sec 2),126,0,64.7,Declaration (Sec 3D/19),5,11,4.1,21.1,0
+CASE-1208,Coimbatore Ring Road Sec Phase 3 (Sec 3),84,5,15.8,Possession (Sec 3E/38),6,11,8.0,40.9,1
+CASE-1209,SIPCOT Industrial Corridor Phase 3 (Sec 6),49,0,24.4,Compensation Disbursement,0,2,6.0,32.7,0
+CASE-1210,Coimbatore Ring Road Sec Phase 3 (Sec 4),143,6,6.8,Possession (Sec 3E/38),21,2,3.9,37.9,1
+CASE-1211,SIPCOT Industrial Corridor Phase 3 (Sec 3),57,2,18.8,Compensation Disbursement,3,9,2.4,28.7,1
+CASE-1212,Hosur IT Expressway Phase 1 (Sec 6),34,0,9.4,Compensation Disbursement,2,2,0.0,21.9,0
+CASE-1213,SIPCOT Industrial Corridor Phase 3 (Sec 5),42,0,91.5,SIA & Objection (Sec 3C/15),4,5,0.0,6.8,0
+CASE-1214,Erode Agri-Logistics Zone Phase 1 (Sec 5),54,0,31.2,Award Inquiry (Sec 3G/23),2,5,3.9,25.0,0
+CASE-1215,SIPCOT Industrial Corridor Phase 3 (Sec 5),31,2,83.4,Award Inquiry (Sec 3G/23),0,3,10.9,34.1,1
+CASE-1216,Tiruchirappalli Freight Link Phase 3 (Sec 3),21,0,57.8,Declaration (Sec 3D/19),1,1,0.0,11.0,0
+CASE-1217,Madurai Logistics Park Phase 2 (Sec 5),16,0,39.9,Declaration (Sec 3D/19),0,0,0.0,11.9,0
+CASE-1218,SIPCOT Industrial Corridor Phase 1 (Sec 7),48,1,13.2,Possession (Sec 3E/38),2,0,0.0,28.5,0
+CASE-1219,Salem Bypass Extension Phase 2 (Sec 7),112,4,50.7,Declaration (Sec 3D/19),8,5,9.2,28.3,1
+CASE-1220,Tirunelveli Solar Park Access Phase 2 (Sec 6),84,3,85.8,SIA & Objection (Sec 3C/15),6,5,4.3,12.8,1
+CASE-1221,Salem Bypass Extension Phase 2 (Sec 4),45,0,75.0,Award Inquiry (Sec 3G/23),0,6,8.1,29.3,1
+CASE-1222,Coimbatore Ring Road Sec Phase 1 (Sec 3),31,0,82.2,Declaration (Sec 3D/19),3,4,1.8,16.2,0
+CASE-1223,Hosur IT Expressway Phase 2 (Sec 5),93,0,10.1,Compensation Disbursement,4,12,7.3,35.1,0
+CASE-1224,Vellore Urban Peripheral Phase 3 (Sec 3),67,0,66.6,Award Inquiry (Sec 3G/23),6,5,0.0,12.3,0
+CASE-1225,Tiruchirappalli Freight Link Phase 3 (Sec 5),24,2,93.2,SIA & Objection (Sec 3C/15),4,1,2.3,11.1,0
+CASE-1226,SIPCOT Industrial Corridor Phase 1 (Sec 4),45,2,49.5,Declaration (Sec 3D/19),6,0,6.6,23.1,1
+CASE-1227,Coimbatore Ring Road Sec Phase 2 (Sec 7),159,3,40.2,Declaration (Sec 3D/19),14,13,0.0,10.7,1
+CASE-1228,Salem Bypass Extension Phase 1 (Sec 6),104,1,43.5,Declaration (Sec 3D/19),3,18,0.0,13.1,0
+CASE-1229,Coimbatore Ring Road Sec Phase 2 (Sec 7),15,1,71.5,Notification (Sec 3A/11),3,2,9.2,17.3,1
+CASE-1230,SIPCOT Industrial Corridor Phase 3 (Sec 1),44,0,36.8,Compensation Disbursement,4,2,0.0,20.1,0
+CASE-1231,SIPCOT Industrial Corridor Phase 1 (Sec 1),67,3,76.8,Declaration (Sec 3D/19),2,1,1.8,17.4,1
+CASE-1232,Erode Agri-Logistics Zone Phase 2 (Sec 1),68,0,70.5,Notification (Sec 3A/11),1,5,0.0,2.3,0
+CASE-1233,Vellore Urban Peripheral Phase 2 (Sec 4),46,2,78.2,Notification (Sec 3A/11),2,1,5.3,9.3,1
+CASE-1234,Coimbatore Ring Road Sec Phase 3 (Sec 5),29,1,20.5,Compensation Disbursement,0,3,0.0,21.3,0
+CASE-1235,Tiruchirappalli Freight Link Phase 2 (Sec 6),31,0,36.0,Declaration (Sec 3D/19),2,5,4.4,22.2,0
+CASE-1236,Tiruchirappalli Freight Link Phase 1 (Sec 5),76,0,30.8,Declaration (Sec 3D/19),9,15,9.5,25.4,1
+CASE-1237,Erode Agri-Logistics Zone Phase 2 (Sec 6),55,0,96.8,SIA & Objection (Sec 3C/15),5,0,0.2,8.2,0
+CASE-1238,Erode Agri-Logistics Zone Phase 1 (Sec 2),106,0,41.8,Declaration (Sec 3D/19),9,10,3.7,20.2,1
+CASE-1239,Erode Agri-Logistics Zone Phase 3 (Sec 1),59,0,36.1,Award Inquiry (Sec 3G/23),3,1,5.5,26.5,0
+CASE-1240,Tiruchirappalli Freight Link Phase 3 (Sec 4),70,1,90.8,Notification (Sec 3A/11),0,9,0.0,1.0,0
+CASE-1241,Madurai Logistics Park Phase 3 (Sec 1),15,0,1.4,Possession (Sec 3E/38),0,1,2.0,35.3,0
+CASE-1242,Vellore Urban Peripheral Phase 2 (Sec 6),108,4,60.3,Award Inquiry (Sec 3G/23),5,6,6.3,27.4,1
+CASE-1243,Madurai Logistics Park Phase 2 (Sec 4),27,0,37.1,Declaration (Sec 3D/19),1,1,16.5,32.4,1
+CASE-1244,Hosur IT Expressway Phase 1 (Sec 7),34,0,75.9,SIA & Objection (Sec 3C/15),1,2,0.0,2.1,0
+CASE-1245,Madurai Logistics Park Phase 1 (Sec 3),115,2,71.4,Award Inquiry (Sec 3G/23),13,3,0.0,19.5,1
+CASE-1246,Madurai Logistics Park Phase 2 (Sec 2),19,2,30.5,Declaration (Sec 3D/19),1,3,1.3,15.7,0
+CASE-1247,Hosur IT Expressway Phase 1 (Sec 4),59,1,79.9,SIA & Objection (Sec 3C/15),1,4,1.3,9.7,0
+CASE-1248,Tirunelveli Solar Park Access Phase 3 (Sec 2),55,1,73.3,Notification (Sec 3A/11),6,5,2.6,6.5,0
+CASE-1249,Tirunelveli Solar Park Access Phase 3 (Sec 2),56,0,86.7,SIA & Objection (Sec 3C/15),4,7,5.6,14.6,0
+CASE-1250,Tirunelveli Solar Park Access Phase 2 (Sec 5),74,0,10.9,Compensation Disbursement,5,3,2.9,30.5,0
+CASE-1251,Vellore Urban Peripheral Phase 2 (Sec 1),120,5,93.0,SIA & Objection (Sec 3C/15),3,8,5.8,14.2,1
+CASE-1252,Coimbatore Ring Road Sec Phase 3 (Sec 4),24,0,20.8,Compensation Disbursement,3,3,0.0,23.2,0
+CASE-1253,Thoothukudi Port Rail Spur Phase 1 (Sec 4),56,0,92.0,SIA & Objection (Sec 3C/15),3,3,0.0,6.8,0
+CASE-1254,SIPCOT Industrial Corridor Phase 1 (Sec 2),59,1,75.2,Declaration (Sec 3D/19),6,3,0.9,15.2,0
+CASE-1255,Thoothukudi Port Rail Spur Phase 1 (Sec 6),148,5,82.1,SIA & Objection (Sec 3C/15),8,4,0.0,3.5,1
+CASE-1256,Vellore Urban Peripheral Phase 1 (Sec 1),40,1,66.3,Declaration (Sec 3D/19),2,0,7.4,26.8,1
+CASE-1257,SIPCOT Industrial Corridor Phase 3 (Sec 5),63,3,82.2,Notification (Sec 3A/11),4,2,2.8,6.8,1
+CASE-1258,Thoothukudi Port Rail Spur Phase 1 (Sec 4),133,6,74.0,SIA & Objection (Sec 3C/15),3,20,1.2,10.4,1
+CASE-1259,Thoothukudi Port Rail Spur Phase 1 (Sec 2),118,1,38.1,Award Inquiry (Sec 3G/23),4,12,3.1,25.5,0
+CASE-1260,Coimbatore Ring Road Sec Phase 3 (Sec 6),163,5,70.8,Notification (Sec 3A/11),3,1,12.8,25.3,1
+CASE-1261,Salem Bypass Extension Phase 2 (Sec 3),102,2,85.2,SIA & Objection (Sec 3C/15),8,4,0.0,1.3,1
+CASE-1262,Madurai Logistics Park Phase 3 (Sec 5),24,2,30.5,Compensation Disbursement,1,0,2.7,28.9,1
+CASE-1263,Coimbatore Ring Road Sec Phase 2 (Sec 7),401,3,57.3,Award Inquiry (Sec 3G/23),13,53,0.1,20.2,1
+CASE-1264,Hosur IT Expressway Phase 3 (Sec 2),90,1,46.5,Award Inquiry (Sec 3G/23),10,9,0.6,20.8,1
+CASE-1265,Coimbatore Ring Road Sec Phase 3 (Sec 7),39,1,37.8,Declaration (Sec 3D/19),0,2,3.1,18.1,0
+CASE-1266,Vellore Urban Peripheral Phase 1 (Sec 1),78,0,95.9,SIA & Objection (Sec 3C/15),4,13,0.1,8.1,0
+CASE-1267,Salem Bypass Extension Phase 3 (Sec 4),56,1,49.0,Award Inquiry (Sec 3G/23),0,4,1.5,22.7,0
+CASE-1268,Thoothukudi Port Rail Spur Phase 1 (Sec 6),68,1,72.9,Notification (Sec 3A/11),3,0,1.8,6.2,0
+CASE-1269,Vellore Urban Peripheral Phase 3 (Sec 3),15,1,35.0,Award Inquiry (Sec 3G/23),5,3,0.0,16.2,0
+CASE-1270,Vellore Urban Peripheral Phase 1 (Sec 7),77,2,46.7,Award Inquiry (Sec 3G/23),3,6,2.3,22.8,1
+CASE-1271,Erode Agri-Logistics Zone Phase 3 (Sec 5),68,0,63.6,Award Inquiry (Sec 3G/23),1,6,1.2,22.0,0
+CASE-1272,Vellore Urban Peripheral Phase 2 (Sec 2),15,0,78.4,Award Inquiry (Sec 3G/23),1,0,7.1,28.9,1
+CASE-1273,Hosur IT Expressway Phase 2 (Sec 3),80,0,83.1,Award Inquiry (Sec 3G/23),3,3,0.0,20.0,1
+CASE-1274,SIPCOT Industrial Corridor Phase 2 (Sec 7),122,4,30.8,Possession (Sec 3E/38),7,8,1.2,33.9,1
+CASE-1275,Thoothukudi Port Rail Spur Phase 2 (Sec 2),41,0,96.5,SIA & Objection (Sec 3C/15),3,0,0.1,8.1,0
+CASE-1276,Salem Bypass Extension Phase 1 (Sec 5),87,0,2.5,Compensation Disbursement,10,4,0.6,26.7,0
+CASE-1277,Hosur IT Expressway Phase 2 (Sec 4),57,2,61.1,Compensation Disbursement,0,10,0.0,22.6,1
+CASE-1278,SIPCOT Industrial Corridor Phase 1 (Sec 2),57,0,54.1,Award Inquiry (Sec 3G/23),2,1,0.4,20.5,0
+CASE-1279,Thoothukudi Port Rail Spur Phase 2 (Sec 6),28,1,93.6,Notification (Sec 3A/11),6,3,0.0,2.4,0
+CASE-1280,Hosur IT Expressway Phase 2 (Sec 5),307,1,70.7,Notification (Sec 3A/11),2,40,1.1,5.0,0
+CASE-1281,Erode Agri-Logistics Zone Phase 1 (Sec 5),241,2,66.9,Possession (Sec 3E/38),21,21,0.0,21.9,0
+CASE-1282,Erode Agri-Logistics Zone Phase 2 (Sec 5),107,1,23.4,Possession (Sec 3E/38),10,5,2.1,34.3,0
+CASE-1283,Vellore Urban Peripheral Phase 2 (Sec 7),93,2,10.0,Possession (Sec 3E/38),1,3,1.6,35.0,0
+CASE-1284,SIPCOT Industrial Corridor Phase 1 (Sec 2),63,1,94.6,SIA & Objection (Sec 3C/15),3,3,1.8,11.5,1
+CASE-1285,Tirunelveli Solar Park Access Phase 2 (Sec 4),123,2,35.6,Declaration (Sec 3D/19),4,22,1.9,17.5,1
+CASE-1286,Coimbatore Ring Road Sec Phase 2 (Sec 4),56,0,80.3,Notification (Sec 3A/11),4,4,5.9,10.5,0
+CASE-1287,Tirunelveli Solar Park Access Phase 3 (Sec 2),108,0,50.4,Compensation Disbursement,10,6,1.9,29.0,0
+CASE-1288,Hosur IT Expressway Phase 3 (Sec 3),114,1,93.6,Notification (Sec 3A/11),16,1,0.0,1.0,1
+CASE-1289,Tiruchirappalli Freight Link Phase 1 (Sec 2),49,3,13.0,Possession (Sec 3E/38),5,2,4.8,41.2,1
+CASE-1290,Tiruchirappalli Freight Link Phase 3 (Sec 3),15,0,90.5,SIA & Objection (Sec 3C/15),1,1,5.0,14.7,1
+CASE-1291,Salem Bypass Extension Phase 2 (Sec 6),80,0,39.6,Award Inquiry (Sec 3G/23),7,2,1.0,21.2,0
+CASE-1292,Madurai Logistics Park Phase 2 (Sec 5),50,0,97.0,Notification (Sec 3A/11),6,3,0.0,1.0,0
+CASE-1293,Thoothukudi Port Rail Spur Phase 3 (Sec 3),75,1,44.7,Award Inquiry (Sec 3G/23),3,3,0.0,17.0,0
+CASE-1294,Tiruchirappalli Freight Link Phase 2 (Sec 4),107,1,81.7,SIA & Objection (Sec 3C/15),8,13,4.9,14.1,1
+CASE-1295,Tirunelveli Solar Park Access Phase 1 (Sec 6),51,0,33.9,Compensation Disbursement,5,0,0.1,26.2,0
+CASE-1296,Coimbatore Ring Road Sec Phase 2 (Sec 4),62,0,97.6,Notification (Sec 3A/11),5,3,4.8,10.1,0
+CASE-1297,Tiruchirappalli Freight Link Phase 1 (Sec 7),26,2,33.9,Possession (Sec 3E/38),0,1,3.7,37.1,0
+CASE-1298,Vellore Urban Peripheral Phase 2 (Sec 5),57,2,30.6,Award Inquiry (Sec 3G/23),0,4,0.0,16.0,0
+CASE-1299,Coimbatore Ring Road Sec Phase 1 (Sec 6),36,2,52.7,Declaration (Sec 3D/19),5,6,0.0,12.3,0
+CASE-1300,Erode Agri-Logistics Zone Phase 2 (Sec 1),16,0,78.8,Notification (Sec 3A/11),2,1,0.5,4.0,0
+CASE-1301,Thoothukudi Port Rail Spur Phase 2 (Sec 7),172,4,83.6,SIA & Objection (Sec 3C/15),22,13,13.4,22.5,1
+CASE-1302,Tirunelveli Solar Park Access Phase 3 (Sec 6),47,3,67.4,Award Inquiry (Sec 3G/23),6,5,7.8,33.5,1
+CASE-1303,Madurai Logistics Park Phase 2 (Sec 1),89,3,8.2,Possession (Sec 3E/38),3,6,8.2,44.7,1
+CASE-1304,Vellore Urban Peripheral Phase 1 (Sec 1),71,2,78.6,Notification (Sec 3A/11),5,5,0.0,1.0,0
+CASE-1305,Erode Agri-Logistics Zone Phase 1 (Sec 2),17,1,95.4,SIA & Objection (Sec 3C/15),2,0,4.7,13.5,0
+CASE-1306,SIPCOT Industrial Corridor Phase 2 (Sec 3),69,0,75.1,SIA & Objection (Sec 3C/15),4,6,0.0,7.4,0
+CASE-1307,Salem Bypass Extension Phase 3 (Sec 6),210,3,64.2,Award Inquiry (Sec 3G/23),14,10,1.2,22.2,1
+CASE-1308,Hosur IT Expressway Phase 3 (Sec 1),16,0,62.4,Declaration (Sec 3D/19),0,3,0.0,13.5,0
+CASE-1309,Tirunelveli Solar Park Access Phase 1 (Sec 3),146,0,10.1,Possession (Sec 3E/38),9,19,0.7,33.0,0
+CASE-1310,Tiruchirappalli Freight Link Phase 3 (Sec 4),187,3,53.3,Possession (Sec 3E/38),19,19,0.1,32.2,1
+CASE-1311,SIPCOT Industrial Corridor Phase 1 (Sec 2),41,3,53.7,Compensation Disbursement,6,2,0.0,22.7,1
+CASE-1312,Tirunelveli Solar Park Access Phase 3 (Sec 1),23,1,75.1,Notification (Sec 3A/11),0,2,0.0,1.6,0
+CASE-1313,Erode Agri-Logistics Zone Phase 1 (Sec 2),145,1,22.8,Compensation Disbursement,3,12,0.0,23.5,0
+CASE-1314,Salem Bypass Extension Phase 1 (Sec 1),82,2,42.0,Award Inquiry (Sec 3G/23),7,7,1.8,23.1,1
+CASE-1315,Thoothukudi Port Rail Spur Phase 3 (Sec 5),74,2,93.5,Notification (Sec 3A/11),11,7,0.4,3.4,1
+CASE-1316,Erode Agri-Logistics Zone Phase 3 (Sec 7),77,3,79.5,Notification (Sec 3A/11),1,14,13.1,24.6,1
+CASE-1317,Coimbatore Ring Road Sec Phase 2 (Sec 7),42,0,76.7,Declaration (Sec 3D/19),3,2,0.0,13.9,0
+CASE-1318,Vellore Urban Peripheral Phase 1 (Sec 5),92,0,83.9,Notification (Sec 3A/11),2,10,3.1,6.3,0
+CASE-1319,Thoothukudi Port Rail Spur Phase 1 (Sec 2),46,2,88.4,Notification (Sec 3A/11),2,6,0.0,1.0,1
+CASE-1320,Hosur IT Expressway Phase 3 (Sec 2),28,0,14.3,Compensation Disbursement,0,2,0.8,26.9,0
+CASE-1321,SIPCOT Industrial Corridor Phase 2 (Sec 1),147,4,95.0,SIA & Objection (Sec 3C/15),9,6,0.9,9.2,1
+CASE-1322,Madurai Logistics Park Phase 1 (Sec 5),31,1,67.3,Declaration (Sec 3D/19),0,2,0.0,12.8,0
+CASE-1323,Thoothukudi Port Rail Spur Phase 2 (Sec 3),83,1,8.4,Compensation Disbursement,0,7,0.0,21.1,0
+CASE-1324,Thoothukudi Port Rail Spur Phase 2 (Sec 5),96,1,8.2,Compensation Disbursement,19,9,0.0,25.4,0
+CASE-1325,Salem Bypass Extension Phase 2 (Sec 5),138,4,19.8,Compensation Disbursement,10,15,0.0,24.6,0
+CASE-1326,Madurai Logistics Park Phase 2 (Sec 4),110,5,13.1,Possession (Sec 3E/38),15,10,7.6,41.9,1
+CASE-1327,Vellore Urban Peripheral Phase 3 (Sec 1),107,1,83.3,Notification (Sec 3A/11),1,7,0.0,1.6,0
+CASE-1328,Salem Bypass Extension Phase 2 (Sec 2),120,3,71.2,Award Inquiry (Sec 3G/23),4,27,5.4,26.4,1
+CASE-1329,Vellore Urban Peripheral Phase 3 (Sec 6),17,0,41.6,Declaration (Sec 3D/19),2,1,2.4,16.9,0
+CASE-1330,Coimbatore Ring Road Sec Phase 2 (Sec 7),25,0,75.0,Award Inquiry (Sec 3G/23),2,1,8.3,29.7,1
+CASE-1331,Vellore Urban Peripheral Phase 3 (Sec 6),152,5,77.9,Award Inquiry (Sec 3G/23),6,6,2.8,23.9,1
+CASE-1332,Salem Bypass Extension Phase 3 (Sec 6),74,3,98.1,Notification (Sec 3A/11),6,0,3.9,9.5,1
+CASE-1333,Coimbatore Ring Road Sec Phase 2 (Sec 3),73,1,86.9,SIA & Objection (Sec 3C/15),3,2,6.1,15.1,1
+CASE-1334,Thoothukudi Port Rail Spur Phase 1 (Sec 3),68,0,6.7,Compensation Disbursement,0,9,0.0,22.7,0
+CASE-1335,Erode Agri-Logistics Zone Phase 2 (Sec 2),110,3,48.6,Award Inquiry (Sec 3G/23),16,12,7.5,28.4,1
+CASE-1336,SIPCOT Industrial Corridor Phase 1 (Sec 7),37,0,13.4,Possession (Sec 3E/38),2,1,1.4,33.9,0
+CASE-1337,Hosur IT Expressway Phase 3 (Sec 3),37,0,71.1,Notification (Sec 3A/11),1,2,6.5,9.9,0
+CASE-1338,Madurai Logistics Park Phase 2 (Sec 4),50,0,14.6,Compensation Disbursement,0,0,4.4,33.9,0
+CASE-1339,Madurai Logistics Park Phase 2 (Sec 4),178,3,40.5,Award Inquiry (Sec 3G/23),7,13,9.1,31.4,1
+CASE-1340,Vellore Urban Peripheral Phase 1 (Sec 3),68,0,51.4,Possession (Sec 3E/38),1,4,2.0,34.2,0
+CASE-1341,Thoothukudi Port Rail Spur Phase 2 (Sec 3),100,2,92.1,Notification (Sec 3A/11),4,11,0.0,2.6,0
+CASE-1342,SIPCOT Industrial Corridor Phase 1 (Sec 3),68,0,44.2,Declaration (Sec 3D/19),7,15,0.0,8.8,0
+CASE-1343,Tirunelveli Solar Park Access Phase 2 (Sec 2),27,2,35.5,Award Inquiry (Sec 3G/23),0,3,1.0,21.9,0
+CASE-1344,SIPCOT Industrial Corridor Phase 3 (Sec 5),65,0,2.3,Compensation Disbursement,2,3,6.8,33.3,0
+CASE-1345,SIPCOT Industrial Corridor Phase 1 (Sec 2),25,3,10.2,Compensation Disbursement,1,1,0.0,22.9,0
+CASE-1346,Coimbatore Ring Road Sec Phase 3 (Sec 5),24,0,97.2,SIA & Objection (Sec 3C/15),1,1,4.1,13.9,0
+CASE-1347,Vellore Urban Peripheral Phase 3 (Sec 7),16,0,79.1,Declaration (Sec 3D/19),0,0,6.4,22.2,0
+CASE-1348,Vellore Urban Peripheral Phase 1 (Sec 6),266,4,76.9,Award Inquiry (Sec 3G/23),0,11,7.5,28.8,1
+CASE-1349,Coimbatore Ring Road Sec Phase 2 (Sec 1),63,2,61.1,Declaration (Sec 3D/19),1,3,7.6,23.6,1
+CASE-1350,Hosur IT Expressway Phase 3 (Sec 7),83,0,45.8,Award Inquiry (Sec 3G/23),4,3,3.9,24.8,1
+CASE-1351,Erode Agri-Logistics Zone Phase 1 (Sec 1),28,0,64.1,Declaration (Sec 3D/19),1,5,0.0,12.1,0
+CASE-1352,Vellore Urban Peripheral Phase 3 (Sec 5),82,1,78.7,Declaration (Sec 3D/19),4,4,1.8,17.4,0
+CASE-1353,Thoothukudi Port Rail Spur Phase 2 (Sec 4),37,0,89.1,SIA & Objection (Sec 3C/15),3,4,0.0,5.2,0
+CASE-1354,Salem Bypass Extension Phase 2 (Sec 2),51,2,86.8,Notification (Sec 3A/11),0,4,5.6,13.0,1
+CASE-1355,Madurai Logistics Park Phase 3 (Sec 7),145,1,58.6,Declaration (Sec 3D/19),14,15,11.2,26.6,1
+CASE-1356,SIPCOT Industrial Corridor Phase 1 (Sec 1),74,1,5.0,Compensation Disbursement,6,6,2.2,30.3,0
+CASE-1357,Erode Agri-Logistics Zone Phase 1 (Sec 7),97,2,80.5,SIA & Objection (Sec 3C/15),3,6,0.7,8.7,0
+CASE-1358,SIPCOT Industrial Corridor Phase 1 (Sec 7),226,2,65.0,Award Inquiry (Sec 3G/23),6,14,2.6,23.4,1
+CASE-1359,Vellore Urban Peripheral Phase 1 (Sec 4),101,0,42.4,Award Inquiry (Sec 3G/23),7,4,1.5,23.0,1
+CASE-1360,SIPCOT Industrial Corridor Phase 2 (Sec 1),54,0,75.6,Declaration (Sec 3D/19),4,2,3.4,17.8,0
+CASE-1361,Thoothukudi Port Rail Spur Phase 3 (Sec 1),358,1,74.3,Declaration (Sec 3D/19),8,36,5.5,21.1,1
+CASE-1362,Coimbatore Ring Road Sec Phase 3 (Sec 2),140,1,61.5,Award Inquiry (Sec 3G/23),19,18,0.0,16.4,0
+CASE-1363,Tirunelveli Solar Park Access Phase 3 (Sec 2),39,0,72.8,Compensation Disbursement,1,1,6.4,34.1,1
+CASE-1364,Vellore Urban Peripheral Phase 1 (Sec 6),132,1,86.1,SIA & Objection (Sec 3C/15),11,17,6.1,16.9,1
+CASE-1365,Tirunelveli Solar Park Access Phase 3 (Sec 3),88,1,33.0,Award Inquiry (Sec 3G/23),5,12,5.9,26.3,0
+CASE-1366,Thoothukudi Port Rail Spur Phase 2 (Sec 1),177,4,70.0,Declaration (Sec 3D/19),0,41,0.0,12.4,0
+CASE-1367,Hosur IT Expressway Phase 3 (Sec 7),125,3,48.4,Declaration (Sec 3D/19),15,8,2.7,17.2,1
+CASE-1368,Erode Agri-Logistics Zone Phase 3 (Sec 4),112,4,78.1,Award Inquiry (Sec 3G/23),9,15,10.5,31.9,1
+CASE-1369,Madurai Logistics Park Phase 3 (Sec 5),38,1,91.1,Notification (Sec 3A/11),1,0,0.8,4.5,0
+CASE-1370,Salem Bypass Extension Phase 1 (Sec 3),289,3,91.7,Notification (Sec 3A/11),8,27,2.4,6.4,1
+CASE-1371,SIPCOT Industrial Corridor Phase 3 (Sec 7),33,1,61.1,Declaration (Sec 3D/19),1,3,1.3,16.4,0
+CASE-1372,Erode Agri-Logistics Zone Phase 1 (Sec 7),141,4,56.6,Declaration (Sec 3D/19),18,9,1.9,16.4,1
+CASE-1373,Tirunelveli Solar Park Access Phase 3 (Sec 5),80,2,77.2,SIA & Objection (Sec 3C/15),8,7,0.0,3.3,0
+CASE-1374,Tiruchirappalli Freight Link Phase 2 (Sec 2),115,1,45.9,Declaration (Sec 3D/19),1,7,3.6,20.1,1
+CASE-1375,Erode Agri-Logistics Zone Phase 3 (Sec 1),100,0,81.1,Declaration (Sec 3D/19),1,0,4.9,20.8,1
+CASE-1376,Madurai Logistics Park Phase 1 (Sec 3),95,1,92.1,Notification (Sec 3A/11),6,7,2.8,6.5,0
+CASE-1377,SIPCOT Industrial Corridor Phase 3 (Sec 6),32,0,73.9,Compensation Disbursement,8,6,0.0,26.0,0
+CASE-1378,Vellore Urban Peripheral Phase 1 (Sec 6),146,2,21.6,Compensation Disbursement,5,4,5.2,31.9,0
+CASE-1379,Hosur IT Expressway Phase 1 (Sec 3),58,0,87.5,Notification (Sec 3A/11),3,3,0.3,3.4,0
+CASE-1380,Coimbatore Ring Road Sec Phase 1 (Sec 2),34,0,69.6,Compensation Disbursement,6,1,0.0,17.5,0
+CASE-1381,Erode Agri-Logistics Zone Phase 2 (Sec 6),65,1,60.0,Compensation Disbursement,0,1,3.8,32.2,1
+CASE-1382,Madurai Logistics Park Phase 2 (Sec 6),27,1,54.2,Award Inquiry (Sec 3G/23),2,1,8.8,29.8,1
+CASE-1383,SIPCOT Industrial Corridor Phase 3 (Sec 4),19,1,96.6,SIA & Objection (Sec 3C/15),0,0,0.6,9.0,0
+CASE-1384,Salem Bypass Extension Phase 1 (Sec 5),34,0,93.1,SIA & Objection (Sec 3C/15),1,1,0.0,5.2,0
+CASE-1385,Tirunelveli Solar Park Access Phase 2 (Sec 7),25,0,31.2,Award Inquiry (Sec 3G/23),1,2,0.0,16.7,0
+CASE-1386,Hosur IT Expressway Phase 1 (Sec 2),60,1,1.9,Possession (Sec 3E/38),1,10,0.0,29.8,0
+CASE-1387,SIPCOT Industrial Corridor Phase 3 (Sec 5),22,1,37.3,Compensation Disbursement,2,5,5.4,35.1,1
+CASE-1388,Hosur IT Expressway Phase 2 (Sec 2),152,2,93.7,SIA & Objection (Sec 3C/15),2,19,4.7,13.1,0
+CASE-1389,Erode Agri-Logistics Zone Phase 2 (Sec 1),41,0,15.8,Compensation Disbursement,0,7,1.4,28.1,0
+CASE-1390,Salem Bypass Extension Phase 3 (Sec 7),220,2,20.4,Possession (Sec 3E/38),10,16,0.0,26.5,0
+CASE-1391,Tiruchirappalli Freight Link Phase 1 (Sec 3),145,5,57.2,Compensation Disbursement,3,12,1.6,27.8,1
+CASE-1392,Salem Bypass Extension Phase 2 (Sec 7),147,4,39.6,Award Inquiry (Sec 3G/23),3,8,2.7,23.4,1
+CASE-1393,Hosur IT Expressway Phase 2 (Sec 3),77,1,19.9,Compensation Disbursement,7,12,2.8,28.9,0
+CASE-1394,SIPCOT Industrial Corridor Phase 3 (Sec 4),134,1,75.9,Award Inquiry (Sec 3G/23),3,2,0.0,17.1,1
+CASE-1395,Thoothukudi Port Rail Spur Phase 2 (Sec 3),71,0,9.4,Compensation Disbursement,1,2,1.0,27.5,0
+CASE-1396,Coimbatore Ring Road Sec Phase 2 (Sec 5),113,0,82.4,Notification (Sec 3A/11),4,11,5.7,14.3,1
+CASE-1397,Coimbatore Ring Road Sec Phase 1 (Sec 1),53,0,48.3,Declaration (Sec 3D/19),2,2,3.6,20.7,0
+CASE-1398,Madurai Logistics Park Phase 3 (Sec 4),174,2,97.2,SIA & Objection (Sec 3C/15),0,3,4.8,13.9,1
+CASE-1399,Erode Agri-Logistics Zone Phase 2 (Sec 7),53,1,5.4,Possession (Sec 3E/38),3,4,0.0,28.8,0
+CASE-1400,Erode Agri-Logistics Zone Phase 3 (Sec 6),37,0,53.8,Declaration (Sec 3D/19),0,1,0.0,11.7,0
+CASE-1401,Tiruchirappalli Freight Link Phase 1 (Sec 7),86,3,77.4,Notification (Sec 3A/11),17,4,0.2,3.3,0
+CASE-1402,Hosur IT Expressway Phase 1 (Sec 4),76,2,86.2,Notification (Sec 3A/11),0,3,0.0,2.3,1
+CASE-1403,Tirunelveli Solar Park Access Phase 3 (Sec 3),66,1,76.9,SIA & Objection (Sec 3C/15),4,11,1.6,10.5,0
+CASE-1404,Thoothukudi Port Rail Spur Phase 3 (Sec 7),56,0,48.7,Declaration (Sec 3D/19),0,4,3.2,18.4,0
+CASE-1405,SIPCOT Industrial Corridor Phase 3 (Sec 2),76,0,11.4,Possession (Sec 3E/38),5,1,2.5,36.3,0
+CASE-1406,Madurai Logistics Park Phase 2 (Sec 2),120,2,91.7,SIA & Objection (Sec 3C/15),6,23,2.2,10.8,0
+CASE-1407,Vellore Urban Peripheral Phase 3 (Sec 5),97,3,44.0,Award Inquiry (Sec 3G/23),2,3,0.0,20.0,1
+CASE-1408,Tirunelveli Solar Park Access Phase 3 (Sec 2),481,15,14.5,Possession (Sec 3E/38),52,7,0.0,30.3,1
+CASE-1409,Madurai Logistics Park Phase 3 (Sec 2),58,0,31.9,Possession (Sec 3E/38),3,6,4.5,38.7,0
+CASE-1410,Erode Agri-Logistics Zone Phase 2 (Sec 6),23,0,75.1,SIA & Objection (Sec 3C/15),6,3,1.4,9.6,0
+CASE-1411,Tiruchirappalli Freight Link Phase 2 (Sec 2),126,2,72.8,Award Inquiry (Sec 3G/23),11,2,1.7,22.7,1
+CASE-1412,Coimbatore Ring Road Sec Phase 3 (Sec 7),35,0,94.3,Notification (Sec 3A/11),1,2,0.0,1.0,0
+CASE-1413,Tiruchirappalli Freight Link Phase 2 (Sec 1),98,2,69.5,Declaration (Sec 3D/19),4,7,0.0,13.3,0
+CASE-1414,Tirunelveli Solar Park Access Phase 3 (Sec 7),147,1,79.1,SIA & Objection (Sec 3C/15),11,5,1.9,11.1,0
+CASE-1415,Erode Agri-Logistics Zone Phase 2 (Sec 2),15,0,12.9,Compensation Disbursement,0,1,0.0,24.8,0
+CASE-1416,Erode Agri-Logistics Zone Phase 3 (Sec 7),61,1,65.5,Compensation Disbursement,1,4,3.2,31.4,0
+CASE-1417,Tirunelveli Solar Park Access Phase 2 (Sec 7),42,0,84.4,SIA & Objection (Sec 3C/15),3,4,0.0,4.6,0
+CASE-1418,Tirunelveli Solar Park Access Phase 2 (Sec 5),341,9,75.4,SIA & Objection (Sec 3C/15),60,35,5.3,14.1,1
+CASE-1419,Hosur IT Expressway Phase 2 (Sec 1),61,1,25.0,Compensation Disbursement,1,6,1.1,28.0,0
+CASE-1420,Erode Agri-Logistics Zone Phase 1 (Sec 4),145,6,64.3,Award Inquiry (Sec 3G/23),28,5,13.8,41.8,1
+CASE-1421,Salem Bypass Extension Phase 3 (Sec 6),116,0,15.1,Compensation Disbursement,1,8,0.1,26.1,0
+CASE-1422,Salem Bypass Extension Phase 2 (Sec 6),15,0,20.3,Compensation Disbursement,0,0,1.8,28.7,0
+CASE-1423,SIPCOT Industrial Corridor Phase 3 (Sec 6),101,0,65.4,Award Inquiry (Sec 3G/23),11,8,5.2,26.4,1
+CASE-1424,SIPCOT Industrial Corridor Phase 2 (Sec 7),64,1,92.3,Notification (Sec 3A/11),0,10,0.0,1.0,1
+CASE-1425,Tiruchirappalli Freight Link Phase 1 (Sec 2),28,0,88.0,SIA & Objection (Sec 3C/15),1,0,2.1,11.0,0
+CASE-1426,SIPCOT Industrial Corridor Phase 1 (Sec 6),30,1,62.7,Award Inquiry (Sec 3G/23),0,2,3.0,25.6,1
+CASE-1427,Vellore Urban Peripheral Phase 2 (Sec 3),24,0,43.6,Compensation Disbursement,1,4,3.5,30.2,1
+CASE-1428,Madurai Logistics Park Phase 3 (Sec 6),103,0,41.4,Declaration (Sec 3D/19),12,4,0.4,14.8,0
+CASE-1429,Coimbatore Ring Road Sec Phase 2 (Sec 7),94,0,2.6,Possession (Sec 3E/38),4,1,2.7,37.2,0
+CASE-1430,Madurai Logistics Park Phase 1 (Sec 6),66,0,35.1,Award Inquiry (Sec 3G/23),0,4,0.0,19.6,0
+CASE-1431,Salem Bypass Extension Phase 3 (Sec 7),32,1,77.4,Notification (Sec 3A/11),1,2,0.0,1.0,0
+CASE-1432,Erode Agri-Logistics Zone Phase 2 (Sec 2),105,0,49.2,Declaration (Sec 3D/19),10,13,4.2,20.2,0
+CASE-1433,Salem Bypass Extension Phase 3 (Sec 3),58,1,80.8,SIA & Objection (Sec 3C/15),7,8,0.0,7.3,0
+CASE-1434,Coimbatore Ring Road Sec Phase 1 (Sec 2),21,1,15.0,Possession (Sec 3E/38),0,0,0.2,32.4,0
+CASE-1435,Tirunelveli Solar Park Access Phase 2 (Sec 6),203,2,23.2,Possession (Sec 3E/38),16,24,0.0,29.0,0
+CASE-1436,Coimbatore Ring Road Sec Phase 2 (Sec 7),48,1,93.7,SIA & Objection (Sec 3C/15),0,6,0.7,9.0,0
+CASE-1437,Coimbatore Ring Road Sec Phase 2 (Sec 4),50,2,70.5,SIA & Objection (Sec 3C/15),1,2,0.0,7.3,0
+CASE-1438,Erode Agri-Logistics Zone Phase 3 (Sec 3),50,0,69.3,Award Inquiry (Sec 3G/23),1,0,0.0,18.2,0
+CASE-1439,Salem Bypass Extension Phase 1 (Sec 5),274,4,95.4,SIA & Objection (Sec 3C/15),9,12,4.4,16.1,1
+CASE-1440,Tirunelveli Solar Park Access Phase 3 (Sec 1),32,1,79.5,Notification (Sec 3A/11),3,1,3.4,9.4,0
+CASE-1441,Madurai Logistics Park Phase 2 (Sec 3),31,0,85.0,Notification (Sec 3A/11),1,3,3.1,8.8,0
+CASE-1442,Tiruchirappalli Freight Link Phase 1 (Sec 6),48,1,36.4,Declaration (Sec 3D/19),3,2,0.0,10.1,0
+CASE-1443,Thoothukudi Port Rail Spur Phase 1 (Sec 4),126,3,48.2,Award Inquiry (Sec 3G/23),7,8,4.9,25.3,1
+CASE-1444,Thoothukudi Port Rail Spur Phase 3 (Sec 2),34,0,80.1,Notification (Sec 3A/11),0,2,0.0,1.0,0
+CASE-1445,Thoothukudi Port Rail Spur Phase 1 (Sec 5),108,0,15.7,Possession (Sec 3E/38),12,6,0.0,32.0,0
+CASE-1446,Salem Bypass Extension Phase 2 (Sec 7),60,2,30.0,Declaration (Sec 3D/19),2,1,0.6,14.9,1
+CASE-1447,Hosur IT Expressway Phase 3 (Sec 4),135,6,20.9,Possession (Sec 3E/38),5,2,3.6,36.5,1
+CASE-1448,Vellore Urban Peripheral Phase 3 (Sec 7),33,0,31.4,Compensation Disbursement,1,3,0.0,22.3,0
+CASE-1449,Salem Bypass Extension Phase 3 (Sec 6),16,0,70.8,Possession (Sec 3E/38),0,2,11.2,47.7,1
+CASE-1450,Vellore Urban Peripheral Phase 1 (Sec 6),149,2,80.1,SIA & Objection (Sec 3C/15),15,18,0.8,9.3,0
+CASE-1451,Coimbatore Ring Road Sec Phase 1 (Sec 7),114,3,55.2,Award Inquiry (Sec 3G/23),5,10,0.8,21.5,1
+CASE-1452,Thoothukudi Port Rail Spur Phase 1 (Sec 6),61,0,13.6,Possession (Sec 3E/38),5,4,6.7,41.7,1
+CASE-1453,Coimbatore Ring Road Sec Phase 2 (Sec 6),63,1,78.1,Notification (Sec 3A/11),1,0,0.0,1.0,0
+CASE-1454,Madurai Logistics Park Phase 1 (Sec 1),15,1,92.6,SIA & Objection (Sec 3C/15),1,2,3.6,14.3,1
+CASE-1455,Tiruchirappalli Freight Link Phase 3 (Sec 3),69,1,60.2,Award Inquiry (Sec 3G/23),0,8,1.2,22.4,1
+CASE-1456,SIPCOT Industrial Corridor Phase 3 (Sec 2),28,0,56.5,Declaration (Sec 3D/19),1,3,11.2,29.3,1
+CASE-1457,Tiruchirappalli Freight Link Phase 3 (Sec 5),34,0,82.6,Notification (Sec 3A/11),2,0,3.4,8.1,0
+CASE-1458,Thoothukudi Port Rail Spur Phase 1 (Sec 5),85,4,12.5,Compensation Disbursement,0,10,2.3,29.8,1
+CASE-1459,Salem Bypass Extension Phase 2 (Sec 4),48,0,86.4,Notification (Sec 3A/11),0,2,0.5,3.8,0
+CASE-1460,Thoothukudi Port Rail Spur Phase 3 (Sec 7),139,6,56.4,Award Inquiry (Sec 3G/23),8,4,4.2,26.5,1
+CASE-1461,SIPCOT Industrial Corridor Phase 1 (Sec 5),105,4,39.3,Award Inquiry (Sec 3G/23),4,6,6.1,31.0,1
+CASE-1462,Madurai Logistics Park Phase 1 (Sec 3),79,1,69.8,Declaration (Sec 3D/19),7,7,3.7,18.0,0
+CASE-1463,Salem Bypass Extension Phase 2 (Sec 2),24,2,89.0,SIA & Objection (Sec 3C/15),5,0,0.6,9.0,0
+CASE-1464,Coimbatore Ring Road Sec Phase 3 (Sec 4),73,1,87.3,SIA & Objection (Sec 3C/15),0,5,0.0,7.3,0
+CASE-1465,Tiruchirappalli Freight Link Phase 1 (Sec 7),40,1,73.9,SIA & Objection (Sec 3C/15),3,3,1.2,10.1,0
+CASE-1466,Hosur IT Expressway Phase 2 (Sec 4),41,2,84.6,Notification (Sec 3A/11),1,4,0.0,1.0,0
+CASE-1467,Thoothukudi Port Rail Spur Phase 2 (Sec 4),57,0,18.7,Compensation Disbursement,1,3,0.0,25.7,0
+CASE-1468,Thoothukudi Port Rail Spur Phase 3 (Sec 2),133,4,74.8,Notification (Sec 3A/11),3,3,7.0,15.7,1
+CASE-1469,Tirunelveli Solar Park Access Phase 1 (Sec 4),125,2,60.6,Compensation Disbursement,25,11,3.6,32.6,1
+CASE-1470,Coimbatore Ring Road Sec Phase 2 (Sec 5),49,3,98.2,SIA & Objection (Sec 3C/15),1,1,17.1,33.3,1
+CASE-1471,Hosur IT Expressway Phase 1 (Sec 4),146,4,71.1,Declaration (Sec 3D/19),5,13,3.6,18.9,0
+CASE-1472,Madurai Logistics Park Phase 1 (Sec 7),34,0,18.6,Compensation Disbursement,0,3,1.2,28.0,0
+CASE-1473,SIPCOT Industrial Corridor Phase 3 (Sec 5),48,0,59.8,Declaration (Sec 3D/19),1,3,3.9,18.5,0
+CASE-1474,SIPCOT Industrial Corridor Phase 3 (Sec 2),98,4,59.6,Award Inquiry (Sec 3G/23),2,2,2.7,23.0,1
+CASE-1475,Tirunelveli Solar Park Access Phase 3 (Sec 2),37,1,32.8,Award Inquiry (Sec 3G/23),0,3,1.9,22.2,0
+CASE-1476,Salem Bypass Extension Phase 1 (Sec 2),64,1,74.3,SIA & Objection (Sec 3C/15),4,9,0.4,8.7,0
+CASE-1477,SIPCOT Industrial Corridor Phase 1 (Sec 3),24,1,77.4,SIA & Objection (Sec 3C/15),1,0,0.0,8.0,0
+CASE-1478,Madurai Logistics Park Phase 2 (Sec 2),27,0,44.7,Declaration (Sec 3D/19),1,2,0.0,11.7,0
+CASE-1479,Erode Agri-Logistics Zone Phase 1 (Sec 1),73,1,64.4,Possession (Sec 3E/38),8,5,0.0,31.8,1
+CASE-1480,Coimbatore Ring Road Sec Phase 1 (Sec 3),43,1,91.1,Notification (Sec 3A/11),0,2,0.0,2.6,0
+CASE-1481,Tiruchirappalli Freight Link Phase 2 (Sec 5),39,2,71.2,SIA & Objection (Sec 3C/15),4,8,0.2,8.3,0
+CASE-1482,Thoothukudi Port Rail Spur Phase 1 (Sec 4),84,1,95.2,SIA & Objection (Sec 3C/15),1,15,0.0,2.3,0
+CASE-1483,SIPCOT Industrial Corridor Phase 3 (Sec 4),23,0,80.5,Declaration (Sec 3D/19),0,0,0.0,13.6,0
+CASE-1484,Tiruchirappalli Freight Link Phase 2 (Sec 7),165,3,43.7,Award Inquiry (Sec 3G/23),2,11,13.8,35.2,1
+CASE-1485,Tirunelveli Solar Park Access Phase 2 (Sec 2),68,2,78.1,Award Inquiry (Sec 3G/23),4,2,0.0,15.4,1
+CASE-1486,Tiruchirappalli Freight Link Phase 1 (Sec 7),73,2,54.0,Compensation Disbursement,1,9,0.0,22.7,1
+CASE-1487,SIPCOT Industrial Corridor Phase 1 (Sec 1),29,0,79.0,SIA & Objection (Sec 3C/15),2,0,0.0,5.7,0
+CASE-1488,Salem Bypass Extension Phase 3 (Sec 4),21,0,70.5,Declaration (Sec 3D/19),0,1,4.6,19.1,0
+CASE-1489,Coimbatore Ring Road Sec Phase 1 (Sec 6),88,3,99.3,SIA & Objection (Sec 3C/15),14,12,0.6,8.9,1
+CASE-1490,Thoothukudi Port Rail Spur Phase 2 (Sec 3),126,1,78.4,Notification (Sec 3A/11),10,11,2.7,6.6,0
+CASE-1491,Erode Agri-Logistics Zone Phase 3 (Sec 2),53,1,81.1,Award Inquiry (Sec 3G/23),2,7,4.2,28.2,1
+CASE-1492,Erode Agri-Logistics Zone Phase 1 (Sec 7),102,1,84.7,Declaration (Sec 3D/19),18,6,2.6,18.9,0
+CASE-1493,Madurai Logistics Park Phase 3 (Sec 4),144,0,15.2,Compensation Disbursement,16,3,0.0,24.9,0
+CASE-1494,Madurai Logistics Park Phase 3 (Sec 3),20,0,58.3,Declaration (Sec 3D/19),1,0,0.1,14.2,0
+CASE-1495,Madurai Logistics Park Phase 2 (Sec 5),181,3,93.8,Notification (Sec 3A/11),2,4,2.0,5.7,1
+CASE-1496,Vellore Urban Peripheral Phase 3 (Sec 4),146,3,89.1,Notification (Sec 3A/11),4,11,7.1,13.4,1
+CASE-1497,Tirunelveli Solar Park Access Phase 1 (Sec 5),32,1,71.6,Notification (Sec 3A/11),4,0,5.3,10.7,1
+CASE-1498,Vellore Urban Peripheral Phase 2 (Sec 6),87,2,55.1,Declaration (Sec 3D/19),6,13,6.0,20.4,1
+CASE-1499,Vellore Urban Peripheral Phase 2 (Sec 7),24,0,4.1,Compensation Disbursement,3,2,5.0,33.1,0
+CASE-1500,Madurai Logistics Park Phase 1 (Sec 6),73,0,65.9,Declaration (Sec 3D/19),5,5,2.8,17.1,0

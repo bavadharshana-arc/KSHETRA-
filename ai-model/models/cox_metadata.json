@@ -1,0 +1,100 @@
+{
+  "model_type": "Cox Proportional Hazards Fitter (lifelines)",
+  "feature_schema": "cox-2.0-no-duration-leak",
+  "penalizer": 0.1,
+  "concordance_index": 0.8702,
+  "concordance_note": "In-sample (fit and evaluated on the full synthetic set). Likely optimistic.",
+  "training_sample_size": 1500,
+  "event_count": 624,
+  "numerical_covariates": [
+    "parcel_count",
+    "litigation_cases",
+    "compensation_pending_pct",
+    "ownership_disputes",
+    "document_issues"
+  ],
+  "stage_dummy_covariates": [
+    "stage__SIA & Objection (Sec 3C/15)",
+    "stage__Declaration (Sec 3D/19)",
+    "stage__Award Inquiry (Sec 3G/23)",
+    "stage__Compensation Disbursement",
+    "stage__Possession (Sec 3E/38)"
+  ],
+  "removed_covariates": {
+    "previous_delays_months": "Duration leakage: in the synthetic dataset this is a deterministic transform of notification_age_months (the survival duration) minus a stage constant (R^2 = 0.87 on duration + stage). Kept for LightGBM only."
+  },
+  "reference_stage": "Notification (Sec 3A/11)",
+  "non_reference_stages": [
+    "SIA & Objection (Sec 3C/15)",
+    "Declaration (Sec 3D/19)",
+    "Award Inquiry (Sec 3G/23)",
+    "Compensation Disbursement",
+    "Possession (Sec 3E/38)"
+  ],
+  "duration_col": "duration_months",
+  "duration_source": "notification_age_months (clipped >= 0.5); NOT used as a covariate",
+  "event_col": "event_observed",
+  "hazard_ratios": {
+    "parcel_count": {
+      "hazard_ratio": 0.9998,
+      "coef": -0.0002,
+      "se": 0.0007,
+      "p_value": 0.779125
+    },
+    "litigation_cases": {
+      "hazard_ratio": 1.0815,
+      "coef": 0.0783,
+      "se": 0.0199,
+      "p_value": 8.4e-05
+    },
+    "compensation_pending_pct": {
+      "hazard_ratio": 1.0176,
+      "coef": 0.0175,
+      "se": 0.0017,
+      "p_value": 0.0
+    },
+    "ownership_disputes": {
+      "hazard_ratio": 1.0134,
+      "coef": 0.0133,
+      "se": 0.0058,
+      "p_value": 0.021579
+    },
+    "document_issues": {
+      "hazard_ratio": 1.011,
+      "coef": 0.0109,
+      "se": 0.0053,
+      "p_value": 0.038805
+    },
+    "stage__SIA & Objection (Sec 3C/15)": {
+      "hazard_ratio": 1.4841,
+      "coef": 0.3948,
+      "se": 0.1267,
+      "p_value": 0.00183
+    },
+    "stage__Declaration (Sec 3D/19)": {
+      "hazard_ratio": 0.5907,
+      "coef": -0.5265,
+      "se": 0.1183,
+      "p_value": 9e-06
+    },
+    "stage__Award Inquiry (Sec 3G/23)": {
+      "hazard_ratio": 0.6062,
+      "coef": -0.5005,
+      "se": 0.1092,
+      "p_value": 5e-06
+    },
+    "stage__Compensation Disbursement": {
+      "hazard_ratio": 0.3852,
+      "coef": -0.954,
+      "se": 0.1294,
+      "p_value": 0.0
+    },
+    "stage__Possession (Sec 3E/38)": {
+      "hazard_ratio": 0.1868,
+      "coef": -1.6775,
+      "se": 0.1378,
+      "p_value": 0.0
+    }
+  },
+  "disclaimer": "Trained on synthetic demonstration data. Does not predict exact completion dates."
+}

@@ -1,0 +1,191 @@
+/**
+ * KSHETRA design tokens — single source of truth for color, radius and
+ * shadow values used across the app.
+ *
+ * These are declared with Tailwind v4's CSS-first `@theme` directive, which
+ * means every value below both (a) becomes a real CSS variable — e.g.
+ * `var(--color-blue-600)` — and (b) generates the matching Tailwind
+ * utilities automatically — e.g. `bg-blue-600`, `text-blue-600`,
+ * `border-blue-600`, `ring-blue-600`, `fill-blue-600`, etc.
+ *
+ * IMPORTANT: because these keys share names with Tailwind's built-in color
+ * scale (blue, teal, indigo, emerald, amber, red, purple, slate), declaring
+ * them here *overrides* the default palette for those names project-wide.
+ * That is intentional — it is what makes `bg-blue-600`, `text-red-600`,
+ * `border-slate-200`, etc. resolve to the exact KSHETRA brand hex codes
+ * everywhere in the codebase, without every component needing to be
+ * rewritten to use bespoke class names.
+ *
+ * Semantic usage (see PROJECT design system guidelines):
+ *   blue    → primary brand / navigation / primary actions / information
+ *   navy    → institutional identity (header, hero, dark surfaces)
+ *   teal    → GIS / spatial / corridor context
+ *   indigo  → AI / predictive analytics
+ *   purple  → Gov data sync / integrations (violet-blue family)
+ *   emerald → success / acquired / low risk / healthy
+ *   amber   → warning / pending / medium risk / bottlenecks
+ *   red     → danger / high risk / critical / overdue
+ *   slate   → neutral surfaces, borders and text
+ */
+
+@theme {
+  /* ------------------------------------------------------------------ */
+  /* Brand navy — institutional identity color (header, hero, dark chrome) */
+  /* ------------------------------------------------------------------ */
+  --color-navy-50: #EEF2F8;
+  --color-navy-100: #DCE5F0;
+  --color-navy-200: #B9CBE0;
+  --color-navy-300: #90AAC9;
+  --color-navy-400: #5F7FA3;
+  --color-navy-500: #3D5A7D;
+  --color-navy-600: #274266;
+  --color-navy-700: #1B2F4D;
+  --color-navy-800: #122140;
+  --color-navy-900: #0B1F3A; /* KSHETRA deep navy */
+  --color-navy-950: #071427;
+
+  /* ------------------------------------------------------------------ */
+  /* Primary / secondary blue — navigation, primary actions, info        */
+  /* ------------------------------------------------------------------ */
+  --color-blue-50: #EEF4FE;
+  --color-blue-100: #DCEAFC;
+  --color-blue-200: #B9D5F9;
+  --color-blue-300: #8CBBF4;
+  --color-blue-400: #5B9DEE;
+  --color-blue-500: #2F80ED; /* secondary blue */
+  --color-blue-600: #1769E0; /* primary blue */
+  --color-blue-700: #1256B8;
+  --color-blue-800: #0F4590;
+  --color-blue-900: #0D3670;
+  --color-blue-950: #082249;
+
+  /* ------------------------------------------------------------------ */
+  /* Teal — GIS / corridor / spatial context                             */
+  /* ------------------------------------------------------------------ */
+  --color-teal-50: #EDFAF9;
+  --color-teal-100: #D2F1EF;
+  --color-teal-200: #A6E3DF;
+  --color-teal-300: #71CFC9;
+  --color-teal-400: #3FB6B1;
+  --color-teal-500: #17A6A2;
+  --color-teal-600: #0F9D9A;
+  --color-teal-700: #0C7C7A;
+  --color-teal-800: #0D6362;
+  --color-teal-900: #0D5150;
+  --color-teal-950: #052E2E;
+
+  /* ------------------------------------------------------------------ */
+  /* Indigo — AI / predictive analytics                                  */
+  /* ------------------------------------------------------------------ */
+  --color-indigo-50: #F2F1FD;
+  --color-indigo-100: #E5E3FA;
+  --color-indigo-200: #CDC9F6;
+  --color-indigo-300: #ACA5EF;
+  --color-indigo-400: #8880E7;
+  --color-indigo-500: #726BE0;
+  --color-indigo-600: #635BDB;
+  --color-indigo-700: #4E46C4;
+  --color-indigo-800: #413AA0;
+  --color-indigo-900: #363080;
+  --color-indigo-950: #221D57;
+
+  /* ------------------------------------------------------------------ */
+  /* Purple — Gov data sync / integrations (violet-blue family)          */
+  /* ------------------------------------------------------------------ */
+  --color-purple-50: #F4F1FD;
+  --color-purple-100: #E9E2FB;
+  --color-purple-200: #D3C5F6;
+  --color-purple-300: #B69EEE;
+  --color-purple-400: #9874E5;
+  --color-purple-500: #8459DE;
+  --color-purple-600: #7A4FE0;
+  --color-purple-700: #6238B8;
+  --color-purple-800: #4E2D93;
+  --color-purple-900: #402677;
+  --color-purple-950: #281655;
+
+  /* ------------------------------------------------------------------ */
+  /* Emerald — success / acquired / low risk / healthy                   */
+  /* ------------------------------------------------------------------ */
+  --color-emerald-50: #EEFAF2;
+  --color-emerald-100: #D6F3E0;
+  --color-emerald-200: #AEE6C3;
+  --color-emerald-300: #7BD2A2;
+  --color-emerald-400: #45BA80;
+  --color-emerald-500: #1FA860;
+  --color-emerald-600: #159947;
+  --color-emerald-700: #0F7A39;
+  --color-emerald-800: #0F602F;
+  --color-emerald-900: #0E4E28;
+  --color-emerald-950: #052B16;
+
+  /* ------------------------------------------------------------------ */
+  /* Amber — warning / pending / medium risk / bottlenecks                */
+  /* ------------------------------------------------------------------ */
+  --color-amber-50: #FDF4E3;
+  --color-amber-100: #FBE7C0;
+  --color-amber-200: #F6D08C;
+  --color-amber-300: #EFB55A;
+  --color-amber-400: #E6A233;
+  --color-amber-500: #DE9410;
+  --color-amber-600: #D98A00;
+  --color-amber-700: #B06F00;
+  --color-amber-800: #8A5700;
+  --color-amber-900: #6E4500;
+  --color-amber-950: #402800;
+
+  /* ------------------------------------------------------------------ */
+  /* Red — danger / high risk / critical / overdue                       */
+  /* ------------------------------------------------------------------ */
+  --color-red-50: #FDEEEF;
+  --color-red-100: #FAD7D9;
+  --color-red-200: #F4AFB3;
+  --color-red-300: #EA8388;
+  --color-red-400: #E15960;
+  --color-red-500: #DD444B;
+  --color-red-600: #D9363E;
+  --color-red-700: #B32C33;
+  --color-red-800: #8F232A;
+  --color-red-900: #741E24;
+  --color-red-950: #3F0F13;
+
+  /* ------------------------------------------------------------------ */
+  /* Slate — neutral surfaces, borders & text                            */
+  /* ------------------------------------------------------------------ */
+  --color-slate-50: #F5F7FA;  /* page background */
+  --color-slate-100: #EAEEF4;
+  --color-slate-200: #D9E1EC; /* default border */
+  --color-slate-300: #C2CEDE;
+  --color-slate-400: #97A3B8;
+  --color-slate-500: #667085; /* secondary text */
+  --color-slate-600: #4E5A70;
+  --color-slate-700: #37455A;
+  --color-slate-800: #232E42;
+  --color-slate-900: #172033; /* primary text */
+  --color-slate-950: #0E1524;
+
+  /* ------------------------------------------------------------------ */
+  /* Flat semantic aliases — for new components; prefer these when the   */
+  /* intent is meaning ("success", "danger") rather than a raw hue.      */
+  /* ------------------------------------------------------------------ */
+  --color-brand-navy: #0B1F3A;
+  --color-brand-blue: #1769E0;
+  --color-brand-blue-secondary: #2F80ED;
+  --color-info: #0F9D9A;
+  --color-ai: #635BDB;
+  --color-success: #159947;
+  --color-warning: #D98A00;
+  --color-danger: #D9363E;
+  --color-bg-page: #F5F7FA;
+  --color-bg-card: #FFFFFF;
+  --color-border-default: #D9E1EC;
+  --color-text-primary: #172033;
+  --color-text-secondary: #667085;
+
+  /* ------------------------------------------------------------------ */
+  /* Radius & shadow scale — kept moderate per design guidelines         */
+  /* ------------------------------------------------------------------ */
+  --radius-card: 0.875rem;
+  --shadow-card: 0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 3px 0 rgb(15 23 42 / 0.06);
+  --shadow-card-hover: 0 4px 12px -2px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.05);
+}
