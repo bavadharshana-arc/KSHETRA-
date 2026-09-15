@@ -111,6 +111,21 @@ except Exception as e:  # noqa: BLE001 - degrade instead of failing the whole se
     _BLOCKERS_IMPORT_ERROR = f"{type(e).__name__}: {e}"
     blockers_router = None  # type: ignore
 
+# -----------------------------------------------------------------------------
+# Exposure & Priority engine (Step 8B) -- READ-ONLY router over the backend/
+# exposure/ package. Same degrade-gracefully pattern as the legal/blockers
+# routers above: a failure here never affects /, /health, /predict, or any
+# other router mounted above. No write endpoint, no recomputation endpoint,
+# and no relationship to ai-model/, inference_service.py, or /predict -- see
+# backend/exposure/__init__.py.
+# -----------------------------------------------------------------------------
+_EXPOSURE_IMPORT_ERROR: str | None = None
+try:
+    from routers import exposure as exposure_router
+except Exception as e:  # noqa: BLE001 - degrade instead of failing the whole service
+    _EXPOSURE_IMPORT_ERROR = f"{type(e).__name__}: {e}"
+    exposure_router = None  # type: ignore
+
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
@@ -181,6 +196,13 @@ if _BLOCKERS_IMPORT_ERROR is None:
     app.include_router(blockers_router.parcels_router)
 else:
     print(f"[WARN] Blocker engine unavailable, /api/blockers/* routes not mounted: {_BLOCKERS_IMPORT_ERROR}")
+
+if _EXPOSURE_IMPORT_ERROR is None:
+    app.include_router(exposure_router.router)
+    app.include_router(exposure_router.projects_router)
+    app.include_router(exposure_router.parcels_router)
+else:
+    print(f"[WARN] Exposure engine unavailable, /api/exposure/* routes not mounted: {_EXPOSURE_IMPORT_ERROR}")
 
 
 # -----------------------------------------------------------------------------

@@ -19,6 +19,7 @@ from database import Base, DATABASE_URL  # noqa: E402
 import models  # noqa: E402,F401  (import registers all ORM classes on Base.metadata)
 from legal import db_models as legal_db_models  # noqa: E402,F401  (Step 6B statutory clock engine tables)
 from blockers import db_models as blockers_db_models  # noqa: E402,F401  (Step 7B blocker engine tables)
+from exposure import db_models as exposure_db_models  # noqa: E402,F401  (Step 8B exposure engine table)
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -40,7 +41,8 @@ if config.config_file_name is not None:
 # CourtStayEvent, ExtensionEvidence, EventConflict, StatutoryClock) — see
 # backend/legal/db_models.py — plus, since Step 7B, the three blocker-engine
 # tables (Blocker, BlockerEvidence, BlockerAction) — see
-# backend/blockers/db_models.py.
+# backend/blockers/db_models.py — plus, since Step 8B, the one exposure-
+# engine table (ExposureAssessment) — see backend/exposure/db_models.py.
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
