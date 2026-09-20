@@ -131,6 +131,10 @@ def _build_prediction_row(
         shap_factors=explainability.get("top_risk_drivers") or [],
         survival_analysis=survival_analysis,
         recommended_action=_NO_RECOMMENDED_ACTION_TEXT,
+        # STEP 9B: verbatim passthrough of inference_service.run_prediction()'s
+        # meta.model_version (None for demo-fallback, or when the loaded
+        # LightGBM artifact metadata never carried a version string).
+        model_version=meta.get("model_version"),
     )
 
 

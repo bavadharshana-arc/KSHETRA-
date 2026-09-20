@@ -361,6 +361,10 @@ export interface CaseAction {
 
 export interface AlignmentOption {
   id: string;
+  /** The project this alignment option was drawn up for. Alignments are
+   * cross-project state (like `Parcel.projectId`) — never compared/promoted
+   * across a different project's corridor. */
+  projectId: string;
   name: string;
   code: string;
   lengthKm: number;

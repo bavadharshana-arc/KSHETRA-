@@ -220,6 +220,10 @@ def create_audit_log(db: Session, payload: schemas.AuditLogCreate) -> models.Aud
 # delete_* function exists here on purpose. Every call to create_prediction
 # inserts a new row; nothing in this module ever modifies or removes one.
 # -----------------------------------------------------------------------------
+def get_prediction(db: Session, prediction_id: str) -> Optional[models.Prediction]:
+    return db.get(models.Prediction, prediction_id)
+
+
 def create_prediction(db: Session, obj: models.Prediction) -> models.Prediction:
     """
     Takes an already-built (not-yet-persisted) models.Prediction instance —
@@ -275,4 +279,33 @@ def latest_parcel_prediction(db: Session, parcel_id: str) -> Optional[models.Pre
         .filter(models.Prediction.parcel_id == parcel_id)
         .order_by(models.Prediction.generated_at.desc(), models.Prediction.created_at.desc())
         .first()
+    )
+
+
+# -----------------------------------------------------------------------------
+# PredictionOutcome (Step 9B) — APPEND-ONLY, like Prediction above: no
+# update_* or delete_* helper exists here on purpose (see models.py and
+# schemas.py: there is no PredictionOutcomeUpdate schema either).
+# -----------------------------------------------------------------------------
+def create_prediction_outcome(db: Session, obj: models.PredictionOutcome) -> models.PredictionOutcome:
+    """Takes an already-built (not-yet-persisted) models.PredictionOutcome
+    instance — see backend/routers/prediction_outcomes.py, which derives
+    project_id/parcel_id from the referenced Prediction row before
+    constructing it — and inserts it."""
+    db.add(obj)
+    db.commit()
+    db.refresh(obj)
+    return obj
+
+
+def get_prediction_outcome(db: Session, outcome_id: str) -> Optional[models.PredictionOutcome]:
+    return db.get(models.PredictionOutcome, outcome_id)
+
+
+def list_prediction_outcomes(db: Session, prediction_id: str) -> List[models.PredictionOutcome]:
+    return (
+        db.query(models.PredictionOutcome)
+        .filter(models.PredictionOutcome.prediction_id == prediction_id)
+        .order_by(models.PredictionOutcome.created_at.desc())
+        .all()
     )

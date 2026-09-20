@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import {
   Sparkles,
   ChevronLeft,
@@ -220,3 +220,4 @@ export const GuidedTour: React.FC = () => {
     </div>
   );
 };
+*/

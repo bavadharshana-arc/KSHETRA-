@@ -75,11 +75,12 @@ try:
     from routers import case_actions as case_actions_router
     from routers import parcels as parcels_router
     from routers import predictions as predictions_router
+    from routers import prediction_outcomes as prediction_outcomes_router
     from routers import projects as projects_router
 except Exception as e:  # noqa: BLE001 - degrade instead of failing the whole service
     _PERSISTENCE_IMPORT_ERROR = f"{type(e).__name__}: {e}"
     alerts_router = audit_logs_router = case_actions_router = None  # type: ignore
-    parcels_router = predictions_router = projects_router = None  # type: ignore
+    parcels_router = predictions_router = prediction_outcomes_router = projects_router = None  # type: ignore
 
 # -----------------------------------------------------------------------------
 # Statutory clock engine (Step 6B, Phase 1) — READ-ONLY router over the
@@ -182,6 +183,7 @@ if _PERSISTENCE_IMPORT_ERROR is None:
     app.include_router(case_actions_router.router)
     app.include_router(audit_logs_router.router)
     app.include_router(predictions_router.router)
+    app.include_router(prediction_outcomes_router.router)
 else:
     print(f"[WARN] Persistence layer unavailable, /api/* routes not mounted: {_PERSISTENCE_IMPORT_ERROR}")
 

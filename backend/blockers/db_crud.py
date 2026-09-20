@@ -257,10 +257,29 @@ def list_blockers(
     status: Optional[str] = None,
     latest_only: bool = True,
 ) -> List[db_models.BlockerRecord]:
-    """`latest_only=True` (the default) scopes results to each
-    `case_reference`'s most recent `evaluation_run_id` -- blockers are
-    append-only, so without this a project/parcel with several historical
-    evaluation runs would return every past run's rows undifferentiated."""
+    """`latest_only=True` (the default) scopes results to the most recent
+    `evaluation_run_id` PER (case_reference, project_id, parcel_id) --
+    blockers are append-only, so without this a case with several historical
+    evaluation runs would return every past run's rows undifferentiated.
+
+    Step 8C-B.5 fix: grouping used to be keyed on `case_reference` ALONE.
+    Because every real-parcel evaluation shares `case_reference ==
+    project_id` (one acquisition proceeding per project --
+    `parcel_evidence_input_from_orm`'s own documented convention), that
+    single-key grouping silently collapsed every parcel of a project down to
+    whichever one had the single most-recently-computed `evaluation_run_id`
+    -- e.g. `list_blockers(project_id=X, latest_only=True)` returned only
+    ONE parcel's blockers instead of every evaluated parcel's own current
+    set. Including `project_id`/`parcel_id` in the grouping key (the
+    already-existing, already-indexed columns each blocker row carries --
+    not a change to what `case_reference` itself means or holds) restores
+    "one current result per parcel" while an UNCHANGED single-parcel query
+    (already filtered to one `parcel_id` before this grouping ever runs)
+    behaves exactly as before. Rows that genuinely have no project/parcel
+    (`project_id IS NULL AND parcel_id IS NULL`, e.g. the fully-synthetic
+    legal demo scenarios) still group by `case_reference` alone, since their
+    `(case_reference, None, None)` key is unaffected by this change --
+    existing behavior for that data is preserved byte-for-byte."""
     query = db.query(db_models.BlockerRecord)
     if project_id is not None:
         query = query.filter(db_models.BlockerRecord.project_id == project_id)
@@ -275,18 +294,44 @@ def list_blockers(
     if not latest_only or not results:
         return results
 
-    latest_run_by_case: dict = {}
+    def _group_key(row: db_models.BlockerRecord) -> tuple:
+        return (row.case_reference, row.project_id, row.parcel_id)
+
+    latest_run_by_group: dict = {}
     for row in results:
-        current = latest_run_by_case.get(row.case_reference)
+        key = _group_key(row)
+        current = latest_run_by_group.get(key)
         if current is None or row.created_at > current[0]:
-            latest_run_by_case[row.case_reference] = (row.created_at, row.evaluation_run_id)
-    return [row for row in results if latest_run_by_case[row.case_reference][1] == row.evaluation_run_id]
+            latest_run_by_group[key] = (row.created_at, row.evaluation_run_id)
+    return [row for row in results if latest_run_by_group[_group_key(row)][1] == row.evaluation_run_id]
 
 
 def get_primary_blocker(
     db: Session, *, project_id: Optional[str] = None, parcel_id: Optional[str] = None
 ) -> Optional[db_models.BlockerRecord]:
-    for row in list_blockers(db, project_id=project_id, parcel_id=parcel_id, latest_only=True):
+    """Returns the single primary blocker for one, unambiguous case.
+
+    When `parcel_id` is given, this is unambiguous: `ranking.py` picks
+    exactly one primary blocker per independent parcel evaluation, so that
+    parcel's own primary is returned.
+
+    When only `project_id` is given (no `parcel_id`), this ONLY considers
+    genuinely project-wide blockers (`parcel_id IS NULL` on the row) --
+    Step 8C-B.5 fix. Because parcels are evaluated independently
+    (`seed_case_engines.py`), several parcels of the same project can each
+    carry their OWN `is_primary=True` blocker simultaneously; picking
+    whichever one this function happened to see first would silently
+    mislabel one arbitrary parcel's primary blocker as "the project's".
+    There is currently no engine concept of a single project-wide primary
+    blocker across multiple independently-evaluated parcels, so this
+    honestly returns `None` unless a real project-scoped (parcel_id IS
+    NULL) blocker exists -- callers wanting every parcel's own primary
+    blocker should use `list_blockers(project_id=..., latest_only=True)`
+    and read each row's own `is_primary` flag instead."""
+    rows = list_blockers(db, project_id=project_id, parcel_id=parcel_id, latest_only=True)
+    if parcel_id is None and project_id is not None:
+        rows = [row for row in rows if row.parcel_id is None]
+    for row in rows:
         if row.is_primary:
             return row
     return None

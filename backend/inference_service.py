@@ -331,6 +331,12 @@ def run_prediction(case_dict: Dict[str, Any]) -> Dict[str, Any]:
                 "generated_at": generated_at,
                 "reason": None,
                 "input_diagnostics": input_diagnostics,
+                # STEP 9B: the LightGBM artifact's own version string, already
+                # loaded into LGBM_MODEL_INFO at preload time (see
+                # preload_models() above) — surfaced here verbatim, not
+                # recomputed. Never fabricated: None if the loaded metadata
+                # never carried a model_version field.
+                "model_version": LGBM_MODEL_INFO.get("model_version"),
             }
             return result
         except Exception as e:  # noqa: BLE001 - degrade to deterministic fallback
@@ -356,5 +362,8 @@ def run_prediction(case_dict: Dict[str, Any]) -> Dict[str, Any]:
             "request, so a deterministic demo estimate was returned."
         ),
         "input_diagnostics": input_diagnostics,
+        # STEP 9B: no trained-model artifact produced this result, so there is
+        # no model version to report — None, never fabricated.
+        "model_version": None,
     }
     return result

@@ -136,20 +136,18 @@ export const SystemStatusIndicator: React.FC = () => {
     <div className="relative" ref={wrapRef}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 text-[11px] text-slate-300 hover:text-white transition-colors"
+        className="flex items-center gap-2 text-[11px] text-slate-400 hover:text-slate-200 transition-colors py-0.5 px-2 rounded hover:bg-white/5"
         title="View KSHETRA system & integration status"
         aria-haspopup="true"
         aria-expanded={open}
       >
-        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/5 border border-white/10 font-semibold tracking-wide uppercase text-[10px] text-slate-200">
-          <Activity className="w-3 h-3 text-blue-300" />
-          Prototype Environment
+        <span className="inline-flex items-center gap-1.5 font-semibold tracking-wider uppercase text-[10px] text-slate-300">
+          <span className={`w-1.5 h-1.5 rounded-full ${aiTone === 'online' ? 'bg-emerald-400' : 'bg-slate-400'}`} />
+          Prototype Mode
         </span>
-        <span className="hidden lg:inline text-slate-400">
-          AI Engine:{' '}
-          <span className={aiTone === 'online' ? 'text-emerald-400 font-semibold' : 'text-slate-300 font-semibold'}>
-            {aiTone === 'online' ? 'Online' : aiTone === 'checking' ? 'Checking…' : 'Offline'}
-          </span>
+        <span className="text-slate-600 hidden sm:inline">|</span>
+        <span className="text-[10.5px] text-slate-400 hidden md:inline">
+          AI: <span className={aiTone === 'online' ? 'text-emerald-400 font-medium' : 'text-slate-400 font-medium'}>{aiTone === 'online' ? 'Online' : 'Offline (Simulated)'}</span>
         </span>
         <ChevronDown className={`w-3 h-3 text-slate-500 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>

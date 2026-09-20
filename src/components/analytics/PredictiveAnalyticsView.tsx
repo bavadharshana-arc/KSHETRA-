@@ -40,6 +40,9 @@ export const PredictiveAnalyticsView: React.FC = () => {
     projectPredictionError,
   } = useApp();
 
+  // Highest-risk corridor section from the project record (no hardcoded zone).
+  const topSection = [...(project.corridorSections || [])].sort((x, y) => y.riskScore - x.riskScore)[0] || null;
+
   const [isBatchRunning, setIsBatchRunning] = useState<boolean>(false);
   const [batchProgress, setBatchProgress] = useState<number>(0);
   const [batchNotice, setBatchNotice] = useState<string | null>(null);
@@ -137,22 +140,22 @@ export const PredictiveAnalyticsView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight">
-              Predictive Analytics & Explainable AI (XAI) Model
+            <h1 className="text-xl lg:text-2xl font-semibold text-slate-900 tracking-tight">
+              Predictive Delay & Explainable AI (XAI) Model
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">
-              FastAPI ML · LightGBM + SHAP + Cox
+            <span className="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+              AI Engine · LightGBM + SHAP + Cox
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Institutional AI engine forecasting acquisition delays, litigation bottlenecks, and hazard trajectories.
+            Institutional AI engine forecasting corridor acquisition delays, litigation bottlenecks, and hazard trajectories.
           </p>
         </div>
 
         <button
           onClick={handleRunBatchModel}
           disabled={isBatchRunning}
-          className="px-4 py-2 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs font-bold rounded-xl shadow-sm flex items-center gap-2 transition-colors"
+          className="px-3.5 py-2 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs font-medium rounded-xl shadow-xs flex items-center gap-2 transition-colors"
           title="Indicative per-parcel drill-down scoring — not the official project prediction"
         >
           <Play className={`w-3.5 h-3.5 ${isBatchRunning ? 'animate-spin' : ''}`} />
@@ -424,35 +427,41 @@ export const PredictiveAnalyticsView: React.FC = () => {
 
         <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
           <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Prediction Service Status</div>
-          <div className={`text-2xl font-black flex items-center gap-2 ${
-            backendStatus === 'online' ? 'text-emerald-600' : backendStatus === 'offline' ? 'text-red-600' : 'text-slate-400'
-          }`}>
-            <span>{backendStatus === 'online' ? 'Available' : backendStatus === 'offline' ? 'Unavailable' : 'Checking…'}</span>
+          <div className="text-xl font-bold font-mono text-slate-900 flex items-center gap-2">
+            <span className={backendStatus === 'online' ? 'text-emerald-700' : 'text-slate-800'}>
+              {backendStatus === 'online' ? 'Service Online' : backendStatus === 'offline' ? 'Offline' : 'Checking…'}
+            </span>
             {backendStatus === 'online' && backendMode === 'demo-fallback' && (
-              <span className="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">Demo fallback</span>
+              <span className="text-xs font-medium px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">Demo Fallback</span>
             )}
             {backendStatus === 'online' && backendMode === 'live-model' && (
-              <span className="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Live model</span>
+              <span className="text-xs font-medium px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">Live Model</span>
+            )}
+            {backendStatus === 'offline' && (
+              <span className="text-xs font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">Local Baseline Active</span>
             )}
           </div>
           <p className="text-xs text-slate-500">
             {backendStatus === 'online' && backendMode === 'live-model'
-              ? 'LightGBM, SHAP and Cox Survival analysis are all ready. (Synthetic Demo POC)'
+              ? 'LightGBM, SHAP and Cox Survival analysis are all ready.'
               : backendStatus === 'online'
-              ? 'The service is reachable but running on the deterministic demo estimate — the trained model pipeline is not loaded.'
+              ? 'Running locally with the deterministic demo estimator.'
               : backendStatus === 'offline'
-              ? 'The prediction service is not responding right now. Use the Retry button on the prediction panel above.'
+              ? 'Local AI service is not running. Prototype operates normally using deterministic corridor benchmarks.'
               : 'Checking the prediction service…'}
           </p>
         </div>
 
         <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
           <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Critical Bottleneck Zone</div>
-          <div className="text-2xl font-black text-red-600">
-            Section 2 <span className="text-xs font-semibold text-slate-500">(Km 18–42)</span>
+          <div className="text-xl font-bold font-mono text-slate-900">
+            {topSection ? topSection.name.split(':')[0] : 'Data unavailable'}{' '}
+            {topSection && <span className="text-xs font-normal text-slate-500 font-sans">({topSection.chainageKm})</span>}
           </div>
           <p className="text-xs text-slate-500">
-            Kamalapuram & Omalur junctions contain 74% of all active litigation stays.
+            {topSection
+              ? `Highest section risk score in the project record (${topSection.riskScore}%), with ${topSection.bottleneckCount} recorded bottlenecks.`
+              : 'The active project has no corridor sections recorded.'}
           </p>
         </div>
       </div>
@@ -525,8 +534,8 @@ export const PredictiveAnalyticsView: React.FC = () => {
           <div className="space-y-3 my-2">
             <label className="p-3 bg-slate-50 hover:bg-slate-100/80 rounded-xl border border-slate-200 flex items-center justify-between cursor-pointer transition-colors">
               <div>
-                <div className="font-bold text-xs text-slate-900">Conduct Special Lok Adalat Camps in Omalur</div>
-                <div className="text-[11px] text-slate-500">Fast-tracks 14 joint heir partition claims</div>
+                <div className="font-bold text-xs text-slate-900">Conduct Special Lok Adalat Camps</div>
+                <div className="text-[11px] text-slate-500">Preset scenario: fast-tracks joint-heir partition claims</div>
               </div>
               <input 
                 type="checkbox" 
@@ -552,7 +561,7 @@ export const PredictiveAnalyticsView: React.FC = () => {
             <label className="p-3 bg-slate-50 hover:bg-slate-100/80 rounded-xl border border-slate-200 flex items-center justify-between cursor-pointer transition-colors">
               <div>
                 <div className="font-bold text-xs text-slate-900">DGPS Cadastral Boundary Reconciliation Camp</div>
-                <div className="text-[11px] text-slate-500">Resolves 8 area mismatch objections on site</div>
+                <div className="text-[11px] text-slate-500">Preset scenario: resolves area-mismatch objections on site</div>
               </div>
               <input 
                 type="checkbox" 

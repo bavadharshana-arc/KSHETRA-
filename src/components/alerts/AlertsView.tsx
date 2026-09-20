@@ -14,13 +14,17 @@ import {
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { Alert } from '../../types';
+import { Modal } from '../ui/Modal';
+import { Button } from '../ui/Button';
+import { EmptyState } from '../feedback/EmptyState';
 
 export const AlertsView: React.FC = () => {
   const { alerts, openParcelDetail, resolveAlert, assignAlert, createNewAction } = useApp();
 
   const [severityFilter, setSeverityFilter] = useState<'all' | 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'Resolved'>('all');
   const [selectedAlertForAssign, setSelectedAlertForAssign] = useState<Alert | null>(null);
-  const [assigneeName, setAssigneeName] = useState<string>('Thiru. M. Senthil Kumar, DRO');
+  const [assigneeName, setAssigneeName] = useState<string>('');
+  const [assigneeError, setAssigneeError] = useState<string | null>(null);
 
   const filteredAlerts = alerts.filter(alert => {
     if (severityFilter === 'Resolved') return alert.status === 'Resolved';
@@ -32,7 +36,13 @@ export const AlertsView: React.FC = () => {
     e.preventDefault();
     if (!selectedAlertForAssign) return;
 
-    assignAlert(selectedAlertForAssign.id, assigneeName);
+    if (!assigneeName.trim()) {
+      setAssigneeError('Assignee officer name is required.');
+      return;
+    }
+    setAssigneeError(null);
+
+    assignAlert(selectedAlertForAssign.id, assigneeName.trim());
     
     // Create corresponding case action
     createNewAction({
@@ -40,7 +50,7 @@ export const AlertsView: React.FC = () => {
       surveyNumber: selectedAlertForAssign.surveyNumber,
       title: `Early Intervention for ${selectedAlertForAssign.parcelId}: ${selectedAlertForAssign.trigger}`,
       actionType: 'Legal Verification',
-      assignedOfficer: assigneeName,
+      assignedOfficer: assigneeName.trim(),
       assignedOfficerRole: 'CALA / Special LA Officer',
       priority: selectedAlertForAssign.level === 'CRITICAL' ? 'CRITICAL' : 'HIGH',
       status: 'In Progress',
@@ -50,6 +60,7 @@ export const AlertsView: React.FC = () => {
     });
 
     setSelectedAlertForAssign(null);
+    setAssigneeError(null);
   };
 
   return (
@@ -58,15 +69,15 @@ export const AlertsView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight">
-              Early Warning & Acquisition Delay Alerts
+            <h1 className="text-xl lg:text-2xl font-semibold text-slate-900 tracking-tight">
+              Early Warning & Statutory Delay Alerts
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800 border border-red-200">
-              {alerts.filter(a => a.status === 'Active').length} Active High-Risk Alerts
+            <span className="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-red-50 text-red-800 border border-red-200 font-mono">
+              {alerts.filter(a => a.status === 'Active' && a.level === 'CRITICAL').length} Active Critical Alerts ({alerts.length} Total Logged)
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Automated alerts triggered when land parcels exceed delay probability thresholds or encounter court stay orders.
+            Automated notifications triggered when land parcels encounter civil court stay orders or severe statutory delay risks.
           </p>
         </div>
       </div>
@@ -75,7 +86,7 @@ export const AlertsView: React.FC = () => {
       <div className="flex flex-wrap items-center gap-2 text-xs">
         <button
           onClick={() => setSeverityFilter('all')}
-          className={`px-3 py-1.5 rounded-xl font-semibold transition-colors ${
+          className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
             severityFilter === 'all' ? 'bg-navy-900 text-white' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
           }`}
         >
@@ -84,43 +95,44 @@ export const AlertsView: React.FC = () => {
 
         <button
           onClick={() => setSeverityFilter('CRITICAL')}
-          className={`px-3 py-1.5 rounded-xl font-semibold flex items-center gap-1.5 transition-colors ${
-            severityFilter === 'CRITICAL' ? 'bg-red-600 text-white' : 'bg-red-50 text-red-700 border border-red-200 hover:bg-red-100'
+          className={`px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5 transition-colors ${
+            severityFilter === 'CRITICAL' ? 'bg-red-700 text-white' : 'bg-red-50 text-red-800 border border-red-200 hover:bg-red-100'
           }`}
         >
-          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-          <span>Critical Alerts</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+          <span>Critical Stays ({alerts.filter(a => a.level === 'CRITICAL' && a.status !== 'Resolved').length})</span>
         </button>
 
         <button
           onClick={() => setSeverityFilter('HIGH')}
-          className={`px-3 py-1.5 rounded-xl font-semibold flex items-center gap-1.5 transition-colors ${
-            severityFilter === 'HIGH' ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100'
+          className={`px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5 transition-colors ${
+            severityFilter === 'HIGH' ? 'bg-amber-700 text-white' : 'bg-amber-50 text-amber-900 border border-amber-200 hover:bg-amber-100'
           }`}
         >
-          <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-          <span>High Risk</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+          <span>Operational Attention ({alerts.filter(a => a.level === 'HIGH' && a.status !== 'Resolved').length})</span>
         </button>
 
         <button
           onClick={() => setSeverityFilter('Resolved')}
-          className={`px-3 py-1.5 rounded-xl font-semibold flex items-center gap-1.5 transition-colors ${
-            severityFilter === 'Resolved' ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100'
+          className={`px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5 transition-colors ${
+            severityFilter === 'Resolved' ? 'bg-emerald-700 text-white' : 'bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100'
           }`}
         >
-          <CheckCircle2 className="w-3.5 h-3.5" />
-          <span>Resolved Alerts</span>
+          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+          <span>Resolved ({alerts.filter(a => a.status === 'Resolved').length})</span>
         </button>
       </div>
 
       {/* Alert Feed Cards */}
-      <div className="space-y-4">
+      <div className="space-y-3.5">
         {filteredAlerts.length === 0 ? (
-          <div className="p-12 text-center text-slate-500 bg-white rounded-2xl border border-slate-200">
-            <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto mb-2" />
-            <h3 className="font-bold text-sm text-slate-800">No alerts in this filter category</h3>
-            <p className="text-xs text-slate-500 mt-1">All flagged parcels have been assigned or resolved.</p>
-          </div>
+          <EmptyState
+            icon={CheckCircle2}
+            title="No alerts in this filter category"
+            description="All flagged parcels have been assigned or resolved."
+            className="bg-white"
+          />
         ) : (
           filteredAlerts.map(alert => {
             const isCrit = alert.level === 'CRITICAL';
@@ -129,36 +141,36 @@ export const AlertsView: React.FC = () => {
             return (
               <div 
                 key={alert.id}
-                className={`p-5 rounded-2xl border transition-all ${
+                className={`p-4 sm:p-5 rounded-xl border transition-all ${
                   isResolved 
                     ? 'bg-slate-50 border-slate-200 opacity-80' 
                     : isCrit 
-                    ? 'bg-red-50/70 border-red-300 shadow-sm' 
-                    : 'bg-white border-slate-200 shadow-sm'
+                    ? 'bg-red-50/50 border-red-200 shadow-xs' 
+                    : 'bg-white border-slate-200 shadow-xs'
                 }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                   <div className="flex items-start gap-3">
-                    <div className={`p-2 rounded-xl mt-0.5 ${
+                    <div className={`p-2 rounded-lg mt-0.5 shrink-0 ${
                       isResolved 
-                        ? 'bg-emerald-100 text-emerald-700' 
+                        ? 'bg-slate-100 text-slate-600' 
                         : isCrit 
-                        ? 'bg-red-600 text-white animate-pulse' 
+                        ? 'bg-red-100 text-red-700' 
                         : 'bg-amber-100 text-amber-800'
                     }`}>
-                      <AlertTriangle className="w-5 h-5" />
+                      <AlertTriangle className="w-4 h-4" />
                     </div>
 
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider ${
+                        <span className={`px-2 py-0.2 rounded text-[9.5px] font-bold uppercase tracking-wider ${
                           isResolved 
-                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' 
+                            ? 'bg-slate-100 text-slate-700 border border-slate-200' 
                             : isCrit 
                             ? 'bg-red-100 text-red-800 border border-red-200' 
-                            : 'bg-amber-100 text-amber-800 border border-amber-200'
+                            : 'bg-amber-100 text-amber-900 border border-amber-200'
                         }`}>
-                          {alert.level} RISK ALERT
+                          {alert.level} ALERT
                         </span>
 
                         <span className="font-bold text-xs text-slate-900">
@@ -226,52 +238,67 @@ export const AlertsView: React.FC = () => {
       </div>
 
       {/* Quick Assign Modal */}
-      {selectedAlertForAssign && (
-        <div className="fixed inset-0 z-60 bg-navy-950/70 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white border border-slate-200 rounded-2xl max-w-md w-full p-5 shadow-2xl text-slate-700 space-y-4">
-            <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-              <UserCheck className="w-4 h-4 text-blue-600" />
-              <span>Assign Officer to Alert {selectedAlertForAssign.id}</span>
-            </h3>
-
-            <form onSubmit={handleQuickAssign} className="space-y-3 text-xs">
-              <div>
-                <label className="block text-slate-600 font-medium mb-1">Target Parcel / Survey</label>
-                <div className="p-2 bg-slate-100 rounded-lg text-slate-900 font-mono">
-                  {selectedAlertForAssign.parcelId} (Survey {selectedAlertForAssign.surveyNumber})
-                </div>
+      <Modal
+        isOpen={!!selectedAlertForAssign}
+        onClose={() => {
+          setSelectedAlertForAssign(null);
+          setAssigneeError(null);
+        }}
+        title={`Assign Officer to Alert ${selectedAlertForAssign?.id}`}
+        description="Dispatch fast-track statutory intervention"
+        maxWidth="md"
+      >
+        {selectedAlertForAssign && (
+          <form onSubmit={handleQuickAssign} className="space-y-4 text-xs">
+            <div>
+              <label className="block text-slate-700 font-semibold mb-1">Target Parcel / Survey</label>
+              <div className="p-2.5 bg-slate-100 rounded-lg text-slate-900 font-mono text-xs border border-slate-200">
+                {selectedAlertForAssign.parcelId} (Survey {selectedAlertForAssign.surveyNumber})
               </div>
+            </div>
 
-              <div>
-                <label className="block text-slate-600 font-medium mb-1">Assignee Officer Name & Designation</label>
-                <input
-                  type="text"
-                  value={assigneeName}
-                  onChange={(e) => setAssigneeName(e.target.value)}
-                  className="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900"
-                  required
-                />
-              </div>
+            <div>
+              <label className="block text-slate-700 font-semibold mb-1">Assignee Officer Name & Designation *</label>
+              <input
+                type="text"
+                value={assigneeName}
+                onChange={(e) => {
+                  setAssigneeName(e.target.value);
+                  if (assigneeError) setAssigneeError(null);
+                }}
+                className={`w-full p-2 bg-white border rounded-lg text-slate-900 outline-none focus:ring-2 ${
+                  assigneeError ? 'border-red-500 focus:ring-red-200' : 'border-slate-300 focus:ring-blue-500/20 focus:border-blue-500'
+                }`}
+                placeholder="Officer name / designation"
+              />
+              {assigneeError && (
+                <p className="text-[11px] text-red-600 mt-1" role="alert">{assigneeError}</p>
+              )}
+            </div>
 
-              <div className="flex justify-end gap-2 pt-2 border-t border-slate-200">
-                <button
-                  type="button"
-                  onClick={() => setSelectedAlertForAssign(null)}
-                  className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg"
-                >
-                  Confirm & Dispatch
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+            <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
+              <Button
+                type="button"
+                variant="outline"
+                size="md"
+                onClick={() => {
+                  setSelectedAlertForAssign(null);
+                  setAssigneeError(null);
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                variant="primary"
+                size="md"
+              >
+                Confirm &amp; Dispatch
+              </Button>
+            </div>
+          </form>
+        )}
+      </Modal>
     </div>
   );
 };

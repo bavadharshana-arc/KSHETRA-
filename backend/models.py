@@ -55,6 +55,7 @@ from datetime import datetime, timezone
 from sqlalchemy import (
     Boolean,
     Column,
+    Date,
     DateTime,
     Float,
     ForeignKey,
@@ -331,7 +332,80 @@ class Prediction(Base):
     survival_analysis = Column(JSON, nullable=True)  # SurvivalAnalysisResult | undefined
     recommended_action = Column(Text, nullable=False)
 
+    # STEP 9B: nullable so every historical row inserted before this column
+    # existed remains valid and readable as-is (NULL, never backfilled or
+    # fabricated — see this file's module docstring and the Step 9B brief's
+    # "do not rewrite or fabricate their version" instruction). Populated
+    # going forward from inference_service.run_prediction()'s
+    # meta.model_version (backend/routers/predictions.py._build_prediction_row).
+    model_version = Column(String, nullable=True)
+
     created_at = Column(DateTime(timezone=True), default=_utcnow, nullable=False, index=True)
 
     project = relationship("Project", back_populates="predictions")
     parcel = relationship("Parcel", back_populates="predictions")
+    outcomes = relationship("PredictionOutcome", back_populates="prediction", cascade="all, delete-orphan")
+
+
+class PredictionOutcome(Base):
+    """
+    STEP 9B OF THE PERSISTENCE PLAN. Records the eventual real-world outcome
+    of one specific `Prediction` row, so a prediction's accuracy can later be
+    reviewed against what actually happened.
+
+    APPEND-ONLY, like `Prediction` itself: no update_* or delete_* CRUD
+    helper exists for this table (see crud.py), and no PATCH/DELETE endpoint
+    is exposed (see routers/prediction_outcomes.py). Recording a second,
+    corrected outcome for the same prediction is a new row, not an edit of
+    the first — the original `Prediction` row this references is NEVER
+    modified by writing an outcome.
+
+    `verified` defaults to False: an outcome is "entered/reported" the
+    moment it is created, and only counts as independently confirmed when a
+    caller explicitly asserts `verified=True` at creation time (there is no
+    separate verify-endpoint, since that would be an update). Nothing in
+    this codebase — no engine, no report, no aggregate — may treat an
+    unverified outcome as validated ground truth; `verified` is exactly the
+    flag that lets a consumer tell the difference.
+
+    `source_type` and `confidence` are stored as plain strings whose value
+    sets deliberately reuse the SAME vocabulary already established
+    elsewhere in this codebase (source_type: legal.enums.SourceType;
+    confidence: exposure.enums.ConfidenceLabel — see
+    schemas.PredictionOutcomeBase's validators for the exact accepted
+    values) rather than inventing a third, conflicting vocabulary. The
+    Python Enum types themselves are intentionally NOT imported here:
+    backend/models.py, crud.py and schemas.py are the core persistence
+    layer that /predict's prediction-persistence path depends on
+    unconditionally, whereas backend/legal/ and backend/exposure/ are
+    optional layers main.py can fail to import without breaking the core
+    (see main.py's _LEGAL_IMPORT_ERROR / _EXPOSURE_IMPORT_ERROR degrade-
+    gracefully pattern) — core code must never import from them.
+    """
+
+    __tablename__ = "prediction_outcomes"
+
+    id = Column(String, primary_key=True, default=_uuid_hex)
+    prediction_id = Column(String, ForeignKey("predictions.id", ondelete="CASCADE"), nullable=False, index=True)
+    # Denormalized echoes of the referenced Prediction's own project_id/
+    # parcel_id — always set from `prediction.project_id`/`prediction.parcel_id`
+    # server-side (routers/prediction_outcomes.py), never accepted as
+    # free-form client input, so this can never disagree with the
+    # prediction it links to.
+    project_id = Column(String, ForeignKey("projects.id", ondelete="CASCADE"), nullable=False, index=True)
+    parcel_id = Column(String, ForeignKey("parcels.id", ondelete="CASCADE"), nullable=True, index=True)
+
+    actual_event_occurred = Column(Boolean, nullable=False)
+    actual_duration_months = Column(Float, nullable=True)
+    actual_completion_date = Column(Date, nullable=True)
+    observed_as_of_date = Column(Date, nullable=False)
+
+    source_type = Column(String, nullable=False)  # legal.enums.SourceType value (see class docstring)
+    evidence_reference = Column(String, nullable=True)
+    verified = Column(Boolean, nullable=False, default=False)
+    confidence = Column(String, nullable=True)  # exposure.enums.ConfidenceLabel value (see class docstring)
+    entered_by = Column(String, nullable=False)  # no FK — users are not persisted in this phase (see AuditLog)
+
+    created_at = Column(DateTime(timezone=True), default=_utcnow, nullable=False, index=True)
+
+    prediction = relationship("Prediction", back_populates="outcomes")

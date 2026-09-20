@@ -25,10 +25,10 @@ Each entity has:
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, field_validator
 
 
 # -----------------------------------------------------------------------------
@@ -495,6 +495,10 @@ class PredictionBase(BaseModel):
     shap_factors: List[Dict[str, Any]] = []
     survival_analysis: Optional[SurvivalAnalysisResultSchema] = None
     recommended_action: str
+    # STEP 9B: nullable — None for every row persisted before this field
+    # existed (see models.Prediction.model_version) and for any demo-fallback
+    # result (no trained-model artifact produced it). Never fabricated.
+    model_version: Optional[str] = None
 
 
 class PredictionCreate(PredictionBase):
@@ -506,4 +510,80 @@ class PredictionRead(PredictionBase):
     model_config = ConfigDict(from_attributes=True)
 
     id: str
+    created_at: datetime
+
+
+# -----------------------------------------------------------------------------
+# PredictionOutcome (Step 9B; append-only — no Update schema on purpose, see
+# models.PredictionOutcome and crud.py: no update_prediction_outcome /
+# delete_prediction_outcome helper exists).
+# -----------------------------------------------------------------------------
+# Same value vocabularies already established elsewhere in this codebase
+# (legal.enums.SourceType / exposure.enums.ConfidenceLabel), reused verbatim
+# here as plain strings rather than imported as Python Enum types — see
+# models.PredictionOutcome's class docstring for why the core persistence
+# layer never imports from the optional legal/exposure packages.
+VALID_OUTCOME_SOURCE_TYPES = [
+    "OFFICIAL_GAZETTE",
+    "COURT_RECORD",
+    "GOVERNMENT_PORTAL",
+    "REGISTERED_RECORD",
+    "FIELD_VERIFICATION",
+    "IMPORTED_SYSTEM",
+    "MANUAL_ENTRY",
+    "SYNTHETIC_DEMO",
+]
+
+VALID_OUTCOME_CONFIDENCE_LABELS = [
+    "VERIFIED",
+    "PARTIAL",
+    "NEEDS_VERIFICATION",
+    "INSUFFICIENT",
+]
+
+
+class PredictionOutcomeBase(BaseModel):
+    actual_event_occurred: bool
+    actual_duration_months: Optional[float] = None
+    actual_completion_date: Optional[date] = None
+    observed_as_of_date: date
+    source_type: str  # one of VALID_OUTCOME_SOURCE_TYPES
+    evidence_reference: Optional[str] = None
+    # Defaults False: an outcome is only "entered/reported" until a caller
+    # explicitly asserts it is independently confirmed. Never defaults to
+    # True (see models.PredictionOutcome's class docstring).
+    verified: bool = False
+    confidence: Optional[str] = None  # one of VALID_OUTCOME_CONFIDENCE_LABELS
+    entered_by: str
+
+    @field_validator("source_type")
+    @classmethod
+    def _validate_source_type(cls, value: str) -> str:
+        if value not in VALID_OUTCOME_SOURCE_TYPES:
+            raise ValueError(f"source_type must be one of {VALID_OUTCOME_SOURCE_TYPES}")
+        return value
+
+    @field_validator("confidence")
+    @classmethod
+    def _validate_confidence(cls, value: Optional[str]) -> Optional[str]:
+        if value is not None and value not in VALID_OUTCOME_CONFIDENCE_LABELS:
+            raise ValueError(f"confidence must be one of {VALID_OUTCOME_CONFIDENCE_LABELS}")
+        return value
+
+
+class PredictionOutcomeCreate(PredictionOutcomeBase):
+    """No `id`/`prediction_id`/`project_id`/`parcel_id`: `prediction_id` comes
+    from the POST URL path, and `project_id`/`parcel_id` are always derived
+    server-side from that Prediction row (routers/prediction_outcomes.py) —
+    never accepted as free-form client input, so an outcome can never
+    disagree with the prediction it links to."""
+
+
+class PredictionOutcomeRead(PredictionOutcomeBase):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: str
+    prediction_id: str
+    project_id: str
+    parcel_id: Optional[str] = None
     created_at: datetime

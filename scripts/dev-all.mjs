@@ -1,12 +1,4 @@
-/**
- * KSHETRA — run the FastAPI backend and the Vite frontend together.
- *
- *   npm run dev:all
- *
- * Zero extra dependencies: this just spawns the two dev servers, prefixes their
- * output, and shuts both down on Ctrl+C. If you prefer two terminals, run
- * `npm run backend` and `npm run dev` separately.
- */
+
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';

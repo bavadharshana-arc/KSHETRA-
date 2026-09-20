@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Search, 
   Filter, 
@@ -18,11 +18,15 @@ import {
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { RiskLevel } from '../../types';
+import { useDebounce } from '../../hooks/useDebounce';
+import { EmptyState } from '../feedback/EmptyState';
+import { TableSkeleton } from '../feedback/Skeleton';
 
 export const ParcelsView: React.FC = () => {
   const { 
     filteredParcels, 
     parcels,
+    project,
     searchQuery, 
     setSearchQuery, 
     filters, 
@@ -34,6 +38,17 @@ export const ParcelsView: React.FC = () => {
     setActiveTab,
     isSyncing
   } = useApp();
+
+  const [inputQuery, setInputQuery] = useState(searchQuery);
+  const debouncedQuery = useDebounce(inputQuery, 250);
+
+  useEffect(() => {
+    setSearchQuery(debouncedQuery);
+  }, [debouncedQuery, setSearchQuery]);
+
+  useEffect(() => {
+    setInputQuery(searchQuery);
+  }, [searchQuery]);
 
   const [predictingParcelId, setPredictingParcelId] = useState<string | null>(null);
 
@@ -67,31 +82,31 @@ export const ParcelsView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight">
-              Land Parcel Inventory & Risk Directory
+            <h1 className="text-xl lg:text-2xl font-semibold text-slate-900 tracking-tight">
+              Land Parcel Inventory & Statutory Register
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">
-              {filteredParcels.length} / {parcels.length} Showing
+            <span className="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 font-mono">
+              {filteredParcels.length} / {parcels.length} Sample Dossiers ({project.totalParcels} Corridor RoW)
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Cadastral survey numbers, Bhoomi-style land classification, e-Courts-style litigation tags, and AI delay forecasts — all from synthetic demonstration data.
+            Cadastral survey numbers, ULPIN identifiers, e-Courts litigation injunctions, and AI delay forecasts.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={() => setActiveTab('map')}
-            className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-colors shadow-sm"
+            className="px-3 py-1.5 bg-blue-700 hover:bg-blue-600 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-colors shadow-xs"
           >
             <Layers className="w-4 h-4" />
             <span>View on GIS Map</span>
           </button>
           <button
             onClick={() => setActiveTab('govsync')}
-            className="px-3.5 py-2 bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl flex items-center gap-1.5 transition-colors"
           >
-            <RefreshCw className="w-4 h-4 text-purple-600" />
+            <RefreshCw className="w-4 h-4 text-slate-500" />
             <span>Gov Data Hub</span>
           </button>
         </div>
@@ -106,14 +121,15 @@ export const ParcelsView: React.FC = () => {
             <input
               type="text"
               placeholder="Search Survey No (125/2), Parcel ID (P-0245), ULPIN, Owner Name, Village..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              value={inputQuery}
+              onChange={(e) => setInputQuery(e.target.value)}
               className="w-full pl-10 pr-10 py-2 text-xs bg-slate-50 hover:bg-slate-100/80 focus:bg-white border border-slate-200 focus:border-blue-500 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all font-sans"
             />
-            {searchQuery && (
+            {inputQuery && (
               <button 
-                onClick={() => setSearchQuery('')}
+                onClick={() => setInputQuery('')}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold"
+                aria-label="Clear search input"
               >
                 ✕
               </button>
@@ -248,36 +264,35 @@ export const ParcelsView: React.FC = () => {
       {/* Parcels Table / Card Directory */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         {filteredParcels.length === 0 ? (
-          <div className="p-12 text-center text-slate-500 space-y-3">
-            <AlertTriangle className="w-10 h-10 text-amber-400 mx-auto" />
-            <h3 className="font-bold text-sm text-slate-800">No matching land parcels found</h3>
-            <p className="text-xs text-slate-500 max-w-sm mx-auto">
-              Try adjusting your search keywords or resetting the active risk and acquisition filters.
-            </p>
-            <button
-              onClick={resetFilters}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition-colors"
-            >
-              Clear All Filters
-            </button>
-          </div>
+          <EmptyState
+            icon={AlertTriangle}
+            title="No matching land parcels found"
+            description="Try adjusting your search keywords or resetting the active risk and acquisition filters."
+            action={{
+              label: "Clear All Filters",
+              onClick: resetFilters,
+              icon: RotateCcw
+            }}
+            className="m-6"
+          />
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="bg-slate-50/90 border-b border-slate-200 text-slate-600 font-bold uppercase text-[10px] tracking-wider">
-                  <th className="py-3 px-4">Parcel ID & ULPIN</th>
-                  <th className="py-3 px-3">Survey & Extent</th>
-                  <th className="py-3 px-3">Owner & Village</th>
-                  <th className="py-3 px-3">Legal & Dispute</th>
-                  <th className="py-3 px-3">Compensation</th>
-                  <th className="py-3 px-3 text-center">Parcel Risk (indicative)</th>
-                  <th className="py-3 px-3">Predicted Delay</th>
-                  <th className="py-3 px-4 text-right">Actions</th>
+                <tr className="bg-slate-100/80 border-b border-slate-200 text-slate-600 font-semibold uppercase text-[10px] tracking-wider">
+                  <th className="py-2.5 px-4 sticky left-0 bg-slate-100 z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)]">Parcel ID & ULPIN</th>
+                  <th className="py-2.5 px-3">Survey & Extent</th>
+                  <th className="py-2.5 px-3">Owner & Village</th>
+                  <th className="py-2.5 px-3">Litigation / Stays</th>
+                  <th className="py-2.5 px-3">Compensation</th>
+                  <th className="py-2.5 px-3 text-center">Delay Risk</th>
+                  <th className="py-2.5 px-3">Predicted Delay</th>
+                  <th className="py-2.5 px-4 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {filteredParcels.map(parcel => {
+                  const hasStayOrder = parcel.courtRecord?.interimInjunction || parcel.courtCaseStatus?.toLowerCase().includes('stay');
                   const isHigh = parcel.riskLevel === 'high';
                   const isMed = parcel.riskLevel === 'medium';
                   const isPredicting = predictingParcelId === parcel.id;
@@ -286,19 +301,19 @@ export const ParcelsView: React.FC = () => {
                     <tr 
                       key={parcel.id}
                       onClick={() => openParcelDetail(parcel.id)}
-                      className={`hover:bg-blue-50/50 transition-colors cursor-pointer group ${
+                      className={`hover:bg-slate-50/80 transition-colors cursor-pointer group ${
                         parcel.id === 'P-0245' ? 'bg-amber-50/30' : ''
                       }`}
                     >
                       {/* Parcel ID & ULPIN */}
-                      <td className="py-3.5 px-4">
-                        <div className="flex items-center gap-2">
-                          <div className="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs transition-colors">
+                      <td className="py-3 px-4 sticky left-0 bg-white group-hover:bg-slate-50 z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)]">
+                        <div className="flex items-center gap-1.5">
+                          <div className="font-semibold text-slate-900 group-hover:text-blue-700 text-xs font-mono">
                             {parcel.id}
                           </div>
                           {parcel.id === 'P-0245' && (
-                            <span className="px-1.5 py-0.2 rounded text-[9px] font-black bg-amber-500 text-slate-950 uppercase tracking-wider">
-                              DEMO TARGET
+                            <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-amber-100 text-amber-900 border border-amber-300 uppercase tracking-wide">
+                              DEMO
                             </span>
                           )}
                         </div>
@@ -308,18 +323,18 @@ export const ParcelsView: React.FC = () => {
                       </td>
 
                       {/* Survey & Area */}
-                      <td className="py-3.5 px-3">
-                        <div className="font-bold text-slate-800 font-mono text-xs">
+                      <td className="py-3 px-3">
+                        <div className="font-semibold text-slate-800 font-mono text-xs">
                           {parcel.surveyNumber}
                         </div>
-                        <div className="text-[11px] text-slate-500 font-medium">
+                        <div className="text-[11px] text-slate-500">
                           {parcel.areaAcres} Acres <span className="text-[10px] text-slate-400">({parcel.areaSqMeters.toLocaleString()} m²)</span>
                         </div>
                       </td>
 
                       {/* Owner & Village */}
-                      <td className="py-3.5 px-3">
-                        <div className="font-medium text-slate-800 truncate max-w-[160px]" title={parcel.ownerName}>
+                      <td className="py-3 px-3">
+                        <div className="font-medium text-slate-800 truncate max-w-[150px]" title={parcel.ownerName}>
                           {parcel.ownerName}
                         </div>
                         <div className="text-[10px] text-slate-500">
@@ -328,65 +343,71 @@ export const ParcelsView: React.FC = () => {
                       </td>
 
                       {/* Legal / Court Case Tag */}
-                      <td className="py-3.5 px-3">
-                        {parcel.courtCase ? (
-                          <div className="space-y-1">
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-800 border border-red-200">
-                              <Gavel className="w-3 h-3 text-red-600" />
-                              {parcel.courtCaseStatus}
+                      <td className="py-3 px-3">
+                        {hasStayOrder ? (
+                          <div className="space-y-0.5">
+                            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-800 border border-red-200">
+                              <Gavel className="w-3 h-3 text-red-700" />
+                              Stay Order
                             </span>
                             {parcel.courtRecord && (
-                              <div className="text-[10px] text-slate-500 font-mono truncate max-w-[140px]">
+                              <div className="text-[10px] text-slate-500 font-mono truncate max-w-[130px]">
                                 {parcel.courtRecord.caseNumber}
                               </div>
                             )}
                           </div>
+                        ) : parcel.courtCase ? (
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-50 text-amber-800 border border-amber-200">
+                            {parcel.courtCaseStatus}
+                          </span>
                         ) : (
-                          <span className="inline-block px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-600">
+                          <span className="inline-block px-1.5 py-0.5 rounded text-[10px] text-slate-500 bg-slate-100">
                             Clear Title
                           </span>
                         )}
                       </td>
 
                       {/* Compensation Status */}
-                      <td className="py-3.5 px-3">
-                        <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-semibold ${
+                      <td className="py-3 px-3">
+                        <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-medium ${
                           parcel.compensationStatus === 'Disbursed 100%' 
-                            ? 'bg-emerald-100 text-emerald-800' 
+                            ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
                             : parcel.compensationStatus === 'Under Dispute in LA-RA Authority'
-                            ? 'bg-red-100 text-red-800'
+                            ? 'bg-red-50 text-red-800 border border-red-200'
                             : parcel.compensationStatus === 'Determined'
-                            ? 'bg-blue-100 text-blue-800'
-                            : 'bg-amber-100 text-amber-800'
+                            ? 'bg-blue-50 text-blue-800 border border-blue-200'
+                            : 'bg-amber-50 text-amber-800 border border-amber-200'
                         }`}>
                           {parcel.compensationStatus}
                         </span>
-                        <div className="text-[10px] text-slate-500 mt-0.5">
-                          ₹{parcel.estimatedCompensationCrores} Cr Est.
+                        <div className="text-[10px] text-slate-500 mt-0.5 font-mono">
+                          ₹{parcel.estimatedCompensationCrores} Cr
                         </div>
                       </td>
 
                       {/* Delay Risk Score */}
-                      <td className="py-3.5 px-3 text-center">
+                      <td className="py-3 px-3 text-center">
                         <div className="inline-flex flex-col items-center">
-                          <span className={`px-2.5 py-1 rounded-lg font-black text-xs ${
-                            isHigh 
-                              ? 'bg-red-100 text-red-700 border border-red-200 shadow-xs' 
+                          <span className={`px-2 py-0.5 rounded-md font-bold font-mono text-xs ${
+                            hasStayOrder 
+                              ? 'bg-red-100 text-red-800 border border-red-200' 
+                              : isHigh 
+                              ? 'bg-amber-100 text-amber-900 border border-amber-200' 
                               : isMed 
-                              ? 'bg-amber-100 text-amber-800 border border-amber-200' 
-                              : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                              ? 'bg-amber-50 text-amber-800 border border-amber-200/60' 
+                              : 'bg-slate-100 text-slate-700 border border-slate-200'
                           }`}>
                             {parcel.delayRiskScore}%
                           </span>
-                          <span className="text-[9px] font-bold text-slate-400 uppercase mt-0.5">
-                            {parcel.riskLevel}
+                          <span className="text-[9px] text-slate-400 uppercase mt-0.5">
+                            {hasStayOrder ? 'Critical' : parcel.riskLevel}
                           </span>
                         </div>
                       </td>
 
                       {/* Predicted Delay Range */}
-                      <td className="py-3.5 px-3">
-                        <div className="font-bold text-slate-900 text-xs">
+                      <td className="py-3 px-3">
+                        <div className="font-semibold text-slate-900 text-xs font-mono">
                           {parcel.predictedDelayRange}
                         </div>
                         <div className="text-[10px] text-slate-400">
@@ -395,23 +416,23 @@ export const ParcelsView: React.FC = () => {
                       </td>
 
                       {/* Action Buttons */}
-                      <td className="py-3.5 px-4 text-right">
+                      <td className="py-3 px-4 text-right">
                         <div className="flex items-center justify-end gap-1.5" onClick={(e) => e.stopPropagation()}>
                           <button
                             onClick={(e) => handlePredictClick(e, parcel.id)}
                             disabled={isPredicting}
-                            className="p-1.5 bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white rounded-lg transition-colors text-xs font-semibold"
-                            title="Score this parcel (indicative drill-down — the official AI prediction is project-level)"
+                            className="p-1.5 bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white rounded-lg border border-indigo-200 transition-colors text-xs font-semibold"
+                            title="Run AI delay inference on this parcel"
                           >
-                            <Cpu className={`w-3.5 h-3.5 ${isPredicting ? 'animate-spin text-blue-400' : ''}`} />
+                            <Cpu className={`w-3.5 h-3.5 ${isPredicting ? 'animate-spin text-indigo-400' : ''}`} />
                           </button>
 
                           <button
                             onClick={() => openParcelDetail(parcel.id)}
-                            className="px-2.5 py-1 bg-slate-100 hover:bg-blue-600 text-slate-700 hover:text-white font-bold rounded-lg text-xs transition-colors flex items-center gap-1"
+                            className="px-2.5 py-1 bg-slate-100 hover:bg-navy-900 text-slate-700 hover:text-white font-medium rounded-lg text-xs transition-colors flex items-center gap-1"
                           >
                             <Eye className="w-3.5 h-3.5" />
-                            <span>Deep Dive</span>
+                            <span>Dossier</span>
                           </button>
                         </div>
                       </td>

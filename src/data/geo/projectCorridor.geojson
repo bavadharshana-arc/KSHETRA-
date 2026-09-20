@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "status": "PROTOTYPE GIS LAYER -- coordinates are copied verbatim from the real, canonical Project.corridorPath (src/data/mockData.ts / backend/seed.py), expressed here as a proper GeoJSON LineString so spatial-analysis code (src/data/geo/spatialUtils.ts) can consume it directly. If Project.corridorPath is ever edited (e.g. via the in-app route editor), this file must be regenerated to match -- it is a derived export, not an independent source of truth. See src/data/geo/README.md."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "project_id": "proj-nh79x",
+        "project_code": "NHAI-TN-2024-EXP-08",
+        "name": "Salem-Chennai Express Highway Corridor (NH-79X) Centerline"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [78.1460, 11.6643],
+          [78.1250, 11.6850],
+          [78.0820, 11.7230],
+          [78.0460, 11.7580],
+          [78.0120, 11.7920],
+          [77.9850, 11.8350]
+        ]
+      }
+    }
+  ]
+}

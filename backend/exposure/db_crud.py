@@ -305,12 +305,27 @@ def list_exposure_assessments(
     latest_only: bool = True,
 ) -> List[db_models.ExposureAssessmentRecord]:
     """`latest_only=True` (the default) keeps only the most recent row per
-    `case_reference` -- exposure assessments are append-only, one full row
-    per computation run (no `evaluation_run_id` grouping needed, unlike
-    `blockers.db_crud.list_blockers`, since one row already IS one complete
-    run's result here). `min_band` filters on `exposure_band`. Deterministic
-    ordering: `created_at` desc, `case_reference` asc tie-break -- never a
-    raw row id (Section 17)."""
+    (case_reference, project_id, parcel_id) -- exposure assessments are
+    append-only, one full row per computation run (no `evaluation_run_id`
+    grouping needed, unlike `blockers.db_crud.list_blockers`, since one row
+    already IS one complete run's result here). `min_band` filters on
+    `exposure_band`. Deterministic ordering: `created_at` desc,
+    `case_reference` asc tie-break -- never a raw row id (Section 17).
+
+    Step 8C-B.5 fix: grouping used to be keyed on `case_reference` ALONE.
+    Because every real-parcel assessment shares `case_reference ==
+    project_id` (`assess_and_persist_for_case`'s own documented
+    one-project-one-case convention), that single-key grouping silently
+    collapsed every parcel of a project down to whichever one was computed
+    most recently -- e.g. a project-scoped query returned only ONE parcel's
+    assessment instead of every assessed parcel's own current one.
+    Including `project_id`/`parcel_id` (already-existing, already-indexed
+    columns on every row -- not a change to what `case_reference` itself
+    means or holds) in the grouping key restores "one current result per
+    parcel" while an already-parcel-filtered query behaves exactly as
+    before. Rows with no project/parcel at all
+    (`project_id IS NULL AND parcel_id IS NULL`) still group by
+    `case_reference` alone, unaffected by this change."""
     query = db.query(db_models.ExposureAssessmentRecord)
     if project_id is not None:
         query = query.filter(db_models.ExposureAssessmentRecord.project_id == project_id)
@@ -321,12 +336,16 @@ def list_exposure_assessments(
     results = query.order_by(db_models.ExposureAssessmentRecord.created_at.desc()).all()
 
     if latest_only and results:
-        latest_by_case: dict = {}
+        def _group_key(row: db_models.ExposureAssessmentRecord) -> tuple:
+            return (row.case_reference, row.project_id, row.parcel_id)
+
+        latest_by_group: dict = {}
         for row in results:
-            current = latest_by_case.get(row.case_reference)
+            key = _group_key(row)
+            current = latest_by_group.get(key)
             if current is None or row.created_at > current.created_at:
-                latest_by_case[row.case_reference] = row
-        results = list(latest_by_case.values())
+                latest_by_group[key] = row
+        results = list(latest_by_group.values())
 
     if min_band is not None:
         threshold = _EXPOSURE_BAND_RANK[min_band]
@@ -337,8 +356,22 @@ def list_exposure_assessments(
 
 
 def get_latest_project_assessment(db: Session, project_id: str) -> Optional[db_models.ExposureAssessmentRecord]:
+    """Returns the project's OWN project-scoped assessment
+    (`parcel_id IS NULL`) only -- Step 8C-B.5 fix. Before this fix, this
+    returned `results[0]` of whatever `list_exposure_assessments` gave back,
+    which (after that function's own grouping fix) can now legitimately be
+    several different parcels' assessments -- silently returning one of them
+    here would falsely present one arbitrary parcel's own result as "the
+    project's". There is no engine-defined operation that combines several
+    parcels' scores into one project-level score (never invented here --
+    averaging/summing is explicitly out of scope), so when no genuine
+    project-scoped assessment has been computed, this honestly returns
+    `None`. Callers wanting the full ranked set across a project's parcels
+    should use `list_exposure_assessments(project_id=...)` or
+    `priority_queue(project_id=...)` instead."""
     results = list_exposure_assessments(db, project_id=project_id, latest_only=True)
-    return results[0] if results else None
+    project_level = [r for r in results if r.parcel_id is None]
+    return project_level[0] if project_level else None
 
 
 def get_latest_parcel_assessment(db: Session, parcel_id: str) -> Optional[db_models.ExposureAssessmentRecord]:

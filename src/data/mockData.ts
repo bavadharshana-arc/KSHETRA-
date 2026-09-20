@@ -997,6 +997,7 @@ export const INITIAL_ACTIONS: CaseAction[] = [
 export const INITIAL_ALIGNMENTS: AlignmentOption[] = [
   {
     id: 'align-a',
+    projectId: 'proj-nh79x',
     name: 'Alignment A (Current Gazette Route)',
     code: 'DPR-REV-04-A',
     lengthKm: 68.4,
@@ -1020,6 +1021,7 @@ export const INITIAL_ALIGNMENTS: AlignmentOption[] = [
   },
   {
     id: 'align-b',
+    projectId: 'proj-nh79x',
     name: 'Alignment B (Kamalapuram Northern Agro Bypass)',
     code: 'DPR-REV-04-B-BYPASS',
     lengthKm: 70.8,
@@ -1048,6 +1050,7 @@ export const INITIAL_ALIGNMENTS: AlignmentOption[] = [
   },
   {
     id: 'align-c',
+    projectId: 'proj-nh79x',
     name: 'Alignment C (Eastern Industrial Belt Link)',
     code: 'DPR-REV-04-C',
     lengthKm: 74.2,
@@ -1387,7 +1390,14 @@ export const generateSyntheticParcelsForProject = (
     ];
 
     const parcel: Parcel = {
-      id: tpl.id,
+      // Namespaced by projectId — the bare template id (tpl.id, e.g. "P-1001")
+      // repeats across every generated project, which previously collided in
+      // allParcels (a single flat array keyed by Parcel.id across ALL
+      // projects): selecting/updating "P-1001" in a second custom project
+      // could hit the first project's parcel instead. Everywhere else below
+      // still uses tpl.id for cosmetic derived strings (case numbers, khata
+      // numbers, etc.) — only the canonical identity changes here.
+      id: `${projectId}-${tpl.id}`,
       surveyNumber: tpl.surveyNumber,
       ulpin: `TN-SLM-2024-${tpl.id.replace('Parcel ', '')}`,
       projectId,

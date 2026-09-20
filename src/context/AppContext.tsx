@@ -30,6 +30,7 @@ import { fetchRealAiPrediction, fetchProjectAiPrediction } from '../services/mlA
 import { simulateGovernmentSync, SyncLogStep } from '../services/apiSimulation';
 import { ROLES, isTabAllowedForRole } from '../config/roles';
 import { isValidDemoLogin } from '../config/authCredentials';
+import { loadSettings, saveSettings, sanitizeSettings, classifyRiskScore, DEFAULT_SETTINGS } from '../config/settings';
 // STEP 4 (persistence plan): typed FastAPI client — see src/services/apiClient.ts.
 // AppContext is the ONLY place that imports this; components keep talking to
 // AppContext exactly as before (see the Step 4 report's "orchestration layer" note).
@@ -84,6 +85,7 @@ interface AppContextType {
   selectProject: (projectId: string) => void;
   deleteProject: (projectId: string) => void;
   updateProjectRoute: (projectId: string, newRoute: [number, number][]) => void;
+  updateProjectDetails: (projectId: string, details: Pick<Partial<Project>, 'name' | 'projectType' | 'department'>) => Promise<void>;
   
   // Interactive Route Editing on Map
   routeEditState: RouteEditState | null;
@@ -115,6 +117,7 @@ interface AppContextType {
   unreadNotifsCount: number;
   settings: SystemSettings;
   updateSettings: (newSettings: Partial<SystemSettings>) => void;
+  resetSettings: () => void;
   
   // Search & Filters
   searchQuery: string;
@@ -146,20 +149,13 @@ interface AppContextType {
 
   createNewAction: (actionData: Omit<CaseAction, 'id' | 'createdAt'>) => void;
   updateActionStatus: (actionId: string, status: CaseAction['status'], notes?: string) => void;
+  recordFieldVerification: (parcelId: string, input: { verified: boolean; notes?: string; evidencePhotoAttached?: boolean }) => Promise<void>;
   
   resolveAlert: (alertId: string, resolutionNotes?: string) => void;
   assignAlert: (alertId: string, officerName: string) => void;
   
   markNotificationRead: (id: string) => void;
   markAllNotificationsRead: () => void;
-  
-  // Guided Demo Tour
-  demoTourActive: boolean;
-  demoTourStep: number;
-  startDemoTour: () => void;
-  nextDemoTourStep: () => void;
-  prevDemoTourStep: () => void;
-  endDemoTour: () => void;
   
   // Reset all to sample defaults
   resetAllData: () => void;
@@ -239,14 +235,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return projects.find(p => p.id === INITIAL_PROJECT.id) || projects[0] || INITIAL_PROJECT;
   }, [currentUser.role, projects, selectedProjectId]);
 
+  const [settings, setSettings] = useState<SystemSettings>(loadSettings);
+
   // Active Parcels isolated strictly to the active project
   const parcels: Parcel[] = React.useMemo(() => {
     const matched = allParcels.filter(p => p.projectId === project.id);
-    if (matched.length === 0 && project.id === INITIAL_PROJECT.id) {
-      return allParcels.filter(p => !p.projectId || p.projectId === INITIAL_PROJECT.id);
-    }
-    return matched;
-  }, [allParcels, project.id]);
+    const scoped = (matched.length === 0 && project.id === INITIAL_PROJECT.id)
+      ? allParcels.filter(p => !p.projectId || p.projectId === INITIAL_PROJECT.id)
+      : matched;
+    // Risk band is derived from the score using the analyst's local thresholds.
+    return scoped.map(p => {
+      const level = classifyRiskScore(p.delayRiskScore, settings);
+      return level === p.riskLevel ? p : { ...p, riskLevel: level };
+    });
+  }, [allParcels, project.id, settings]);
 
   const [alerts, setAlerts] = useState<Alert[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_ALERTS);
@@ -285,7 +287,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const [notifications, setNotifications] = useState<NotificationItem[]>(INITIAL_NOTIFICATIONS);
-  const [settings, setSettings] = useState<SystemSettings>(INITIAL_SETTINGS);
 
   // Search and Filter State
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -347,10 +348,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [projectPredictions, setProjectPredictions] = useState<Record<string, ProjectPrediction>>({});
   const [isProjectPredicting, setIsProjectPredicting] = useState<boolean>(false);
   const [projectPredictionError, setProjectPredictionError] = useState<string | null>(null);
-
-  // Guided Demo Tour State
-  const [demoTourActive, setDemoTourActive] = useState<boolean>(false);
-  const [demoTourStep, setDemoTourStep] = useState<number>(1);
 
   // Sync state to LocalStorage
   useEffect(() => {
@@ -522,8 +519,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setSearchQuery('');
   };
 
+  // Local-only settings: sanitised, persisted to localStorage, never sent to a backend.
   const updateSettings = (newSettings: Partial<SystemSettings>) => {
-    setSettings(prev => ({ ...prev, ...newSettings }));
+    setSettings(prev => {
+      const next = sanitizeSettings({ ...prev, ...newSettings });
+      saveSettings(next);
+      return next;
+    });
+  };
+
+  const resetSettings = () => {
+    const next = { ...DEFAULT_SETTINGS };
+    saveSettings(next);
+    setSettings(next);
   };
 
   // PRIMARY prediction: run the trained model on the WHOLE active acquisition
@@ -803,6 +811,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     const newAlignment: AlignmentOption = {
       id: `align-${newId}`,
+      projectId: newId,
       name: `Plan / Alignment: ${newProject.name}`,
       code: `DPR-${newProject.code}`,
       lengthKm: finalLengthKm,
@@ -955,6 +964,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setProjects(prev => prev.map(p => (p.id === projectId ? (updated ?? { ...p, ...patch }) : p)));
 
     logAudit(`Updated route geometry on Map for Project ID ${projectId}`);
+  };
+
+  // Metadata-only edit (name / type / department). Route, parcels and counts are untouched.
+  const updateProjectDetails = async (
+    projectId: string,
+    details: Pick<Partial<Project>, 'name' | 'projectType' | 'department'>
+  ) => {
+    const patch: Partial<Project> = {};
+    if (details.name !== undefined && details.name.trim()) patch.name = details.name.trim();
+    if (details.projectType !== undefined) patch.projectType = details.projectType;
+    if (details.department !== undefined && details.department.trim()) patch.department = details.department.trim();
+    if (Object.keys(patch).length === 0) return;
+
+    const updated = await runSyncedMutation(
+      `updateProject:${projectId}:details`,
+      () => apiClient.updateProject(projectId, patch),
+      () => null
+    );
+    setProjects(prev => prev.map(p => (p.id === projectId ? (updated ?? { ...p, ...patch }) : p)));
+    logAudit(`Edited project details for ${projectId}: ${Object.keys(patch).join(', ')}`);
   };
 
   const generateRoutePoints = (start: [number, number], end: [number, number]): [number, number][] => {
@@ -1249,7 +1278,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (parcel) {
         const newDelay = Math.max(0.1, +(parcel.predictedDelayMonths - targetReduction).toFixed(1));
         const newScore = Math.max(15, Math.floor(parcel.delayRiskScore * 0.45));
-        const newRiskLevel: RiskLevel = newScore >= 70 ? 'high' : newScore >= 40 ? 'medium' : 'low';
+        const newRiskLevel: RiskLevel = classifyRiskScore(newScore, settings);
         const parcelPatch: Partial<Parcel> = {
           delayRiskScore: newScore,
           riskLevel: newRiskLevel,
@@ -1289,6 +1318,56 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
+  // Field verification: writes the existing Parcel.fieldVerified / notes /
+  // evidencePhotoAttached / fieldVerifiedAt fields through the same synced
+  // mutation path as other parcel updates. The photo flag is a reference only
+  // (the app has no file storage); the date is the local date of recording.
+  const recordFieldVerification = async (
+    parcelId: string,
+    input: { verified: boolean; notes?: string; evidencePhotoAttached?: boolean }
+  ) => {
+    const parcel = allParcels.find(p => p.id === parcelId);
+    if (!parcel) return;
+    const today = new Date().toISOString().substring(0, 10);
+    const patch: Partial<Parcel> = input.verified
+      ? {
+          fieldVerified: true,
+          fieldVerificationNotes: (input.notes || '').trim(),
+          evidencePhotoAttached: !!input.evidencePhotoAttached,
+          fieldVerifiedAt: today
+        }
+      : {
+          fieldVerified: false,
+          fieldVerificationNotes: (input.notes || '').trim(),
+          evidencePhotoAttached: false,
+          fieldVerifiedAt: undefined
+        };
+    const updated = await runSyncedMutation(
+      `updateParcel:${parcelId}:fieldVerification`,
+      () => apiClient.updateParcel(parcelId, patch),
+      () => ({ ...parcel, ...patch })
+    );
+    setAllParcels(prev => prev.map(p => (p.id === parcelId ? updated : p)));
+    if (selectedParcel?.id === parcelId) setSelectedParcel(updated);
+    logAudit(
+      input.verified ? 'Recorded field verification' : 'Cleared field verification',
+      parcelId,
+      parcel.surveyNumber
+    );
+    if (input.verified && settings.notifyFieldVerification) {
+      setNotifications(prev => [{
+        id: `notif-${Date.now()}`,
+        title: `Field verification recorded: ${parcelId}`,
+        message: `Survey ${parcel.surveyNumber} confirmed on ground by ${currentUser.name}.`,
+        timestamp: 'Just now',
+        parcelId,
+        type: 'action',
+        isRead: false,
+        severity: 'LOW'
+      }, ...prev]);
+    }
+  };
+
   const resolveAlert = async (alertId: string, resolutionNotes?: string) => {
     const patch: Partial<Alert> = {
       status: 'Resolved',
@@ -1322,26 +1401,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
   };
 
-  const startDemoTour = () => {
-    setDemoTourActive(true);
-    setDemoTourStep(1);
-    setActiveTab('dashboard');
-  };
-
-  const nextDemoTourStep = () => {
-    setDemoTourStep(prev => prev + 1);
-  };
-
-  const prevDemoTourStep = () => {
-    setDemoTourStep(prev => Math.max(1, prev - 1));
-  };
-
-  const endDemoTour = () => {
-    setDemoTourActive(false);
-    setDemoTourStep(1);
-  };
-
   const resetAllData = () => {
+    resetSettings();
     localStorage.removeItem(STORAGE_KEY_USER);
     localStorage.removeItem(STORAGE_KEY_PARCELS);
     localStorage.removeItem(STORAGE_KEY_PROJECTS);
@@ -1361,6 +1422,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setSelectedParcel(null);
     resetFilters();
   };
+
+  // Selected parcel with the same threshold-derived risk band as the list.
+  const selectedParcelView = React.useMemo(() => {
+    if (!selectedParcel) return null;
+    const level = classifyRiskScore(selectedParcel.delayRiskScore, settings);
+    return level === selectedParcel.riskLevel ? selectedParcel : { ...selectedParcel, riskLevel: level };
+  }, [selectedParcel, settings]);
 
   // Filtered parcels logic
   const filteredParcels = parcels.filter(parcel => {
@@ -1446,7 +1514,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       parcels,
       allParcels,
       filteredParcels,
-      selectedParcel,
+      selectedParcel: selectedParcelView,
       setSelectedParcel,
       openParcelDetail,
       project,
@@ -1456,6 +1524,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       selectProject,
       deleteProject,
       updateProjectRoute,
+      updateProjectDetails,
       routeEditState,
       startRouteDraft,
       setDraftStartCoords,
@@ -1476,6 +1545,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       unreadNotifsCount,
       settings,
       updateSettings,
+      resetSettings,
       searchQuery,
       setSearchQuery,
       filters,
@@ -1494,16 +1564,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       clearSyncError,
       createNewAction,
       updateActionStatus,
+      recordFieldVerification,
       resolveAlert,
       assignAlert,
       markNotificationRead,
       markAllNotificationsRead,
-      demoTourActive,
-      demoTourStep,
-      startDemoTour,
-      nextDemoTourStep,
-      prevDemoTourStep,
-      endDemoTour,
       resetAllData
     }}>
       {children}

@@ -86,8 +86,14 @@ function extractErrorMessage(body: unknown, status: number): string {
  * Core request helper. Never silently converts a failure into a fake
  * success — every non-2xx response and every network failure throws
  * `ApiError`. Callers (AppContext) decide how to degrade.
+ *
+ * Exported (Step 8C-B.2) so the read-only legal/blockers/exposure engine
+ * services can reuse this exact fetch/timeout/error-handling logic instead
+ * of duplicating it — see src/services/legalService.ts,
+ * blockersService.ts, exposureService.ts. Behavior is unchanged; this is
+ * purely a visibility change.
  */
-async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
+export async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
@@ -140,7 +146,9 @@ async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> 
   return parsed as T;
 }
 
-function toQueryString(params: Record<string, string | number | undefined>): string {
+/** Exported (Step 8C-B.2) for reuse by the new read-only engine services —
+ * see the apiFetch export note above. Behavior unchanged. */
+export function toQueryString(params: Record<string, string | number | undefined>): string {
   const entries = Object.entries(params).filter(([, v]) => v !== undefined && v !== '');
   if (entries.length === 0) return '';
   const usp = new URLSearchParams();

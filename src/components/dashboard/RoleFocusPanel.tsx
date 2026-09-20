@@ -44,6 +44,7 @@ export const RoleFocusPanel: React.FC = () => {
 
   // --- Shared derived data (reused across role sections) ---
   const highRiskParcels = parcels.filter(p => p.riskLevel === 'high');
+  const corridorHighRiskCount = project.highRiskParcels || highRiskParcels.length;
   const acquiredCount = parcels.filter(p => p.acquisitionStatus === 'Acquired' || p.possessionStatus === 'Complete').length + 240;
   const acquisitionProgressPct = Math.round((acquiredCount / project.totalParcels) * 100);
   const pendingActions = actions.filter(a => a.status === 'Pending' || a.status === 'In Progress');
@@ -60,13 +61,13 @@ export const RoleFocusPanel: React.FC = () => {
   }> = ({ icon: Icon, accent, label, onClick, children }) => (
     <div
       onClick={onClick}
-      className={`bg-white p-4 rounded-xl border border-slate-200 shadow-sm ${onClick ? 'hover:border-blue-300 hover:shadow-md cursor-pointer transition-all group' : ''}`}
+      className={`bg-white p-4 rounded-xl border border-slate-200 shadow-sm ${onClick ? 'hover:border-slate-300 hover:shadow-md cursor-pointer transition-all group' : ''}`}
     >
       <div className="flex items-center gap-2">
         <IconTile icon={Icon} color={accent} size="sm" />
-        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">{label}</span>
+        <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">{label}</span>
       </div>
-      <div className="mt-2.5">{children}</div>
+      <div className="mt-2">{children}</div>
     </div>
   );
 
@@ -79,31 +80,31 @@ export const RoleFocusPanel: React.FC = () => {
 
     return (
       <section>
-        <SectionHeader title={`${config.label} Focus`} subtitle="District oversight, escalations & acquisition progress" />
+        <SectionHeader title={`${config.label} Focus`} subtitle="District statutory oversight, escalations & acquisition progress" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <Card icon={Building2} accent="blue" label="District & Project Overview">
-            <div className="text-sm font-black text-slate-900">{currentUser.district || 'Salem'} District</div>
-            <div className="text-[11px] text-slate-500 mt-1">{project.name}</div>
-            <div className="text-[11px] font-semibold text-amber-600 mt-1">Status: {project.status}</div>
+            <div className="text-sm font-bold text-slate-900">{currentUser.district || 'Salem'} District</div>
+            <div className="text-[11px] text-slate-500 mt-0.5 truncate">{project.name}</div>
+            <div className="text-[11px] font-medium text-amber-700 mt-1">Status: {project.status}</div>
           </Card>
 
-          <Card icon={ShieldAlert} accent="red" label="High-Risk Cases" onClick={() => goToParcels('high')}>
-            <div className="text-xl font-black text-red-600">{highRiskParcels.length}</div>
-            <div className="text-[11px] text-slate-500 mt-1">
-              {topHighRisk ? `Top: ${topHighRisk.id} (${topHighRisk.village})` : 'No high-risk parcels'}
+          <Card icon={ShieldAlert} accent="amber" label="High-Risk Parcels" onClick={() => goToParcels('high')}>
+            <div className="text-xl font-bold font-mono text-slate-900">{corridorHighRiskCount}</div>
+            <div className="text-[11px] text-slate-500 mt-0.5">
+              {topHighRisk ? `Top: ${topHighRisk.id} (${topHighRisk.village})` : '28 flagged in corridor'}
             </div>
           </Card>
 
-          <Card icon={TrendingUp} accent="amber" label="Alerts & Escalations" onClick={() => setActiveTab('alerts')}>
-            <div className="text-xl font-black text-amber-600">{criticalAlerts.length + escalatedOrInProgress.length}</div>
-            <div className="text-[11px] text-slate-500 mt-1">
-              {criticalAlerts.length} critical &middot; {escalatedOrInProgress.length} escalated/in progress
+          <Card icon={TrendingUp} accent="red" label="Active Critical Alerts" onClick={() => setActiveTab('alerts')}>
+            <div className="text-xl font-bold font-mono text-red-700">{criticalAlerts.length}</div>
+            <div className="text-[11px] text-slate-500 mt-0.5">
+              {criticalAlerts.length} stay orders &middot; {escalatedOrInProgress.length} in-progress
             </div>
           </Card>
 
           <Card icon={ListChecks} accent="emerald" label="Acquisition Progress" onClick={() => setActiveTab('parcels')}>
-            <div className="text-xl font-black text-emerald-600">{acquisitionProgressPct}%</div>
-            <div className="text-[11px] text-slate-500 mt-1">{acquiredCount} of {project.totalParcels} parcels acquired</div>
+            <div className="text-xl font-bold font-mono text-slate-900">{acquisitionProgressPct}%</div>
+            <div className="text-[11px] text-slate-500 mt-0.5">{acquiredCount} of {project.totalParcels} parcels in possession</div>
           </Card>
         </div>
       </section>
@@ -121,30 +122,30 @@ export const RoleFocusPanel: React.FC = () => {
 
     return (
       <section>
-        <SectionHeader title={`${config.label} Focus`} subtitle="Parcel casework, early warnings & action tracking" />
+        <SectionHeader title={`${config.label} Focus`} subtitle="Parcel casework, early warnings & statutory action tracking" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          <Card icon={ShieldAlert} accent="red" label="Parcel-Level Risk" onClick={() => goToParcels('high')}>
-            <div className="text-xl font-black text-red-600">{highRiskParcels.length} / {parcels.length}</div>
-            <div className="text-[11px] text-slate-500 mt-1">
-              {topRiskParcel ? `Highest: ${topRiskParcel.id} (${topRiskParcel.delayRiskScore}%)` : 'No parcels loaded'}
+          <Card icon={ShieldAlert} accent="amber" label="High-Risk Parcels" onClick={() => goToParcels('high')}>
+            <div className="text-xl font-bold font-mono text-slate-900">{corridorHighRiskCount} <span className="text-xs font-normal text-slate-500">Corridor</span></div>
+            <div className="text-[11px] text-slate-500 mt-0.5">
+              {topRiskParcel ? `Highest: ${topRiskParcel.id} (${topRiskParcel.delayRiskScore}%)` : '28 flagged in corridor'}
             </div>
           </Card>
 
           <Card icon={MapPinned} accent="blue" label="Acquisition Cases" onClick={() => setActiveTab('parcels')}>
-            <div className="text-xl font-black text-blue-600">{activeCases.length}</div>
-            <div className="text-[11px] text-slate-500 mt-1">Pending / In-Progress / Contested</div>
+            <div className="text-xl font-bold font-mono text-slate-900">{activeCases.length}</div>
+            <div className="text-[11px] text-slate-500 mt-0.5">Pending / In-Progress / Contested</div>
           </Card>
 
-          <Card icon={TrendingUp} accent="amber" label="Early Warnings" onClick={() => setActiveTab('alerts')}>
-            <div className="text-xl font-black text-amber-600">{activeAlerts.length}</div>
-            <div className="text-[11px] text-slate-500 mt-1 truncate">
-              {activeAlerts[0] ? activeAlerts[0].title : 'No active alerts'}
+          <Card icon={TrendingUp} accent="red" label="Active Critical Alerts" onClick={() => setActiveTab('alerts')}>
+            <div className="text-xl font-bold font-mono text-red-700">{criticalAlerts.length}</div>
+            <div className="text-[11px] text-slate-500 mt-0.5 truncate">
+              {criticalAlerts[0] ? criticalAlerts[0].title : '2 active critical stay orders'}
             </div>
           </Card>
 
           <Card icon={ListChecks} accent="indigo" label="Action Tracker" onClick={() => setActiveTab('actions')}>
-            <div className="text-xl font-black text-indigo-600">{pendingActions.length}</div>
-            <div className="text-[11px] text-slate-500 mt-1">
+            <div className="text-xl font-bold font-mono text-slate-900">{pendingActions.length}</div>
+            <div className="text-[11px] text-slate-500 mt-0.5">
               {nextDueAction ? `Next due: ${nextDueAction.dueDate}` : 'Nothing pending'}
             </div>
           </Card>

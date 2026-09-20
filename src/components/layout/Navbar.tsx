@@ -3,13 +3,13 @@ import {
   ShieldAlert,
   Bell,
   Search,
-  Sparkles,
   LogOut,
   CheckCircle,
   Landmark,
   RotateCcw,
   SlidersHorizontal,
-  ChevronDown
+  ChevronDown,
+  Menu
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { UserRole } from '../../types';
@@ -19,11 +19,13 @@ import { SystemStatusIndicator } from './SystemStatusIndicator';
 interface NavbarProps {
   onOpenNotifications: () => void;
   onOpenLoginModal: () => void;
+  onToggleSidebar?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
   onOpenNotifications, 
-  onOpenLoginModal 
+  onOpenLoginModal,
+  onToggleSidebar
 }) => {
   const { 
     currentUser, 
@@ -33,8 +35,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     searchQuery, 
     setSearchQuery, 
     unreadNotifsCount,
-    startDemoTour,
-    demoTourActive,
     resetAllData,
     setActiveTab
   } = useApp();
@@ -58,50 +58,62 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-navy-900 border-b border-navy-800 text-white shadow-md">
       {/* Top micro-bar: institutional framing + honest prototype status */}
-      <div className="bg-navy-950 px-4 py-1 flex items-center justify-between gap-3 text-xs text-slate-400 border-b border-navy-800/80">
+      <div className="bg-navy-950 px-4 py-1.5 flex items-center justify-between gap-3 text-[11px] text-slate-400 border-b border-navy-800/80">
         <div className="flex items-center gap-2 min-w-0">
-          <span className="inline-block w-2 h-2 rounded-full bg-blue-400 shrink-0"></span>
-          <span className="font-medium text-slate-300 whitespace-nowrap">GOVERNMENT OF INDIA</span>
-          <span className="text-navy-600 hidden sm:inline">|</span>
-          <span className="hidden sm:inline whitespace-nowrap">Ministry of Road Transport &amp; Highways (MoRTH)</span>
-          <span className="text-navy-600 hidden lg:inline">|</span>
-          <span className="text-blue-300 font-medium hidden lg:inline whitespace-nowrap">PM-GatiShakti Decision Support — Prototype</span>
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+          <span className="font-semibold text-slate-200 tracking-wider text-[10.5px] uppercase whitespace-nowrap">GOVERNMENT OF INDIA</span>
+          <span className="text-slate-600 hidden sm:inline">|</span>
+          <span className="hidden sm:inline whitespace-nowrap text-slate-300">MoRTH · NHAI</span>
+          <span className="text-slate-600 hidden lg:inline">|</span>
+          <span className="text-slate-400 font-medium hidden lg:inline whitespace-nowrap">PM-GatiShakti Decision Support System</span>
         </div>
         <SystemStatusIndicator />
       </div>
 
       {/* Main Navbar */}
       <div className="px-4 lg:px-6 py-2.5 flex items-center justify-between gap-4">
-        {/* Left: Brand Identity */}
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
-          <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center shadow-sm shrink-0">
-            <Landmark className="w-5 h-5 text-white" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-lg font-extrabold tracking-tight text-white">
-                KSHETRA
-              </h1>
-              <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-500/15 text-blue-300 border border-blue-500/30 tracking-wider">
+        {/* Left: Brand Identity & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2.5">
+          {onToggleSidebar && (
+            <button
+              type="button"
+              onClick={onToggleSidebar}
+              className="p-2 -ml-1 text-slate-300 hover:text-white rounded-lg hover:bg-navy-800 lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+              aria-label="Toggle navigation drawer"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          )}
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
+            <div className="w-9 h-9 rounded-lg bg-blue-700 border border-blue-600 flex items-center justify-center shadow-xs shrink-0">
+              <Landmark className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-base lg:text-lg font-bold tracking-tight text-white">
+                  KSHETRA
+                </h1>
+              <span className="px-1.5 py-0.2 rounded text-[9.5px] font-semibold bg-indigo-500/20 text-indigo-200 border border-indigo-400/30 tracking-wider">
                 AI PREDICT
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 font-medium hidden sm:block">
-              Land Acquisition Delay Decision Support System
+            <p className="text-[10.5px] text-slate-400 font-medium hidden sm:block">
+              Land Acquisition Delay Decision Support Console
             </p>
           </div>
         </div>
+      </div>
 
         {/* Center: Global Search Bar */}
-        <form onSubmit={handleSearchSubmit} className="flex-1 max-w-md hidden md:block">
+        <form onSubmit={handleSearchSubmit} className="flex-1 max-w-md lg:max-w-lg hidden md:block">
           <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
-              placeholder="Search Survey No (e.g. 125/2), Parcel ID (P-0245), ULPIN, Owner..."
+              placeholder="Search Survey No, Parcel ID, ULPIN, or Owner..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-24 py-1.5 text-xs bg-navy-800/70 hover:bg-navy-800 focus:bg-navy-900 border border-navy-700 focus:border-blue-500 rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all font-sans"
+              className="w-full pl-9 pr-20 py-1.5 text-xs bg-navy-800/80 hover:bg-navy-800 focus:bg-navy-900 border border-navy-700 focus:border-blue-500 rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all font-sans"
             />
             {searchQuery && (
               <button 
@@ -114,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
             <button 
               type="submit"
-              className="absolute right-1.5 top-1/2 -translate-y-1/2 px-2.5 py-0.5 bg-blue-600 hover:bg-blue-500 text-[11px] font-medium text-white rounded transition-colors"
+              className="absolute right-1 top-1/2 -translate-y-1/2 px-2.5 py-0.5 bg-blue-700 hover:bg-blue-600 text-[10.5px] font-medium text-white rounded transition-colors"
             >
               Search
             </button>
@@ -122,22 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </form>
 
         {/* Right: Actions, Role Selector, Notifications, User */}
-        <div className="flex items-center gap-2.5">
-          {/* Guided Demo Button */}
-          <button
-            onClick={startDemoTour}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all border ${
-              demoTourActive
-                ? 'bg-blue-600 text-white border-blue-500 shadow-sm'
-                : 'bg-white/5 hover:bg-white/10 text-slate-200 border-white/10'
-            }`}
-            title="Start Interactive 20-Step Evaluation Walkthrough"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-blue-300" />
-            <span className="hidden sm:inline">Guided Demo Tour</span>
-            <span className="sm:hidden">Demo</span>
-          </button>
-
+        <div className="flex items-center gap-2">
           {/* Role Switcher Dropdown */}
           <div className="relative">
             <button

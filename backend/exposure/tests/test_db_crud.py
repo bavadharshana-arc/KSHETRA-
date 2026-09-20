@@ -76,6 +76,7 @@ def _insert_raw(
     exposure_score=40.0,
     exposure_band="MODERATE",
     project_id=None,
+    parcel_id=None,
     created_at=None,
 ):
     """Directly constructs a minimal `ExposureAssessmentRecord` for tests
@@ -84,6 +85,7 @@ def _insert_raw(
         id=id_,
         case_reference=case_reference,
         project_id=project_id,
+        parcel_id=parcel_id,
         exposure_score=exposure_score,
         exposure_band=exposure_band,
         priority_score=priority_score,
@@ -178,6 +180,111 @@ class LatestOnlyTests(unittest.TestCase):
         )
         results = db_crud.list_exposure_assessments(self.db, case_reference="CASE-HIST", latest_only=False)
         self.assertEqual(len(results), 2)
+
+
+class MultiParcelProjectAggregationTests(unittest.TestCase):
+    """Step 8C-B.5 regression coverage: multiple parcels of the SAME project
+    share one `case_reference` (== project_id, by this codebase's own
+    one-project-one-case convention). Before the fix, `latest_only=True`
+    grouped by `case_reference` alone and silently collapsed every parcel
+    down to whichever one was computed most recently -- these tests assert
+    that a project-scoped query now returns every parcel's own latest
+    assessment, while an already-parcel-scoped query is unaffected."""
+
+    def setUp(self):
+        self.db, self._engine = _make_session()
+
+    def tearDown(self):
+        self.db.close()
+        self._engine.dispose()
+
+    def test_project_scoped_query_returns_every_parcel_not_just_the_latest(self):
+        _insert_raw(
+            self.db, id_="EXP-P1", case_reference="PROJ-X", project_id="PROJ-X", parcel_id="P-1",
+            priority_score=20.0, priority_band="MONITOR",
+            created_at=datetime(2026, 1, 1, tzinfo=timezone.utc),
+        )
+        _insert_raw(
+            self.db, id_="EXP-P2", case_reference="PROJ-X", project_id="PROJ-X", parcel_id="P-2",
+            priority_score=80.0, priority_band="ACT_NOW",
+            created_at=datetime(2026, 2, 1, tzinfo=timezone.utc),
+        )
+        _insert_raw(
+            self.db, id_="EXP-P3", case_reference="PROJ-X", project_id="PROJ-X", parcel_id="P-3",
+            priority_score=50.0, priority_band="SOON",
+            created_at=datetime(2026, 3, 1, tzinfo=timezone.utc),  # the most recently computed of the three
+        )
+
+        results = db_crud.list_exposure_assessments(self.db, project_id="PROJ-X", latest_only=True)
+        self.assertEqual({r.id for r in results}, {"EXP-P1", "EXP-P2", "EXP-P3"})
+
+    def test_reruns_for_one_parcel_still_collapse_to_its_own_latest(self):
+        _insert_raw(
+            self.db, id_="EXP-P1-OLD", case_reference="PROJ-Y", project_id="PROJ-Y", parcel_id="P-1",
+            priority_score=20.0, priority_band="MONITOR",
+            created_at=datetime(2026, 1, 1, tzinfo=timezone.utc),
+        )
+        _insert_raw(
+            self.db, id_="EXP-P1-NEW", case_reference="PROJ-Y", project_id="PROJ-Y", parcel_id="P-1",
+            priority_score=25.0, priority_band="MONITOR",
+            created_at=datetime(2026, 2, 1, tzinfo=timezone.utc),
+        )
+        _insert_raw(
+            self.db, id_="EXP-P2", case_reference="PROJ-Y", project_id="PROJ-Y", parcel_id="P-2",
+            priority_score=80.0, priority_band="ACT_NOW",
+            created_at=datetime(2026, 1, 15, tzinfo=timezone.utc),
+        )
+
+        results = db_crud.list_exposure_assessments(self.db, project_id="PROJ-Y", latest_only=True)
+        self.assertEqual({r.id for r in results}, {"EXP-P1-NEW", "EXP-P2"})
+
+    def test_parcel_scoped_query_is_unaffected_by_the_fix(self):
+        _insert_raw(
+            self.db, id_="EXP-P1", case_reference="PROJ-Z", project_id="PROJ-Z", parcel_id="P-1",
+            priority_score=20.0, priority_band="MONITOR",
+        )
+        _insert_raw(
+            self.db, id_="EXP-P2", case_reference="PROJ-Z", project_id="PROJ-Z", parcel_id="P-2",
+            priority_score=80.0, priority_band="ACT_NOW",
+        )
+        results = db_crud.list_exposure_assessments(self.db, parcel_id="P-1", latest_only=True)
+        self.assertEqual([r.id for r in results], ["EXP-P1"])
+
+    def test_priority_queue_ranks_every_parcel_of_a_project(self):
+        _insert_raw(
+            self.db, id_="EXP-LOW", case_reference="PROJ-Q", project_id="PROJ-Q", parcel_id="P-1",
+            priority_score=20.0, priority_band="MONITOR",
+        )
+        _insert_raw(
+            self.db, id_="EXP-HIGH", case_reference="PROJ-Q", project_id="PROJ-Q", parcel_id="P-2",
+            priority_score=90.0, priority_band="ACT_NOW",
+        )
+        results = db_crud.priority_queue(self.db, project_id="PROJ-Q")
+        self.assertEqual([r.id for r in results], ["EXP-HIGH", "EXP-LOW"])
+
+    def test_get_latest_project_assessment_ignores_parcel_scoped_rows(self):
+        """A project with only parcel-scoped assessments (no genuine
+        project-level row) must honestly report None -- never silently
+        substitute one arbitrary parcel's result as "the project's"."""
+        _insert_raw(
+            self.db, id_="EXP-P1", case_reference="PROJ-R", project_id="PROJ-R", parcel_id="P-1",
+            priority_score=90.0, priority_band="ACT_NOW",
+        )
+        self.assertIsNone(db_crud.get_latest_project_assessment(self.db, "PROJ-R"))
+
+    def test_get_latest_project_assessment_finds_genuine_project_level_row_among_parcel_rows(self):
+        _insert_raw(
+            self.db, id_="EXP-P1", case_reference="PROJ-S", project_id="PROJ-S", parcel_id="P-1",
+            priority_score=90.0, priority_band="ACT_NOW",
+            created_at=datetime(2026, 3, 1, tzinfo=timezone.utc),
+        )
+        _insert_raw(
+            self.db, id_="EXP-PROJ", case_reference="PROJ-S", project_id="PROJ-S", parcel_id=None,
+            priority_score=40.0, priority_band="SOON",
+            created_at=datetime(2026, 1, 1, tzinfo=timezone.utc),
+        )
+        result = db_crud.get_latest_project_assessment(self.db, "PROJ-S")
+        self.assertEqual(result.id, "EXP-PROJ")
 
 
 class MinBandFilterTests(unittest.TestCase):

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   X,
   MapPin,
@@ -13,11 +13,25 @@ import {
   FileCheck,
   Printer,
   Sparkles,
-  TrendingDown
+  TrendingDown,
+  ListChecks,
+  Clock,
+  ShieldCheck,
+  ShieldAlert
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { Parcel, CaseAction, ShapFactor } from '../../types';
 import { simulateWhatIfScenario } from '../../services/predictionEngine';
+import { getParcelLatestExposure } from '../../services/exposureService';
+import type { ExposureAssessmentWithContext } from '../../types/exposure';
+import { ExposurePriorityCard } from '../exposure/ExposurePriorityCard';
+import { ParcelBlockersCard } from '../legal/ParcelBlockersCard';
+import { CaseStoryStrip } from './CaseStoryStrip';
+import { useConstructionReadiness } from '../../hooks/useConstructionReadiness';
+import { getParcelClocks } from '../../services/legalService';
+import type { StatutoryClockResult } from '../../types/legal';
+import { StatutoryClockCard } from '../legal/StatutoryClockCard';
+import { SectionHeading } from '../ui';
 
 export const ParcelDetailModal: React.FC = () => {
   const {
@@ -35,7 +49,8 @@ export const ParcelDetailModal: React.FC = () => {
     runProjectDelayPrediction,
     projectPrediction,
     isProjectPredicting,
-    projectPredictionError
+    projectPredictionError,
+    recordFieldVerification
   } = useApp();
 
   const [activeTab, setActiveTabLocal] = useState<'overview' | 'govrecords' | 'ecourts' | 'ai' | 'whatif' | 'actions'>('overview');
@@ -43,18 +58,96 @@ export const ParcelDetailModal: React.FC = () => {
   const [showAssignModal, setShowAssignModal] = useState<boolean>(false);
   
   // Assign Action Form State
-  const [actionTitle, setActionTitle] = useState<string>('File Petition to Vacate Civil Stay & Deposit Award in LA-RA Authority');
+  const [actionTitle, setActionTitle] = useState<string>('');
   const [actionType, setActionType] = useState<CaseAction['actionType']>('Legal Verification');
-  const [assignedOfficer, setAssignedOfficer] = useState<string>('Thiru. M. Senthil Kumar, DRO');
+  const [assignedOfficer, setAssignedOfficer] = useState<string>('');
   const [assignedPriority, setAssignedPriority] = useState<CaseAction['priority']>('CRITICAL');
-  const [actionDueDate, setActionDueDate] = useState<string>('2026-08-28');
-  const [actionNotes, setActionNotes] = useState<string>('Instruct Government Pleader Omalur to submit counter-affidavit citing Supreme Court NHAI acquisition precedence.');
+  const [actionDueDate, setActionDueDate] = useState<string>('');
+  const [actionNotes, setActionNotes] = useState<string>('');
 
   // What-If Simulation Sandbox State
+  const readiness = useConstructionReadiness();
+  const [showVerifyForm, setShowVerifyForm] = useState<boolean>(false);
+  const [verifyNotes, setVerifyNotes] = useState<string>('');
+  const [verifyPhoto, setVerifyPhoto] = useState<boolean>(false);
   const [simLitigation, setSimLitigation] = useState<boolean>(false);
   const [simMutation, setSimMutation] = useState<boolean>(false);
   const [simCompensation, setSimCompensation] = useState<boolean>(false);
   const [simDocVerification, setSimDocVerification] = useState<boolean>(false);
+
+  // Exposure & Priority (Step 8C-B.4) — this parcel's own latest assessment,
+  // fetched via exposureService.ts (never a direct fetch call). Declared
+  // before the `!selectedParcel` early return below so this hook is called
+  // unconditionally on every render, per the Rules of Hooks; the effect
+  // itself no-ops when there is no selected parcel.
+  const [parcelExposure, setParcelExposure] = useState<ExposureAssessmentWithContext | null>(null);
+  const [exposureLoading, setExposureLoading] = useState<boolean>(false);
+  const [exposureError, setExposureError] = useState<string | null>(null);
+  const selectedParcelId = selectedParcel?.id;
+
+  const loadParcelExposure = useCallback((parcelId: string, signal: { cancelled: boolean }) => {
+    setExposureLoading(true);
+    setExposureError(null);
+    getParcelLatestExposure(parcelId)
+      .then((result) => {
+        if (!signal.cancelled) setParcelExposure(result);
+      })
+      .catch((err: unknown) => {
+        if (signal.cancelled) return;
+        setParcelExposure(null);
+        setExposureError(
+          err instanceof Error ? err.message : 'Could not reach the KSHETRA exposure & priority service.'
+        );
+      })
+      .finally(() => {
+        if (!signal.cancelled) setExposureLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!selectedParcelId) return;
+    const signal = { cancelled: false };
+    loadParcelExposure(selectedParcelId, signal);
+    return () => {
+      signal.cancelled = true;
+    };
+  }, [selectedParcelId, loadParcelExposure]);
+
+  // Statutory Clock (frontend-completion gap close) — this parcel's own
+  // clock(s), fetched via legalService.ts (GET /api/legal/clocks, never a
+  // direct fetch). Same declared-before-early-return / cancellation pattern
+  // as the exposure fetch above, since this hook must run unconditionally.
+  const [parcelClocks, setParcelClocks] = useState<StatutoryClockResult[] | null>(null);
+  const [clocksLoading, setClocksLoading] = useState<boolean>(false);
+  const [clocksError, setClocksError] = useState<string | null>(null);
+
+  const loadParcelClocks = useCallback((parcelId: string, signal: { cancelled: boolean }) => {
+    setClocksLoading(true);
+    setClocksError(null);
+    getParcelClocks(parcelId)
+      .then((result) => {
+        if (!signal.cancelled) setParcelClocks(result);
+      })
+      .catch((err: unknown) => {
+        if (signal.cancelled) return;
+        setParcelClocks(null);
+        setClocksError(
+          err instanceof Error ? err.message : 'Could not reach the KSHETRA statutory clock service.'
+        );
+      })
+      .finally(() => {
+        if (!signal.cancelled) setClocksLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!selectedParcelId) return;
+    const signal = { cancelled: false };
+    loadParcelClocks(selectedParcelId, signal);
+    return () => {
+      signal.cancelled = true;
+    };
+  }, [selectedParcelId, loadParcelClocks]);
 
   if (!selectedParcel) return null;
 
@@ -102,7 +195,7 @@ export const ParcelDetailModal: React.FC = () => {
       status: 'In Progress',
       dueDate: actionDueDate,
       notes: actionNotes,
-      targetDelayReductionMonths: parcel.potentialReductionMonths || 2.5
+      targetDelayReductionMonths: parcel.potentialReductionMonths || 0
     });
     setShowAssignModal(false);
     setActiveTabLocal('actions');
@@ -294,33 +387,62 @@ export const ParcelDetailModal: React.FC = () => {
           {/* TAB 1: OVERVIEW */}
           {activeTab === 'overview' && (
             <div className="space-y-6">
-              {/* Top Warning Banner for High Risk */}
+              <CaseStoryStrip parcel={parcel} clocks={parcelClocks} exposure={parcelExposure} actions={parcelActions} readiness={readiness} />
+
+              {/* Top Contained Notice for Risk / Litigation */}
               {isHigh && (
-                <div className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start justify-between gap-3">
-                  <div className="flex items-start gap-3">
-                    <AlertTriangle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                <div className={`p-3.5 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+                  parcel.courtRecord?.interimInjunction || parcel.courtCaseStatus?.toLowerCase().includes('stay')
+                    ? 'bg-red-50/70 border-red-200 text-red-900'
+                    : 'bg-amber-50/70 border-amber-200 text-amber-900'
+                }`}>
+                  <div className="flex items-start gap-2.5">
+                    <AlertTriangle className={`w-4 h-4 shrink-0 mt-0.5 ${
+                      parcel.courtRecord?.interimInjunction || parcel.courtCaseStatus?.toLowerCase().includes('stay')
+                        ? 'text-red-700'
+                        : 'text-amber-700'
+                    }`} />
                     <div>
-                      <h4 className="font-bold text-sm text-red-800">
-                        HIGH-RISK PARCEL — catalogued indicator: {parcel.delayRiskScore}% risk score
-                      </h4>
-                      <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                        This is a parcel-level indicator from the case register, not an AI prediction. The official
-                        AI delay prediction is produced for the whole acquisition project.
-                      </p>
-                      <div className="mt-2 text-xs font-semibold text-amber-800">
-                        Suggested focus: {parcel.recommendedAction}
+                      <div className="font-bold text-xs">
+                        {parcel.courtRecord?.interimInjunction || parcel.courtCaseStatus?.toLowerCase().includes('stay')
+                          ? 'ACTIVE CIVIL STAY ORDER DETECTED — Urgent legal vacation required'
+                          : `HIGH DELAY RISK ATTENTION — Catalogued indicator: ${parcel.delayRiskScore}%`}
                       </div>
+                      <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
+                        Suggested priority action: <strong className="text-slate-800">{parcel.recommendedAction}</strong>
+                      </p>
                     </div>
                   </div>
 
                   <button
                     onClick={() => setActiveTabLocal('ai')}
-                    className="px-3 py-1.5 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-lg shrink-0 transition-colors"
+                    className="px-3 py-1.5 bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold rounded-lg shrink-0 transition-colors self-start sm:self-auto"
                   >
-                    View Project AI Prediction
+                    View Project AI Forecast
                   </button>
                 </div>
               )}
+
+              {/* Statutory Clock — a SEPARATE, deterministic engine result
+                  (backend/legal, read-only) from the AI prediction shown in
+                  the "Project AI Prediction" tab. Every date/day-count here
+                  is rendered verbatim from the backend's own computed clock;
+                  no legal calculation happens in the frontend. */}
+              <div>
+                <SectionHeading
+                  icon={Clock}
+                  color="indigo"
+                  title="Statutory Clock"
+                  subtitle="Deterministic deadline engine for this parcel's case — separate from the AI prediction"
+                  className="mb-2.5"
+                />
+                <StatutoryClockCard
+                  clocks={parcelClocks}
+                  loading={clocksLoading}
+                  error={clocksError}
+                  onRetry={() => selectedParcelId && loadParcelClocks(selectedParcelId, { cancelled: false })}
+                />
+              </div>
 
               {/* Grid of Key Attributes */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -426,6 +548,85 @@ export const ParcelDetailModal: React.FC = () => {
                       {owner}
                     </span>
                   ))}
+                </div>
+              </div>
+
+              {/* Field Verification — Parcel.fieldVerified / fieldVerificationNotes /
+                  evidencePhotoAttached / fieldVerifiedAt already existed on the type
+                  but were never rendered anywhere in the app before this. */}
+              <div className={`p-4 rounded-xl border flex items-start gap-3 ${
+                parcel.fieldVerified ? 'bg-emerald-50/60 border-emerald-200' : 'bg-slate-50 border-slate-200'
+              }`}>
+                <ShieldCheck className={`w-5 h-5 shrink-0 mt-0.5 ${parcel.fieldVerified ? 'text-emerald-600' : 'text-slate-400'}`} />
+                <div className="flex-1 text-xs">
+                  <div className="font-bold text-slate-800">
+                    Field Verification: {parcel.fieldVerified ? 'Verified' : 'Not yet field-verified'}
+                  </div>
+                  <div className="text-slate-500 mt-0.5 space-y-0.5">
+                    {parcel.fieldVerified ? (
+                      <>
+                        <div>
+                          {parcel.fieldVerifiedAt ? `Verified on ${parcel.fieldVerifiedAt}` : 'Verification date not recorded'}
+                          {' · '}
+                          Evidence photo: {parcel.evidencePhotoAttached ? 'Attached' : 'Not attached'}
+                        </div>
+                        {parcel.fieldVerificationNotes && (
+                          <div className="italic text-slate-600">"{parcel.fieldVerificationNotes}"</div>
+                        )}
+                      </>
+                    ) : (
+                      <div>No field officer has confirmed this parcel's on-ground status yet.</div>
+                    )}
+                  </div>
+
+                  {showVerifyForm ? (
+                    <form
+                      className="mt-3 space-y-2"
+                      onSubmit={async (e) => {
+                        e.preventDefault();
+                        await recordFieldVerification(parcel.id, { verified: true, notes: verifyNotes, evidencePhotoAttached: verifyPhoto });
+                        setShowVerifyForm(false);
+                      }}
+                    >
+                      <label htmlFor="verify-notes" className="block font-semibold text-slate-700">Verification notes</label>
+                      <textarea
+                        id="verify-notes"
+                        value={verifyNotes}
+                        onChange={(e) => setVerifyNotes(e.target.value)}
+                        rows={2}
+                        required
+                        placeholder="What was confirmed on the ground (boundary, occupant, encumbrance)?"
+                        className="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
+                      />
+                      <label className="flex items-center gap-2 text-slate-700">
+                        <input type="checkbox" checked={verifyPhoto} onChange={(e) => setVerifyPhoto(e.target.checked)} className="w-4 h-4 rounded border-slate-300" />
+                        <span>Photo evidence is on file (reference flag only; this app does not store image files)</span>
+                      </label>
+                      <div className="flex gap-2">
+                        <button type="submit" className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg font-medium">Save verification</button>
+                        <button type="button" onClick={() => setShowVerifyForm(false)} className="px-3 py-1.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 rounded-lg font-medium">Cancel</button>
+                      </div>
+                    </form>
+                  ) : (
+                    <div className="mt-3 flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => { setVerifyNotes(parcel.fieldVerificationNotes || ''); setVerifyPhoto(!!parcel.evidencePhotoAttached); setShowVerifyForm(true); }}
+                        className="px-3 py-1.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 rounded-lg font-medium"
+                      >
+                        {parcel.fieldVerified ? 'Update verification' : 'Record field verification'}
+                      </button>
+                      {parcel.fieldVerified && (
+                        <button
+                          type="button"
+                          onClick={() => recordFieldVerification(parcel.id, { verified: false })}
+                          className="px-3 py-1.5 bg-white border border-slate-300 hover:bg-rose-50 text-rose-800 rounded-lg font-medium"
+                        >
+                          Clear verification
+                        </button>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -765,6 +966,40 @@ export const ParcelDetailModal: React.FC = () => {
                   </div>
                 </>
               )}
+
+              {/* Exposure & Priority (Step 8C-B.4) — a SEPARATE, deterministic
+                  rule-based result (statutory clock -> blocker -> exposure ->
+                  priority -> owner/action), never merged into the AI
+                  prediction score above. This section does not depend on
+                  projectPrediction existing — it renders whenever this
+                  parcel has its own Exposure & Priority engine result. */}
+              <div className="pt-2 border-t border-slate-200">
+                <SectionHeading
+                  icon={ShieldAlert}
+                  color="indigo"
+                  title="Blockers, Evidence & Owner"
+                  subtitle="B1–B4 blockers from the blocker engine, with evidence and the responsible owner"
+                  className="mb-3"
+                />
+                <ParcelBlockersCard parcelId={parcel.id} compact />
+              </div>
+
+              <div className="pt-2 border-t border-slate-200">
+                <SectionHeading
+                  icon={ListChecks}
+                  color="indigo"
+                  title="Exposure & Priority Assessment"
+                  subtitle="Deterministic engine output for this parcel — separate from the AI prediction above"
+                  className="mb-3"
+                />
+                <ExposurePriorityCard
+                  assessment={parcelExposure}
+                  loading={exposureLoading}
+                  error={exposureError}
+                  onRetry={() => selectedParcelId && loadParcelExposure(selectedParcelId, { cancelled: false })}
+                  emptyMessage="No Exposure & Priority assessment computed for this case yet."
+                />
+              </div>
             </div>
           )}
 
@@ -1008,6 +1243,7 @@ export const ParcelDetailModal: React.FC = () => {
                   type="text"
                   value={actionTitle}
                   onChange={(e) => setActionTitle(e.target.value)}
+                  placeholder="e.g. File petition to vacate stay"
                   className="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900"
                   required
                 />
@@ -1036,6 +1272,7 @@ export const ParcelDetailModal: React.FC = () => {
                     type="text"
                     value={assignedOfficer}
                     onChange={(e) => setAssignedOfficer(e.target.value)}
+                    placeholder="Officer name / designation"
                     className="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900"
                     required
                   />

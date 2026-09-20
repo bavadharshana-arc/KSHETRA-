@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import L from 'leaflet';
-import { 
-  Eye, 
-  AlertTriangle, 
-  RotateCcw, 
+import * as turf from '@turf/turf';
+import {
+  Eye,
+  AlertTriangle,
+  RotateCcw,
   Search,
   Check,
   X,
@@ -14,11 +15,34 @@ import {
   MousePointerClick,
   Plus,
   Undo2,
-  Redo2
+  Redo2,
+  Layers
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { Parcel } from '../../types';
 import { AlignmentPointsPanel } from './AlignmentPointsPanel';
+import parcelsGeoJsonRaw from '../../data/geo/parcels.geojson?raw';
+import {
+  joinParcelGeometryToIntelligence,
+  type ParcelGeoFeatureCollection,
+  type ParcelMapFeature,
+} from '../../data/geo/parcelIntelligence';
+import {
+  describeConstructionImpact,
+  NOMINAL_ROW_WIDTH_METERS,
+  PROXIMITY_BUFFER_METERS
+} from '../../data/geo/corridorRelation';
+
+// Parsed once at module load — see src/data/geo/README.md for the full
+// architecture. `?raw` (a core Vite feature) avoids needing any bundler
+// config change to teach it the `.geojson` extension; these are ordinary
+// JSON text files under the hood.
+const PARCELS_GEOJSON: ParcelGeoFeatureCollection = JSON.parse(parcelsGeoJsonRaw);
+
+import { ProjectAssessmentPanel } from './ProjectAssessmentPanel';
+import { MapParcelIntel } from './MapParcelIntel';
+import { labelPriority, labelSize, placeLabel } from '../../data/geo/labelLayout';
+import { useConstructionReadiness } from '../../hooks/useConstructionReadiness';
 
 export const GisMapView: React.FC = () => {
   const { 
@@ -34,9 +58,12 @@ export const GisMapView: React.FC = () => {
     commitRouteDraft,
     undoAlignment,
     redoAlignment,
-    canUndoAlignment,
-    canRedoAlignment
+        canUndoAlignment,
+    canRedoAlignment,
+    alignments,
+    settings
   } = useApp();
+  const readiness = useConstructionReadiness();
 
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
@@ -47,8 +74,45 @@ export const GisMapView: React.FC = () => {
   const [selectedMapParcel, setSelectedMapParcel] = useState<Parcel | null>(null);
   const [mapFilter, setMapFilter] = useState<'all' | 'high' | 'medium' | 'low'>('all');
   const [mapSearch, setMapSearch] = useState<string>('');
-  const [basemap, setBasemap] = useState<'standard' | 'satellite' | 'dark'>('standard');
+  const [basemap, setBasemap] = useState<'standard' | 'satellite' | 'dark'>('satellite');
   const [showCorridorBuffer, setShowCorridorBuffer] = useState<boolean>(true);
+    const [legendCollapsed, setLegendCollapsed] = useState<boolean>(false);
+  const [showReadiness, setShowReadiness] = useState<boolean>(true);
+
+  // GIS parcel geometry (src/data/geo/parcels.geojson) joined to the real,
+  // canonical Parcel intelligence records already in AppContext — geometry
+  // and AI/KSHETRA intelligence are two separate sources, combined here by
+  // parcel_id only, never duplicated. See src/data/geo/README.md.
+  const joinedParcels: ParcelMapFeature[] = useMemo(
+    () => joinParcelGeometryToIntelligence(PARCELS_GEOJSON, parcels),
+    [parcels]
+  );
+
+  // The corridor centerline split into real, haversine-measured legs, and
+  // which of those legs each parcel is genuinely spatially closest to
+  // (within a documented influence buffer) — a real turf.js computation
+  // over actual coordinates every time, never a hardcoded "parcel X
+  // affects segment Y" assertion.
+    const projectAlignments = useMemo(() => alignments.filter(a => a.projectId === project.id), [alignments, project.id]);
+  const activeAlignment = useMemo(
+    () => projectAlignments.find(a => JSON.stringify(a.pathCoordinates) === JSON.stringify(project.corridorPath)) || null,
+    [projectAlignments, project.corridorPath]
+  );
+  const recommendedAlignment = projectAlignments.find(a => a.isRecommended) || null;
+
+  // Keep the selected parcel in step with the live record (risk band, status).
+  useEffect(() => {
+    setSelectedMapParcel(prev => {
+      if (!prev) return prev;
+      const live = parcels.find(p => p.id === prev.id);
+      return live && live !== prev ? live : prev;
+    });
+  }, [parcels]);
+
+  // Spatial truth for every parcel comes from the readiness hook (geometry
+  // overlap with the ACTIVE route's nominal ROW). Nearest-leg is never used
+  // as evidence of impact.
+  const selectedRelation = selectedMapParcel && readiness.available ? readiness.relations[selectedMapParcel.id] : undefined;
 
   // Initialize Leaflet Map
   useEffect(() => {
@@ -77,6 +141,21 @@ export const GisMapView: React.FC = () => {
       polygonsLayerGroupRef.current = polygonsGroup;
       corridorLayerGroupRef.current = corridorGroup;
       routeEditLayerGroupRef.current = routeEditGroup;
+
+      // Ensure tiles render across view switches and resize
+      const timer = setTimeout(() => {
+        map.invalidateSize();
+      }, 150);
+
+      const handleResize = () => {
+        map.invalidateSize();
+      };
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener('resize', handleResize);
+      };
     }
   }, []);
 
@@ -102,7 +181,19 @@ export const GisMapView: React.FC = () => {
       attribution = '&copy; CARTO';
     }
 
-    L.tileLayer(tileUrl, { attribution }).addTo(map);
+        L.tileLayer(tileUrl, { attribution }).addTo(map);
+
+    // Keep imagery a quiet background: flatten contrast/saturation so terrain
+    // shading doesn't compete with the cadastral overlays, and add a roads
+    // reference layer for orientation.
+    const tilePane = map.getPane('tilePane');
+    if (tilePane) tilePane.style.filter = basemap === 'satellite' ? 'saturate(0.7) brightness(0.9) contrast(0.88)' : '';
+    if (basemap === 'satellite') {
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}', {
+        opacity: 0.7,
+        pane: 'overlayPane'
+      }).addTo(map).bringToBack();
+    }
   }, [basemap]);
 
   // Fit map bounds when project changes or when draft route is initiated
@@ -113,6 +204,11 @@ export const GisMapView: React.FC = () => {
     if (routeEditState?.active && routeEditState.routeCoords && routeEditState.routeCoords.length > 1) {
       const bounds = L.latLngBounds(routeEditState.routeCoords);
       map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
+        } else if (!routeEditState?.active && joinedParcels.length > 0) {
+      // Frame the surveyed parcels (and the corridor running through them) so
+      // the cadastral polygons are legible; "Fit Corridor" shows the full route.
+      const b = L.geoJSON(joinedParcels.map(jp => jp.feature) as never).getBounds().pad(0.3);
+      if (b.isValid()) map.fitBounds(b, { padding: [30, 30], maxZoom: 15 });
     } else if (!routeEditState?.active && project.corridorPath && project.corridorPath.length > 1) {
       const bounds = L.latLngBounds(project.corridorPath);
       map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
@@ -348,116 +444,292 @@ export const GisMapView: React.FC = () => {
     polygonsGroup.clearLayers();
     corridorGroup.clearLayers();
 
-    // 1. Draw Corridor Route
-    if (project.corridorPath && project.corridorPath.length > 1) {
-      const corridorLine = L.polyline(project.corridorPath, {
-        color: '#2563EB',
-        weight: 5,
-        opacity: 0.85,
-        dashArray: '8, 6'
-      });
-      corridorLine.bindTooltip(`${project.name} (${project.code}) Centerline`, { sticky: true });
-      corridorGroup.addLayer(corridorLine);
+        // Overlay intelligence (labels / callouts / zoom-out locator rings) is laid
+    // out in screen space with collision avoidance after everything is drawn.
+    type LatLngT = [number, number];
+    const calloutCandidates: { a: LatLngT; b: LatLngT; c: LatLngT; color: string; word: string; text: string }[] = [];
+    const labelCandidates: { id: string; at: LatLngT; color: string; priority: number; sub?: string; parcel: Parcel }[] = [];
+    const ringCandidates: { at: LatLngT; color: string; parcel: Parcel }[] = [];
 
-      // Draw Corridor 60m RoW buffer outline if enabled
+    // 1. Draw Corridor Route (real Project.corridorPath — unchanged from
+    // before; route editing/AlignmentPointsPanel still depends on this
+    // exact rendering, so it is left untouched).
+    if (project.corridorPath && project.corridorPath.length > 1) {
+      // Active route drawn as a right-of-way: wide dark casing, slate body,
+      // white dashed centreline (road-marking style). Status segments are
+      // drawn on top of the body further below.
+      corridorGroup.addLayer(L.polyline(project.corridorPath, { color: '#FFFFFF', weight: 22, opacity: 0.16, interactive: false }));
+      corridorGroup.addLayer(L.polyline(project.corridorPath, { color: '#020617', weight: 17, opacity: 0.78, interactive: false }));
+      const corridorLine = L.polyline(project.corridorPath, {
+        color: '#334155',
+        weight: 11,
+        opacity: 0.95
+      });
+      corridorLine.bindTooltip(`${project.name} (${project.code}) · active alignment`, { sticky: true });
+      corridorGroup.addLayer(corridorLine);
+      corridorGroup.addLayer(L.polyline(project.corridorPath, { color: '#F8FAFC', weight: 1.5, opacity: 0.85, dashArray: '7 9', interactive: false }));
+
+      // Nominal ROW footprint, drawn from the same buffer geometry the impact
+      // calculation uses (planning assumption, not a legal boundary).
       if (showCorridorBuffer) {
-        const corridorBuffer = L.polyline(project.corridorPath, {
-          color: '#3B82F6',
-          weight: 22,
-          opacity: 0.18
-        });
-        corridorGroup.addLayer(corridorBuffer);
+        const rowPoly = turf.buffer(
+          turf.lineString(project.corridorPath.map(([lat, lng]) => [lng, lat])),
+          NOMINAL_ROW_WIDTH_METERS / 2,
+          { units: 'meters' }
+        );
+        if (rowPoly) {
+          corridorGroup.addLayer(
+            L.geoJSON(rowPoly as never, {
+              style: { color: '#93C5FD', weight: 1, opacity: 0.85, dashArray: '4 4', fillColor: '#93C5FD', fillOpacity: 0.14 },
+              interactive: false
+            })
+          );
+        }
+      }
+
+      // 1b. Highlight the corridor stretch that THIS parcel's footprint
+      // actually overlaps (only when the parcel overlaps the nominal ROW).
+      if (selectedMapParcel && selectedRelation && selectedRelation.relation === 'intersects') {
+        const highlightColor = selectedMapParcel.riskLevel === 'high' ? '#DC2626' : selectedMapParcel.riskLevel === 'medium' ? '#D97706' : '#059669';
+        for (const seg of selectedRelation.directSegments) {
+          const hl = L.polyline(seg, { color: highlightColor, weight: 9, opacity: 0.9 });
+          hl.bindTooltip(`Corridor overlapped by ${selectedMapParcel.id} · ${selectedRelation.directLengthKm} km`, { sticky: true });
+          corridorGroup.addLayer(hl);
+        }
       }
     }
 
-    // 2. Draw Parcel Polygons for the selected project
-    const visibleParcels = parcels.filter(p => {
-      if (mapFilter !== 'all' && p.riskLevel !== mapFilter) return false;
+    // 1c. Construction-readiness layer: each corridor leg colored by the worst
+    // risk band among the parcels spatially matched to it (real geometry;
+    // legs with no matched parcel stay uncolored = unsurveyed).
+    if (showReadiness && readiness.available) {
+      const drawSegments = (
+        segs: { parcelId: string; lengthKm: number; coords: [number, number][][] }[],
+        color: string,
+        label: string,
+        word: string,
+        totalKm: number
+      ) => {
+        for (const sg of segs) {
+          for (const run of sg.coords) {
+            if (run.length < 2) continue;
+            const seg = L.polyline(run, { color, weight: 7, opacity: 0.95, lineCap: 'butt' });
+            seg.bindTooltip(`${label} · ${sg.parcelId} overlaps ${sg.lengthKm} km of corridor`, { sticky: true });
+            corridorGroup.addLayer(seg);
+          }
+        }
+        // Side callout: anchored on the longest overlapped stretch; totals are the computed sums.
+        if (segs.length === 0 || totalKm <= 0) return;
+        let best: [number, number][] | null = null;
+        for (const sg of segs) for (const run of sg.coords) if (!best || run.length > best.length) best = run;
+        if (!best || best.length < 2) return;
+        const m = Math.floor(best.length / 2);
+        calloutCandidates.push({
+          a: best[m],
+          b: best[Math.max(0, m - 1)],
+          c: best[Math.min(best.length - 1, m + 1)],
+          color,
+          word,
+          text: `${totalKm} km · ${segs.length} parcel${segs.length === 1 ? '' : 's'}`
+        });
+      };
+      drawSegments(readiness.readySegments, '#16A34A', 'Construction-ready', 'READY', readiness.readyKm);
+      drawSegments(readiness.partialSegments, '#F59E0B', 'Partially ready', 'AT RISK', readiness.partialKm);
+      drawSegments(readiness.blockedSegments, '#DC2626', 'Blocked', 'BLOCKED', readiness.blockedKm);
+    }
+
+    // 2. Draw Parcel Polygons — from REAL GeoJSON geometry
+    // (src/data/geo/parcels.geojson), joined to each parcel's real KSHETRA
+    // intelligence record. Geometry and intelligence are two separate
+    // sources (see src/data/geo/README.md); this loop is the one place
+    // they're combined for rendering.
+    const visibleParcels = joinedParcels.filter(jp => {
+      const parcel = jp.intelligence;
+      if (!parcel) return false; // honest skip — no fabricated intelligence for an unmatched geometry feature
+      if (mapFilter !== 'all' && parcel.riskLevel !== mapFilter) return false;
       if (mapSearch.trim()) {
         const q = mapSearch.toLowerCase().trim();
         return (
-          p.id.toLowerCase().includes(q) ||
-          p.surveyNumber.toLowerCase().includes(q) ||
-          p.ownerName.toLowerCase().includes(q) ||
-          p.village.toLowerCase().includes(q) ||
-          (p.topRiskFactor && p.topRiskFactor.toLowerCase().includes(q))
+          parcel.id.toLowerCase().includes(q) ||
+          parcel.surveyNumber.toLowerCase().includes(q) ||
+          parcel.ownerName.toLowerCase().includes(q) ||
+          parcel.village.toLowerCase().includes(q) ||
+          (parcel.topRiskFactor && parcel.topRiskFactor.toLowerCase().includes(q))
         );
       }
       return true;
     });
 
-    visibleParcels.forEach(parcel => {
+    visibleParcels.forEach(jp => {
+      const parcel = jp.intelligence as Parcel;
       const isHigh = parcel.riskLevel === 'high';
       const isMed = parcel.riskLevel === 'medium';
-      
+      const isSelected = parcel.id === selectedMapParcel?.id;
+
       const fillColor = isHigh ? '#EF4444' : isMed ? '#F59E0B' : '#10B981';
       const strokeColor = isHigh ? '#B91C1C' : isMed ? '#B45309' : '#047857';
 
-      const polygon = L.polygon(parcel.mapCoordinates, {
-        color: strokeColor,
-        weight: parcel.id === selectedMapParcel?.id ? 4 : 2,
-        fillColor: fillColor,
-        fillOpacity: parcel.id === selectedMapParcel?.id ? 0.75 : 0.45
+      // Demo georeferenced parcel geometry, rendered via Leaflet's GeoJSON layer
+      // (not a hand-built L.polygon over synthetic point arrays). 20-35%
+      // fill opacity by default so the satellite basemap stays visible;
+      // boosted only when this parcel is the active selection.
+      // Dark halo under every parcel keeps boundaries readable on imagery.
+      polygonsGroup.addLayer(L.geoJSON(jp.feature, { style: { color: '#020617', weight: isSelected ? 7 : 4, opacity: isSelected ? 0.75 : 0.5, fill: false }, interactive: false }));
+      const polygon = L.geoJSON(jp.feature, {
+        style: {
+          color: isSelected ? '#FFFFFF' : strokeColor,
+          weight: isSelected ? 3.5 : 2,
+          fillColor,
+          fillOpacity: isSelected ? 0.55 : 0.38,
+        },
       });
 
-      // Tooltip with problem intelligence
+            const impactText = describeConstructionImpact(readiness.available ? readiness.relations[parcel.id] : undefined, parcel.riskLevel);
       polygon.bindTooltip(`
         <div style="font-family: sans-serif; font-size: 11px; padding: 2px;">
           <strong>${parcel.id} (${parcel.surveyNumber})</strong><br/>
-          Problem: <strong style="color: ${fillColor};">${parcel.topRiskFactor || 'Title Verification'}</strong><br/>
+          Blocker: <strong style="color: ${fillColor};">${parcel.topRiskFactor || 'None on record'}</strong><br/>
           Risk: <span style="color: ${fillColor}; font-weight: bold;">${parcel.delayRiskScore}% (${parcel.riskLevel.toUpperCase()})</span><br/>
-          Owner: ${parcel.ownerName}<br/>
-          Predicted Delay: ${parcel.predictedDelayRange}
+          Status: ${parcel.acquisitionStatus} &bull; Priority: ${parcel.priority}<br/>
+          Construction impact: <strong>${impactText.impact}</strong><br/>
+          Village: ${jp.geometry.village}
         </div>
       `, { sticky: true });
 
-      // Click Event
       polygon.on('click', () => {
         setSelectedMapParcel(parcel);
       });
 
-      polygonsGroup.addLayer(polygon);
+                  polygonsGroup.addLayer(polygon);
 
-      // Center marker
-      const markerHtml = `
-        <div style="
-          background: ${fillColor};
-          color: #ffffff;
-          font-weight: 800;
-          font-size: 9px;
-          padding: 2px 5px;
-          border-radius: 4px;
-          border: 1.5px solid #ffffff;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-          white-space: nowrap;
-          text-align: center;
-        ">
-          ${parcel.surveyNumber}
-        </div>
-      `;
 
-      const customIcon = L.divIcon({
-        className: 'custom-parcel-marker',
-        html: markerHtml,
-        iconSize: [40, 18],
-        iconAnchor: [20, 9]
-      });
-
-      const marker = L.marker(parcel.centerCoordinate, { icon: customIcon });
-      marker.on('click', () => {
-        setSelectedMapParcel(parcel);
-      });
-
-      polygonsGroup.addLayer(marker);
+      // Label marker — anchored to the ACTUAL rendered polygon's centroid
+      // (turf.centroid over the real geometry), not a separate/potentially
+      // -misaligned display field, so the label never reads as
+      // disconnected from its parcel.
+      const centroid = turf.centroid(jp.feature).geometry.coordinates; // [lng, lat]
+      const atLL: LatLngT = [centroid[1], centroid[0]];
+      ringCandidates.push({ at: atLL, color: fillColor, parcel });
+      const onCorridor = readiness.available && readiness.relations[parcel.id]?.relation === 'intersects';
+            const lp = labelPriority({ isSelected, isHigh, intersectsRow: !!onCorridor, isCritical: parcel.priority === 'CRITICAL' });
+      if (lp !== null) {
+        const exposureWord = isHigh ? 'High exposure' : isMed ? 'Medium exposure' : 'Lower exposure';
+        labelCandidates.push({
+          id: parcel.id,
+          at: atLL,
+          color: fillColor,
+          priority: lp,
+          sub: isSelected ? `${exposureWord}${parcel.topRiskFactor ? ' · ' + parcel.topRiskFactor : ''}` : undefined,
+          parcel
+        });
+      }
     });
 
-  }, [parcels, mapFilter, mapSearch, selectedMapParcel, showCorridorBuffer, project, routeEditState]);
+    // ---- Screen-space layout: labels + side callouts with collision avoidance ----
+    const overlay = L.layerGroup().addTo(map);
+    const layout = () => {
+      overlay.clearLayers();
+      const size = map.getSize();
+      const placed: { x: number; y: number; w: number; h: number }[] = [];
+      const hit = (b: { x: number; y: number; w: number; h: number }) =>
+        placed.some(o => b.x < o.x + o.w && b.x + b.w > o.x && b.y < o.y + o.h && b.y + b.h > o.y);
+      const inView = (b: { x: number; y: number; w: number; h: number }) => b.x >= 4 && b.y >= 4 && b.x + b.w <= size.x - 4 && b.y + b.h <= size.y - 4;
+      const toLL = (x: number, y: number): LatLngT => { const ll = map.containerPointToLatLng([x, y]); return [ll.lat, ll.lng]; };
+      const nearestOnBox = (pt: L.Point, b: { x: number; y: number; w: number; h: number }): [number, number] => [
+        Math.min(Math.max(pt.x, b.x), b.x + b.w),
+        Math.min(Math.max(pt.y, b.y), b.y + b.h)
+      ];
+      const leader = (from: L.Point, to: [number, number], color: string) =>
+        overlay.addLayer(L.polyline([toLL(from.x, from.y), toLL(to[0], to[1])], { color, weight: 1.2, opacity: 0.95, interactive: false }));
+
+      // Reserve every parcel anchor so no label sits on top of another parcel.
+      const zoomedOut = map.getZoom() < 15;
+      for (const r of ringCandidates) {
+        const pt = map.latLngToContainerPoint(r.at);
+        placed.push({ x: pt.x - 9, y: pt.y - 9, w: 18, h: 18 });
+      }
+
+      // Locator rings only when zoomed out far enough that a ~100 m parcel is a few pixels.
+      if (zoomedOut) {
+        for (const r of ringCandidates) {
+          const ring = L.circleMarker(r.at, { radius: 6, color: '#FFFFFF', weight: 2, fillColor: r.color, fillOpacity: 0.95 });
+          ring.on('click', () => setSelectedMapParcel(r.parcel));
+          overlay.addLayer(ring);
+        }
+      }
+
+      // Parcel labels (priority order); a label that cannot be placed without overlap is skipped.
+      for (const lb of [...labelCandidates].sort((x, y) => x.priority - y.priority)) {
+        const pt = map.latLngToContainerPoint(lb.at);
+        const { w, h } = labelSize(lb.id, lb.sub);
+        const box = placeLabel(pt, { w, h }, placed, { x: size.x, y: size.y });
+        if (!box) continue;
+        leader(pt, nearestOnBox(pt, box), '#FFFFFF');
+        const html = `<div style="width:${w}px;box-sizing:border-box;background:#fff;color:#0f172a;border:1px solid #64748b;border-left:3px solid ${lb.color};padding:1px 5px;font:700 10px/1.3 system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 1px 2px rgba(0,0,0,.35);">${lb.id}${lb.sub ? `<div style="font-weight:500;font-size:9px;color:#475569;overflow:hidden;text-overflow:ellipsis">${lb.sub}</div>` : ''}</div>`;
+        const m = L.marker(toLL(box.x, box.y), { icon: L.divIcon({ className: 'kshetra-map-label', html, iconSize: [0, 0] }), keyboard: false });
+        m.on('click', () => setSelectedMapParcel(lb.parcel));
+        overlay.addLayer(m);
+      }
+
+      // Corridor status callouts: beside the corridor, joined to the leg by a leader line.
+      for (const c of calloutCandidates) {
+        const pa = map.latLngToContainerPoint(c.a);
+        const p0 = map.latLngToContainerPoint(c.b);
+        const p1 = map.latLngToContainerPoint(c.c);
+        const dx = p1.x - p0.x, dy = p1.y - p0.y;
+        const len = Math.hypot(dx, dy) || 1;
+        const nx = -dy / len, ny = dx / len; // unit normal to the leg
+        const w = Math.max(96, 12 + c.text.length * 5.6), h = 30;
+        let done = false;
+        for (const dist of [64, 96, 128]) {
+          for (const side of [1, -1]) {
+            const cx = pa.x + nx * dist * side, cy = pa.y + ny * dist * side;
+            const box = { x: cx - w / 2, y: cy - h / 2, w, h };
+            if (!inView(box) || hit(box)) continue;
+            placed.push(box);
+            overlay.addLayer(L.circleMarker(c.a, { radius: 3.5, color: '#fff', weight: 1.5, fillColor: c.color, fillOpacity: 1, interactive: false }));
+            leader(pa, nearestOnBox(pa, box), c.color);
+            const html = `<div style="width:${w}px;box-sizing:border-box;background:rgba(255,255,255,.96);border:1px solid #64748b;border-left:3px solid ${c.color};padding:2px 6px;font:600 10px/1.25 system-ui,sans-serif;color:#0f172a;box-shadow:0 1px 2px rgba(0,0,0,.35);white-space:nowrap;"><span style="color:${c.color};font-weight:800;letter-spacing:.04em">${c.word}</span><br/><span style="font-weight:500;color:#334155">${c.text}</span></div>`;
+            overlay.addLayer(L.marker(toLL(box.x, box.y), { icon: L.divIcon({ className: 'kshetra-map-callout', html, iconSize: [0, 0] }), interactive: false, keyboard: false }));
+            done = true;
+            break;
+          }
+          if (done) break;
+        }
+      }
+    };
+    layout();
+    map.on('zoomend moveend', layout);
+    return () => {
+      map.off('zoomend moveend', layout);
+      overlay.remove();
+    };
+
+  }, [joinedParcels, mapFilter, mapSearch, selectedMapParcel, selectedRelation, showCorridorBuffer, project, routeEditState, showReadiness, readiness]);
 
   const handleResetZoom = () => {
     if (mapInstanceRef.current && project.corridorPath && project.corridorPath.length > 1) {
       const bounds = L.latLngBounds(project.corridorPath);
       mapInstanceRef.current.fitBounds(bounds, { padding: [50, 50] });
     }
+  };
+
+    const handleFitParcels = () => {
+    const map = mapInstanceRef.current;
+    if (!map || joinedParcels.length === 0) return;
+    const b = L.geoJSON(joinedParcels.map(jp => jp.feature) as never).getBounds();
+    if (b.isValid()) map.fitBounds(b, { padding: [50, 50], maxZoom: 16 });
+  };
+
+  const handleZoomToParcel = (p: Parcel) => {
+    const jp = joinedParcels.find(x => x.geometry.parcel_id === p.id);
+    const map = mapInstanceRef.current;
+    if (!map) return;
+    if (jp) {
+      const b = L.geoJSON(jp.feature as never).getBounds();
+      if (b.isValid()) { map.fitBounds(b, { padding: [80, 80], maxZoom: 17 }); return; }
+    }
+    map.setView(p.centerCoordinate, 16);
   };
 
   const handleSelectHighRisk = () => {
@@ -536,20 +808,20 @@ export const GisMapView: React.FC = () => {
   };
 
   return (
-    <div className="p-4 lg:p-6 space-y-4 max-w-7xl mx-auto">
+    <div className="px-3 lg:px-4 py-3 space-y-2 max-w-[1600px] mx-auto">
       {/* Header & Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight">
+            <h1 className="text-base lg:text-lg font-bold text-slate-900 tracking-tight">
               Interactive GIS Cadastral &amp; Corridor Map
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200 font-mono">
+            <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200 font-mono">
               {project.code}
             </span>
           </div>
-          <p className="text-xs text-slate-500 mt-1">
-            Displaying <strong className="text-slate-700 font-semibold">{project.name}</strong> &bull; {parcels.length} parcels loaded with DGPS and AI risk layers.
+          <p className="text-[11px] text-slate-500 mt-0.5">
+            Displaying <strong className="text-slate-700 font-semibold">{project.name}</strong> &bull; {parcels.length} parcels loaded, {joinedParcels.length} with demo (synthetic) cadastral geometry.
           </p>
         </div>
 
@@ -557,7 +829,7 @@ export const GisMapView: React.FC = () => {
           {parcels.some(p => p.riskLevel === 'high') && (
             <button
               onClick={handleSelectHighRisk}
-              className="px-3.5 py-2 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-xl shadow-sm flex items-center gap-1.5 transition-colors"
+              className="px-2.5 py-1.5 bg-white hover:bg-red-50 border border-red-200 text-red-700 text-[11px] font-semibold rounded-md flex items-center gap-1.5 transition-colors"
             >
               <AlertTriangle className="w-4 h-4" />
               <span>Focus High-Risk Parcel</span>
@@ -566,13 +838,36 @@ export const GisMapView: React.FC = () => {
 
           <button
             onClick={handleResetZoom}
-            className="px-3 py-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-colors shadow-2xs"
+            className="px-2.5 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-[11px] font-semibold rounded-md flex items-center gap-1.5 transition-colors"
             title="Reset Map View to Corridor Bounds"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>Fit Corridor</span>
+                        <span>Fit Project</span>
+          </button>
+
+          <button
+            onClick={handleFitParcels}
+            disabled={joinedParcels.length === 0}
+            className="px-2.5 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-[11px] font-semibold rounded-md flex items-center gap-1.5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            title={joinedParcels.length === 0 ? 'No parcel geometry to fit' : 'Fit map to all parcels with geometry'}
+          >
+            <MapPin className="w-3.5 h-3.5" />
+            <span>Fit Parcels</span>
           </button>
         </div>
+      </div>
+
+            {/* Active vs recommended route — separately labelled, never conflated */}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] text-slate-600">
+        <span className="text-slate-500">Active route on map:</span>
+        <strong className="text-slate-900">{activeAlignment ? activeAlignment.name : 'Custom / manually edited route (not a listed alignment)'}</strong>
+        <span className="text-slate-300">|</span>
+        <span className="text-slate-500">Model-compared recommendation:</span>
+        <strong className="text-slate-900">
+          {recommendedAlignment
+            ? `${recommendedAlignment.name}${activeAlignment && activeAlignment.id === recommendedAlignment.id ? ' (active)' : ' (not active)'}`
+            : 'None flagged'}
+        </strong>
       </div>
 
       {/* Interactive Map-Driven Route Setup & Point Selection Banner */}
@@ -728,7 +1023,7 @@ export const GisMapView: React.FC = () => {
       )}
 
       {/* Map Filter & Layer Bar */}
-      <div className="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="py-1 flex flex-wrap items-center justify-between gap-2 text-xs">
         {/* Search */}
         <div className="relative flex-1 min-w-[200px] max-w-xs">
           <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -789,7 +1084,18 @@ export const GisMapView: React.FC = () => {
               onChange={(e) => setShowCorridorBuffer(e.target.checked)}
               className="w-3.5 h-3.5 text-blue-600 rounded"
             />
-            <span>60m RoW Buffer</span>
+                        <span>Nominal 60 m ROW</span>
+          </label>
+
+          <label className="flex items-center gap-1.5 cursor-pointer text-slate-600" title={readiness.available ? undefined : readiness.reason}>
+            <input
+              type="checkbox"
+              checked={showReadiness}
+              disabled={!readiness.available}
+              onChange={(e) => setShowReadiness(e.target.checked)}
+              className="w-3.5 h-3.5 text-blue-600 rounded"
+            />
+            <span>Construction readiness</span>
           </label>
 
           <select
@@ -805,31 +1111,67 @@ export const GisMapView: React.FC = () => {
       </div>
 
       {/* Map Container & Sidebar Drawer */}
-      <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-100 h-[620px]">
+      <div className="relative rounded-md overflow-hidden border border-slate-300 bg-slate-100 h-[calc(100vh-190px)] min-h-[580px]">
         {/* Leaflet Map Canvas */}
         <div ref={mapContainerRef} className="w-full h-full z-0" />
 
-        {/* Floating Legend */}
-        <div className="absolute bottom-6 left-6 z-10 bg-white/95 text-slate-700 backdrop-blur-md p-3.5 rounded-xl border border-slate-200 shadow-lg text-xs space-y-2 max-w-xs">
-          <div className="font-bold text-[11px] uppercase tracking-wider text-slate-500">GIS Risk Legend</div>
-          <div className="space-y-1.5 text-[11px]">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded bg-red-500 border border-red-300"></span>
-              <span>High Delay Risk (🔴 &gt;70% - Civil Stay / Disputed)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded bg-amber-500 border border-amber-300"></span>
-              <span>Medium Delay Risk (🟡 40–70% - Mutation / Valuation)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded bg-emerald-500 border border-emerald-300"></span>
-              <span>Low Delay Risk (🟢 &lt;40% - Clear Title)</span>
-            </div>
-            <div className="flex items-center gap-2 pt-1 border-t border-slate-200">
-              <span className="w-4 h-0.5 bg-blue-500 border-b border-dashed border-blue-300"></span>
-              <span>Corridor Route Centerline ({project.code})</span>
-            </div>
+                {joinedParcels.length === 0 && (
+          <div role="status" className="absolute top-4 left-1/2 -translate-x-1/2 z-10 max-w-sm px-4 py-3 rounded-xl border border-amber-200 bg-amber-50/95 text-amber-900 text-xs text-center shadow-md">
+            <strong className="block">No surveyed cadastral geometry available for this project.</strong>
+            Parcel polygons, corridor impact and construction readiness cannot be shown. The route is drawn from the project alignment only.
           </div>
+        )}
+
+        {!selectedMapParcel && <ProjectAssessmentPanel project={project} parcels={parcels} readiness={readiness} geometryCount={joinedParcels.length} />}
+
+        {/* Floating Legend - Anchored inside map container with collapse & scroll behavior */}
+        <div className="absolute bottom-3 left-3 z-10 bg-white/93 text-slate-700 rounded-md border border-slate-300 shadow-sm text-xs w-52 max-h-[calc(100%-1.5rem)] flex flex-col overflow-hidden">
+          <div 
+            onClick={() => setLegendCollapsed(prev => !prev)}
+            className="flex items-center justify-between gap-3 px-2.5 py-1.5 bg-slate-50/80 border-b border-slate-100 cursor-pointer select-none hover:bg-slate-100/80 transition-colors"
+          >
+            <div className="font-bold text-[11px] uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+              <Layers className="w-3.5 h-3.5 text-slate-500" />
+              <span>GIS legend</span>
+            </div>
+            <button 
+              type="button" 
+              className="text-slate-400 hover:text-slate-700 text-[10px] font-semibold flex items-center gap-0.5"
+            >
+              {legendCollapsed ? 'Expand' : 'Collapse'}
+            </button>
+          </div>
+
+          {!legendCollapsed && (
+            <div className="p-2.5 space-y-2 overflow-y-auto max-h-64 text-[11px]">
+              <div>
+                <div className="text-[9.5px] font-bold uppercase tracking-wider text-slate-500 mb-1">Corridor</div>
+                <div className="flex items-center gap-2 py-0.5"><span className="w-5 h-1.5 rounded-sm bg-slate-600 border border-slate-900 shrink-0"></span><span className="flex-1">Active alignment</span></div>
+                {[
+                  { c: 'bg-red-600', t: 'Blocked', km: readiness.blockedKm },
+                  { c: 'bg-amber-500', t: 'At risk', km: readiness.partialKm },
+                  { c: 'bg-green-600', t: 'Ready', km: readiness.readyKm }
+                ].map(r => (
+                  <div key={r.t} className="flex items-center gap-2 py-0.5">
+                    <span className={`w-5 h-1.5 rounded-sm ${r.c} shrink-0`}></span>
+                    <span className="flex-1">{r.t}</span>
+                    {readiness.available && <span className="font-mono text-slate-600">{r.km} km</span>}
+                  </div>
+                ))}
+                {!readiness.available && <div className="text-[10px] text-slate-500 leading-snug">Segments not computable: no matched parcel geometry.</div>}
+              </div>
+              <div>
+                <div className="text-[9.5px] font-bold uppercase tracking-wider text-slate-500 mb-1">Parcel exposure</div>
+                <div className="flex items-center gap-2 py-0.5"><span className="w-3 h-3 rounded-sm bg-red-500/60 border-2 border-red-600 shrink-0"></span><span>High (&gt;{settings.riskThresholdMedMax}%)</span></div>
+                <div className="flex items-center gap-2 py-0.5"><span className="w-3 h-3 rounded-sm bg-amber-500/60 border-2 border-amber-600 shrink-0"></span><span>Medium ({settings.riskThresholdLowMax + 1}–{settings.riskThresholdMedMax}%)</span></div>
+                <div className="flex items-center gap-2 py-0.5"><span className="w-3 h-3 rounded-sm bg-green-500/60 border-2 border-green-600 shrink-0"></span><span>Low (&le;{settings.riskThresholdLowMax}%)</span></div>
+                <div className="flex items-center gap-2 py-0.5"><span className="w-3 h-3 rounded-sm border-2 border-white bg-slate-500/50 shrink-0 ring-1 ring-slate-900"></span><span>Selected</span></div>
+              </div>
+              <div className="pt-1 border-t border-slate-100 text-[10px] text-slate-500 leading-snug">
+                Demo: {joinedParcels.length} of {parcels.length} parcels have synthetic geometry; not real cadastral coverage. ROW = nominal {NOMINAL_ROW_WIDTH_METERS} m planning assumption; proximity buffer {PROXIMITY_BUFFER_METERS} m.
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Floating Parcel Inspection Drawer (if selected) */}
@@ -845,7 +1187,8 @@ export const GisMapView: React.FC = () => {
                 </h3>
               </div>
               <button
-                onClick={() => setSelectedMapParcel(null)}
+                                onClick={() => setSelectedMapParcel(null)}
+                aria-label="Close parcel panel"
                 className="text-slate-400 hover:text-slate-700 p-1"
               >
                 ✕
@@ -880,6 +1223,14 @@ export const GisMapView: React.FC = () => {
                 <span className="font-medium text-slate-700 truncate max-w-[140px]">{selectedMapParcel.ownerName}</span>
               </div>
               <div className="flex justify-between">
+                <span className="text-slate-500">Owner Category:</span>
+                <span className="font-medium text-slate-700">
+                  {selectedMapParcel.coOwnerCount > 1
+                    ? `Joint Ownership (${selectedMapParcel.coOwnerCount})`
+                    : 'Individual Ownership'}
+                </span>
+              </div>
+              <div className="flex justify-between">
                 <span className="text-slate-500">Location:</span>
                 <span className="text-slate-600">{selectedMapParcel.village}</span>
               </div>
@@ -899,9 +1250,63 @@ export const GisMapView: React.FC = () => {
                     : 'None'}
                 </span>
               </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Current Status:</span>
+                <span className="font-medium text-slate-700">{selectedMapParcel.acquisitionStatus}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Priority:</span>
+                <span className={`font-bold ${
+                  selectedMapParcel.priority === 'CRITICAL' || selectedMapParcel.priority === 'HIGH'
+                    ? 'text-red-600'
+                    : selectedMapParcel.priority === 'MEDIUM'
+                    ? 'text-amber-700'
+                    : 'text-emerald-600'
+                }`}>
+                  {selectedMapParcel.priority}
+                </span>
+              </div>
             </div>
 
+            <MapParcelIntel parcel={selectedMapParcel} />
+
+            {/* Risk, spatial relation and construction impact are three separate facts. */}
+            {(() => {
+              const t = describeConstructionImpact(selectedRelation, selectedMapParcel.riskLevel);
+              const toneCls =
+                t.tone === 'blocked' ? 'bg-red-50 border-red-200 text-red-800'
+                : t.tone === 'partial' ? 'bg-amber-50 border-amber-200 text-amber-800'
+                : t.tone === 'ready' ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                : t.tone === 'proximity' ? 'bg-amber-50/60 border-amber-200 text-amber-900'
+                : 'bg-slate-50 border-slate-200 text-slate-700';
+              const exposure = selectedMapParcel.riskLevel === 'high' ? 'High exposure' : selectedMapParcel.riskLevel === 'medium' ? 'Medium exposure' : 'Lower exposure';
+              return (
+                <div className="rounded-xl border border-slate-200 text-xs divide-y divide-slate-100">
+                  <div className="p-2.5">
+                    <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Risk</div>
+                    <div className="font-semibold text-slate-900">{exposure} · {selectedMapParcel.delayRiskScore}%</div>
+                  </div>
+                  <div className="p-2.5">
+                    <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Spatial relation</div>
+                    <div className="font-semibold text-slate-900">{t.spatial}</div>
+                  </div>
+                  <div className={`p-2.5 rounded-b-xl border-t ${toneCls}`}>
+                    <div className="text-[10px] font-bold uppercase tracking-wider opacity-70">Construction impact</div>
+                    <div className="font-black text-sm">{t.impact}</div>
+                    {t.note && <div className="text-[10px] opacity-80 leading-snug mt-0.5">{t.note}</div>}
+                  </div>
+                </div>
+              );
+            })()}
+
             <div className="pt-2 border-t border-slate-200 space-y-2">
+                            <button
+                onClick={() => handleZoomToParcel(selectedMapParcel)}
+                className="w-full py-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl flex items-center justify-center gap-1.5 transition-colors"
+              >
+                <MapPin className="w-3.5 h-3.5" />
+                <span>Zoom to parcel</span>
+              </button>
               <button
                 onClick={() => openParcelDetail(selectedMapParcel.id)}
                 className="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 transition-colors"

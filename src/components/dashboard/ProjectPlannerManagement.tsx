@@ -26,6 +26,7 @@ export const ProjectPlannerManagement: React.FC = () => {
     selectedProjectId, 
     selectProject, 
     deleteProject, 
+    updateProjectDetails,
     startRouteDraft,
     setActiveTab,
     allParcels
@@ -33,6 +34,10 @@ export const ProjectPlannerManagement: React.FC = () => {
 
   const [isNewProjectModalOpen, setIsNewProjectModalOpen] = useState(false);
   const [projectToDelete, setProjectToDelete] = useState<Project | null>(null);
+  const [projectToEdit, setProjectToEdit] = useState<Project | null>(null);
+  const [editName, setEditName] = useState('');
+  const [editType, setEditType] = useState<NonNullable<Project['projectType']>>('National Highway');
+  const [editDept, setEditDept] = useState('');
 
   // Strictly enforce role restriction: ONLY Project Planner can view or interact
   if (currentUser.role !== 'planner') {
@@ -55,6 +60,21 @@ export const ProjectPlannerManagement: React.FC = () => {
       proj.startCoords || (proj.corridorPath ? proj.corridorPath[0] : undefined),
       proj.endCoords || (proj.corridorPath ? proj.corridorPath[proj.corridorPath.length - 1] : undefined)
     );
+  };
+
+  const beginEdit = (proj: Project, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEditName(proj.name);
+    setEditType(proj.projectType || 'National Highway');
+    setEditDept(proj.department);
+    setProjectToEdit(proj);
+  };
+
+  const handleSaveEdit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!projectToEdit || editName.trim().length < 3) return;
+    await updateProjectDetails(projectToEdit.id, { name: editName, projectType: editType, department: editDept });
+    setProjectToEdit(null);
   };
 
   const handleConfirmDelete = () => {
@@ -116,8 +136,8 @@ export const ProjectPlannerManagement: React.FC = () => {
             const isSelected = proj.id === selectedProjectId;
             const projectParcels = allParcels.filter(p => p.projectId === proj.id);
             const highRiskCount = projectParcels.filter(p => p.riskLevel === 'high').length;
-            const displayParcelsCount = proj.id === 'proj-nh79x' ? 380 : (projectParcels.length || proj.totalParcels);
-            const displayHighRisk = proj.id === 'proj-nh79x' ? proj.highRiskParcels : (highRiskCount || proj.highRiskParcels);
+            const displayParcelsCount = proj.totalParcels || projectParcels.length;
+            const displayHighRisk = proj.highRiskParcels ?? highRiskCount;
 
             return (
               <div
@@ -225,6 +245,15 @@ export const ProjectPlannerManagement: React.FC = () => {
                     >
                       <Route className="w-3.5 h-3.5 text-blue-600" />
                       <span>Edit Route</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={(e) => beginEdit(proj, e)}
+                      className="px-2.5 py-1.5 text-[11px] font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 rounded-lg transition-colors"
+                      title="Edit project name, type and department"
+                    >
+                      Edit Details
                     </button>
                   </div>
 
@@ -342,6 +371,34 @@ export const ProjectPlannerManagement: React.FC = () => {
       />
 
       {/* Project Deletion Confirmation Dialog rendered in Portal */}
+      {projectToEdit && typeof document !== 'undefined' && createPortal(
+        <div className="fixed inset-0 z-60 bg-navy-950/70 backdrop-blur-xs flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Edit project details">
+          <form onSubmit={handleSaveEdit} className="bg-white border border-slate-200 rounded-xl max-w-md w-full p-5 shadow-xl text-slate-700 space-y-3 text-xs">
+            <h3 className="font-semibold text-sm text-slate-900">Edit project details</h3>
+            <div>
+              <label htmlFor="edit-proj-name" className="block font-semibold mb-1">Project name *</label>
+              <input id="edit-proj-name" value={editName} onChange={e => setEditName(e.target.value)} required minLength={3} className="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-blue-500/20 outline-none" />
+            </div>
+            <div>
+              <label htmlFor="edit-proj-type" className="block font-semibold mb-1">Project type</label>
+              <select id="edit-proj-type" value={editType} onChange={e => setEditType(e.target.value as NonNullable<Project['projectType']>)} className="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900 outline-none">
+                {(['National Highway', 'Expressway', 'Freight Corridor', 'Bypass', 'Other'] as const).map(t => <option key={t} value={t}>{t}</option>)}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="edit-proj-dept" className="block font-semibold mb-1">Department</label>
+              <input id="edit-proj-dept" value={editDept} onChange={e => setEditDept(e.target.value)} className="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900 outline-none" />
+            </div>
+            <p className="text-[11px] text-slate-500">Route, parcels and statutory counts are not changed here.</p>
+            <div className="flex justify-end gap-2 pt-2 border-t border-slate-100">
+              <button type="button" onClick={() => setProjectToEdit(null)} className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium">Cancel</button>
+              <button type="submit" className="px-3.5 py-1.5 bg-navy-900 hover:bg-navy-800 text-white rounded-lg font-medium">Save</button>
+            </div>
+          </form>
+        </div>,
+        document.body
+      )}
+
       {projectToDelete && typeof document !== 'undefined' && createPortal(
         <div className="fixed inset-0 z-[9999] bg-navy-950/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div 

@@ -1,31 +1,78 @@
-import React, { useState } from 'react';
-import { 
-  Compass, 
-  MapPin, 
-  AlertTriangle, 
-  CheckCircle2, 
-  TrendingDown, 
-  Sparkles, 
-  ArrowRight, 
+import React, { useMemo, useState } from 'react';
+import {
+  Compass,
+  MapPin,
+  AlertTriangle,
+  CheckCircle2,
+  TrendingDown,
+  Sparkles,
+  ArrowRight,
   Layers,
   ChevronRight,
-  TrendingUp
+  TrendingUp,
+  Construction,
+  Navigation
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { AlignmentOption } from '../../types';
+import { useConstructionReadiness } from '../../hooks/useConstructionReadiness';
+import { NOMINAL_ROW_WIDTH_METERS, PROXIMITY_BUFFER_METERS } from '../../data/geo/corridorRelation';
+import { SectionHeading, Badge } from '../ui';
 
 export const CorridorAnalysisView: React.FC = () => {
-  const { project, alignments, setActiveTab, setFilters } = useApp();
+  const { project, alignments, setActiveTab, setFilters, updateProjectRoute } = useApp();
+  const readiness = useConstructionReadiness();
 
-  const [selectedAlignmentId, setSelectedAlignmentId] = useState<string>('align-b');
-  const [selectedSectionId, setSelectedSectionId] = useState<string>('sec-2');
+  // Alignments are cross-project state (like allParcels) — scope to the
+  // active project only, exactly the same discipline already applied to
+  // parcels via AppContext.parcels. Un-scoped, a custom project would show
+  // (and could "promote") the flagship demo's Alignment A/B/C.
+  const projectAlignments = useMemo(
+    () => alignments.filter(a => a.projectId === project.id),
+    [alignments, project.id]
+  );
 
-  const selectedAlignment = alignments.find(a => a.id === selectedAlignmentId) || alignments[1];
-  const selectedSection = project.corridorSections.find(s => s.sectionId === selectedSectionId) || project.corridorSections[1];
+  const recommendedAlignment = projectAlignments.find(a => a.isRecommended);
+
+  // The alignment currently promoted to the project's real route — derived
+  // by comparing the live corridorPath against each option's own
+  // pathCoordinates, never a separately-tracked/fabricated flag. If the
+  // route has since been hand-edited on the map (or no alignment has ever
+  // been promoted), honestly no option matches.
+  const activeAlignment = useMemo(
+    () =>
+      projectAlignments.find(
+        a => JSON.stringify(a.pathCoordinates) === JSON.stringify(project.corridorPath)
+      ) || null,
+    [projectAlignments, project.corridorPath]
+  );
+
+  const [selectedAlignmentId, setSelectedAlignmentId] = useState<string>(
+    activeAlignment?.id || recommendedAlignment?.id || projectAlignments[0]?.id || ''
+  );
+  const [selectedSectionId, setSelectedSectionId] = useState<string>(
+    project.corridorSections[0]?.sectionId || ''
+  );
+
+  const selectedAlignment =
+    projectAlignments.find(a => a.id === selectedAlignmentId) || activeAlignment || projectAlignments[0];
+  const selectedSection = project.corridorSections.find(s => s.sectionId === selectedSectionId) || project.corridorSections[0];
 
   const handleInspectSectionParcels = () => {
-    setFilters(prev => ({ ...prev, taluk: 'Omalur', riskLevel: 'all' }));
+    // Corridor sections don't carry a taluk field, so this filters by the
+    // section's own real riskLevel rather than asserting a taluk the data
+    // doesn't actually have.
+    setFilters(prev => ({ ...prev, riskLevel: selectedSection.riskLevel, taluk: 'all' }));
     setActiveTab('parcels');
+  };
+
+  // Promotes the currently selected/compared alignment to the project's real
+  // active route. Reuses the existing AppContext.updateProjectRoute (the
+  // same call the map's manual route-draft flow already uses via
+  // commitRouteDraft) — no new persistence path, no fabricated route data,
+  // just this alignment's own already-modeled pathCoordinates.
+  const handlePromoteAlignment = (alignment: AlignmentOption) => {
+    updateProjectRoute(project.id, alignment.pathCoordinates);
   };
 
   return (
@@ -55,10 +102,103 @@ export const CorridorAnalysisView: React.FC = () => {
         </button>
       </div>
 
+      {/* Construction Readiness — "Acquired" (a LARR statutory status) is not
+          the same thing as "construction-ready" (a contractor's workfront can
+          actually mobilize here today). Computed from the same real turf.js
+          spatial join GisMapView already uses per-parcel
+          (src/hooks/useConstructionReadiness.ts), never fabricated — when the
+          active project's parcels have no matching real cadastral geometry,
+          this renders an honest empty state instead of invented numbers. */}
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+        <SectionHeading
+          icon={Construction}
+          color="teal"
+          title="Construction Readiness"
+          subtitle="Construction-ready vs blocked workfront — distinct from statutory acquisition status"
+        />
+
+        {!readiness.available ? (
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-500 text-center">
+            {readiness.reason}
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div className="text-[10px] uppercase font-bold text-slate-400">Total Corridor</div>
+                <div className="text-lg font-black text-slate-900 mt-0.5">{readiness.totalCorridorKm} km</div>
+              </div>
+              <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+                <div className="text-[10px] uppercase font-bold text-emerald-700">Construction-Ready</div>
+                <div className="text-lg font-black text-emerald-700 mt-0.5">
+                  {readiness.readyKm} km <span className="text-xs font-semibold">({readiness.readyPct}%)</span>
+                </div>
+              </div>
+              <div className="p-3 bg-amber-50 rounded-xl border border-amber-100">
+                <div className="text-[10px] uppercase font-bold text-amber-800">Partially Ready</div>
+                <div className="text-lg font-black text-amber-800 mt-0.5">{readiness.partialKm} km</div>
+              </div>
+              <div className="p-3 bg-red-50 rounded-xl border border-red-100">
+                <div className="text-[10px] uppercase font-bold text-red-700">Blocked Workfront</div>
+                <div className="text-lg font-black text-red-700 mt-0.5">
+                  {readiness.blockedKm} km <span className="text-xs font-semibold">({readiness.blockedPct}%)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Proportional stacked bar */}
+            <div className="h-3 w-full rounded-full overflow-hidden flex bg-slate-100">
+              {readiness.readyKm > 0 && (
+                <div className="bg-emerald-500 h-full" style={{ width: `${(readiness.readyKm / readiness.totalCorridorKm) * 100}%` }} />
+              )}
+              {readiness.partialKm > 0 && (
+                <div className="bg-amber-500 h-full" style={{ width: `${(readiness.partialKm / readiness.totalCorridorKm) * 100}%` }} />
+              )}
+              {readiness.blockedKm > 0 && (
+                <div className="bg-red-500 h-full" style={{ width: `${(readiness.blockedKm / readiness.totalCorridorKm) * 100}%` }} />
+              )}
+              {readiness.unsurveyedKm > 0 && (
+                <div className="bg-slate-300 h-full" style={{ width: `${(readiness.unsurveyedKm / readiness.totalCorridorKm) * 100}%` }} />
+              )}
+            </div>
+            {readiness.unsurveyedKm > 0 && (
+              <div className="text-[10.5px] text-slate-400">
+                {readiness.unsurveyedKm} km of corridor has no overlapping surveyed parcel footprint — shown grey: not assessed, not counted as ready or blocked.
+              </div>
+            )}
+
+            {readiness.blockedSegments.length > 0 && (
+              <div className="pt-2 border-t border-slate-100">
+                <div className="text-[10px] uppercase font-bold text-slate-500 mb-1.5">Major Blockers Preventing Construction</div>
+                <div className="space-y-1.5">
+                  {readiness.blockedSegments.map((seg) => (
+                    <div key={seg.parcelId} className="flex items-center justify-between text-xs p-2 bg-red-50/60 rounded-lg border border-red-100">
+                      <span className="text-slate-700">
+                                                Parcel <span className="font-mono">{seg.parcelId}</span> overlaps the ROW <span className="text-slate-400">({seg.lengthKm} km of corridor)</span>
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Badge color="red">Blocked</Badge>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="text-[10.5px] text-slate-400 pt-1">
+                            Parcels whose footprint overlaps the nominal {NOMINAL_ROW_WIDTH_METERS} m ROW (planning assumption, not a legal boundary):{' '}
+              {readiness.affectedParcels.ready} ready / {readiness.affectedParcels.partial} partial / {readiness.affectedParcels.blocked} blocked.{' '}
+              {readiness.proximityParcels} parcel(s) sit within {PROXIMITY_BUFFER_METERS} m but outside the ROW (potential proximity only, no length attributed);{' '}
+              {readiness.outsideParcels} are farther away. Downstream workfront impact is not computed.
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Corridor Section Breakdown Cards */}
       <div>
         <div className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">
-          Corridor Route Vulnerability by Section (Chainage Km 0 to 68.4)
+          Corridor Route Vulnerability by Section (Chainage Km 0 to {project.totalLengthKm})
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -123,12 +263,17 @@ export const CorridorAnalysisView: React.FC = () => {
             onClick={handleInspectSectionParcels}
             className="px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-colors shrink-0"
           >
-            Filter All Section 2 Parcels (Omalur)
+            View {selectedSection.riskLevel.toUpperCase()}-Risk Parcels in This Section
           </button>
         </div>
 
         <p className="text-xs text-slate-300 leading-relaxed">
-          {selectedSection.description} AI models recommend evaluating <strong>Alignment B (Agro Bypass)</strong> to circumvent the 19 disputed parcels in this stretch.
+          {selectedSection.description}
+          {recommendedAlignment && (
+            <>
+              {' '}Recommended alignment: <strong>{recommendedAlignment.name}</strong> — {recommendedAlignment.recommendationReason}
+            </>
+          )}
         </p>
       </div>
 
@@ -144,15 +289,75 @@ export const CorridorAnalysisView: React.FC = () => {
             </p>
           </div>
 
-          <span className="px-2.5 py-1 rounded text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
-            AI Recommended: Alignment B
-          </span>
+          {recommendedAlignment && (
+            <span className="px-2.5 py-1 rounded text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+              Recommended: {recommendedAlignment.name}
+            </span>
+          )}
         </div>
 
+        {/* Selected vs Active comparison — requirement: show which alignment
+            is being inspected, which one is the project's real active route,
+            and how they differ on friction / construction impact. */}
+        {selectedAlignment && (
+          <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <Navigation className="w-4 h-4 text-blue-600" />
+              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Comparing to Active Route</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div className="p-3 rounded-xl border border-blue-200 bg-blue-50/50">
+                <div className="text-[10px] uppercase font-bold text-blue-700">Selected: {selectedAlignment.name}</div>
+                <div className="grid grid-cols-2 gap-2 mt-2 font-mono">
+                  <div>Length: <strong>{selectedAlignment.lengthKm} km</strong></div>
+                  <div>Cost: <strong>₹{selectedAlignment.estimatedCostCrores.toLocaleString()} Cr</strong></div>
+                  <div>High-Risk: <strong>{selectedAlignment.highRiskParcels}</strong></div>
+                  <div>Friction: <strong>{selectedAlignment.litigationFrictionScore}/100</strong></div>
+                </div>
+              </div>
+
+              <div className={`p-3 rounded-xl border ${activeAlignment ? 'border-emerald-200 bg-emerald-50/50' : 'border-slate-200 bg-slate-50'}`}>
+                <div className={`text-[10px] uppercase font-bold ${activeAlignment ? 'text-emerald-700' : 'text-slate-500'}`}>
+                  Currently Active: {activeAlignment ? activeAlignment.name : 'No listed alignment (custom / manually edited route)'}
+                </div>
+                {activeAlignment && (
+                  <div className="grid grid-cols-2 gap-2 mt-2 font-mono">
+                    <div>Length: <strong>{activeAlignment.lengthKm} km</strong></div>
+                    <div>Cost: <strong>₹{activeAlignment.estimatedCostCrores.toLocaleString()} Cr</strong></div>
+                    <div>High-Risk: <strong>{activeAlignment.highRiskParcels}</strong></div>
+                    <div>Friction: <strong>{activeAlignment.litigationFrictionScore}/100</strong></div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {activeAlignment && activeAlignment.id !== selectedAlignment.id && (
+              <div className="mt-3 pt-3 border-t border-slate-100 text-[11px] text-slate-600 flex flex-wrap gap-x-4 gap-y-1">
+                <span>
+                  Δ Delay: <strong className={selectedAlignment.predictedDelayMonths < activeAlignment.predictedDelayMonths ? 'text-emerald-600' : 'text-amber-700'}>
+                    {(selectedAlignment.predictedDelayMonths - activeAlignment.predictedDelayMonths).toFixed(1)} Mos
+                  </strong>
+                </span>
+                <span>
+                  Δ High-Risk Parcels: <strong className={selectedAlignment.highRiskParcels < activeAlignment.highRiskParcels ? 'text-emerald-600' : 'text-amber-700'}>
+                    {selectedAlignment.highRiskParcels - activeAlignment.highRiskParcels}
+                  </strong>
+                </span>
+                <span>
+                  Δ Cost: <strong className={selectedAlignment.estimatedCostCrores <= activeAlignment.estimatedCostCrores ? 'text-emerald-600' : 'text-amber-700'}>
+                    ₹{(selectedAlignment.estimatedCostCrores - activeAlignment.estimatedCostCrores).toLocaleString()} Cr
+                  </strong>
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {alignments.map(align => {
+          {projectAlignments.map(align => {
             const isSelected = selectedAlignmentId === align.id;
             const isRec = align.isRecommended;
+            const isActive = activeAlignment?.id === align.id;
 
             return (
               <div
@@ -161,6 +366,8 @@ export const CorridorAnalysisView: React.FC = () => {
                 className={`rounded-2xl border p-5 transition-all cursor-pointer flex flex-col justify-between ${
                   isSelected
                     ? 'bg-navy-900 text-white border-blue-500 shadow-xl ring-2 ring-blue-500/20'
+                    : isActive
+                    ? 'bg-teal-50/60 text-slate-900 border-teal-300 shadow-sm'
                     : isRec
                     ? 'bg-emerald-50/50 text-slate-900 border-emerald-300 shadow-sm'
                     : 'bg-white text-slate-900 border-slate-200 shadow-sm hover:border-slate-300'
@@ -173,11 +380,18 @@ export const CorridorAnalysisView: React.FC = () => {
                       <h4 className="font-extrabold text-sm mt-0.5">{align.name}</h4>
                     </div>
 
-                    {isRec && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-500 text-white uppercase tracking-wider">
-                        RECOMMENDED
-                      </span>
-                    )}
+                    <div className="flex flex-col items-end gap-1 shrink-0">
+                      {isActive && (
+                        <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-teal-600 text-white uppercase tracking-wider flex items-center gap-1">
+                          <Navigation className="w-3 h-3" /> Active Route
+                        </span>
+                      )}
+                      {isRec && (
+                        <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-500 text-white uppercase tracking-wider">
+                          RECOMMENDED
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   {/* Metrics Grid */}
@@ -223,9 +437,28 @@ export const CorridorAnalysisView: React.FC = () => {
                   </div>
                 </div>
 
-                <div className={`mt-4 pt-3 border-t flex items-center justify-between text-xs ${isSelected ? 'border-navy-700/60' : 'border-slate-100'}`}>
-                  <span className="font-bold text-[11px]">Litigation Friction Score: {align.litigationFrictionScore}/100</span>
-                  <span className={`font-semibold ${isSelected ? 'text-blue-300' : 'text-blue-600'}`}>{isSelected ? 'Active Selection' : 'Select'}</span>
+                <div className={`mt-4 pt-3 border-t flex items-center justify-between gap-2 text-xs ${isSelected ? 'border-navy-700/60' : 'border-slate-100'}`}>
+                  <span className="font-bold text-[11px]">Friction: {align.litigationFrictionScore}/100</span>
+                  {isActive ? (
+                    <span className="font-semibold text-[11px] text-teal-600 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5" /> Currently Active
+                    </span>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handlePromoteAlignment(align);
+                      }}
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-colors shrink-0 ${
+                        isSelected
+                          ? 'bg-white text-navy-900 hover:bg-slate-100'
+                          : 'bg-blue-600 text-white hover:bg-blue-500'
+                      }`}
+                    >
+                      Set as Active Alignment
+                    </button>
+                  )}
                 </div>
               </div>
             );
